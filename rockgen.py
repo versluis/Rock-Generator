@@ -1,1218 +1,6187 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
-<!-- git web interface version 2.23.0, (C) 2005-2006, Kay Sievers <kay.sievers@vrfy.org>, Christian Gierke -->
-<!-- git core binaries version 2.23.0 -->
-<head>
-<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-<meta name="generator" content="gitweb/2.23.0 git/2.23.0"/>
-<meta name="robots" content="index, nofollow"/>
-<title>git.blender.org - blender-addons-contrib.git/blob - add_mesh_rocks/rockgen.py</title>
-<base href="https://git.blender.org/gitweb/gitweb.cgi" />
-<link rel="stylesheet" type="text/css" href="static/gitweb.css"/>
-<link rel="alternate" title="blender-addons-contrib.git - history of add_mesh_rocks/rockgen.py - RSS feed" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/rss?f=add_mesh_rocks/rockgen.py" type="application/rss+xml" />
-<link rel="alternate" title="blender-addons-contrib.git - history of add_mesh_rocks/rockgen.py - RSS feed (no merges)" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/rss?f=add_mesh_rocks/rockgen.py;opt=--no-merges" type="application/rss+xml" />
-<link rel="alternate" title="blender-addons-contrib.git - history of add_mesh_rocks/rockgen.py - Atom feed" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/atom?f=add_mesh_rocks/rockgen.py" type="application/atom+xml" />
-<link rel="alternate" title="blender-addons-contrib.git - history of add_mesh_rocks/rockgen.py - Atom feed (no merges)" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/atom?f=add_mesh_rocks/rockgen.py;opt=--no-merges" type="application/atom+xml" />
-<link rel="shortcut icon" href="static/git-favicon.png" type="image/png" />
-</head>
-<body>
-<div class="page_header">
-<a href="http://git-scm.com/" title="git homepage"><img alt="git" class="logo" height="27" src="static/git-logo.png" width="72" /></a><a href="https://git.blender.org/gitweb/">projects</a> / <a href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git">blender-addons-contrib.git</a> / blob
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+  <link rel="dns-prefetch" href="https://github.githubassets.com">
+  <link rel="dns-prefetch" href="https://avatars0.githubusercontent.com">
+  <link rel="dns-prefetch" href="https://avatars1.githubusercontent.com">
+  <link rel="dns-prefetch" href="https://avatars2.githubusercontent.com">
+  <link rel="dns-prefetch" href="https://avatars3.githubusercontent.com">
+  <link rel="dns-prefetch" href="https://github-cloud.s3.amazonaws.com">
+  <link rel="dns-prefetch" href="https://user-images.githubusercontent.com/">
+
+
+
+  <link crossorigin="anonymous" media="all" integrity="sha512-/YEVWs7BzxfKyUd6zVxjEQcXRWsLbcEjv045Rq8DSoipySmQblhVKxlXLva2GtNd5DhwCxHwW1RM0N9I7S2Vew==" rel="stylesheet" href="https://github.githubassets.com/assets/frameworks-481a47a96965f6706fb41bae0d14b09a.css" />
+  
+    <link crossorigin="anonymous" media="all" integrity="sha512-xlKdcTpXrrd+rLG1h8yYl5yt/S94zWLil75KS5529Mf0/RdApUbGTKcFbY0OZMotEz3l11k0GqfDAhasayWehw==" rel="stylesheet" href="https://github.githubassets.com/assets/github-eabfbaded2e91939e805d1a3af34018a.css" />
+    
+    
+    
+    
+
+
+  <meta name="viewport" content="width=device-width">
+  
+  <title>blender-addons-contrib/rockgen.py at master · sobotka/blender-addons-contrib</title>
+    <meta name="description" content="Contribute to sobotka/blender-addons-contrib development by creating an account on GitHub.">
+    <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="GitHub">
+  <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub">
+  <meta property="fb:app_id" content="1401488693436528">
+
+    <meta name="twitter:image:src" content="https://avatars3.githubusercontent.com/u/59577?s=400&amp;v=4" /><meta name="twitter:site" content="@github" /><meta name="twitter:card" content="summary" /><meta name="twitter:title" content="sobotka/blender-addons-contrib" /><meta name="twitter:description" content="Contribute to sobotka/blender-addons-contrib development by creating an account on GitHub." />
+    <meta property="og:image" content="https://avatars3.githubusercontent.com/u/59577?s=400&amp;v=4" /><meta property="og:site_name" content="GitHub" /><meta property="og:type" content="object" /><meta property="og:title" content="sobotka/blender-addons-contrib" /><meta property="og:url" content="https://github.com/sobotka/blender-addons-contrib" /><meta property="og:description" content="Contribute to sobotka/blender-addons-contrib development by creating an account on GitHub." />
+
+  <link rel="assets" href="https://github.githubassets.com/">
+  <link rel="web-socket" href="wss://live.github.com/_sockets/VjI6NDcyOTk0OTgxOmVlNTdkYzNjOGNjZTAyNTAxYTE3MjFhMWQxYTUxNjlmM2RmMTg1MjA5ZjJkNjE0NzQ4MGIwMTVlMTYyNWQ4MWQ=--27797402ed3d6a02ac8d3537c129bf9e36882178">
+  <link rel="sudo-modal" href="/sessions/sudo_modal">
+
+    <meta name="request-id" content="8759:1B5E:C4931E:167EE83:5DE0780C" data-pjax-transient>
+
+
+  
+
+  <meta name="selected-link" value="repo_source" data-pjax-transient>
+
+      <meta name="google-site-verification" content="KT5gs8h0wvaagLKAVWq8bbeNwnZZK1r1XQysX3xurLU">
+    <meta name="google-site-verification" content="ZzhVyEFwb7w3e0-uOTltm8Jsck2F5StVihD0exw2fsA">
+    <meta name="google-site-verification" content="GXs5KoUUkNCoaAZn7wPN-t01Pywp9M3sEjnt_3_ZWPc">
+
+    <meta name="octolytics-host" content="collector.githubapp.com" /><meta name="octolytics-app-id" content="github" /><meta name="octolytics-event-url" content="https://collector.githubapp.com/github-external/browser_event" /><meta name="octolytics-dimension-request_id" content="8759:1B5E:C4931E:167EE83:5DE0780C" /><meta name="octolytics-dimension-region_edge" content="iad" /><meta name="octolytics-dimension-region_render" content="iad" /><meta name="octolytics-dimension-ga_id" content="" class="js-octo-ga-id" /><meta name="octolytics-dimension-visitor_id" content="7046291551732643862" /><meta name="octolytics-actor-id" content="1576533" /><meta name="octolytics-actor-login" content="versluis" /><meta name="octolytics-actor-hash" content="b6c88d8b2753938241c767dc9afcf50fc7233c9e04f0a96792b0500782b1e7ba" />
+
+<meta name="analytics-location" content="/&lt;user-name&gt;/&lt;repo-name&gt;/blob/show" data-pjax-transient="true" />
+
+
+
+    <meta name="google-analytics" content="UA-3769691-2">
+
+  <meta class="js-ga-set" name="userId" content="564eb7c8e467175db214b856c38d3286">
+
+<meta class="js-ga-set" name="dimension1" content="Logged In">
+
+
+
+  
+
+      <meta name="hostname" content="github.com">
+    <meta name="user-login" content="versluis">
+
+      <meta name="expected-hostname" content="github.com">
+
+      <meta name="js-proxy-site-detection-payload" content="MThkOGVkYjYyMTUxYTliZDYyY2I0M2JlY2JjNTU2N2E4N2Q1YmU2M2U4MzFjOTg3YjVhZjRiODcwMDQ2YWJjN3x7InJlbW90ZV9hZGRyZXNzIjoiNzIuMjguMTMyLjg3IiwicmVxdWVzdF9pZCI6Ijg3NTk6MUI1RTpDNDkzMUU6MTY3RUU4Mzo1REUwNzgwQyIsInRpbWVzdGFtcCI6MTU3NDk5MTg4OSwiaG9zdCI6ImdpdGh1Yi5jb20ifQ==">
+
+    <meta name="enabled-features" content="LAUNCH_PROJECT,MARKETPLACE_FEATURED_BLOG_POSTS,MARKETPLACE_INVOICED_BILLING,MARKETPLACE_SOCIAL_PROOF_CUSTOMERS,MARKETPLACE_TRENDING_SOCIAL_PROOF,MARKETPLACE_RECOMMENDATIONS,MARKETPLACE_PENDING_INSTALLATIONS,NOTIFY_ON_BLOCK,RELATED_ISSUES,GHE_CLOUD_TRIAL">
+
+    <meta name="html-safe-nonce" content="90d8be9064379ddd674942dee12d562df48d48af">
+
+  <meta http-equiv="x-pjax-version" content="5889f893dcaa7c2acb03cae96934b7a4">
+  
+
+      <link href="https://github.com/sobotka/blender-addons-contrib/commits/master.atom" rel="alternate" title="Recent Commits to blender-addons-contrib:master" type="application/atom+xml">
+
+  <meta name="go-import" content="github.com/sobotka/blender-addons-contrib git https://github.com/sobotka/blender-addons-contrib.git">
+
+  <meta name="octolytics-dimension-user_id" content="59577" /><meta name="octolytics-dimension-user_login" content="sobotka" /><meta name="octolytics-dimension-repository_id" content="112905278" /><meta name="octolytics-dimension-repository_nwo" content="sobotka/blender-addons-contrib" /><meta name="octolytics-dimension-repository_public" content="true" /><meta name="octolytics-dimension-repository_is_fork" content="false" /><meta name="octolytics-dimension-repository_network_root_id" content="112905278" /><meta name="octolytics-dimension-repository_network_root_nwo" content="sobotka/blender-addons-contrib" /><meta name="octolytics-dimension-repository_explore_github_marketplace_ci_cta_shown" content="false" />
+
+
+    <link rel="canonical" href="https://github.com/sobotka/blender-addons-contrib/blob/master/add_mesh_rocks/rockgen.py" data-pjax-transient>
+
+
+  <meta name="browser-stats-url" content="https://api.github.com/_private/browser/stats">
+
+  <meta name="browser-errors-url" content="https://api.github.com/_private/browser/errors">
+
+  <link rel="mask-icon" href="https://github.githubassets.com/pinned-octocat.svg" color="#000000">
+  <link rel="icon" type="image/x-icon" class="js-site-favicon" href="https://github.githubassets.com/favicon.ico">
+
+<meta name="theme-color" content="#1e2327">
+
+
+
+  <meta name="webauthn-auth-enabled" content="true">
+
+  <meta name="webauthn-registration-enabled" content="true">
+
+  <link rel="manifest" href="/manifest.json" crossOrigin="use-credentials">
+
+  </head>
+
+  <body class="logged-in env-production page-responsive page-blob">
+    
+
+  <div class="position-relative js-header-wrapper ">
+    <a href="#start-of-content" tabindex="1" class="p-3 bg-blue text-white show-on-focus js-skip-to-content">Skip to content</a>
+    <span class="Progress progress-pjax-loader position-fixed width-full js-pjax-loader-bar">
+      <span class="progress-pjax-loader-bar top-0 left-0" style="width: 0%;"></span>
+    </span>
+
+    
+    
+    
+
+
+          <header class="Header js-details-container Details flex-wrap flex-lg-nowrap p-responsive" role="banner">
+
+    <div class="Header-item d-none d-lg-flex">
+      <a class="Header-link" href="https://github.com/" data-hotkey="g d" aria-label="Homepage" data-ga-click="Header, go to dashboard, icon:logo">
+  <svg class="octicon octicon-mark-github v-align-middle" height="32" viewBox="0 0 16 16" version="1.1" width="32" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+</a>
+
+    </div>
+
+    <div class="Header-item d-lg-none">
+      <button class="Header-link btn-link js-details-target" type="button" aria-label="Toggle navigation" aria-expanded="false">
+        <svg height="24" class="octicon octicon-three-bars" viewBox="0 0 12 16" version="1.1" width="18" aria-hidden="true"><path fill-rule="evenodd" d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"/></svg>
+      </button>
+    </div>
+
+    <div class="Header-item Header-item--full flex-column flex-lg-row width-full flex-order-2 flex-lg-order-none mr-0 mr-lg-3 mt-3 mt-lg-0 Details-content--hidden">
+        <div class="header-search flex-self-stretch flex-lg-self-auto mr-0 mr-lg-3 mb-3 mb-lg-0 scoped-search site-scoped-search js-site-search position-relative js-jump-to"
+  role="combobox"
+  aria-owns="jump-to-results"
+  aria-label="Search or jump to"
+  aria-haspopup="listbox"
+  aria-expanded="false"
+>
+  <div class="position-relative">
+    <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="js-site-search-form" role="search" aria-label="Site" data-scope-type="Repository" data-scope-id="112905278" data-scoped-search-url="/sobotka/blender-addons-contrib/search" data-unscoped-search-url="/search" action="/sobotka/blender-addons-contrib/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
+      <label class="form-control input-sm header-search-wrapper p-0 header-search-wrapper-jump-to position-relative d-flex flex-justify-between flex-items-center js-chromeless-input-container">
+        <input type="text"
+          class="form-control input-sm header-search-input jump-to-field js-jump-to-field js-site-search-focus js-site-search-field is-clearable"
+          data-hotkey="s,/"
+          name="q"
+          value=""
+          placeholder="Search or jump to…"
+          data-unscoped-placeholder="Search or jump to…"
+          data-scoped-placeholder="Search or jump to…"
+          autocapitalize="off"
+          aria-autocomplete="list"
+          aria-controls="jump-to-results"
+          aria-label="Search or jump to…"
+          data-jump-to-suggestions-path="/_graphql/GetSuggestedNavigationDestinations#csrf-token=W6IY1MrIVaSPDoHv2BFdk4vuEn13mtHuEFIr5AP+z4YyoOrPmYmNyQW2xrxtZ8H438dHacfWEa9DbV1ttxxuBQ=="
+          spellcheck="false"
+          autocomplete="off"
+          >
+          <input type="hidden" class="js-site-search-type-field" name="type" >
+            <img src="https://github.githubassets.com/images/search-key-slash.svg" alt="" class="mr-2 header-search-key-slash">
+
+            <div class="Box position-absolute overflow-hidden d-none jump-to-suggestions js-jump-to-suggestions-container">
+              
+<ul class="d-none js-jump-to-suggestions-template-container">
+  
+
+<li class="d-flex flex-justify-start flex-items-center p-0 f5 navigation-item js-navigation-item js-jump-to-suggestion" role="option">
+  <a tabindex="-1" class="no-underline d-flex flex-auto flex-items-center jump-to-suggestions-path js-jump-to-suggestion-path js-navigation-open p-2" href="">
+    <div class="jump-to-octicon js-jump-to-octicon flex-shrink-0 mr-2 text-center d-none">
+      <svg height="16" width="16" class="octicon octicon-repo flex-shrink-0 js-jump-to-octicon-repo d-none" title="Repository" aria-label="Repository" viewBox="0 0 12 16" version="1.1" role="img"><path fill-rule="evenodd" d="M4 9H3V8h1v1zm0-3H3v1h1V6zm0-2H3v1h1V4zm0-2H3v1h1V2zm8-1v12c0 .55-.45 1-1 1H6v2l-1.5-1.5L3 16v-2H1c-.55 0-1-.45-1-1V1c0-.55.45-1 1-1h10c.55 0 1 .45 1 1zm-1 10H1v2h2v-1h3v1h5v-2zm0-10H2v9h9V1z"/></svg>
+      <svg height="16" width="16" class="octicon octicon-project flex-shrink-0 js-jump-to-octicon-project d-none" title="Project" aria-label="Project" viewBox="0 0 15 16" version="1.1" role="img"><path fill-rule="evenodd" d="M10 12h3V2h-3v10zm-4-2h3V2H6v8zm-4 4h3V2H2v12zm-1 1h13V1H1v14zM14 0H1a1 1 0 00-1 1v14a1 1 0 001 1h13a1 1 0 001-1V1a1 1 0 00-1-1z"/></svg>
+      <svg height="16" width="16" class="octicon octicon-search flex-shrink-0 js-jump-to-octicon-search d-none" title="Search" aria-label="Search" viewBox="0 0 16 16" version="1.1" role="img"><path fill-rule="evenodd" d="M15.7 13.3l-3.81-3.83A5.93 5.93 0 0013 6c0-3.31-2.69-6-6-6S1 2.69 1 6s2.69 6 6 6c1.3 0 2.48-.41 3.47-1.11l3.83 3.81c.19.2.45.3.7.3.25 0 .52-.09.7-.3a.996.996 0 000-1.41v.01zM7 10.7c-2.59 0-4.7-2.11-4.7-4.7 0-2.59 2.11-4.7 4.7-4.7 2.59 0 4.7 2.11 4.7 4.7 0 2.59-2.11 4.7-4.7 4.7z"/></svg>
+    </div>
+
+    <img class="avatar mr-2 flex-shrink-0 js-jump-to-suggestion-avatar d-none" alt="" aria-label="Team" src="" width="28" height="28">
+
+    <div class="jump-to-suggestion-name js-jump-to-suggestion-name flex-auto overflow-hidden text-left no-wrap css-truncate css-truncate-target">
+    </div>
+
+    <div class="border rounded-1 flex-shrink-0 bg-gray px-1 text-gray-light ml-1 f6 d-none js-jump-to-badge-search">
+      <span class="js-jump-to-badge-search-text-default d-none" aria-label="in this repository">
+        In this repository
+      </span>
+      <span class="js-jump-to-badge-search-text-global d-none" aria-label="in all of GitHub">
+        All GitHub
+      </span>
+      <span aria-hidden="true" class="d-inline-block ml-1 v-align-middle">↵</span>
+    </div>
+
+    <div aria-hidden="true" class="border rounded-1 flex-shrink-0 bg-gray px-1 text-gray-light ml-1 f6 d-none d-on-nav-focus js-jump-to-badge-jump">
+      Jump to
+      <span class="d-inline-block ml-1 v-align-middle">↵</span>
+    </div>
+  </a>
+</li>
+
+</ul>
+
+<ul class="d-none js-jump-to-no-results-template-container">
+  <li class="d-flex flex-justify-center flex-items-center f5 d-none js-jump-to-suggestion p-2">
+    <span class="text-gray">No suggested jump to results</span>
+  </li>
+</ul>
+
+<ul id="jump-to-results" role="listbox" class="p-0 m-0 js-navigation-container jump-to-suggestions-results-container js-jump-to-suggestions-results-container">
+  
+
+<li class="d-flex flex-justify-start flex-items-center p-0 f5 navigation-item js-navigation-item js-jump-to-scoped-search d-none" role="option">
+  <a tabindex="-1" class="no-underline d-flex flex-auto flex-items-center jump-to-suggestions-path js-jump-to-suggestion-path js-navigation-open p-2" href="">
+    <div class="jump-to-octicon js-jump-to-octicon flex-shrink-0 mr-2 text-center d-none">
+      <svg height="16" width="16" class="octicon octicon-repo flex-shrink-0 js-jump-to-octicon-repo d-none" title="Repository" aria-label="Repository" viewBox="0 0 12 16" version="1.1" role="img"><path fill-rule="evenodd" d="M4 9H3V8h1v1zm0-3H3v1h1V6zm0-2H3v1h1V4zm0-2H3v1h1V2zm8-1v12c0 .55-.45 1-1 1H6v2l-1.5-1.5L3 16v-2H1c-.55 0-1-.45-1-1V1c0-.55.45-1 1-1h10c.55 0 1 .45 1 1zm-1 10H1v2h2v-1h3v1h5v-2zm0-10H2v9h9V1z"/></svg>
+      <svg height="16" width="16" class="octicon octicon-project flex-shrink-0 js-jump-to-octicon-project d-none" title="Project" aria-label="Project" viewBox="0 0 15 16" version="1.1" role="img"><path fill-rule="evenodd" d="M10 12h3V2h-3v10zm-4-2h3V2H6v8zm-4 4h3V2H2v12zm-1 1h13V1H1v14zM14 0H1a1 1 0 00-1 1v14a1 1 0 001 1h13a1 1 0 001-1V1a1 1 0 00-1-1z"/></svg>
+      <svg height="16" width="16" class="octicon octicon-search flex-shrink-0 js-jump-to-octicon-search d-none" title="Search" aria-label="Search" viewBox="0 0 16 16" version="1.1" role="img"><path fill-rule="evenodd" d="M15.7 13.3l-3.81-3.83A5.93 5.93 0 0013 6c0-3.31-2.69-6-6-6S1 2.69 1 6s2.69 6 6 6c1.3 0 2.48-.41 3.47-1.11l3.83 3.81c.19.2.45.3.7.3.25 0 .52-.09.7-.3a.996.996 0 000-1.41v.01zM7 10.7c-2.59 0-4.7-2.11-4.7-4.7 0-2.59 2.11-4.7 4.7-4.7 2.59 0 4.7 2.11 4.7 4.7 0 2.59-2.11 4.7-4.7 4.7z"/></svg>
+    </div>
+
+    <img class="avatar mr-2 flex-shrink-0 js-jump-to-suggestion-avatar d-none" alt="" aria-label="Team" src="" width="28" height="28">
+
+    <div class="jump-to-suggestion-name js-jump-to-suggestion-name flex-auto overflow-hidden text-left no-wrap css-truncate css-truncate-target">
+    </div>
+
+    <div class="border rounded-1 flex-shrink-0 bg-gray px-1 text-gray-light ml-1 f6 d-none js-jump-to-badge-search">
+      <span class="js-jump-to-badge-search-text-default d-none" aria-label="in this repository">
+        In this repository
+      </span>
+      <span class="js-jump-to-badge-search-text-global d-none" aria-label="in all of GitHub">
+        All GitHub
+      </span>
+      <span aria-hidden="true" class="d-inline-block ml-1 v-align-middle">↵</span>
+    </div>
+
+    <div aria-hidden="true" class="border rounded-1 flex-shrink-0 bg-gray px-1 text-gray-light ml-1 f6 d-none d-on-nav-focus js-jump-to-badge-jump">
+      Jump to
+      <span class="d-inline-block ml-1 v-align-middle">↵</span>
+    </div>
+  </a>
+</li>
+
+  
+
+<li class="d-flex flex-justify-start flex-items-center p-0 f5 navigation-item js-navigation-item js-jump-to-global-search d-none" role="option">
+  <a tabindex="-1" class="no-underline d-flex flex-auto flex-items-center jump-to-suggestions-path js-jump-to-suggestion-path js-navigation-open p-2" href="">
+    <div class="jump-to-octicon js-jump-to-octicon flex-shrink-0 mr-2 text-center d-none">
+      <svg height="16" width="16" class="octicon octicon-repo flex-shrink-0 js-jump-to-octicon-repo d-none" title="Repository" aria-label="Repository" viewBox="0 0 12 16" version="1.1" role="img"><path fill-rule="evenodd" d="M4 9H3V8h1v1zm0-3H3v1h1V6zm0-2H3v1h1V4zm0-2H3v1h1V2zm8-1v12c0 .55-.45 1-1 1H6v2l-1.5-1.5L3 16v-2H1c-.55 0-1-.45-1-1V1c0-.55.45-1 1-1h10c.55 0 1 .45 1 1zm-1 10H1v2h2v-1h3v1h5v-2zm0-10H2v9h9V1z"/></svg>
+      <svg height="16" width="16" class="octicon octicon-project flex-shrink-0 js-jump-to-octicon-project d-none" title="Project" aria-label="Project" viewBox="0 0 15 16" version="1.1" role="img"><path fill-rule="evenodd" d="M10 12h3V2h-3v10zm-4-2h3V2H6v8zm-4 4h3V2H2v12zm-1 1h13V1H1v14zM14 0H1a1 1 0 00-1 1v14a1 1 0 001 1h13a1 1 0 001-1V1a1 1 0 00-1-1z"/></svg>
+      <svg height="16" width="16" class="octicon octicon-search flex-shrink-0 js-jump-to-octicon-search d-none" title="Search" aria-label="Search" viewBox="0 0 16 16" version="1.1" role="img"><path fill-rule="evenodd" d="M15.7 13.3l-3.81-3.83A5.93 5.93 0 0013 6c0-3.31-2.69-6-6-6S1 2.69 1 6s2.69 6 6 6c1.3 0 2.48-.41 3.47-1.11l3.83 3.81c.19.2.45.3.7.3.25 0 .52-.09.7-.3a.996.996 0 000-1.41v.01zM7 10.7c-2.59 0-4.7-2.11-4.7-4.7 0-2.59 2.11-4.7 4.7-4.7 2.59 0 4.7 2.11 4.7 4.7 0 2.59-2.11 4.7-4.7 4.7z"/></svg>
+    </div>
+
+    <img class="avatar mr-2 flex-shrink-0 js-jump-to-suggestion-avatar d-none" alt="" aria-label="Team" src="" width="28" height="28">
+
+    <div class="jump-to-suggestion-name js-jump-to-suggestion-name flex-auto overflow-hidden text-left no-wrap css-truncate css-truncate-target">
+    </div>
+
+    <div class="border rounded-1 flex-shrink-0 bg-gray px-1 text-gray-light ml-1 f6 d-none js-jump-to-badge-search">
+      <span class="js-jump-to-badge-search-text-default d-none" aria-label="in this repository">
+        In this repository
+      </span>
+      <span class="js-jump-to-badge-search-text-global d-none" aria-label="in all of GitHub">
+        All GitHub
+      </span>
+      <span aria-hidden="true" class="d-inline-block ml-1 v-align-middle">↵</span>
+    </div>
+
+    <div aria-hidden="true" class="border rounded-1 flex-shrink-0 bg-gray px-1 text-gray-light ml-1 f6 d-none d-on-nav-focus js-jump-to-badge-jump">
+      Jump to
+      <span class="d-inline-block ml-1 v-align-middle">↵</span>
+    </div>
+  </a>
+</li>
+
+
+    <li class="d-flex flex-justify-center flex-items-center p-0 f5 js-jump-to-suggestion">
+      <img src="https://github.githubassets.com/images/spinners/octocat-spinner-128.gif" alt="Octocat Spinner Icon" class="m-2" width="28">
+    </li>
+</ul>
+
+            </div>
+      </label>
+</form>  </div>
 </div>
-<div class="page_nav">
-<a href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git">summary</a> | <a href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/shortlog">shortlog</a> | <a href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/log">log</a> | <a href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/commit/HEAD">commit</a> | <a href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/commitdiff/HEAD">commitdiff</a> | <a href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/tree/HEAD">tree</a><br/>
-<a href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/history/HEAD:/add_mesh_rocks/rockgen.py">history</a> | <a href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob_plain/HEAD:/add_mesh_rocks/rockgen.py">raw</a> | <a href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py">HEAD</a><br/>
+
+
+      <nav class="d-flex flex-column flex-lg-row flex-self-stretch flex-lg-self-auto" aria-label="Global">
+    <a class="Header-link d-block d-lg-none py-2 py-lg-0 border-top border-lg-top-0 border-white-fade-15" data-ga-click="Header, click, Nav menu - item:dashboard:user" aria-label="Dashboard" href="/dashboard">
+      Dashboard
+</a>
+  <a class="js-selected-navigation-item Header-link  mr-0 mr-lg-3 py-2 py-lg-0 border-top border-lg-top-0 border-white-fade-15" data-hotkey="g p" data-ga-click="Header, click, Nav menu - item:pulls context:user" aria-label="Pull requests you created" data-selected-links="/pulls /pulls/assigned /pulls/mentioned /pulls" href="/pulls">
+    Pull requests
+</a>
+  <a class="js-selected-navigation-item Header-link  mr-0 mr-lg-3 py-2 py-lg-0 border-top border-lg-top-0 border-white-fade-15" data-hotkey="g i" data-ga-click="Header, click, Nav menu - item:issues context:user" aria-label="Issues you created" data-selected-links="/issues /issues/assigned /issues/mentioned /issues" href="/issues">
+    Issues
+</a>
+    <div class="mr-0 mr-lg-3 py-2 py-lg-0 border-top border-lg-top-0 border-white-fade-15">
+      <a class="js-selected-navigation-item Header-link" data-ga-click="Header, click, Nav menu - item:marketplace context:user" data-octo-click="marketplace_click" data-octo-dimensions="location:nav_bar" data-selected-links=" /marketplace" href="/marketplace">
+        Marketplace
+</a>      
+
+    </div>
+
+  <a class="js-selected-navigation-item Header-link  mr-0 mr-lg-3 py-2 py-lg-0 border-top border-lg-top-0 border-white-fade-15" data-ga-click="Header, click, Nav menu - item:explore" data-selected-links="/explore /trending /trending/developers /integrations /integrations/feature/code /integrations/feature/collaborate /integrations/feature/ship showcases showcases_search showcases_landing /explore" href="/explore">
+    Explore
+</a>
+
+
+    <a class="Header-link d-block d-lg-none mr-0 mr-lg-3 py-2 py-lg-0 border-top border-lg-top-0 border-white-fade-15" href="https://github.com/versluis">
+      <img class="avatar" height="20" width="20" alt="@versluis" src="https://avatars2.githubusercontent.com/u/1576533?s=60&amp;v=4" />
+      versluis
+</a>
+    <!-- '"` --><!-- </textarea></xmp> --></option></form><form action="/logout" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="HuuwCv/dwcv2NGc4jgOr/OHsucySJXTSeTsSu5oi+bnV9W5MEdggPNuEGis2g0zTDzjYYdb7pfNbkDF5Hcvl0g==" />
+      <button type="submit" class="Header-link mr-0 mr-lg-3 py-2 py-lg-0 border-top border-lg-top-0 border-white-fade-15 d-lg-none btn-link d-block width-full text-left" data-ga-click="Header, sign out, icon:logout" style="padding-left: 2px;">
+        <svg class="octicon octicon-sign-out v-align-middle" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 9V7H8V5h4V3l4 3-4 3zm-2 3H6V3L2 1h8v3h1V1c0-.55-.45-1-1-1H1C.45 0 0 .45 0 1v11.38c0 .39.22.73.55.91L6 16.01V13h4c.55 0 1-.45 1-1V8h-1v4z"/></svg>
+        Sign out
+      </button>
+</form></nav>
+
+    </div>
+
+    <div class="Header-item Header-item--full flex-justify-center d-lg-none position-relative">
+      <div class="css-truncate css-truncate-target width-fit position-absolute left-0 right-0 text-center">
+              <svg class="octicon octicon-repo" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9H3V8h1v1zm0-3H3v1h1V6zm0-2H3v1h1V4zm0-2H3v1h1V2zm8-1v12c0 .55-.45 1-1 1H6v2l-1.5-1.5L3 16v-2H1c-.55 0-1-.45-1-1V1c0-.55.45-1 1-1h10c.55 0 1 .45 1 1zm-1 10H1v2h2v-1h3v1h5v-2zm0-10H2v9h9V1z"/></svg>
+    <a class="Header-link" href="/sobotka">sobotka</a>
+    /
+    <a class="Header-link" href="/sobotka/blender-addons-contrib">blender-addons-contrib</a>
+
 </div>
-<div class="header">
-<a class="title" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/commit/HEAD">Collection Manager: Update Tooltips. Task: T69577</a>
+    </div>
+
+
+    <div class="Header-item mr-0 mr-lg-3 flex-order-1 flex-lg-order-none">
+      
+
+    <a aria-label="You have no unread notifications" class="Header-link notification-indicator position-relative tooltipped tooltipped-sw js-socket-channel js-notification-indicator" data-hotkey="g n" data-ga-click="Header, go to notifications, icon:read" data-channel="notification-changed:1576533" href="/notifications">
+        <span class="mail-status "></span>
+        <svg class="octicon octicon-bell" viewBox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M14 12v1H0v-1l.73-.58c.77-.77.81-2.55 1.19-4.42C2.69 3.23 6 2 6 2c0-.55.45-1 1-1s1 .45 1 1c0 0 3.39 1.23 4.16 5 .38 1.88.42 3.66 1.19 4.42l.66.58H14zm-7 4c1.11 0 2-.89 2-2H5c0 1.11.89 2 2 2z"/></svg>
+</a>
+    </div>
+
+
+    <div class="Header-item position-relative d-none d-lg-flex">
+      <details class="details-overlay details-reset">
+  <summary class="Header-link"
+      aria-label="Create new…"
+      data-ga-click="Header, create new, icon:add">
+    <svg class="octicon octicon-plus" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"/></svg> <span class="dropdown-caret"></span>
+  </summary>
+  <details-menu class="dropdown-menu dropdown-menu-sw">
+    
+<a role="menuitem" class="dropdown-item" href="/new" data-ga-click="Header, create new repository">
+  New repository
+</a>
+
+  <a role="menuitem" class="dropdown-item" href="/new/import" data-ga-click="Header, import a repository">
+    Import repository
+  </a>
+
+<a role="menuitem" class="dropdown-item" href="https://gist.github.com/" data-ga-click="Header, create new gist">
+  New gist
+</a>
+
+  <a role="menuitem" class="dropdown-item" href="/organizations/new" data-ga-click="Header, create new organization">
+    New organization
+  </a>
+
+
+  <div role="none" class="dropdown-divider"></div>
+  <div class="dropdown-header">
+    <span title="sobotka/blender-addons-contrib">This repository</span>
+  </div>
+    <a role="menuitem" class="dropdown-item" href="/sobotka/blender-addons-contrib/issues/new" data-ga-click="Header, create new issue" data-skip-pjax>
+      New issue
+    </a>
+
+
+  </details-menu>
+</details>
+
+    </div>
+
+    <div class="Header-item position-relative mr-0 d-none d-lg-flex">
+      
+  <details class="details-overlay details-reset js-feature-preview-indicator-container" data-feature-preview-indicator-src="/users/versluis/feature_preview/indicator_check.json">
+
+  <summary class="Header-link"
+    aria-label="View profile and more"
+    data-ga-click="Header, show menu, icon:avatar">
+    <img alt="@versluis" class="avatar" src="https://avatars1.githubusercontent.com/u/1576533?s=40&amp;v=4" height="20" width="20">
+      <span class="feature-preview-indicator js-feature-preview-indicator" hidden></span>
+    <span class="dropdown-caret"></span>
+  </summary>
+  <details-menu class="dropdown-menu dropdown-menu-sw mt-2" style="width: 180px">
+    <div class="header-nav-current-user css-truncate"><a role="menuitem" class="no-underline user-profile-link px-3 pt-2 pb-2 mb-n2 mt-n1 d-block" href="/versluis" data-ga-click="Header, go to profile, text:Signed in as">Signed in as <strong class="css-truncate-target">versluis</strong></a></div>
+    <div role="none" class="dropdown-divider"></div>
+
+      <div class="pl-3 pr-3 f6 user-status-container js-user-status-context pb-1" data-url="/users/status?compact=1&amp;link_mentions=0&amp;truncate=1">
+        
+<div class="js-user-status-container
+    user-status-compact rounded-1 px-2 py-1 mt-2
+    border
+  " data-team-hovercards-enabled>
+  <details class="js-user-status-details details-reset details-overlay details-overlay-dark">
+    <summary class="btn-link btn-block link-gray no-underline js-toggle-user-status-edit toggle-user-status-edit "
+      role="menuitem" data-hydro-click="{&quot;event_type&quot;:&quot;user_profile.click&quot;,&quot;payload&quot;:{&quot;profile_user_id&quot;:59577,&quot;target&quot;:&quot;EDIT_USER_STATUS&quot;,&quot;user_id&quot;:1576533,&quot;client_id&quot;:&quot;1640592597.1557936150&quot;,&quot;originating_request_id&quot;:&quot;8759:1B5E:C4931E:167EE83:5DE0780C&quot;,&quot;originating_url&quot;:&quot;https://github.com/sobotka/blender-addons-contrib/blob/master/add_mesh_rocks/rockgen.py&quot;,&quot;referrer&quot;:&quot;https://github.com/sobotka/blender-addons-contrib/tree/master/add_mesh_rocks&quot;}}" data-hydro-click-hmac="8891f91c2c1954bb5323f0179e2b6b5e1ea467d80b74575ec06d31677c6e5b64">
+      <div class="d-flex">
+        <div class="f6 lh-condensed user-status-header
+          d-inline-block v-align-middle
+            user-status-emoji-only-header circle
+            pr-2
+"
+            style="max-width: 29px"
+          >
+          <div class="user-status-emoji-container flex-shrink-0 mr-1 mt-1 lh-condensed-ultra v-align-bottom" style="">
+            <svg class="octicon octicon-smiley" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm4.81 12.81a6.72 6.72 0 01-2.17 1.45c-.83.36-1.72.53-2.64.53-.92 0-1.81-.17-2.64-.53-.81-.34-1.55-.83-2.17-1.45a6.773 6.773 0 01-1.45-2.17A6.59 6.59 0 011.21 8c0-.92.17-1.81.53-2.64.34-.81.83-1.55 1.45-2.17.62-.62 1.36-1.11 2.17-1.45A6.59 6.59 0 018 1.21c.92 0 1.81.17 2.64.53.81.34 1.55.83 2.17 1.45.62.62 1.11 1.36 1.45 2.17.36.83.53 1.72.53 2.64 0 .92-.17 1.81-.53 2.64-.34.81-.83 1.55-1.45 2.17zM4 6.8v-.59c0-.66.53-1.19 1.2-1.19h.59c.66 0 1.19.53 1.19 1.19v.59c0 .67-.53 1.2-1.19 1.2H5.2C4.53 8 4 7.47 4 6.8zm5 0v-.59c0-.66.53-1.19 1.2-1.19h.59c.66 0 1.19.53 1.19 1.19v.59c0 .67-.53 1.2-1.19 1.2h-.59C9.53 8 9 7.47 9 6.8zm4 3.2c-.72 1.88-2.91 3-5 3s-4.28-1.13-5-3c-.14-.39.23-1 .66-1h8.59c.41 0 .89.61.75 1z"/></svg>
+          </div>
+        </div>
+        <div class="
+          d-inline-block v-align-middle
+          
+          
+           css-truncate css-truncate-target 
+           user-status-message-wrapper f6"
+           style="line-height: 20px;" >
+          <div class="d-inline-block text-gray-dark v-align-text-top text-left">
+              <span class="text-gray ml-2">Set status</span>
+          </div>
+        </div>
+      </div>
+    </summary>
+    <details-dialog class="details-dialog rounded-1 anim-fade-in fast Box Box--overlay" role="dialog" tabindex="-1">
+      <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="position-relative flex-auto js-user-status-form" action="/users/status?compact=1&amp;link_mentions=0&amp;truncate=1" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="put" /><input type="hidden" name="authenticity_token" value="81QtBopUha8wFH+3/64QszMsUuMwxBMfM1TE/tJ/m7Zo84f85tXyY8zRcN7/1QGhxNlxZ6NVB9v15N588GQVSQ==" />
+        <div class="Box-header bg-gray border-bottom p-3">
+          <button class="Box-btn-octicon js-toggle-user-status-edit btn-octicon float-right" type="reset" aria-label="Close dialog" data-close-dialog>
+            <svg class="octicon octicon-x" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"/></svg>
+          </button>
+          <h3 class="Box-title f5 text-bold text-gray-dark">Edit status</h3>
+        </div>
+        <input type="hidden" name="emoji" class="js-user-status-emoji-field" value="">
+        <input type="hidden" name="organization_id" class="js-user-status-org-id-field" value="">
+        <div class="px-3 py-2 text-gray-dark">
+          <div class="js-characters-remaining-container position-relative mt-2">
+            <div class="input-group d-table form-group my-0 js-user-status-form-group">
+              <span class="input-group-button d-table-cell v-align-middle" style="width: 1%">
+                <button type="button" aria-label="Choose an emoji" class="btn-outline btn js-toggle-user-status-emoji-picker btn-open-emoji-picker p-0">
+                  <span class="js-user-status-original-emoji" hidden></span>
+                  <span class="js-user-status-custom-emoji"></span>
+                  <span class="js-user-status-no-emoji-icon" >
+                    <svg class="octicon octicon-smiley" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm4.81 12.81a6.72 6.72 0 01-2.17 1.45c-.83.36-1.72.53-2.64.53-.92 0-1.81-.17-2.64-.53-.81-.34-1.55-.83-2.17-1.45a6.773 6.773 0 01-1.45-2.17A6.59 6.59 0 011.21 8c0-.92.17-1.81.53-2.64.34-.81.83-1.55 1.45-2.17.62-.62 1.36-1.11 2.17-1.45A6.59 6.59 0 018 1.21c.92 0 1.81.17 2.64.53.81.34 1.55.83 2.17 1.45.62.62 1.11 1.36 1.45 2.17.36.83.53 1.72.53 2.64 0 .92-.17 1.81-.53 2.64-.34.81-.83 1.55-1.45 2.17zM4 6.8v-.59c0-.66.53-1.19 1.2-1.19h.59c.66 0 1.19.53 1.19 1.19v.59c0 .67-.53 1.2-1.19 1.2H5.2C4.53 8 4 7.47 4 6.8zm5 0v-.59c0-.66.53-1.19 1.2-1.19h.59c.66 0 1.19.53 1.19 1.19v.59c0 .67-.53 1.2-1.19 1.2h-.59C9.53 8 9 7.47 9 6.8zm4 3.2c-.72 1.88-2.91 3-5 3s-4.28-1.13-5-3c-.14-.39.23-1 .66-1h8.59c.41 0 .89.61.75 1z"/></svg>
+                  </span>
+                </button>
+              </span>
+              <text-expander keys=": @" data-mention-url="/autocomplete/user-suggestions" data-emoji-url="/autocomplete/emoji">
+                <input
+                  type="text"
+                  autocomplete="off"
+                  data-no-org-url="/autocomplete/user-suggestions"
+                  data-org-url="/suggestions?mention_suggester=1"
+                  data-maxlength="80"
+                  class="d-table-cell width-full form-control js-user-status-message-field js-characters-remaining-field"
+                  placeholder="What's happening?"
+                  name="message"
+                  value=""
+                  aria-label="What is your current status?">
+              </text-expander>
+              <div class="error">Could not update your status, please try again.</div>
+            </div>
+            <div style="margin-left: 53px" class="my-1 text-small label-characters-remaining js-characters-remaining" data-suffix="remaining" hidden>
+              80 remaining
+            </div>
+          </div>
+          <include-fragment class="js-user-status-emoji-picker" data-url="/users/status/emoji"></include-fragment>
+          <div class="overflow-auto ml-n3 mr-n3 px-3 border-bottom" style="max-height: 33vh">
+            <div class="user-status-suggestions js-user-status-suggestions collapsed overflow-hidden">
+              <h4 class="f6 text-normal my-3">Suggestions:</h4>
+              <div class="mx-3 mt-2 clearfix">
+                  <div class="float-left col-6">
+                      <button type="button" value=":palm_tree:" class="d-flex flex-items-baseline flex-items-stretch lh-condensed f6 btn-link link-gray no-underline js-predefined-user-status mb-1">
+                        <div class="emoji-status-width mr-2 v-align-middle js-predefined-user-status-emoji">
+                          <g-emoji alias="palm_tree" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f334.png">🌴</g-emoji>
+                        </div>
+                        <div class="d-flex flex-items-center no-underline js-predefined-user-status-message ws-normal text-left" style="border-left: 1px solid transparent">
+                          On vacation
+                        </div>
+                      </button>
+                      <button type="button" value=":face_with_thermometer:" class="d-flex flex-items-baseline flex-items-stretch lh-condensed f6 btn-link link-gray no-underline js-predefined-user-status mb-1">
+                        <div class="emoji-status-width mr-2 v-align-middle js-predefined-user-status-emoji">
+                          <g-emoji alias="face_with_thermometer" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f912.png">🤒</g-emoji>
+                        </div>
+                        <div class="d-flex flex-items-center no-underline js-predefined-user-status-message ws-normal text-left" style="border-left: 1px solid transparent">
+                          Out sick
+                        </div>
+                      </button>
+                  </div>
+                  <div class="float-left col-6">
+                      <button type="button" value=":house:" class="d-flex flex-items-baseline flex-items-stretch lh-condensed f6 btn-link link-gray no-underline js-predefined-user-status mb-1">
+                        <div class="emoji-status-width mr-2 v-align-middle js-predefined-user-status-emoji">
+                          <g-emoji alias="house" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f3e0.png">🏠</g-emoji>
+                        </div>
+                        <div class="d-flex flex-items-center no-underline js-predefined-user-status-message ws-normal text-left" style="border-left: 1px solid transparent">
+                          Working from home
+                        </div>
+                      </button>
+                      <button type="button" value=":dart:" class="d-flex flex-items-baseline flex-items-stretch lh-condensed f6 btn-link link-gray no-underline js-predefined-user-status mb-1">
+                        <div class="emoji-status-width mr-2 v-align-middle js-predefined-user-status-emoji">
+                          <g-emoji alias="dart" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f3af.png">🎯</g-emoji>
+                        </div>
+                        <div class="d-flex flex-items-center no-underline js-predefined-user-status-message ws-normal text-left" style="border-left: 1px solid transparent">
+                          Focusing
+                        </div>
+                      </button>
+                  </div>
+              </div>
+            </div>
+            <div class="user-status-limited-availability-container">
+              <div class="form-checkbox my-0">
+                <input type="checkbox" name="limited_availability" value="1" class="js-user-status-limited-availability-checkbox" data-default-message="I may be slow to respond." aria-describedby="limited-availability-help-text-truncate-true-compact-true" id="limited-availability-truncate-true-compact-true">
+                <label class="d-block f5 text-gray-dark mb-1" for="limited-availability-truncate-true-compact-true">
+                  Busy
+                </label>
+                <p class="note" id="limited-availability-help-text-truncate-true-compact-true">
+                  When others mention you, assign you, or request your review,
+                  GitHub will let them know that you have limited availability.
+                </p>
+              </div>
+            </div>
+          </div>
+            
+
+<div class="d-inline-block f5 mr-2 pt-3 pb-2" >
+  <div class="d-inline-block mr-1">
+    Clear status
+  </div>
+
+  <details class="js-user-status-expire-drop-down f6 dropdown details-reset details-overlay d-inline-block mr-2">
+    <summary class="f5 btn-link link-gray-dark border px-2 py-1 rounded-1" aria-haspopup="true">
+      <div class="js-user-status-expiration-interval-selected d-inline-block v-align-baseline">
+        Never
+      </div>
+      <div class="dropdown-caret"></div>
+    </summary>
+
+    <ul class="dropdown-menu dropdown-menu-se pl-0 overflow-auto" style="width: 220px; max-height: 15.5em">
+      <li>
+        <button type="button" class="btn-link dropdown-item js-user-status-expire-button ws-normal" title="Never">
+          <span class="d-inline-block text-bold mb-1">Never</span>
+          <div class="f6 lh-condensed">Keep this status until you clear your status or edit your status.</div>
+        </button>
+      </li>
+      <li class="dropdown-divider" role="none"></li>
+        <li>
+          <button type="button" class="btn-link dropdown-item ws-normal js-user-status-expire-button" title="in 30 minutes" value="2019-11-28T21:14:49-05:00">
+            in 30 minutes
+          </button>
+        </li>
+        <li>
+          <button type="button" class="btn-link dropdown-item ws-normal js-user-status-expire-button" title="in 1 hour" value="2019-11-28T21:44:49-05:00">
+            in 1 hour
+          </button>
+        </li>
+        <li>
+          <button type="button" class="btn-link dropdown-item ws-normal js-user-status-expire-button" title="in 4 hours" value="2019-11-29T00:44:49-05:00">
+            in 4 hours
+          </button>
+        </li>
+        <li>
+          <button type="button" class="btn-link dropdown-item ws-normal js-user-status-expire-button" title="today" value="2019-11-28T23:59:59-05:00">
+            today
+          </button>
+        </li>
+        <li>
+          <button type="button" class="btn-link dropdown-item ws-normal js-user-status-expire-button" title="this week" value="2019-12-01T23:59:59-05:00">
+            this week
+          </button>
+        </li>
+    </ul>
+  </details>
+  <input class="js-user-status-expiration-date-input" type="hidden" name="expires_at" value="">
 </div>
-<div class="page_path"><a href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/tree/HEAD" title="tree root">[blender-addons-contrib.git]</a> / <a href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/tree/HEAD:/add_mesh_rocks" title="add_mesh_rocks">add_mesh_rocks</a> / <a href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob_plain/HEAD:/add_mesh_rocks/rockgen.py" title="add_mesh_rocks/rockgen.py">rockgen.py</a><br/></div>
-<div class="page_body">
-<div class="pre"><a id="l1" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1" class="linenr">   1</a> #&nbsp;Blender&nbsp;rock&nbsp;creation&nbsp;tool</div>
-<div class="pre"><a id="l2" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l2" class="linenr">   2</a> #</div>
-<div class="pre"><a id="l3" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l3" class="linenr">   3</a> #&nbsp;Based&nbsp;on&nbsp;BlenderGuru&#39;s&nbsp;asteroid&nbsp;tutorial&nbsp;and&nbsp;personal&nbsp;experimentation.</div>
-<div class="pre"><a id="l4" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l4" class="linenr">   4</a> #&nbsp;&nbsp;&nbsp;Tutorial:&nbsp;http://www.blenderguru.com/how-to-make-a-realistic-asteroid/</div>
-<div class="pre"><a id="l5" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l5" class="linenr">   5</a> #&nbsp;Update&nbsp;with&nbsp;another&nbsp;tutorial&nbsp;shared&nbsp;by&nbsp;&quot;rusted&quot;&nbsp;of&nbsp;BlenderArtists:</div>
-<div class="pre"><a id="l6" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l6" class="linenr">   6</a> #&nbsp;&nbsp;&nbsp;Tutorial:&nbsp;http://saschahenrichs.blogspot.com/2010/03/3dsmax-environment-modeling-1.html</div>
-<div class="pre"><a id="l7" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l7" class="linenr">   7</a> #</div>
-<div class="pre"><a id="l8" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l8" class="linenr">   8</a> #&nbsp;Uses&nbsp;the&nbsp;NumPy&nbsp;Gaussian&nbsp;random&nbsp;number&nbsp;generator&nbsp;to&nbsp;generate&nbsp;a</div>
-<div class="pre"><a id="l9" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l9" class="linenr">   9</a> #&nbsp;a&nbsp;rock&nbsp;within&nbsp;a&nbsp;given&nbsp;range&nbsp;and&nbsp;give&nbsp;some&nbsp;randomness&nbsp;to&nbsp;the&nbsp;displacement</div>
-<div class="pre"><a id="l10" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l10" class="linenr">  10</a> #&nbsp;texture&nbsp;values.&nbsp;&nbsp;NumPy&#39;s&nbsp;gaussian&nbsp;generator&nbsp;was&nbsp;chosen&nbsp;as,&nbsp;based&nbsp;on</div>
-<div class="pre"><a id="l11" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l11" class="linenr">  11</a> #&nbsp;profiling&nbsp;I&nbsp;performed,&nbsp;it&nbsp;runs&nbsp;in&nbsp;about&nbsp;half&nbsp;the&nbsp;time&nbsp;as&nbsp;the&nbsp;built&nbsp;in</div>
-<div class="pre"><a id="l12" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l12" class="linenr">  12</a> #&nbsp;Python&nbsp;gaussian&nbsp;equivalent.&nbsp;&nbsp;I&nbsp;would&nbsp;like&nbsp;to&nbsp;shift&nbsp;the&nbsp;script&nbsp;to&nbsp;use&nbsp;the</div>
-<div class="pre"><a id="l13" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l13" class="linenr">  13</a> #&nbsp;NumPy&nbsp;beta&nbsp;distribution&nbsp;as&nbsp;it&nbsp;ran&nbsp;in&nbsp;about&nbsp;half&nbsp;the&nbsp;time&nbsp;as&nbsp;the&nbsp;NumPy</div>
-<div class="pre"><a id="l14" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l14" class="linenr">  14</a> #&nbsp;gaussian&nbsp;once&nbsp;the&nbsp;skew&nbsp;calculations&nbsp;are&nbsp;added.</div>
-<div class="pre"><a id="l15" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l15" class="linenr">  15</a> #</div>
-<div class="pre"><a id="l16" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l16" class="linenr">  16</a> #&nbsp;Set&nbsp;lower&nbsp;and&nbsp;upper&nbsp;bounds&nbsp;to&nbsp;the&nbsp;same&nbsp;for&nbsp;no&nbsp;randomness.</div>
-<div class="pre"><a id="l17" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l17" class="linenr">  17</a> #</div>
-<div class="pre"><a id="l18" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l18" class="linenr">  18</a> #&nbsp;Tasks:</div>
-<div class="pre"><a id="l19" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l19" class="linenr">  19</a> #&nbsp;&nbsp;&nbsp;Generate&nbsp;meshes&nbsp;with&nbsp;random&nbsp;scaling&nbsp;between&nbsp;given&nbsp;values.</div>
-<div class="pre"><a id="l20" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l20" class="linenr">  20</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Allow&nbsp;for&nbsp;a&nbsp;skewed&nbsp;distribution</div>
-<div class="pre"><a id="l21" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l21" class="linenr">  21</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;***&nbsp;Completed&nbsp;on&nbsp;4/17/2011&nbsp;***</div>
-<div class="pre"><a id="l22" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l22" class="linenr">  22</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Create&nbsp;a&nbsp;set&nbsp;of&nbsp;meshes&nbsp;that&nbsp;can&nbsp;be&nbsp;used</div>
-<div class="pre"><a id="l23" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l23" class="linenr">  23</a> #&nbsp;&nbsp;&nbsp;Give&nbsp;the&nbsp;user&nbsp;the&nbsp;ability&nbsp;to&nbsp;set&nbsp;the&nbsp;subsurf&nbsp;level&nbsp;(detail&nbsp;level)</div>
-<div class="pre"><a id="l24" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l24" class="linenr">  24</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;***&nbsp;Completed&nbsp;on&nbsp;4/29/2011&nbsp;***</div>
-<div class="pre"><a id="l25" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l25" class="linenr">  25</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Set&nbsp;subsurf&nbsp;modifiers&nbsp;to&nbsp;default&nbsp;at&nbsp;view:3,&nbsp;render:3.</div>
-<div class="pre"><a id="l26" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l26" class="linenr">  26</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;***&nbsp;Completed&nbsp;on&nbsp;4/17/2011&nbsp;***</div>
-<div class="pre"><a id="l27" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l27" class="linenr">  27</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Set&nbsp;crease&nbsp;values&nbsp;to&nbsp;allow&nbsp;for&nbsp;hard&nbsp;edges&nbsp;on&nbsp;first&nbsp;subsurf.</div>
-<div class="pre"><a id="l28" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l28" class="linenr">  28</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;***&nbsp;Completed&nbsp;on&nbsp;4/29/2011&nbsp;***</div>
-<div class="pre"><a id="l29" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l29" class="linenr">  29</a> #&nbsp;&nbsp;&nbsp;Be&nbsp;able&nbsp;to&nbsp;generate&nbsp;and&nbsp;add&nbsp;a&nbsp;texture&nbsp;to&nbsp;the&nbsp;displacement&nbsp;modifiers.</div>
-<div class="pre"><a id="l30" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l30" class="linenr">  30</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;***&nbsp;Completed&nbsp;5/17/2011&nbsp;***</div>
-<div class="pre"><a id="l31" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l31" class="linenr">  31</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Generate&nbsp;three&nbsp;displacement&nbsp;modifiers.</div>
-<div class="pre"><a id="l32" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l32" class="linenr">  32</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;The&nbsp;first&nbsp;only&nbsp;uses&nbsp;a&nbsp;Musgrave&nbsp;for&nbsp;initial&nbsp;intentations.</div>
-<div class="pre"><a id="l33" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l33" class="linenr">  33</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;***&nbsp;Now&nbsp;generating&nbsp;four&nbsp;displacement&nbsp;modifiers&nbsp;***</div>
-<div class="pre"><a id="l34" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l34" class="linenr">  34</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;***&nbsp;Completed&nbsp;on&nbsp;5/17/2011&nbsp;***</div>
-<div class="pre"><a id="l35" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l35" class="linenr">  35</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Set&nbsp;a&nbsp;randomness&nbsp;for&nbsp;the&nbsp;type&nbsp;and&nbsp;values&nbsp;of&nbsp;the&nbsp;displacement&nbsp;texture.</div>
-<div class="pre"><a id="l36" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l36" class="linenr">  36</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;***&nbsp;Completed&nbsp;5/9/2011&nbsp;***</div>
-<div class="pre"><a id="l37" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l37" class="linenr">  37</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Allow&nbsp;the&nbsp;user&nbsp;to&nbsp;set&nbsp;a&nbsp;value&nbsp;for&nbsp;the&nbsp;range&nbsp;of&nbsp;displacement.</div>
-<div class="pre"><a id="l38" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l38" class="linenr">  38</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;&nbsp;Modification:&nbsp;have&nbsp;user&nbsp;set&nbsp;&quot;roughness&quot;&nbsp;and&nbsp;&quot;roughness&nbsp;range&quot;.</div>
-<div class="pre"><a id="l39" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l39" class="linenr">  39</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;***&nbsp;Compleded&nbsp;on&nbsp;4/23/2011&nbsp;***</div>
-<div class="pre"><a id="l40" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l40" class="linenr">  40</a> #&nbsp;&nbsp;&nbsp;Set&nbsp;material&nbsp;settings&nbsp;and&nbsp;assign&nbsp;material&nbsp;textures</div>
-<div class="pre"><a id="l41" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l41" class="linenr">  41</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;***&nbsp;Completed&nbsp;6/9/2011&nbsp;***</div>
-<div class="pre"><a id="l42" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l42" class="linenr">  42</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Mossiness&nbsp;of&nbsp;the&nbsp;rocks.</div>
-<div class="pre"><a id="l43" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l43" class="linenr">  43</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;***&nbsp;Completed&nbsp;6/9/2011&nbsp;***</div>
-<div class="pre"><a id="l44" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l44" class="linenr">  44</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Color&nbsp;of&nbsp;the&nbsp;rocks.</div>
-<div class="pre"><a id="l45" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l45" class="linenr">  45</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;***&nbsp;Completed&nbsp;5/16/2011&nbsp;***</div>
-<div class="pre"><a id="l46" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l46" class="linenr">  46</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Wetness/shinyness&nbsp;of&nbsp;the&nbsp;rock.</div>
-<div class="pre"><a id="l47" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l47" class="linenr">  47</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;***&nbsp;Completed&nbsp;5/6/2011&nbsp;***</div>
-<div class="pre"><a id="l48" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l48" class="linenr">  48</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;For&nbsp;all&nbsp;the&nbsp;user&nbsp;provides&nbsp;a&nbsp;mean&nbsp;value&nbsp;for&nbsp;a&nbsp;skewed&nbsp;distribution.</div>
-<div class="pre"><a id="l49" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l49" class="linenr">  49</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;***&nbsp;Removed&nbsp;to&nbsp;lessen&nbsp;usage&nbsp;complexity&nbsp;***</div>
-<div class="pre"><a id="l50" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l50" class="linenr">  50</a> #&nbsp;&nbsp;&nbsp;Add&nbsp;some&nbsp;presets&nbsp;(mesh)&nbsp;to&nbsp;make&nbsp;it&nbsp;easier&nbsp;to&nbsp;use</div>
-<div class="pre"><a id="l51" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l51" class="linenr">  51</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Examples:&nbsp;river&nbsp;rock,&nbsp;asteroid,&nbsp;quaried&nbsp;rock,&nbsp;etc</div>
-<div class="pre"><a id="l52" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l52" class="linenr">  52</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;***&nbsp;Completed&nbsp;7/12/2011&nbsp;***</div>
-<div class="pre"><a id="l53" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l53" class="linenr">  53</a> #</div>
-<div class="pre"><a id="l54" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l54" class="linenr">  54</a> #&nbsp;Code&nbsp;Optimization:</div>
-<div class="pre"><a id="l55" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l55" class="linenr">  55</a> #&nbsp;&nbsp;&nbsp;Remove&nbsp;all&nbsp;&quot;bpy.ops&quot;&nbsp;operations&nbsp;with&nbsp;&quot;bpy.data&quot;&nbsp;base&nbsp;operations.</div>
-<div class="pre"><a id="l56" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l56" class="linenr">  56</a> #&nbsp;&nbsp;&nbsp;Remove&nbsp;material/texture&nbsp;cataloging&nbsp;with&nbsp;building&nbsp;a&nbsp;list&nbsp;of</div>
-<div class="pre"><a id="l57" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l57" class="linenr">  57</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;returned&nbsp;values&nbsp;from&nbsp;bpy.data.*.new()&nbsp;operations.</div>
-<div class="pre"><a id="l58" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l58" class="linenr">  58</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;***&nbsp;Completed&nbsp;on&nbsp;9/6/2011&nbsp;***</div>
-<div class="pre"><a id="l59" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l59" class="linenr">  59</a> #&nbsp;&nbsp;&nbsp;Search&nbsp;for&nbsp;places&nbsp;where&nbsp;list&nbsp;comprehensions&nbsp;can&nbsp;be&nbsp;used.</div>
-<div class="pre"><a id="l60" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l60" class="linenr">  60</a> #&nbsp;&nbsp;&nbsp;Look&nbsp;for&nbsp;alternate&nbsp;methods</div>
-<div class="pre"><a id="l61" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l61" class="linenr">  61</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Possible&nbsp;alternate&nbsp;and&nbsp;more&nbsp;efficient&nbsp;data&nbsp;structures</div>
-<div class="pre"><a id="l62" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l62" class="linenr">  62</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Possible&nbsp;alternate&nbsp;algorithms&nbsp;may&nbsp;realize&nbsp;greater&nbsp;performance</div>
-<div class="pre"><a id="l63" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l63" class="linenr">  63</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Look&nbsp;again&nbsp;at&nbsp;multi-processing.&nbsp;&nbsp;Without&nbsp;bpy.ops&nbsp;is&nbsp;might</div>
-<div class="pre"><a id="l64" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l64" class="linenr">  64</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;be&nbsp;viable.</div>
-<div class="pre"><a id="l65" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l65" class="linenr">  65</a> #</div>
-<div class="pre"><a id="l66" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l66" class="linenr">  66</a> #&nbsp;Future&nbsp;tasks:</div>
-<div class="pre"><a id="l67" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l67" class="linenr">  67</a> #&nbsp;&nbsp;&nbsp;Multi-thread&nbsp;the&nbsp;script</div>
-<div class="pre"><a id="l68" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l68" class="linenr">  68</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;***&nbsp;Will&nbsp;not&nbsp;be&nbsp;implemented.&nbsp;&nbsp;Multi-processing&nbsp;is&nbsp;adding&nbsp;to&nbsp;much</div>
-<div class="pre"><a id="l69" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l69" class="linenr">  69</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;overhead&nbsp;to&nbsp;realize&nbsp;a&nbsp;performance&nbsp;increase&nbsp;***</div>
-<div class="pre"><a id="l70" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l70" class="linenr">  70</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Learn&nbsp;basic&nbsp;multi-threading&nbsp;in&nbsp;Python&nbsp;(multiprocessing)</div>
-<div class="pre"><a id="l71" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l71" class="linenr">  71</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Break&nbsp;material&nbsp;generation&nbsp;into&nbsp;separate&nbsp;threads&nbsp;(processes)</div>
-<div class="pre"><a id="l72" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l72" class="linenr">  72</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Break&nbsp;mesh&nbsp;generation&nbsp;into&nbsp;separate&nbsp;threads&nbsp;(processes)</div>
-<div class="pre"><a id="l73" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l73" class="linenr">  73</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Move&nbsp;name&nbsp;generation,&nbsp;texture&nbsp;ID&nbsp;generation,&nbsp;etc&nbsp;to&nbsp;process&nbsp;first</div>
-<div class="pre"><a id="l74" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l74" class="linenr">  74</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Roll&nbsp;version&nbsp;to&nbsp;2.0&nbsp;on&nbsp;completion</div>
-<div class="pre"><a id="l75" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l75" class="linenr">  75</a> #</div>
-<div class="pre"><a id="l76" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l76" class="linenr">  76</a> #&nbsp;Paul&nbsp;&quot;BrikBot&quot;&nbsp;Marshall</div>
-<div class="pre"><a id="l77" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l77" class="linenr">  77</a> #&nbsp;Created:&nbsp;April&nbsp;17,&nbsp;2011</div>
-<div class="pre"><a id="l78" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l78" class="linenr">  78</a> #&nbsp;Last&nbsp;Modified:&nbsp;November&nbsp;17,&nbsp;2011</div>
-<div class="pre"><a id="l79" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l79" class="linenr">  79</a> #&nbsp;Homepage&nbsp;(blog):&nbsp;http://post.darkarsenic.com/</div>
-<div class="pre"><a id="l80" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l80" class="linenr">  80</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//blog.darkarsenic.com/</div>
-<div class="pre"><a id="l81" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l81" class="linenr">  81</a> #&nbsp;Thanks&nbsp;to&nbsp;Meta-Androco,&nbsp;RickyBlender,&nbsp;Ace&nbsp;Dragon,&nbsp;and&nbsp;PKHG&nbsp;for&nbsp;ideas</div>
-<div class="pre"><a id="l82" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l82" class="linenr">  82</a> #&nbsp;&nbsp;&nbsp;and&nbsp;testing.</div>
-<div class="pre"><a id="l83" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l83" class="linenr">  83</a> #</div>
-<div class="pre"><a id="l84" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l84" class="linenr">  84</a> #&nbsp;Coded&nbsp;in&nbsp;IDLE,&nbsp;tested&nbsp;in&nbsp;Blender&nbsp;2.59.&nbsp;&nbsp;NumPy&nbsp;Recommended.</div>
-<div class="pre"><a id="l85" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l85" class="linenr">  85</a> #&nbsp;Search&nbsp;for&nbsp;&quot;@todo&quot;&nbsp;to&nbsp;quickly&nbsp;find&nbsp;sections&nbsp;that&nbsp;need&nbsp;work.</div>
-<div class="pre"><a id="l86" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l86" class="linenr">  86</a> #</div>
-<div class="pre"><a id="l87" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l87" class="linenr">  87</a> #&nbsp;Remeber&nbsp;-</div>
-<div class="pre"><a id="l88" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l88" class="linenr">  88</a> #&nbsp;&nbsp;&nbsp;Functional&nbsp;code&nbsp;comes&nbsp;before&nbsp;fast&nbsp;code.&nbsp;&nbsp;Once&nbsp;it&nbsp;works,&nbsp;then&nbsp;worry&nbsp;about</div>
-<div class="pre"><a id="l89" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l89" class="linenr">  89</a> #&nbsp;&nbsp;&nbsp;making&nbsp;it&nbsp;faster/more&nbsp;efficient.</div>
-<div class="pre"><a id="l90" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l90" class="linenr">  90</a> #</div>
-<div class="pre"><a id="l91" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l91" class="linenr">  91</a> #&nbsp;#####&nbsp;BEGIN&nbsp;GPL&nbsp;LICENSE&nbsp;BLOCK&nbsp;#####</div>
-<div class="pre"><a id="l92" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l92" class="linenr">  92</a> #</div>
-<div class="pre"><a id="l93" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l93" class="linenr">  93</a> #&nbsp;&nbsp;The&nbsp;Blender&nbsp;Rock&nbsp;Creation&nbsp;tool&nbsp;is&nbsp;for&nbsp;rapid&nbsp;generation&nbsp;of&nbsp;mesh&nbsp;rocks.</div>
-<div class="pre"><a id="l94" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l94" class="linenr">  94</a> #&nbsp;&nbsp;Copyright&nbsp;(C)&nbsp;2011&nbsp;&nbsp;Paul&nbsp;Marshall</div>
-<div class="pre"><a id="l95" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l95" class="linenr">  95</a> #</div>
-<div class="pre"><a id="l96" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l96" class="linenr">  96</a> #&nbsp;&nbsp;This&nbsp;program&nbsp;is&nbsp;free&nbsp;software:&nbsp;you&nbsp;can&nbsp;redistribute&nbsp;it&nbsp;and/or&nbsp;modify</div>
-<div class="pre"><a id="l97" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l97" class="linenr">  97</a> #&nbsp;&nbsp;it&nbsp;under&nbsp;the&nbsp;terms&nbsp;of&nbsp;the&nbsp;GNU&nbsp;General&nbsp;Public&nbsp;License&nbsp;as&nbsp;published&nbsp;by</div>
-<div class="pre"><a id="l98" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l98" class="linenr">  98</a> #&nbsp;&nbsp;the&nbsp;Free&nbsp;Software&nbsp;Foundation,&nbsp;either&nbsp;version&nbsp;3&nbsp;of&nbsp;the&nbsp;License,&nbsp;or</div>
-<div class="pre"><a id="l99" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l99" class="linenr">  99</a> #&nbsp;&nbsp;(at&nbsp;your&nbsp;option)&nbsp;any&nbsp;later&nbsp;version.</div>
-<div class="pre"><a id="l100" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l100" class="linenr"> 100</a> #</div>
-<div class="pre"><a id="l101" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l101" class="linenr"> 101</a> #&nbsp;&nbsp;This&nbsp;program&nbsp;is&nbsp;distributed&nbsp;in&nbsp;the&nbsp;hope&nbsp;that&nbsp;it&nbsp;will&nbsp;be&nbsp;useful,</div>
-<div class="pre"><a id="l102" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l102" class="linenr"> 102</a> #&nbsp;&nbsp;but&nbsp;WITHOUT&nbsp;ANY&nbsp;WARRANTY;&nbsp;without&nbsp;even&nbsp;the&nbsp;implied&nbsp;warranty&nbsp;of</div>
-<div class="pre"><a id="l103" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l103" class="linenr"> 103</a> #&nbsp;&nbsp;MERCHANTABILITY&nbsp;or&nbsp;FITNESS&nbsp;FOR&nbsp;A&nbsp;PARTICULAR&nbsp;PURPOSE.&nbsp;&nbsp;See&nbsp;the</div>
-<div class="pre"><a id="l104" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l104" class="linenr"> 104</a> #&nbsp;&nbsp;GNU&nbsp;General&nbsp;Public&nbsp;License&nbsp;for&nbsp;more&nbsp;details.</div>
-<div class="pre"><a id="l105" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l105" class="linenr"> 105</a> #</div>
-<div class="pre"><a id="l106" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l106" class="linenr"> 106</a> #&nbsp;&nbsp;You&nbsp;should&nbsp;have&nbsp;received&nbsp;a&nbsp;copy&nbsp;of&nbsp;the&nbsp;GNU&nbsp;General&nbsp;Public&nbsp;License</div>
-<div class="pre"><a id="l107" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l107" class="linenr"> 107</a> #&nbsp;&nbsp;along&nbsp;with&nbsp;this&nbsp;program.&nbsp;&nbsp;If&nbsp;not,&nbsp;see&nbsp;&lt;http://www.gnu.org/licenses/&gt;.</div>
-<div class="pre"><a id="l108" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l108" class="linenr"> 108</a> #</div>
-<div class="pre"><a id="l109" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l109" class="linenr"> 109</a> #&nbsp;#####&nbsp;END&nbsp;GPL&nbsp;LICENSE&nbsp;BLOCK&nbsp;#####</div>
-<div class="pre"><a id="l110" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l110" class="linenr"> 110</a> </div>
-<div class="pre"><a id="l111" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l111" class="linenr"> 111</a> #&nbsp;&lt;pep8&nbsp;compliant&gt;</div>
-<div class="pre"><a id="l112" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l112" class="linenr"> 112</a> </div>
-<div class="pre"><a id="l113" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l113" class="linenr"> 113</a> import&nbsp;bpy</div>
-<div class="pre"><a id="l114" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l114" class="linenr"> 114</a> import&nbsp;time</div>
-<div class="pre"><a id="l115" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l115" class="linenr"> 115</a> from&nbsp;add_mesh_rocks&nbsp;import&nbsp;(</div>
-<div class="pre"><a id="l116" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l116" class="linenr"> 116</a> &nbsp;&nbsp;&nbsp;&nbsp;settings,</div>
-<div class="pre"><a id="l117" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l117" class="linenr"> 117</a> &nbsp;&nbsp;&nbsp;&nbsp;utils</div>
-<div class="pre"><a id="l118" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l118" class="linenr"> 118</a> )</div>
-<div class="pre"><a id="l119" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l119" class="linenr"> 119</a> from&nbsp;add_mesh_rocks.utils&nbsp;import&nbsp;skewedGauss</div>
-<div class="pre"><a id="l120" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l120" class="linenr"> 120</a> from&nbsp;add_mesh_rocks.randomize_texture&nbsp;import&nbsp;randomizeTexture</div>
-<div class="pre"><a id="l121" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l121" class="linenr"> 121</a> from&nbsp;bpy_extras&nbsp;import&nbsp;object_utils</div>
-<div class="pre"><a id="l122" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l122" class="linenr"> 122</a> from&nbsp;mathutils&nbsp;import&nbsp;(</div>
-<div class="pre"><a id="l123" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l123" class="linenr"> 123</a> &nbsp;&nbsp;&nbsp;&nbsp;Vector</div>
-<div class="pre"><a id="l124" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l124" class="linenr"> 124</a> )</div>
-<div class="pre"><a id="l125" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l125" class="linenr"> 125</a> from&nbsp;bpy.props&nbsp;import&nbsp;(</div>
-<div class="pre"><a id="l126" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l126" class="linenr"> 126</a> &nbsp;&nbsp;&nbsp;&nbsp;BoolProperty,</div>
-<div class="pre"><a id="l127" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l127" class="linenr"> 127</a> &nbsp;&nbsp;&nbsp;&nbsp;IntProperty,</div>
-<div class="pre"><a id="l128" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l128" class="linenr"> 128</a> &nbsp;&nbsp;&nbsp;&nbsp;FloatProperty,</div>
-<div class="pre"><a id="l129" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l129" class="linenr"> 129</a> &nbsp;&nbsp;&nbsp;&nbsp;FloatVectorProperty,</div>
-<div class="pre"><a id="l130" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l130" class="linenr"> 130</a> &nbsp;&nbsp;&nbsp;&nbsp;EnumProperty</div>
-<div class="pre"><a id="l131" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l131" class="linenr"> 131</a> )</div>
-<div class="pre"><a id="l132" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l132" class="linenr"> 132</a> </div>
-<div class="pre"><a id="l133" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l133" class="linenr"> 133</a> #&nbsp;This&nbsp;try&nbsp;block&nbsp;allows&nbsp;for&nbsp;the&nbsp;script&nbsp;to&nbsp;psudo-intelligently&nbsp;select&nbsp;the</div>
-<div class="pre"><a id="l134" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l134" class="linenr"> 134</a> #&nbsp;appropriate&nbsp;random&nbsp;to&nbsp;use.&nbsp;&nbsp;If&nbsp;Numpy&#39;s&nbsp;random&nbsp;is&nbsp;present&nbsp;it&nbsp;will&nbsp;use&nbsp;that.</div>
-<div class="pre"><a id="l135" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l135" class="linenr"> 135</a> #&nbsp;If&nbsp;Numpy&#39;s&nbsp;random&nbsp;is&nbsp;not&nbsp;present,&nbsp;it&nbsp;will&nbsp;through&nbsp;a&nbsp;&quot;module&nbsp;not&nbsp;found&quot;</div>
-<div class="pre"><a id="l136" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l136" class="linenr"> 136</a> #&nbsp;exception&nbsp;and&nbsp;instead&nbsp;use&nbsp;the&nbsp;slower&nbsp;built-in&nbsp;random&nbsp;that&nbsp;Python&nbsp;has.</div>
-<div class="pre"><a id="l137" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l137" class="linenr"> 137</a> try:</div>
-<div class="pre"><a id="l138" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l138" class="linenr"> 138</a> &nbsp;&nbsp;&nbsp;&nbsp;from&nbsp;numpy.random&nbsp;import&nbsp;random_integers&nbsp;as&nbsp;randint</div>
-<div class="pre"><a id="l139" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l139" class="linenr"> 139</a> &nbsp;&nbsp;&nbsp;&nbsp;from&nbsp;numpy.random&nbsp;import&nbsp;normal&nbsp;as&nbsp;gauss</div>
-<div class="pre"><a id="l140" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l140" class="linenr"> 140</a> &nbsp;&nbsp;&nbsp;&nbsp;from&nbsp;numpy.random&nbsp;import&nbsp;(</div>
-<div class="pre"><a id="l141" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l141" class="linenr"> 141</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;seed,</div>
-<div class="pre"><a id="l142" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l142" class="linenr"> 142</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;weibull)</div>
-<div class="pre"><a id="l143" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l143" class="linenr"> 143</a> &nbsp;&nbsp;&nbsp;&nbsp;print(&quot;Rock&nbsp;Generator:&nbsp;Numpy&nbsp;found.&quot;)</div>
-<div class="pre"><a id="l144" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l144" class="linenr"> 144</a> &nbsp;&nbsp;&nbsp;&nbsp;numpy&nbsp;=&nbsp;True</div>
-<div class="pre"><a id="l145" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l145" class="linenr"> 145</a> except:</div>
-<div class="pre"><a id="l146" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l146" class="linenr"> 146</a> &nbsp;&nbsp;&nbsp;&nbsp;from&nbsp;random&nbsp;import&nbsp;(</div>
-<div class="pre"><a id="l147" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l147" class="linenr"> 147</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;randint,</div>
-<div class="pre"><a id="l148" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l148" class="linenr"> 148</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gauss,</div>
-<div class="pre"><a id="l149" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l149" class="linenr"> 149</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;seed)</div>
-<div class="pre"><a id="l150" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l150" class="linenr"> 150</a> &nbsp;&nbsp;&nbsp;&nbsp;from&nbsp;random&nbsp;import&nbsp;weibullvariate&nbsp;as&nbsp;weibull</div>
-<div class="pre"><a id="l151" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l151" class="linenr"> 151</a> &nbsp;&nbsp;&nbsp;&nbsp;print(&quot;Rock&nbsp;Generator:&nbsp;Numpy&nbsp;not&nbsp;found.&nbsp;&nbsp;Using&nbsp;Python&#39;s&nbsp;random.&quot;)</div>
-<div class="pre"><a id="l152" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l152" class="linenr"> 152</a> &nbsp;&nbsp;&nbsp;&nbsp;numpy&nbsp;=&nbsp;False</div>
-<div class="pre"><a id="l153" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l153" class="linenr"> 153</a> </div>
-<div class="pre"><a id="l154" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l154" class="linenr"> 154</a> #&nbsp;Global&nbsp;variables:</div>
-<div class="pre"><a id="l155" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l155" class="linenr"> 155</a> LASTROCK&nbsp;=&nbsp;0</div>
-<div class="pre"><a id="l156" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l156" class="linenr"> 156</a> </div>
-<div class="pre"><a id="l157" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l157" class="linenr"> 157</a> </div>
-<div class="pre"><a id="l158" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l158" class="linenr"> 158</a> #&nbsp;Creates&nbsp;a&nbsp;new&nbsp;mesh:</div>
-<div class="pre"><a id="l159" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l159" class="linenr"> 159</a> #</div>
-<div class="pre"><a id="l160" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l160" class="linenr"> 160</a> #&nbsp;param:&nbsp;verts&nbsp;-&nbsp;Vector&nbsp;of&nbsp;vertices&nbsp;for&nbsp;the&nbsp;mesh.</div>
-<div class="pre"><a id="l161" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l161" class="linenr"> 161</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;edges&nbsp;-&nbsp;Edges&nbsp;for&nbsp;the&nbsp;mesh.&nbsp;&nbsp;Can&nbsp;be&nbsp;&quot;[]&quot;.</div>
-<div class="pre"><a id="l162" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l162" class="linenr"> 162</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;faces&nbsp;-&nbsp;Face&nbsp;tuples&nbsp;corresponding&nbsp;to&nbsp;vertices.</div>
-<div class="pre"><a id="l163" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l163" class="linenr"> 163</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;&nbsp;-&nbsp;Name&nbsp;of&nbsp;the&nbsp;mesh.</div>
-<div class="pre"><a id="l164" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l164" class="linenr"> 164</a> def&nbsp;createMeshObject(context,&nbsp;verts,&nbsp;edges,&nbsp;faces,&nbsp;name):</div>
-<div class="pre"><a id="l165" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l165" class="linenr"> 165</a> &nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Create&nbsp;new&nbsp;mesh</div>
-<div class="pre"><a id="l166" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l166" class="linenr"> 166</a> &nbsp;&nbsp;&nbsp;&nbsp;mesh&nbsp;=&nbsp;bpy.data.meshes.new(name)</div>
-<div class="pre"><a id="l167" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l167" class="linenr"> 167</a> </div>
-<div class="pre"><a id="l168" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l168" class="linenr"> 168</a> &nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Make&nbsp;a&nbsp;mesh&nbsp;from&nbsp;a&nbsp;list&nbsp;of&nbsp;verts/edges/faces.</div>
-<div class="pre"><a id="l169" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l169" class="linenr"> 169</a> &nbsp;&nbsp;&nbsp;&nbsp;mesh.from_pydata(verts,&nbsp;edges,&nbsp;faces)</div>
-<div class="pre"><a id="l170" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l170" class="linenr"> 170</a> </div>
-<div class="pre"><a id="l171" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l171" class="linenr"> 171</a> &nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Set&nbsp;mesh&nbsp;to&nbsp;use&nbsp;auto&nbsp;smoothing:</div>
-<div class="pre"><a id="l172" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l172" class="linenr"> 172</a> &nbsp;&nbsp;&nbsp;&nbsp;mesh.use_auto_smooth&nbsp;=&nbsp;True</div>
-<div class="pre"><a id="l173" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l173" class="linenr"> 173</a> </div>
-<div class="pre"><a id="l174" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l174" class="linenr"> 174</a> &nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Update&nbsp;mesh&nbsp;geometry&nbsp;after&nbsp;adding&nbsp;stuff.</div>
-<div class="pre"><a id="l175" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l175" class="linenr"> 175</a> &nbsp;&nbsp;&nbsp;&nbsp;mesh.update()</div>
-<div class="pre"><a id="l176" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l176" class="linenr"> 176</a> </div>
-<div class="pre"><a id="l177" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l177" class="linenr"> 177</a> &nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;object_utils.object_data_add(context,&nbsp;mesh,&nbsp;operator=None)</div>
-<div class="pre"><a id="l178" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l178" class="linenr"> 178</a> </div>
-<div class="pre"><a id="l179" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l179" class="linenr"> 179</a> </div>
-<div class="pre"><a id="l180" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l180" class="linenr"> 180</a> #&nbsp;Generates&nbsp;an&nbsp;object&nbsp;based&nbsp;on&nbsp;one&nbsp;of&nbsp;several&nbsp;different&nbsp;mesh&nbsp;types.</div>
-<div class="pre"><a id="l181" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l181" class="linenr"> 181</a> #&nbsp;All&nbsp;meshes&nbsp;have&nbsp;exactly&nbsp;eight&nbsp;vertices,&nbsp;and&nbsp;may&nbsp;be&nbsp;built&nbsp;from&nbsp;either</div>
-<div class="pre"><a id="l182" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l182" class="linenr"> 182</a> #&nbsp;tri&#39;s&nbsp;or&nbsp;quads.</div>
-<div class="pre"><a id="l183" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l183" class="linenr"> 183</a> #</div>
-<div class="pre"><a id="l184" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l184" class="linenr"> 184</a> #&nbsp;param:&nbsp;muX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;mean&nbsp;X&nbsp;offset&nbsp;value</div>
-<div class="pre"><a id="l185" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l185" class="linenr"> 185</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sigmaX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;X&nbsp;offset&nbsp;standard&nbsp;deviation</div>
-<div class="pre"><a id="l186" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l186" class="linenr"> 186</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scaleX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;X&nbsp;upper&nbsp;and&nbsp;lower&nbsp;bounds</div>
-<div class="pre"><a id="l187" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l187" class="linenr"> 187</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;upperSkewX&nbsp;-&nbsp;Is&nbsp;the&nbsp;distribution&nbsp;upperskewed?</div>
-<div class="pre"><a id="l188" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l188" class="linenr"> 188</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;muY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;mean&nbsp;Y&nbsp;offset&nbsp;value</div>
-<div class="pre"><a id="l189" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l189" class="linenr"> 189</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sigmaY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Y&nbsp;offset&nbsp;standard&nbsp;deviation</div>
-<div class="pre"><a id="l190" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l190" class="linenr"> 190</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scaleY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Y&nbsp;upper&nbsp;and&nbsp;lower&nbsp;bounds</div>
-<div class="pre"><a id="l191" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l191" class="linenr"> 191</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;upperSkewY&nbsp;-&nbsp;Is&nbsp;the&nbsp;distribution&nbsp;upperskewed?</div>
-<div class="pre"><a id="l192" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l192" class="linenr"> 192</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;muZ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;mean&nbsp;Z&nbsp;offset&nbsp;value</div>
-<div class="pre"><a id="l193" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l193" class="linenr"> 193</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sigmaZ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Z&nbsp;offset&nbsp;standard&nbsp;deviation</div>
-<div class="pre"><a id="l194" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l194" class="linenr"> 194</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scaleZ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Z&nbsp;upper&nbsp;and&nbsp;lower&nbsp;bounds</div>
-<div class="pre"><a id="l195" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l195" class="linenr"> 195</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;upperSkewY&nbsp;-&nbsp;Is&nbsp;the&nbsp;distribution&nbsp;upperskewed?</div>
-<div class="pre"><a id="l196" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l196" class="linenr"> 196</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;base&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;base&nbsp;number&nbsp;on&nbsp;the&nbsp;end&nbsp;of&nbsp;the&nbsp;object&nbsp;name</div>
-<div class="pre"><a id="l197" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l197" class="linenr"> 197</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;shift&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Addition&nbsp;to&nbsp;the&nbsp;base&nbsp;number&nbsp;for&nbsp;multiple&nbsp;runs.</div>
-<div class="pre"><a id="l198" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l198" class="linenr"> 198</a> #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scaleDisplace&nbsp;-&nbsp;Scale&nbsp;the&nbsp;displacement&nbsp;maps</div>
-<div class="pre"><a id="l199" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l199" class="linenr"> 199</a> #</div>
-<div class="pre"><a id="l200" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l200" class="linenr"> 200</a> #&nbsp;return:&nbsp;name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;the&nbsp;built&nbsp;name&nbsp;of&nbsp;the&nbsp;object</div>
-<div class="pre"><a id="l201" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l201" class="linenr"> 201</a> def&nbsp;generateObject(context,&nbsp;muX,&nbsp;sigmaX,&nbsp;scaleX,&nbsp;upperSkewX,&nbsp;muY,&nbsp;sigmaY,</div>
-<div class="pre"><a id="l202" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l202" class="linenr"> 202</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scaleY,&nbsp;upperSkewY,&nbsp;muZ,&nbsp;sigmaZ,&nbsp;scaleZ,&nbsp;upperSkewZ,&nbsp;base,</div>
-<div class="pre"><a id="l203" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l203" class="linenr"> 203</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;shift,&nbsp;scaleDisplace,&nbsp;scale_fac):</div>
-<div class="pre"><a id="l204" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l204" class="linenr"> 204</a> &nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;=&nbsp;[]</div>
-<div class="pre"><a id="l205" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l205" class="linenr"> 205</a> &nbsp;&nbsp;&nbsp;&nbsp;y&nbsp;=&nbsp;[]</div>
-<div class="pre"><a id="l206" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l206" class="linenr"> 206</a> &nbsp;&nbsp;&nbsp;&nbsp;z&nbsp;=&nbsp;[]</div>
-<div class="pre"><a id="l207" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l207" class="linenr"> 207</a> &nbsp;&nbsp;&nbsp;&nbsp;shape&nbsp;=&nbsp;randint(0,&nbsp;11)</div>
-<div class="pre"><a id="l208" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l208" class="linenr"> 208</a> </div>
-<div class="pre"><a id="l209" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l209" class="linenr"> 209</a> &nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Cube</div>
-<div class="pre"><a id="l210" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l210" class="linenr"> 210</a> &nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Use&nbsp;parameters&nbsp;to&nbsp;re-scale&nbsp;cube:</div>
-<div class="pre"><a id="l211" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l211" class="linenr"> 211</a> &nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Reversed&nbsp;if/for&nbsp;nesting.&nbsp;&nbsp;Should&nbsp;be&nbsp;a&nbsp;little&nbsp;faster.</div>
-<div class="pre"><a id="l212" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l212" class="linenr"> 212</a> &nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;shape&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l213" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l213" class="linenr"> 213</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;j&nbsp;in&nbsp;range(8):</div>
-<div class="pre"><a id="l214" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l214" class="linenr"> 214</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaX&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l215" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l215" class="linenr"> 215</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.append(scaleX[0]&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l216" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l216" class="linenr"> 216</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l217" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l217" class="linenr"> 217</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.append(skewedGauss(muX,&nbsp;sigmaX,&nbsp;scaleX,&nbsp;upperSkewX)&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l218" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l218" class="linenr"> 218</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaY&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l219" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l219" class="linenr"> 219</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y.append(scaleY[0]&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l220" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l220" class="linenr"> 220</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l221" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l221" class="linenr"> 221</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y.append(skewedGauss(muY,&nbsp;sigmaY,&nbsp;scaleY,&nbsp;upperSkewY)&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l222" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l222" class="linenr"> 222</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaZ&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l223" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l223" class="linenr"> 223</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z.append(scaleZ[0]&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l224" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l224" class="linenr"> 224</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l225" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l225" class="linenr"> 225</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z.append(skewedGauss(muZ,&nbsp;sigmaZ,&nbsp;scaleZ,&nbsp;upperSkewZ)&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l226" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l226" class="linenr"> 226</a> &nbsp;&nbsp;&nbsp;&nbsp;elif&nbsp;shape&nbsp;==&nbsp;1:</div>
-<div class="pre"><a id="l227" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l227" class="linenr"> 227</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;j&nbsp;in&nbsp;range(8):</div>
-<div class="pre"><a id="l228" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l228" class="linenr"> 228</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;j&nbsp;in&nbsp;[0,&nbsp;1,&nbsp;3,&nbsp;4]:</div>
-<div class="pre"><a id="l229" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l229" class="linenr"> 229</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaX&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l230" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l230" class="linenr"> 230</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.append(scaleX[0]&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l231" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l231" class="linenr"> 231</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l232" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l232" class="linenr"> 232</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.append(skewedGauss(muX,&nbsp;sigmaX,&nbsp;scaleX,&nbsp;upperSkewX)&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l233" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l233" class="linenr"> 233</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaY&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l234" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l234" class="linenr"> 234</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y.append(scaleY[0]&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l235" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l235" class="linenr"> 235</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l236" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l236" class="linenr"> 236</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y.append(skewedGauss(muY,&nbsp;sigmaY,&nbsp;scaleY,&nbsp;upperSkewY)&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l237" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l237" class="linenr"> 237</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaZ&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l238" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l238" class="linenr"> 238</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z.append(scaleZ[0]&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l239" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l239" class="linenr"> 239</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l240" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l240" class="linenr"> 240</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z.append(skewedGauss(muZ,&nbsp;sigmaZ,&nbsp;scaleZ,&nbsp;upperSkewZ)&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l241" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l241" class="linenr"> 241</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elif&nbsp;j&nbsp;in&nbsp;[2,&nbsp;5]:</div>
-<div class="pre"><a id="l242" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l242" class="linenr"> 242</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaX&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l243" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l243" class="linenr"> 243</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.append(0)</div>
-<div class="pre"><a id="l244" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l244" class="linenr"> 244</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l245" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l245" class="linenr"> 245</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.append(skewedGauss(muX,&nbsp;sigmaX,&nbsp;scaleX,&nbsp;upperSkewX)&nbsp;/&nbsp;4)</div>
-<div class="pre"><a id="l246" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l246" class="linenr"> 246</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaY&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l247" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l247" class="linenr"> 247</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y.append(scaleY[0]&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l248" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l248" class="linenr"> 248</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l249" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l249" class="linenr"> 249</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y.append(skewedGauss(muY,&nbsp;sigmaY,&nbsp;scaleY,&nbsp;upperSkewY)&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l250" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l250" class="linenr"> 250</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaZ&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l251" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l251" class="linenr"> 251</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z.append(scaleZ[0]&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l252" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l252" class="linenr"> 252</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l253" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l253" class="linenr"> 253</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z.append(skewedGauss(muZ,&nbsp;sigmaZ,&nbsp;scaleZ,&nbsp;upperSkewZ)&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l254" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l254" class="linenr"> 254</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elif&nbsp;j&nbsp;in&nbsp;[6,&nbsp;7]:</div>
-<div class="pre"><a id="l255" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l255" class="linenr"> 255</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaX&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l256" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l256" class="linenr"> 256</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.append(0)</div>
-<div class="pre"><a id="l257" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l257" class="linenr"> 257</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l258" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l258" class="linenr"> 258</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.append(skewedGauss(0,&nbsp;sigmaX,&nbsp;scaleX,&nbsp;upperSkewX)&nbsp;/&nbsp;4)</div>
-<div class="pre"><a id="l259" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l259" class="linenr"> 259</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaY&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l260" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l260" class="linenr"> 260</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y.append(0)</div>
-<div class="pre"><a id="l261" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l261" class="linenr"> 261</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l262" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l262" class="linenr"> 262</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y.append(skewedGauss(0,&nbsp;sigmaY,&nbsp;scaleY,&nbsp;upperSkewY)&nbsp;/&nbsp;4)</div>
-<div class="pre"><a id="l263" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l263" class="linenr"> 263</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaZ&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l264" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l264" class="linenr"> 264</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z.append(scaleZ[0]&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l265" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l265" class="linenr"> 265</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l266" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l266" class="linenr"> 266</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z.append(skewedGauss(muZ,&nbsp;sigmaZ,&nbsp;scaleZ,&nbsp;upperSkewZ)&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l267" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l267" class="linenr"> 267</a> &nbsp;&nbsp;&nbsp;&nbsp;elif&nbsp;shape&nbsp;==&nbsp;2:</div>
-<div class="pre"><a id="l268" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l268" class="linenr"> 268</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;j&nbsp;in&nbsp;range(8):</div>
-<div class="pre"><a id="l269" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l269" class="linenr"> 269</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;j&nbsp;in&nbsp;[0,&nbsp;2,&nbsp;5,&nbsp;7]:</div>
-<div class="pre"><a id="l270" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l270" class="linenr"> 270</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaX&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l271" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l271" class="linenr"> 271</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.append(scaleX[0]&nbsp;/&nbsp;4)</div>
-<div class="pre"><a id="l272" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l272" class="linenr"> 272</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l273" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l273" class="linenr"> 273</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.append(skewedGauss(muX,&nbsp;sigmaX,&nbsp;scaleX,&nbsp;upperSkewX)&nbsp;/&nbsp;4)</div>
-<div class="pre"><a id="l274" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l274" class="linenr"> 274</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaY&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l275" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l275" class="linenr"> 275</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y.append(0)</div>
-<div class="pre"><a id="l276" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l276" class="linenr"> 276</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l277" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l277" class="linenr"> 277</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y.append(skewedGauss(0,&nbsp;sigmaY,&nbsp;scaleY,&nbsp;upperSkewY)&nbsp;/&nbsp;4)</div>
-<div class="pre"><a id="l278" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l278" class="linenr"> 278</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaZ&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l279" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l279" class="linenr"> 279</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z.append(scaleZ[0]&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l280" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l280" class="linenr"> 280</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l281" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l281" class="linenr"> 281</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z.append(skewedGauss(muZ,&nbsp;sigmaZ,&nbsp;scaleZ,&nbsp;upperSkewZ)&nbsp;/&nbsp;4)</div>
-<div class="pre"><a id="l282" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l282" class="linenr"> 282</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elif&nbsp;j&nbsp;in&nbsp;[1,&nbsp;3,&nbsp;4,&nbsp;6]:</div>
-<div class="pre"><a id="l283" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l283" class="linenr"> 283</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaX&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l284" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l284" class="linenr"> 284</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.append(scaleX[0]&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l285" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l285" class="linenr"> 285</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l286" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l286" class="linenr"> 286</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.append(skewedGauss(muX,&nbsp;sigmaX,&nbsp;scaleX,&nbsp;upperSkewX)&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l287" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l287" class="linenr"> 287</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaY&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l288" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l288" class="linenr"> 288</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y.append(scaleY[0]&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l289" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l289" class="linenr"> 289</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l290" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l290" class="linenr"> 290</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y.append(skewedGauss(muY,&nbsp;sigmaY,&nbsp;scaleY,&nbsp;upperSkewY)&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l291" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l291" class="linenr"> 291</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaZ&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l292" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l292" class="linenr"> 292</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z.append(scaleZ[0]&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l293" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l293" class="linenr"> 293</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l294" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l294" class="linenr"> 294</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z.append(skewedGauss(muZ,&nbsp;sigmaZ,&nbsp;scaleZ,&nbsp;upperSkewZ)&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l295" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l295" class="linenr"> 295</a> &nbsp;&nbsp;&nbsp;&nbsp;elif&nbsp;shape&nbsp;==&nbsp;3:</div>
-<div class="pre"><a id="l296" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l296" class="linenr"> 296</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;j&nbsp;in&nbsp;range(8):</div>
-<div class="pre"><a id="l297" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l297" class="linenr"> 297</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;j&nbsp;&gt;&nbsp;0:</div>
-<div class="pre"><a id="l298" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l298" class="linenr"> 298</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaX&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l299" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l299" class="linenr"> 299</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.append(scaleX[0]&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l300" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l300" class="linenr"> 300</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l301" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l301" class="linenr"> 301</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.append(skewedGauss(muX,&nbsp;sigmaX,&nbsp;scaleX,&nbsp;upperSkewX)&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l302" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l302" class="linenr"> 302</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaY&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l303" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l303" class="linenr"> 303</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y.append(scaleY[0]&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l304" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l304" class="linenr"> 304</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l305" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l305" class="linenr"> 305</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y.append(skewedGauss(muY,&nbsp;sigmaY,&nbsp;scaleY,&nbsp;upperSkewY)&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l306" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l306" class="linenr"> 306</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaZ&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l307" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l307" class="linenr"> 307</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z.append(scaleZ[0]&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l308" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l308" class="linenr"> 308</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l309" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l309" class="linenr"> 309</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z.append(skewedGauss(muZ,&nbsp;sigmaZ,&nbsp;scaleZ,&nbsp;upperSkewZ)&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l310" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l310" class="linenr"> 310</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l311" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l311" class="linenr"> 311</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaX&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l312" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l312" class="linenr"> 312</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.append(0)</div>
-<div class="pre"><a id="l313" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l313" class="linenr"> 313</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l314" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l314" class="linenr"> 314</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.append(skewedGauss(0,&nbsp;sigmaX,&nbsp;scaleX,&nbsp;upperSkewX)&nbsp;/&nbsp;8)</div>
-<div class="pre"><a id="l315" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l315" class="linenr"> 315</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaY&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l316" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l316" class="linenr"> 316</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y.append(0)</div>
-<div class="pre"><a id="l317" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l317" class="linenr"> 317</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l318" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l318" class="linenr"> 318</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y.append(skewedGauss(0,&nbsp;sigmaY,&nbsp;scaleY,&nbsp;upperSkewY)&nbsp;/&nbsp;8)</div>
-<div class="pre"><a id="l319" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l319" class="linenr"> 319</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaZ&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l320" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l320" class="linenr"> 320</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z.append(0)</div>
-<div class="pre"><a id="l321" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l321" class="linenr"> 321</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l322" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l322" class="linenr"> 322</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z.append(skewedGauss(0,&nbsp;sigmaZ,&nbsp;scaleZ,&nbsp;upperSkewZ)&nbsp;/&nbsp;8)</div>
-<div class="pre"><a id="l323" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l323" class="linenr"> 323</a> &nbsp;&nbsp;&nbsp;&nbsp;elif&nbsp;shape&nbsp;==&nbsp;4:</div>
-<div class="pre"><a id="l324" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l324" class="linenr"> 324</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;j&nbsp;in&nbsp;range(10):</div>
-<div class="pre"><a id="l325" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l325" class="linenr"> 325</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;j&nbsp;in&nbsp;[0,&nbsp;9]:</div>
-<div class="pre"><a id="l326" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l326" class="linenr"> 326</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaX&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l327" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l327" class="linenr"> 327</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.append(0)</div>
-<div class="pre"><a id="l328" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l328" class="linenr"> 328</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l329" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l329" class="linenr"> 329</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.append(skewedGauss(0,&nbsp;sigmaX,&nbsp;scaleX,&nbsp;upperSkewX)&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l330" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l330" class="linenr"> 330</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaY&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l331" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l331" class="linenr"> 331</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y.append(0)</div>
-<div class="pre"><a id="l332" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l332" class="linenr"> 332</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l333" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l333" class="linenr"> 333</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y.append(skewedGauss(0,&nbsp;sigmaY,&nbsp;scaleY,&nbsp;upperSkewY)&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l334" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l334" class="linenr"> 334</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaZ&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l335" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l335" class="linenr"> 335</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z.append(scaleZ[0]&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l336" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l336" class="linenr"> 336</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l337" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l337" class="linenr"> 337</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z.append(skewedGauss(muZ,&nbsp;sigmaZ,&nbsp;scaleZ,&nbsp;upperSkewZ)&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l338" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l338" class="linenr"> 338</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elif&nbsp;j&nbsp;in&nbsp;[1,&nbsp;2,&nbsp;3,&nbsp;4]:</div>
-<div class="pre"><a id="l339" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l339" class="linenr"> 339</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaX&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l340" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l340" class="linenr"> 340</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.append(scaleX[0]&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l341" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l341" class="linenr"> 341</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l342" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l342" class="linenr"> 342</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.append(skewedGauss(muX,&nbsp;sigmaX,&nbsp;scaleX,&nbsp;upperSkewX)&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l343" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l343" class="linenr"> 343</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaY&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l344" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l344" class="linenr"> 344</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y.append(scaleY[0]&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l345" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l345" class="linenr"> 345</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l346" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l346" class="linenr"> 346</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y.append(skewedGauss(muY,&nbsp;sigmaY,&nbsp;scaleY,&nbsp;upperSkewY)&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l347" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l347" class="linenr"> 347</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaZ&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l348" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l348" class="linenr"> 348</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z.append(scaleZ[0]&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l349" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l349" class="linenr"> 349</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l350" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l350" class="linenr"> 350</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z.append(skewedGauss(muZ,&nbsp;sigmaZ,&nbsp;scaleZ,&nbsp;upperSkewZ)&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l351" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l351" class="linenr"> 351</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elif&nbsp;j&nbsp;in&nbsp;[5,&nbsp;7]:</div>
-<div class="pre"><a id="l352" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l352" class="linenr"> 352</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaX&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l353" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l353" class="linenr"> 353</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.append(0)</div>
-<div class="pre"><a id="l354" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l354" class="linenr"> 354</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l355" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l355" class="linenr"> 355</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.append(skewedGauss(0,&nbsp;sigmaX,&nbsp;scaleX,&nbsp;upperSkewX)&nbsp;/&nbsp;3)</div>
-<div class="pre"><a id="l356" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l356" class="linenr"> 356</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaY&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l357" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l357" class="linenr"> 357</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y.append(scaleY[0]&nbsp;/&nbsp;3)</div>
-<div class="pre"><a id="l358" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l358" class="linenr"> 358</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l359" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l359" class="linenr"> 359</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y.append(skewedGauss(muY,&nbsp;sigmaY,&nbsp;scaleY,&nbsp;upperSkewY)&nbsp;/&nbsp;3)</div>
-<div class="pre"><a id="l360" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l360" class="linenr"> 360</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaZ&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l361" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l361" class="linenr"> 361</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z.append(0)</div>
-<div class="pre"><a id="l362" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l362" class="linenr"> 362</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l363" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l363" class="linenr"> 363</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z.append(skewedGauss(0,&nbsp;sigmaZ,&nbsp;scaleZ,&nbsp;upperSkewZ)&nbsp;/&nbsp;6)</div>
-<div class="pre"><a id="l364" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l364" class="linenr"> 364</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elif&nbsp;j&nbsp;in&nbsp;[6,&nbsp;8]:</div>
-<div class="pre"><a id="l365" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l365" class="linenr"> 365</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaX&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l366" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l366" class="linenr"> 366</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.append(scaleX[0]&nbsp;/&nbsp;3)</div>
-<div class="pre"><a id="l367" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l367" class="linenr"> 367</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l368" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l368" class="linenr"> 368</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.append(skewedGauss(muX,&nbsp;sigmaX,&nbsp;scaleX,&nbsp;upperSkewX)&nbsp;/&nbsp;3)</div>
-<div class="pre"><a id="l369" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l369" class="linenr"> 369</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaY&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l370" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l370" class="linenr"> 370</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y.append(0)</div>
-<div class="pre"><a id="l371" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l371" class="linenr"> 371</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l372" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l372" class="linenr"> 372</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y.append(skewedGauss(0,&nbsp;sigmaY,&nbsp;scaleY,&nbsp;upperSkewY)&nbsp;/&nbsp;3)</div>
-<div class="pre"><a id="l373" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l373" class="linenr"> 373</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaZ&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l374" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l374" class="linenr"> 374</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z.append(0)</div>
-<div class="pre"><a id="l375" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l375" class="linenr"> 375</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l376" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l376" class="linenr"> 376</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z.append(skewedGauss(0,&nbsp;sigmaZ,&nbsp;scaleZ,&nbsp;upperSkewZ)&nbsp;/&nbsp;6)</div>
-<div class="pre"><a id="l377" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l377" class="linenr"> 377</a> &nbsp;&nbsp;&nbsp;&nbsp;elif&nbsp;shape&nbsp;==&nbsp;5:</div>
-<div class="pre"><a id="l378" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l378" class="linenr"> 378</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;j&nbsp;in&nbsp;range(10):</div>
-<div class="pre"><a id="l379" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l379" class="linenr"> 379</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;j&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l380" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l380" class="linenr"> 380</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaX&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l381" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l381" class="linenr"> 381</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.append(0)</div>
-<div class="pre"><a id="l382" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l382" class="linenr"> 382</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l383" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l383" class="linenr"> 383</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.append(skewedGauss(0,&nbsp;sigmaX,&nbsp;scaleX,&nbsp;upperSkewX)&nbsp;/&nbsp;8)</div>
-<div class="pre"><a id="l384" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l384" class="linenr"> 384</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaY&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l385" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l385" class="linenr"> 385</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y.append(0)</div>
-<div class="pre"><a id="l386" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l386" class="linenr"> 386</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l387" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l387" class="linenr"> 387</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y.append(skewedGauss(0,&nbsp;sigmaY,&nbsp;scaleY,&nbsp;upperSkewY)&nbsp;/&nbsp;8)</div>
-<div class="pre"><a id="l388" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l388" class="linenr"> 388</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaZ&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l389" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l389" class="linenr"> 389</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z.append(scaleZ[0]&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l390" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l390" class="linenr"> 390</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l391" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l391" class="linenr"> 391</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z.append(skewedGauss(muZ,&nbsp;sigmaZ,&nbsp;scaleZ,&nbsp;upperSkewZ)&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l392" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l392" class="linenr"> 392</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elif&nbsp;j&nbsp;in&nbsp;[1,&nbsp;2]:</div>
-<div class="pre"><a id="l393" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l393" class="linenr"> 393</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaX&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l394" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l394" class="linenr"> 394</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.append(scaleZ[0]&nbsp;*&nbsp;.125)</div>
-<div class="pre"><a id="l395" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l395" class="linenr"> 395</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l396" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l396" class="linenr"> 396</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.append(skewedGauss(muX,&nbsp;sigmaX,&nbsp;scaleX,&nbsp;upperSkewX)&nbsp;*&nbsp;0.125)</div>
-<div class="pre"><a id="l397" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l397" class="linenr"> 397</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaY&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l398" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l398" class="linenr"> 398</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y.append(scaleZ[0]&nbsp;*&nbsp;0.2165)</div>
-<div class="pre"><a id="l399" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l399" class="linenr"> 399</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l400" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l400" class="linenr"> 400</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y.append(skewedGauss(muY,&nbsp;sigmaY,&nbsp;scaleY,&nbsp;upperSkewY)&nbsp;*&nbsp;0.2165)</div>
-<div class="pre"><a id="l401" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l401" class="linenr"> 401</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaZ&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l402" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l402" class="linenr"> 402</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z.append(0)</div>
-<div class="pre"><a id="l403" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l403" class="linenr"> 403</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l404" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l404" class="linenr"> 404</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z.append(skewedGauss(0,&nbsp;sigmaZ,&nbsp;scaleZ,&nbsp;upperSkewZ)&nbsp;/&nbsp;4)</div>
-<div class="pre"><a id="l405" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l405" class="linenr"> 405</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elif&nbsp;j&nbsp;==&nbsp;3:</div>
-<div class="pre"><a id="l406" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l406" class="linenr"> 406</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaX&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l407" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l407" class="linenr"> 407</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.append(scaleX[0]&nbsp;/&nbsp;4)</div>
-<div class="pre"><a id="l408" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l408" class="linenr"> 408</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l409" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l409" class="linenr"> 409</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.append(skewedGauss(muX,&nbsp;sigmaX,&nbsp;scaleX,&nbsp;upperSkewX)&nbsp;/&nbsp;4)</div>
-<div class="pre"><a id="l410" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l410" class="linenr"> 410</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaY&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l411" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l411" class="linenr"> 411</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y.append(0)</div>
-<div class="pre"><a id="l412" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l412" class="linenr"> 412</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l413" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l413" class="linenr"> 413</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y.append(skewedGauss(0,&nbsp;sigmaY,&nbsp;scaleY,&nbsp;upperSkewY)&nbsp;/&nbsp;4)</div>
-<div class="pre"><a id="l414" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l414" class="linenr"> 414</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaZ&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l415" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l415" class="linenr"> 415</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z.append(0)</div>
-<div class="pre"><a id="l416" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l416" class="linenr"> 416</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l417" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l417" class="linenr"> 417</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z.append(skewedGauss(0,&nbsp;sigmaZ,&nbsp;scaleZ,&nbsp;upperSkewZ)&nbsp;/&nbsp;4)</div>
-<div class="pre"><a id="l418" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l418" class="linenr"> 418</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elif&nbsp;j&nbsp;in&nbsp;[4,&nbsp;6]:</div>
-<div class="pre"><a id="l419" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l419" class="linenr"> 419</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaX&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l420" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l420" class="linenr"> 420</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.append(scaleX[0]&nbsp;*&nbsp;0.25)</div>
-<div class="pre"><a id="l421" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l421" class="linenr"> 421</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l422" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l422" class="linenr"> 422</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.append(skewedGauss(muX,&nbsp;sigmaX,&nbsp;scaleX,&nbsp;upperSkewX)&nbsp;*&nbsp;0.25)</div>
-<div class="pre"><a id="l423" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l423" class="linenr"> 423</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaY&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l424" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l424" class="linenr"> 424</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y.append(scaleY[0]&nbsp;*&nbsp;0.433)</div>
-<div class="pre"><a id="l425" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l425" class="linenr"> 425</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l426" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l426" class="linenr"> 426</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y.append(skewedGauss(muY,&nbsp;sigmaY,&nbsp;scaleY,&nbsp;upperSkewY)&nbsp;*&nbsp;0.433)</div>
-<div class="pre"><a id="l427" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l427" class="linenr"> 427</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaZ&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l428" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l428" class="linenr"> 428</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z.append(scaleZ[0]&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l429" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l429" class="linenr"> 429</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l430" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l430" class="linenr"> 430</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z.append(skewedGauss(muZ,&nbsp;sigmaZ,&nbsp;scaleZ,&nbsp;upperSkewZ)&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l431" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l431" class="linenr"> 431</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elif&nbsp;j&nbsp;==&nbsp;5:</div>
-<div class="pre"><a id="l432" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l432" class="linenr"> 432</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaX&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l433" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l433" class="linenr"> 433</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.append(scaleX[0]&nbsp;/&nbsp;4)</div>
-<div class="pre"><a id="l434" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l434" class="linenr"> 434</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l435" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l435" class="linenr"> 435</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.append(skewedGauss(muX,&nbsp;sigmaX,&nbsp;scaleX,&nbsp;upperSkewX)&nbsp;/&nbsp;4)</div>
-<div class="pre"><a id="l436" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l436" class="linenr"> 436</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaY&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l437" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l437" class="linenr"> 437</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y.append(0)</div>
-<div class="pre"><a id="l438" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l438" class="linenr"> 438</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l439" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l439" class="linenr"> 439</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y.append(skewedGauss(0,&nbsp;sigmaY,&nbsp;scaleY,&nbsp;upperSkewY)&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l440" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l440" class="linenr"> 440</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaZ&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l441" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l441" class="linenr"> 441</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z.append(scaleZ[0]&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l442" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l442" class="linenr"> 442</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l443" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l443" class="linenr"> 443</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z.append(skewedGauss(muZ,&nbsp;sigmaZ,&nbsp;scaleZ,&nbsp;upperSkewZ)&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l444" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l444" class="linenr"> 444</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elif&nbsp;j&nbsp;in&nbsp;[7,&nbsp;9]:</div>
-<div class="pre"><a id="l445" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l445" class="linenr"> 445</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaX&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l446" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l446" class="linenr"> 446</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.append(scaleX[0]&nbsp;*&nbsp;0.10825)</div>
-<div class="pre"><a id="l447" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l447" class="linenr"> 447</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l448" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l448" class="linenr"> 448</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.append(skewedGauss(muX,&nbsp;sigmaX,&nbsp;scaleX,&nbsp;upperSkewX)&nbsp;*&nbsp;0.10825)</div>
-<div class="pre"><a id="l449" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l449" class="linenr"> 449</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaY&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l450" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l450" class="linenr"> 450</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y.append(scaleY[0]&nbsp;*&nbsp;0.2165)</div>
-<div class="pre"><a id="l451" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l451" class="linenr"> 451</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l452" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l452" class="linenr"> 452</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y.append(skewedGauss(muY,&nbsp;sigmaY,&nbsp;scaleY,&nbsp;upperSkewY)&nbsp;*&nbsp;0.2165)</div>
-<div class="pre"><a id="l453" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l453" class="linenr"> 453</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaZ&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l454" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l454" class="linenr"> 454</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z.append(scaleZ[0]&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l455" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l455" class="linenr"> 455</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l456" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l456" class="linenr"> 456</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z.append(skewedGauss(muZ,&nbsp;sigmaZ,&nbsp;scaleZ,&nbsp;upperSkewZ)&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l457" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l457" class="linenr"> 457</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elif&nbsp;j&nbsp;==&nbsp;8:</div>
-<div class="pre"><a id="l458" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l458" class="linenr"> 458</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaX&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l459" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l459" class="linenr"> 459</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.append(scaleX[0]&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l460" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l460" class="linenr"> 460</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l461" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l461" class="linenr"> 461</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.append(skewedGauss(muX,&nbsp;sigmaX,&nbsp;scaleX,&nbsp;upperSkewX)&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l462" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l462" class="linenr"> 462</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaY&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l463" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l463" class="linenr"> 463</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y.append(0)</div>
-<div class="pre"><a id="l464" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l464" class="linenr"> 464</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l465" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l465" class="linenr"> 465</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y.append(skewedGauss(0,&nbsp;sigmaY,&nbsp;scaleY,&nbsp;upperSkewY)&nbsp;/&nbsp;4)</div>
-<div class="pre"><a id="l466" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l466" class="linenr"> 466</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaZ&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l467" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l467" class="linenr"> 467</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z.append(scaleZ[0]&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l468" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l468" class="linenr"> 468</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l469" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l469" class="linenr"> 469</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z.append(skewedGauss(muZ,&nbsp;sigmaZ,&nbsp;scaleZ,&nbsp;upperSkewZ)&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l470" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l470" class="linenr"> 470</a> &nbsp;&nbsp;&nbsp;&nbsp;elif&nbsp;shape&nbsp;==&nbsp;6:</div>
-<div class="pre"><a id="l471" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l471" class="linenr"> 471</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;j&nbsp;in&nbsp;range(7):</div>
-<div class="pre"><a id="l472" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l472" class="linenr"> 472</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;j&nbsp;&gt;&nbsp;0:</div>
-<div class="pre"><a id="l473" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l473" class="linenr"> 473</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaX&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l474" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l474" class="linenr"> 474</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.append(scaleX[0]&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l475" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l475" class="linenr"> 475</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l476" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l476" class="linenr"> 476</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.append(skewedGauss(muX,&nbsp;sigmaX,&nbsp;scaleX,&nbsp;upperSkewX)&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l477" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l477" class="linenr"> 477</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaY&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l478" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l478" class="linenr"> 478</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y.append(scaleY[0]&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l479" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l479" class="linenr"> 479</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l480" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l480" class="linenr"> 480</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y.append(skewedGauss(muY,&nbsp;sigmaY,&nbsp;scaleY,&nbsp;upperSkewY)&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l481" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l481" class="linenr"> 481</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaZ&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l482" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l482" class="linenr"> 482</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z.append(scaleZ[0]&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l483" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l483" class="linenr"> 483</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l484" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l484" class="linenr"> 484</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z.append(skewedGauss(muZ,&nbsp;sigmaZ,&nbsp;scaleZ,&nbsp;upperSkewZ)&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l485" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l485" class="linenr"> 485</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l486" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l486" class="linenr"> 486</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaX&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l487" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l487" class="linenr"> 487</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.append(scaleX[0]&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l488" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l488" class="linenr"> 488</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l489" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l489" class="linenr"> 489</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.append(skewedGauss(muX,&nbsp;sigmaX,&nbsp;scaleX,&nbsp;upperSkewX)&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l490" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l490" class="linenr"> 490</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaY&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l491" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l491" class="linenr"> 491</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y.append(0)</div>
-<div class="pre"><a id="l492" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l492" class="linenr"> 492</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l493" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l493" class="linenr"> 493</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y.append(skewedGauss(0,&nbsp;sigmaY,&nbsp;scaleY,&nbsp;upperSkewY)&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l494" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l494" class="linenr"> 494</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaZ&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l495" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l495" class="linenr"> 495</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z.append(scaleZ[0]&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l496" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l496" class="linenr"> 496</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l497" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l497" class="linenr"> 497</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z.append(skewedGauss(muZ,&nbsp;sigmaZ,&nbsp;scaleZ,&nbsp;upperSkewZ)&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l498" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l498" class="linenr"> 498</a> &nbsp;&nbsp;&nbsp;&nbsp;elif&nbsp;shape&nbsp;==&nbsp;7:</div>
-<div class="pre"><a id="l499" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l499" class="linenr"> 499</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;j&nbsp;in&nbsp;range(10):</div>
-<div class="pre"><a id="l500" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l500" class="linenr"> 500</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;j&nbsp;in&nbsp;[1,&nbsp;3,&nbsp;4,&nbsp;5,&nbsp;8,&nbsp;9]:</div>
-<div class="pre"><a id="l501" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l501" class="linenr"> 501</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaX&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l502" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l502" class="linenr"> 502</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.append(scaleX[0]&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l503" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l503" class="linenr"> 503</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l504" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l504" class="linenr"> 504</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.append(skewedGauss(muX,&nbsp;sigmaX,&nbsp;scaleX,&nbsp;upperSkewX)&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l505" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l505" class="linenr"> 505</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaY&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l506" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l506" class="linenr"> 506</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y.append(scaleY[0]&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l507" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l507" class="linenr"> 507</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l508" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l508" class="linenr"> 508</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y.append(skewedGauss(muY,&nbsp;sigmaY,&nbsp;scaleY,&nbsp;upperSkewY)&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l509" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l509" class="linenr"> 509</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaZ&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l510" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l510" class="linenr"> 510</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z.append(scaleZ[0]&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l511" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l511" class="linenr"> 511</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l512" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l512" class="linenr"> 512</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z.append(skewedGauss(muZ,&nbsp;sigmaZ,&nbsp;scaleZ,&nbsp;upperSkewZ)&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l513" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l513" class="linenr"> 513</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l514" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l514" class="linenr"> 514</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaX&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l515" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l515" class="linenr"> 515</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.append(scaleX[0]&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l516" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l516" class="linenr"> 516</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l517" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l517" class="linenr"> 517</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.append(skewedGauss(muX,&nbsp;sigmaX,&nbsp;scaleX,&nbsp;upperSkewX)&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l518" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l518" class="linenr"> 518</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaY&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l519" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l519" class="linenr"> 519</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y.append(0)</div>
-<div class="pre"><a id="l520" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l520" class="linenr"> 520</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l521" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l521" class="linenr"> 521</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y.append(skewedGauss(0,&nbsp;sigmaY,&nbsp;scaleY,&nbsp;upperSkewY)&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l522" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l522" class="linenr"> 522</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaZ&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l523" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l523" class="linenr"> 523</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z.append(scaleZ[0]&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l524" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l524" class="linenr"> 524</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l525" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l525" class="linenr"> 525</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z.append(skewedGauss(muZ,&nbsp;sigmaZ,&nbsp;scaleZ,&nbsp;upperSkewZ)&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l526" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l526" class="linenr"> 526</a> &nbsp;&nbsp;&nbsp;&nbsp;elif&nbsp;shape&nbsp;==&nbsp;8:</div>
-<div class="pre"><a id="l527" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l527" class="linenr"> 527</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;j&nbsp;in&nbsp;range(7):</div>
-<div class="pre"><a id="l528" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l528" class="linenr"> 528</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaX&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l529" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l529" class="linenr"> 529</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.append(scaleX[0]&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l530" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l530" class="linenr"> 530</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l531" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l531" class="linenr"> 531</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.append(skewedGauss(muX,&nbsp;sigmaX,&nbsp;scaleX,&nbsp;upperSkewX)&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l532" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l532" class="linenr"> 532</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaY&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l533" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l533" class="linenr"> 533</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y.append(scaleY[0]&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l534" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l534" class="linenr"> 534</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l535" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l535" class="linenr"> 535</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y.append(skewedGauss(muY,&nbsp;sigmaY,&nbsp;scaleY,&nbsp;upperSkewY)&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l536" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l536" class="linenr"> 536</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaZ&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l537" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l537" class="linenr"> 537</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z.append(scaleZ[0]&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l538" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l538" class="linenr"> 538</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l539" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l539" class="linenr"> 539</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z.append(skewedGauss(muZ,&nbsp;sigmaZ,&nbsp;scaleZ,&nbsp;upperSkewZ)&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l540" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l540" class="linenr"> 540</a> &nbsp;&nbsp;&nbsp;&nbsp;elif&nbsp;shape&nbsp;==&nbsp;9:</div>
-<div class="pre"><a id="l541" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l541" class="linenr"> 541</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;j&nbsp;in&nbsp;range(8):</div>
-<div class="pre"><a id="l542" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l542" class="linenr"> 542</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaX&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l543" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l543" class="linenr"> 543</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.append(scaleX[0]&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l544" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l544" class="linenr"> 544</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l545" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l545" class="linenr"> 545</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.append(skewedGauss(muX,&nbsp;sigmaX,&nbsp;scaleX,&nbsp;upperSkewX)&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l546" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l546" class="linenr"> 546</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaY&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l547" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l547" class="linenr"> 547</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y.append(scaleY[0]&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l548" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l548" class="linenr"> 548</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l549" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l549" class="linenr"> 549</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y.append(skewedGauss(muY,&nbsp;sigmaY,&nbsp;scaleY,&nbsp;upperSkewY)&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l550" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l550" class="linenr"> 550</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaZ&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l551" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l551" class="linenr"> 551</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z.append(scaleZ[0]&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l552" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l552" class="linenr"> 552</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l553" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l553" class="linenr"> 553</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z.append(skewedGauss(muZ,&nbsp;sigmaZ,&nbsp;scaleZ,&nbsp;upperSkewZ)&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l554" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l554" class="linenr"> 554</a> &nbsp;&nbsp;&nbsp;&nbsp;elif&nbsp;shape&nbsp;==&nbsp;10:</div>
-<div class="pre"><a id="l555" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l555" class="linenr"> 555</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;j&nbsp;in&nbsp;range(7):</div>
-<div class="pre"><a id="l556" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l556" class="linenr"> 556</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaX&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l557" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l557" class="linenr"> 557</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.append(scaleX[0]&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l558" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l558" class="linenr"> 558</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l559" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l559" class="linenr"> 559</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.append(skewedGauss(muX,&nbsp;sigmaX,&nbsp;scaleX,&nbsp;upperSkewX)&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l560" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l560" class="linenr"> 560</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaY&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l561" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l561" class="linenr"> 561</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y.append(scaleY[0]&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l562" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l562" class="linenr"> 562</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l563" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l563" class="linenr"> 563</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y.append(skewedGauss(muY,&nbsp;sigmaY,&nbsp;scaleY,&nbsp;upperSkewY)&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l564" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l564" class="linenr"> 564</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaZ&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l565" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l565" class="linenr"> 565</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z.append(scaleZ[0]&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l566" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l566" class="linenr"> 566</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l567" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l567" class="linenr"> 567</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z.append(skewedGauss(muZ,&nbsp;sigmaZ,&nbsp;scaleZ,&nbsp;upperSkewZ)&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l568" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l568" class="linenr"> 568</a> &nbsp;&nbsp;&nbsp;&nbsp;elif&nbsp;shape&nbsp;==&nbsp;11:</div>
-<div class="pre"><a id="l569" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l569" class="linenr"> 569</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;j&nbsp;in&nbsp;range(7):</div>
-<div class="pre"><a id="l570" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l570" class="linenr"> 570</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaX&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l571" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l571" class="linenr"> 571</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.append(scaleX[0]&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l572" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l572" class="linenr"> 572</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l573" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l573" class="linenr"> 573</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.append(skewedGauss(muX,&nbsp;sigmaX,&nbsp;scaleX,&nbsp;upperSkewX)&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l574" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l574" class="linenr"> 574</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaY&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l575" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l575" class="linenr"> 575</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y.append(scaleY[0]&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l576" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l576" class="linenr"> 576</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l577" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l577" class="linenr"> 577</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y.append(skewedGauss(muY,&nbsp;sigmaY,&nbsp;scaleY,&nbsp;upperSkewY)&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l578" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l578" class="linenr"> 578</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;sigmaZ&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l579" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l579" class="linenr"> 579</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z.append(scaleZ[0]&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l580" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l580" class="linenr"> 580</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l581" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l581" class="linenr"> 581</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z.append(skewedGauss(muZ,&nbsp;sigmaZ,&nbsp;scaleZ,&nbsp;upperSkewZ)&nbsp;/&nbsp;2)</div>
-<div class="pre"><a id="l582" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l582" class="linenr"> 582</a> </div>
-<div class="pre"><a id="l583" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l583" class="linenr"> 583</a> &nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;This&nbsp;is&nbsp;for&nbsp;scaling&nbsp;the&nbsp;displacement&nbsp;textures.</div>
-<div class="pre"><a id="l584" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l584" class="linenr"> 584</a> &nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Scale&nbsp;the&nbsp;vertices&nbsp;so&nbsp;that&nbsp;their&nbsp;average&nbsp;is&nbsp;equal&nbsp;to&nbsp;1&nbsp;*&nbsp;scale&nbsp;factor.</div>
-<div class="pre"><a id="l585" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l585" class="linenr"> 585</a> &nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;scaleDisplace:</div>
-<div class="pre"><a id="l586" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l586" class="linenr"> 586</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;averageX&nbsp;=&nbsp;(sum(x)&nbsp;/&nbsp;len(x))&nbsp;*&nbsp;scale_fac[0]</div>
-<div class="pre"><a id="l587" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l587" class="linenr"> 587</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;i&nbsp;in&nbsp;range(len(x)):</div>
-<div class="pre"><a id="l588" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l588" class="linenr"> 588</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x[i]&nbsp;/=&nbsp;averageX</div>
-<div class="pre"><a id="l589" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l589" class="linenr"> 589</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;averageY&nbsp;=&nbsp;(sum(y)&nbsp;/&nbsp;len(y))&nbsp;*&nbsp;scale_fac[1]</div>
-<div class="pre"><a id="l590" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l590" class="linenr"> 590</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;i&nbsp;in&nbsp;range(len(y)):</div>
-<div class="pre"><a id="l591" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l591" class="linenr"> 591</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y[i]&nbsp;/=&nbsp;averageY</div>
-<div class="pre"><a id="l592" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l592" class="linenr"> 592</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;averageZ&nbsp;=&nbsp;(sum(z)&nbsp;/&nbsp;len(z))&nbsp;*&nbsp;scale_fac[2]</div>
-<div class="pre"><a id="l593" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l593" class="linenr"> 593</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;i&nbsp;in&nbsp;range(len(z)):</div>
-<div class="pre"><a id="l594" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l594" class="linenr"> 594</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z[i]&nbsp;/=&nbsp;averageZ</div>
-<div class="pre"><a id="l595" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l595" class="linenr"> 595</a> </div>
-<div class="pre"><a id="l596" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l596" class="linenr"> 596</a> &nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Build&nbsp;vertex&nbsp;and&nbsp;face&nbsp;arrays:</div>
-<div class="pre"><a id="l597" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l597" class="linenr"> 597</a> &nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;shape&nbsp;==&nbsp;1:</div>
-<div class="pre"><a id="l598" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l598" class="linenr"> 598</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;verts&nbsp;=&nbsp;[(-x[0],&nbsp;-y[0],&nbsp;-z[0]),&nbsp;(x[1],&nbsp;-y[1],&nbsp;-z[1]),&nbsp;(x[2],&nbsp;-y[2],&nbsp;z[2]),</div>
-<div class="pre"><a id="l599" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l599" class="linenr"> 599</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(-x[3],&nbsp;y[3],&nbsp;-z[3]),&nbsp;(x[4],&nbsp;y[4],&nbsp;-z[4]),&nbsp;(x[5],&nbsp;y[5],&nbsp;z[5]),</div>
-<div class="pre"><a id="l600" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l600" class="linenr"> 600</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(x[6],&nbsp;y[6],&nbsp;z[6]),&nbsp;(x[7],&nbsp;y[7],&nbsp;-z[7])]</div>
-<div class="pre"><a id="l601" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l601" class="linenr"> 601</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;faces&nbsp;=&nbsp;[[0,&nbsp;1,&nbsp;2],&nbsp;[0,&nbsp;1,&nbsp;7],&nbsp;[3,&nbsp;0,&nbsp;7],&nbsp;[3,&nbsp;4,&nbsp;7],&nbsp;[1,&nbsp;4,&nbsp;7],&nbsp;[3,&nbsp;4,&nbsp;5],&nbsp;[1,&nbsp;2,&nbsp;6],</div>
-<div class="pre"><a id="l602" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l602" class="linenr"> 602</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[1,&nbsp;4,&nbsp;6],&nbsp;[4,&nbsp;5,&nbsp;6],&nbsp;[0,&nbsp;2,&nbsp;6],&nbsp;[0,&nbsp;3,&nbsp;6],&nbsp;[3,&nbsp;5,&nbsp;6]]</div>
-<div class="pre"><a id="l603" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l603" class="linenr"> 603</a> &nbsp;&nbsp;&nbsp;&nbsp;elif&nbsp;shape&nbsp;==&nbsp;2:</div>
-<div class="pre"><a id="l604" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l604" class="linenr"> 604</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;verts&nbsp;=&nbsp;[(-x[0],&nbsp;y[0],&nbsp;-z[0]),&nbsp;(x[1],&nbsp;-y[1],&nbsp;-z[1]),&nbsp;(x[2],&nbsp;y[2],&nbsp;-z[2]),</div>
-<div class="pre"><a id="l605" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l605" class="linenr"> 605</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(-x[3],&nbsp;y[3],&nbsp;-z[3]),&nbsp;(-x[4],&nbsp;-y[4],&nbsp;z[4]),&nbsp;(x[5],&nbsp;y[5],&nbsp;z[5]),</div>
-<div class="pre"><a id="l606" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l606" class="linenr"> 606</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(x[6],&nbsp;y[6],&nbsp;z[6]),&nbsp;(-x[7],&nbsp;y[7],&nbsp;z[7])]</div>
-<div class="pre"><a id="l607" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l607" class="linenr"> 607</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;faces&nbsp;=&nbsp;[[0,&nbsp;1,&nbsp;2],&nbsp;[0,&nbsp;2,&nbsp;3],&nbsp;[0,&nbsp;3,&nbsp;7],&nbsp;[0,&nbsp;7,&nbsp;4],&nbsp;[1,&nbsp;4,&nbsp;5],&nbsp;[0,&nbsp;1,&nbsp;4],&nbsp;[5,&nbsp;1,&nbsp;2],</div>
-<div class="pre"><a id="l608" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l608" class="linenr"> 608</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[5,&nbsp;2,&nbsp;6],&nbsp;[3,&nbsp;2,&nbsp;6],&nbsp;[3,&nbsp;6,&nbsp;7],&nbsp;[5,&nbsp;4,&nbsp;7],&nbsp;[5,&nbsp;6,&nbsp;7]]</div>
-<div class="pre"><a id="l609" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l609" class="linenr"> 609</a> &nbsp;&nbsp;&nbsp;&nbsp;elif&nbsp;shape&nbsp;==&nbsp;3:</div>
-<div class="pre"><a id="l610" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l610" class="linenr"> 610</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;verts&nbsp;=&nbsp;[(x[0],&nbsp;y[0],&nbsp;z[0]),&nbsp;(x[1],&nbsp;-y[1],&nbsp;-z[1]),&nbsp;(x[2],&nbsp;y[2],&nbsp;-z[2]),</div>
-<div class="pre"><a id="l611" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l611" class="linenr"> 611</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(-x[3],&nbsp;y[3],&nbsp;-z[3]),&nbsp;(x[4],&nbsp;-y[4],&nbsp;z[4]),&nbsp;(x[5],&nbsp;y[5],&nbsp;z[5]),</div>
-<div class="pre"><a id="l612" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l612" class="linenr"> 612</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(-x[6],&nbsp;y[6],&nbsp;z[6]),&nbsp;(-x[7],&nbsp;-y[7],&nbsp;z[7])]</div>
-<div class="pre"><a id="l613" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l613" class="linenr"> 613</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;faces&nbsp;=&nbsp;[[0,&nbsp;1,&nbsp;2],&nbsp;[0,&nbsp;2,&nbsp;3],&nbsp;[0,&nbsp;3,&nbsp;6],&nbsp;[0,&nbsp;6,&nbsp;7],&nbsp;[0,&nbsp;7,&nbsp;4],&nbsp;[0,&nbsp;4,&nbsp;1],&nbsp;[5,&nbsp;4,&nbsp;1,&nbsp;2],</div>
-<div class="pre"><a id="l614" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l614" class="linenr"> 614</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[5,&nbsp;6,&nbsp;3,&nbsp;2],&nbsp;[5,&nbsp;4,&nbsp;7,&nbsp;6]]</div>
-<div class="pre"><a id="l615" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l615" class="linenr"> 615</a> &nbsp;&nbsp;&nbsp;&nbsp;elif&nbsp;shape&nbsp;==&nbsp;4:</div>
-<div class="pre"><a id="l616" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l616" class="linenr"> 616</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;verts&nbsp;=&nbsp;[(x[0],&nbsp;y[0],&nbsp;z[0]),&nbsp;(x[1],&nbsp;-y[1],&nbsp;-z[1]),&nbsp;(x[2],&nbsp;y[2],&nbsp;-z[2]),</div>
-<div class="pre"><a id="l617" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l617" class="linenr"> 617</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(-x[3],&nbsp;y[3],&nbsp;-z[3]),&nbsp;(-x[4],&nbsp;-y[4],&nbsp;-z[4]),&nbsp;(x[5],&nbsp;-y[5],&nbsp;-z[5]),</div>
-<div class="pre"><a id="l618" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l618" class="linenr"> 618</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(x[6],&nbsp;y[6],&nbsp;-z[6]),&nbsp;(x[7],&nbsp;y[7],&nbsp;-z[7]),&nbsp;(-x[8],&nbsp;y[8],&nbsp;-z[8]),</div>
-<div class="pre"><a id="l619" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l619" class="linenr"> 619</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(x[9],&nbsp;y[9],&nbsp;-z[9])]</div>
-<div class="pre"><a id="l620" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l620" class="linenr"> 620</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;faces&nbsp;=&nbsp;[[0,&nbsp;1,&nbsp;6],&nbsp;[0,&nbsp;6,&nbsp;2],&nbsp;[0,&nbsp;2,&nbsp;7],&nbsp;[0,&nbsp;7,&nbsp;3],&nbsp;[0,&nbsp;3,&nbsp;8],&nbsp;[0,&nbsp;8,&nbsp;4],&nbsp;[0,&nbsp;4,&nbsp;5],</div>
-<div class="pre"><a id="l621" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l621" class="linenr"> 621</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[0,&nbsp;5,&nbsp;1],&nbsp;[1,&nbsp;9,&nbsp;2],&nbsp;[2,&nbsp;9,&nbsp;3],&nbsp;[3,&nbsp;9,&nbsp;4],&nbsp;[4,&nbsp;9,&nbsp;1],&nbsp;[1,&nbsp;6,&nbsp;2],&nbsp;[2,&nbsp;7,&nbsp;3],</div>
-<div class="pre"><a id="l622" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l622" class="linenr"> 622</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3,&nbsp;8,&nbsp;4],&nbsp;[4,&nbsp;5,&nbsp;1]]</div>
-<div class="pre"><a id="l623" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l623" class="linenr"> 623</a> &nbsp;&nbsp;&nbsp;&nbsp;elif&nbsp;shape&nbsp;==&nbsp;5:</div>
-<div class="pre"><a id="l624" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l624" class="linenr"> 624</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;verts&nbsp;=&nbsp;[(x[0],&nbsp;y[0],&nbsp;z[0]),&nbsp;(x[1],&nbsp;-y[1],&nbsp;z[1]),&nbsp;(x[2],&nbsp;y[2],&nbsp;z[2]),</div>
-<div class="pre"><a id="l625" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l625" class="linenr"> 625</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(-x[3],&nbsp;y[3],&nbsp;z[3]),&nbsp;(x[4],&nbsp;-y[4],&nbsp;-z[4]),&nbsp;(x[5],&nbsp;y[5],&nbsp;-z[5]),</div>
-<div class="pre"><a id="l626" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l626" class="linenr"> 626</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(x[6],&nbsp;y[6],&nbsp;-z[6]),&nbsp;(-x[7],&nbsp;y[7],&nbsp;-z[7]),&nbsp;(-x[8],&nbsp;y[8],&nbsp;-z[8]),</div>
-<div class="pre"><a id="l627" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l627" class="linenr"> 627</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(-x[9],&nbsp;-y[9],&nbsp;-z[9])]</div>
-<div class="pre"><a id="l628" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l628" class="linenr"> 628</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;faces&nbsp;=&nbsp;[[0,&nbsp;1,&nbsp;2],&nbsp;[0,&nbsp;2,&nbsp;3],&nbsp;[0,&nbsp;3,&nbsp;1],&nbsp;[1,&nbsp;4,&nbsp;5],&nbsp;[1,&nbsp;5,&nbsp;2],&nbsp;[2,&nbsp;5,&nbsp;6],&nbsp;[2,&nbsp;6,&nbsp;7],</div>
-<div class="pre"><a id="l629" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l629" class="linenr"> 629</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[2,&nbsp;7,&nbsp;3],&nbsp;[3,&nbsp;7,&nbsp;8],&nbsp;[3,&nbsp;8,&nbsp;9],&nbsp;[3,&nbsp;9,&nbsp;1],&nbsp;[1,&nbsp;9,&nbsp;4],&nbsp;[4,&nbsp;5,&nbsp;9],&nbsp;[5,&nbsp;6,&nbsp;7],</div>
-<div class="pre"><a id="l630" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l630" class="linenr"> 630</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[7,&nbsp;8,&nbsp;9],&nbsp;[9,&nbsp;5,&nbsp;7]]</div>
-<div class="pre"><a id="l631" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l631" class="linenr"> 631</a> &nbsp;&nbsp;&nbsp;&nbsp;elif&nbsp;shape&nbsp;==&nbsp;6:</div>
-<div class="pre"><a id="l632" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l632" class="linenr"> 632</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;verts&nbsp;=&nbsp;[(x[0],&nbsp;y[0],&nbsp;z[0]),&nbsp;(x[1],&nbsp;-y[1],&nbsp;-z[1]),&nbsp;(x[2],&nbsp;y[2],&nbsp;-z[2]),</div>
-<div class="pre"><a id="l633" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l633" class="linenr"> 633</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(-x[3],&nbsp;y[3],&nbsp;-z[3]),&nbsp;(-x[4],&nbsp;y[4],&nbsp;z[4]),&nbsp;(-x[5],&nbsp;-y[5],&nbsp;z[5]),</div>
-<div class="pre"><a id="l634" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l634" class="linenr"> 634</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(-x[6],&nbsp;-y[6],&nbsp;-z[6])]</div>
-<div class="pre"><a id="l635" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l635" class="linenr"> 635</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;faces&nbsp;=&nbsp;[[0,&nbsp;1,&nbsp;2],&nbsp;[0,&nbsp;2,&nbsp;3,&nbsp;4],&nbsp;[0,&nbsp;1,&nbsp;6,&nbsp;5],&nbsp;[0,&nbsp;4,&nbsp;5],&nbsp;[1,&nbsp;2,&nbsp;3,&nbsp;6],&nbsp;[3,&nbsp;4,&nbsp;5,&nbsp;6]]</div>
-<div class="pre"><a id="l636" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l636" class="linenr"> 636</a> &nbsp;&nbsp;&nbsp;&nbsp;elif&nbsp;shape&nbsp;==&nbsp;7:</div>
-<div class="pre"><a id="l637" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l637" class="linenr"> 637</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;verts&nbsp;=&nbsp;[(x[0],&nbsp;y[0],&nbsp;z[0]),&nbsp;(x[1],&nbsp;-y[1],&nbsp;-z[1]),&nbsp;(x[2],&nbsp;y[2],&nbsp;-z[2]),</div>
-<div class="pre"><a id="l638" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l638" class="linenr"> 638</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(x[3],&nbsp;y[3],&nbsp;-z[3]),&nbsp;(-x[4],&nbsp;y[4],&nbsp;-z[4]),&nbsp;(-x[5],&nbsp;y[5],&nbsp;z[5]),</div>
-<div class="pre"><a id="l639" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l639" class="linenr"> 639</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(-x[6],&nbsp;y[6],&nbsp;z[6]),&nbsp;(-x[7],&nbsp;y[7],&nbsp;-z[7]),&nbsp;(-x[8],&nbsp;-y[8],&nbsp;-z[8]),</div>
-<div class="pre"><a id="l640" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l640" class="linenr"> 640</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(-x[9],&nbsp;-y[9],&nbsp;z[9])]</div>
-<div class="pre"><a id="l641" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l641" class="linenr"> 641</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;faces&nbsp;=&nbsp;[[0,&nbsp;1,&nbsp;2],&nbsp;[0,&nbsp;2,&nbsp;3],&nbsp;[0,&nbsp;5,&nbsp;6],&nbsp;[0,&nbsp;6,&nbsp;9],&nbsp;[0,&nbsp;1,&nbsp;8,&nbsp;9],&nbsp;[0,&nbsp;3,&nbsp;4,&nbsp;5],</div>
-<div class="pre"><a id="l642" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l642" class="linenr"> 642</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[1,&nbsp;2,&nbsp;7,&nbsp;8],&nbsp;[2,&nbsp;3,&nbsp;4,&nbsp;7],&nbsp;[4,&nbsp;5,&nbsp;6,&nbsp;7],&nbsp;[6,&nbsp;7,&nbsp;8,&nbsp;9]]</div>
-<div class="pre"><a id="l643" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l643" class="linenr"> 643</a> &nbsp;&nbsp;&nbsp;&nbsp;elif&nbsp;shape&nbsp;==&nbsp;8:</div>
-<div class="pre"><a id="l644" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l644" class="linenr"> 644</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;verts&nbsp;=&nbsp;[(x[0],&nbsp;y[0],&nbsp;z[0]),&nbsp;(x[1],&nbsp;-y[1],&nbsp;-z[1]),&nbsp;(x[2],&nbsp;y[2],&nbsp;-z[2]),</div>
-<div class="pre"><a id="l645" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l645" class="linenr"> 645</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(-x[3],&nbsp;y[3],&nbsp;-z[3]),&nbsp;(-x[4],&nbsp;-y[4],&nbsp;-z[4]),&nbsp;(-x[5],&nbsp;-y[5],&nbsp;z[5]),</div>
-<div class="pre"><a id="l646" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l646" class="linenr"> 646</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(-x[6],&nbsp;y[6],&nbsp;z[6])]</div>
-<div class="pre"><a id="l647" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l647" class="linenr"> 647</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;faces&nbsp;=&nbsp;[[0,&nbsp;2,&nbsp;1],&nbsp;[0,&nbsp;1,&nbsp;4],&nbsp;[0,&nbsp;4,&nbsp;5],&nbsp;[0,&nbsp;5,&nbsp;6],&nbsp;[0,&nbsp;6,&nbsp;3,&nbsp;2],&nbsp;[2,&nbsp;1,&nbsp;4,&nbsp;3],</div>
-<div class="pre"><a id="l648" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l648" class="linenr"> 648</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3,&nbsp;6,&nbsp;5,&nbsp;4]]</div>
-<div class="pre"><a id="l649" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l649" class="linenr"> 649</a> &nbsp;&nbsp;&nbsp;&nbsp;elif&nbsp;shape&nbsp;==&nbsp;9:</div>
-<div class="pre"><a id="l650" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l650" class="linenr"> 650</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;verts&nbsp;=&nbsp;[(-x[0],&nbsp;-y[0],&nbsp;-z[0]),&nbsp;(-x[1],&nbsp;y[1],&nbsp;-z[1]),&nbsp;(-x[2],&nbsp;y[2],&nbsp;z[2]),</div>
-<div class="pre"><a id="l651" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l651" class="linenr"> 651</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(-x[3],&nbsp;-y[3],&nbsp;z[3]),&nbsp;(x[4],&nbsp;-y[4],&nbsp;-z[4]),&nbsp;(x[5],&nbsp;y[5],&nbsp;-z[5]),</div>
-<div class="pre"><a id="l652" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l652" class="linenr"> 652</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(x[6],&nbsp;y[6],&nbsp;z[6]),&nbsp;(x[7],&nbsp;-y[7],&nbsp;z[7])]</div>
-<div class="pre"><a id="l653" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l653" class="linenr"> 653</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;faces&nbsp;=&nbsp;[[0,&nbsp;1,&nbsp;6,&nbsp;2],&nbsp;[1,&nbsp;5,&nbsp;7,&nbsp;6],&nbsp;[5,&nbsp;4,&nbsp;3,&nbsp;7],&nbsp;[4,&nbsp;0,&nbsp;2,&nbsp;3],&nbsp;[0,&nbsp;1,&nbsp;5,&nbsp;4],&nbsp;[3,&nbsp;2,&nbsp;6,&nbsp;7]]</div>
-<div class="pre"><a id="l654" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l654" class="linenr"> 654</a> &nbsp;&nbsp;&nbsp;&nbsp;elif&nbsp;shape&nbsp;==&nbsp;10:</div>
-<div class="pre"><a id="l655" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l655" class="linenr"> 655</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;verts&nbsp;=&nbsp;[(-x[0],&nbsp;-y[0],&nbsp;-z[0]),&nbsp;(-x[1],&nbsp;y[1],&nbsp;-z[1]),&nbsp;(-x[2],&nbsp;y[2],&nbsp;z[2]),</div>
-<div class="pre"><a id="l656" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l656" class="linenr"> 656</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(x[3],&nbsp;-y[3],&nbsp;z[3]),&nbsp;(x[4],&nbsp;y[4],&nbsp;z[4]),&nbsp;(x[5],&nbsp;y[5],&nbsp;-z[5]),</div>
-<div class="pre"><a id="l657" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l657" class="linenr"> 657</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(x[6],&nbsp;-y[6],&nbsp;-z[6])]</div>
-<div class="pre"><a id="l658" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l658" class="linenr"> 658</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;faces&nbsp;=&nbsp;[[0,&nbsp;2,&nbsp;3],&nbsp;[0,&nbsp;3,&nbsp;6],&nbsp;[0,&nbsp;1,&nbsp;5,&nbsp;6],&nbsp;[2,&nbsp;3,&nbsp;4],&nbsp;[0,&nbsp;1,&nbsp;2],&nbsp;[1,&nbsp;2,&nbsp;4,&nbsp;5],&nbsp;[3,&nbsp;4,&nbsp;5,&nbsp;6]]</div>
-<div class="pre"><a id="l659" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l659" class="linenr"> 659</a> &nbsp;&nbsp;&nbsp;&nbsp;elif&nbsp;shape&nbsp;==&nbsp;11:</div>
-<div class="pre"><a id="l660" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l660" class="linenr"> 660</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;verts&nbsp;=&nbsp;[(-x[0],&nbsp;-y[0],&nbsp;-z[0]),&nbsp;(-x[1],&nbsp;y[1],&nbsp;-z[1]),&nbsp;(-x[2],&nbsp;y[2],&nbsp;z[2]),</div>
-<div class="pre"><a id="l661" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l661" class="linenr"> 661</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(x[3],&nbsp;-y[3],&nbsp;z[3]),&nbsp;(x[4],&nbsp;y[4],&nbsp;z[4]),&nbsp;(x[5],&nbsp;y[5],&nbsp;-z[5]),</div>
-<div class="pre"><a id="l662" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l662" class="linenr"> 662</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(x[6],&nbsp;-y[6],&nbsp;-z[6])]</div>
-<div class="pre"><a id="l663" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l663" class="linenr"> 663</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;faces&nbsp;=&nbsp;[[0,&nbsp;2,&nbsp;3],&nbsp;[0,&nbsp;3,&nbsp;6],&nbsp;[0,&nbsp;1,&nbsp;5,&nbsp;6],&nbsp;[2,&nbsp;3,&nbsp;4],&nbsp;[5,&nbsp;6,&nbsp;3],&nbsp;[1,&nbsp;5,&nbsp;3,&nbsp;4],&nbsp;[0,&nbsp;1,&nbsp;4,&nbsp;2]]</div>
-<div class="pre"><a id="l664" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l664" class="linenr"> 664</a> &nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l665" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l665" class="linenr"> 665</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;verts&nbsp;=&nbsp;[(-x[0],&nbsp;-y[0],&nbsp;-z[0]),&nbsp;(-x[1],&nbsp;y[1],&nbsp;-z[1]),&nbsp;(-x[2],&nbsp;-y[2],&nbsp;z[2]),</div>
-<div class="pre"><a id="l666" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l666" class="linenr"> 666</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(-x[3],&nbsp;y[3],&nbsp;z[3]),&nbsp;(x[4],&nbsp;-y[4],&nbsp;-z[4]),&nbsp;(x[5],&nbsp;y[5],&nbsp;-z[5]),</div>
-<div class="pre"><a id="l667" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l667" class="linenr"> 667</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(x[6],&nbsp;-y[6],&nbsp;z[6]),&nbsp;(x[7],&nbsp;y[7],&nbsp;z[7])]</div>
-<div class="pre"><a id="l668" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l668" class="linenr"> 668</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;faces&nbsp;=&nbsp;[[0,&nbsp;1,&nbsp;3,&nbsp;2],&nbsp;[0,&nbsp;1,&nbsp;5,&nbsp;4],&nbsp;[0,&nbsp;4,&nbsp;6,&nbsp;2],&nbsp;[7,&nbsp;5,&nbsp;4,&nbsp;6],&nbsp;[7,&nbsp;3,&nbsp;2,&nbsp;6],&nbsp;[7,&nbsp;5,&nbsp;1,&nbsp;3]]</div>
-<div class="pre"><a id="l669" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l669" class="linenr"> 669</a> </div>
-<div class="pre"><a id="l670" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l670" class="linenr"> 670</a> &nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;name&nbsp;=&nbsp;&quot;Rock.&quot;&nbsp;+&nbsp;str(base&nbsp;+&nbsp;shift).zfill(3)</div>
-<div class="pre"><a id="l671" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l671" class="linenr"> 671</a> &nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;=&nbsp;&quot;rock&quot;</div>
-<div class="pre"><a id="l672" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l672" class="linenr"> 672</a> </div>
-<div class="pre"><a id="l673" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l673" class="linenr"> 673</a> &nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Make&nbsp;object:</div>
-<div class="pre"><a id="l674" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l674" class="linenr"> 674</a> &nbsp;&nbsp;&nbsp;&nbsp;obj&nbsp;=&nbsp;createMeshObject(context,&nbsp;verts,&nbsp;[],&nbsp;faces,&nbsp;name)</div>
-<div class="pre"><a id="l675" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l675" class="linenr"> 675</a> </div>
-<div class="pre"><a id="l676" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l676" class="linenr"> 676</a> &nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;scaleDisplace:</div>
-<div class="pre"><a id="l677" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l677" class="linenr"> 677</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;bpy.data.objects[name].scale&nbsp;=&nbsp;Vector((averageX,&nbsp;averageY,&nbsp;averageZ))</div>
-<div class="pre"><a id="l678" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l678" class="linenr"> 678</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;obj.scale&nbsp;=&nbsp;Vector((averageX,&nbsp;averageY,&nbsp;averageZ))</div>
-<div class="pre"><a id="l679" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l679" class="linenr"> 679</a> </div>
-<div class="pre"><a id="l680" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l680" class="linenr"> 680</a> &nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;For&nbsp;a&nbsp;slight&nbsp;speed&nbsp;bump&nbsp;/&nbsp;Readability:</div>
-<div class="pre"><a id="l681" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l681" class="linenr"> 681</a> &nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;mesh&nbsp;=&nbsp;bpy.data.meshes[name]</div>
-<div class="pre"><a id="l682" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l682" class="linenr"> 682</a> &nbsp;&nbsp;&nbsp;&nbsp;mesh&nbsp;=&nbsp;obj.data</div>
-<div class="pre"><a id="l683" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l683" class="linenr"> 683</a> </div>
-<div class="pre"><a id="l684" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l684" class="linenr"> 684</a> &nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Apply&nbsp;creasing:</div>
-<div class="pre"><a id="l685" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l685" class="linenr"> 685</a> &nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;shape&nbsp;==&nbsp;0:</div>
-<div class="pre"><a id="l686" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l686" class="linenr"> 686</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;i&nbsp;in&nbsp;range(12):</div>
-<div class="pre"><a id="l687" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l687" class="linenr"> 687</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;todo:&nbsp;&quot;0.375&nbsp;/&nbsp;3&quot;?&nbsp;&nbsp;WTF?&nbsp;&nbsp;That&nbsp;=&nbsp;0.125.&nbsp;.&nbsp;.&nbsp;.</div>
-<div class="pre"><a id="l688" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l688" class="linenr"> 688</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;&nbsp;***&nbsp;Completed&nbsp;7/15/2011:&nbsp;Changed&nbsp;second&nbsp;one&nbsp;***</div>
-<div class="pre"><a id="l689" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l689" class="linenr"> 689</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mesh.edges[i].crease&nbsp;=&nbsp;gauss(0.125,&nbsp;0.125)</div>
-<div class="pre"><a id="l690" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l690" class="linenr"> 690</a> &nbsp;&nbsp;&nbsp;&nbsp;elif&nbsp;shape&nbsp;==&nbsp;1:</div>
-<div class="pre"><a id="l691" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l691" class="linenr"> 691</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;i&nbsp;in&nbsp;[0,&nbsp;2]:</div>
-<div class="pre"><a id="l692" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l692" class="linenr"> 692</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mesh.edges[i].crease&nbsp;=&nbsp;gauss(0.5,&nbsp;0.125)</div>
-<div class="pre"><a id="l693" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l693" class="linenr"> 693</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;i&nbsp;in&nbsp;[6,&nbsp;9,&nbsp;11,&nbsp;12]:</div>
-<div class="pre"><a id="l694" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l694" class="linenr"> 694</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mesh.edges[i].crease&nbsp;=&nbsp;gauss(0.25,&nbsp;0.05)</div>
-<div class="pre"><a id="l695" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l695" class="linenr"> 695</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;i&nbsp;in&nbsp;[5,&nbsp;7,&nbsp;15,&nbsp;16]:</div>
-<div class="pre"><a id="l696" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l696" class="linenr"> 696</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mesh.edges[i].crease&nbsp;=&nbsp;gauss(0.125,&nbsp;0.025)</div>
-<div class="pre"><a id="l697" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l697" class="linenr"> 697</a> &nbsp;&nbsp;&nbsp;&nbsp;elif&nbsp;shape&nbsp;==&nbsp;2:</div>
-<div class="pre"><a id="l698" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l698" class="linenr"> 698</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;i&nbsp;in&nbsp;range(18):</div>
-<div class="pre"><a id="l699" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l699" class="linenr"> 699</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mesh.edges[i].crease&nbsp;=&nbsp;gauss(0.125,&nbsp;0.025)</div>
-<div class="pre"><a id="l700" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l700" class="linenr"> 700</a> &nbsp;&nbsp;&nbsp;&nbsp;elif&nbsp;shape&nbsp;==&nbsp;3:</div>
-<div class="pre"><a id="l701" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l701" class="linenr"> 701</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;i&nbsp;in&nbsp;[0,&nbsp;1,&nbsp;6,&nbsp;10,&nbsp;13]:</div>
-<div class="pre"><a id="l702" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l702" class="linenr"> 702</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mesh.edges[i].crease&nbsp;=&nbsp;gauss(0.25,&nbsp;0.05)</div>
-<div class="pre"><a id="l703" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l703" class="linenr"> 703</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mesh.edges[8].crease&nbsp;=&nbsp;gauss(0.5,&nbsp;0.125)</div>
-<div class="pre"><a id="l704" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l704" class="linenr"> 704</a> &nbsp;&nbsp;&nbsp;&nbsp;elif&nbsp;shape&nbsp;==&nbsp;4:</div>
-<div class="pre"><a id="l705" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l705" class="linenr"> 705</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;i&nbsp;in&nbsp;[5,&nbsp;6,&nbsp;7,&nbsp;10,&nbsp;14,&nbsp;16,&nbsp;19,&nbsp;21]:</div>
-<div class="pre"><a id="l706" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l706" class="linenr"> 706</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mesh.edges[i].crease&nbsp;=&nbsp;gauss(0.5,&nbsp;0.125)</div>
-<div class="pre"><a id="l707" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l707" class="linenr"> 707</a> &nbsp;&nbsp;&nbsp;&nbsp;elif&nbsp;shape&nbsp;==&nbsp;7:</div>
-<div class="pre"><a id="l708" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l708" class="linenr"> 708</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;i&nbsp;in&nbsp;range(18):</div>
-<div class="pre"><a id="l709" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l709" class="linenr"> 709</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;i&nbsp;in&nbsp;[0,&nbsp;1,&nbsp;2,&nbsp;3,&nbsp;6,&nbsp;7,&nbsp;8,&nbsp;9,&nbsp;13,&nbsp;16]:</div>
-<div class="pre"><a id="l710" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l710" class="linenr"> 710</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mesh.edges[i].crease&nbsp;=&nbsp;gauss(0.5,&nbsp;0.125)</div>
-<div class="pre"><a id="l711" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l711" class="linenr"> 711</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elif&nbsp;i&nbsp;in&nbsp;[11,&nbsp;17]:</div>
-<div class="pre"><a id="l712" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l712" class="linenr"> 712</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mesh.edges[i].crease&nbsp;=&nbsp;gauss(0.25,&nbsp;0.05)</div>
-<div class="pre"><a id="l713" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l713" class="linenr"> 713</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l714" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l714" class="linenr"> 714</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mesh.edges[i].crease&nbsp;=&nbsp;gauss(0.125,&nbsp;0.025)</div>
-<div class="pre"><a id="l715" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l715" class="linenr"> 715</a> &nbsp;&nbsp;&nbsp;&nbsp;elif&nbsp;shape&nbsp;==&nbsp;8:</div>
-<div class="pre"><a id="l716" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l716" class="linenr"> 716</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;i&nbsp;in&nbsp;range(12):</div>
-<div class="pre"><a id="l717" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l717" class="linenr"> 717</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;i&nbsp;in&nbsp;[0,&nbsp;3,&nbsp;8,&nbsp;9,&nbsp;10]:</div>
-<div class="pre"><a id="l718" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l718" class="linenr"> 718</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mesh.edges[i].crease&nbsp;=&nbsp;gauss(0.5,&nbsp;0.125)</div>
-<div class="pre"><a id="l719" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l719" class="linenr"> 719</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elif&nbsp;i&nbsp;==&nbsp;11:</div>
-<div class="pre"><a id="l720" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l720" class="linenr"> 720</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mesh.edges[i].crease&nbsp;=&nbsp;gauss(0.25,&nbsp;0.05)</div>
-<div class="pre"><a id="l721" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l721" class="linenr"> 721</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l722" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l722" class="linenr"> 722</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mesh.edges[i].crease&nbsp;=&nbsp;gauss(0.125,&nbsp;0.025)</div>
-<div class="pre"><a id="l723" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l723" class="linenr"> 723</a> &nbsp;&nbsp;&nbsp;&nbsp;elif&nbsp;shape&nbsp;==&nbsp;9:</div>
-<div class="pre"><a id="l724" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l724" class="linenr"> 724</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;i&nbsp;in&nbsp;range(12):</div>
-<div class="pre"><a id="l725" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l725" class="linenr"> 725</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;i&nbsp;in&nbsp;[0,&nbsp;3,&nbsp;4,&nbsp;11]:</div>
-<div class="pre"><a id="l726" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l726" class="linenr"> 726</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mesh.edges[i].crease&nbsp;=&nbsp;gauss(0.5,&nbsp;0.125)</div>
-<div class="pre"><a id="l727" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l727" class="linenr"> 727</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l728" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l728" class="linenr"> 728</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mesh.edges[i].crease&nbsp;=&nbsp;gauss(0.25,&nbsp;0.05)</div>
-<div class="pre"><a id="l729" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l729" class="linenr"> 729</a> &nbsp;&nbsp;&nbsp;&nbsp;elif&nbsp;shape&nbsp;==&nbsp;10:</div>
-<div class="pre"><a id="l730" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l730" class="linenr"> 730</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;i&nbsp;in&nbsp;range(12):</div>
-<div class="pre"><a id="l731" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l731" class="linenr"> 731</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;i&nbsp;in&nbsp;[0,&nbsp;2,&nbsp;3,&nbsp;4,&nbsp;8,&nbsp;11]:</div>
-<div class="pre"><a id="l732" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l732" class="linenr"> 732</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mesh.edges[i].crease&nbsp;=&nbsp;gauss(0.5,&nbsp;0.125)</div>
-<div class="pre"><a id="l733" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l733" class="linenr"> 733</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elif&nbsp;i&nbsp;in&nbsp;[1,&nbsp;5,&nbsp;7]:</div>
-<div class="pre"><a id="l734" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l734" class="linenr"> 734</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mesh.edges[i].crease&nbsp;=&nbsp;gauss(0.25,&nbsp;0.05)</div>
-<div class="pre"><a id="l735" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l735" class="linenr"> 735</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l736" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l736" class="linenr"> 736</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mesh.edges[i].crease&nbsp;=&nbsp;gauss(0.125,&nbsp;0.025)</div>
-<div class="pre"><a id="l737" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l737" class="linenr"> 737</a> &nbsp;&nbsp;&nbsp;&nbsp;elif&nbsp;shape&nbsp;==&nbsp;11:</div>
-<div class="pre"><a id="l738" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l738" class="linenr"> 738</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;i&nbsp;in&nbsp;range(11):</div>
-<div class="pre"><a id="l739" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l739" class="linenr"> 739</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;i&nbsp;in&nbsp;[1,&nbsp;2,&nbsp;3,&nbsp;4,&nbsp;8,&nbsp;11]:</div>
-<div class="pre"><a id="l740" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l740" class="linenr"> 740</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mesh.edges[i].crease&nbsp;=&nbsp;gauss(0.25,&nbsp;0.05)</div>
-<div class="pre"><a id="l741" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l741" class="linenr"> 741</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l742" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l742" class="linenr"> 742</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mesh.edges[i].crease&nbsp;=&nbsp;gauss(0.125,&nbsp;0.025)</div>
-<div class="pre"><a id="l743" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l743" class="linenr"> 743</a> </div>
-<div class="pre"><a id="l744" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l744" class="linenr"> 744</a> &nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;obj</div>
-<div class="pre"><a id="l745" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l745" class="linenr"> 745</a> </div>
-<div class="pre"><a id="l746" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l746" class="linenr"> 746</a> </div>
-<div class="pre"><a id="l747" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l747" class="linenr"> 747</a> #&nbsp;Creates&nbsp;rock&nbsp;objects:</div>
-<div class="pre"><a id="l748" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l748" class="linenr"> 748</a> def&nbsp;generateRocks(context,&nbsp;scaleX,&nbsp;skewX,&nbsp;scaleY,&nbsp;skewY,&nbsp;scaleZ,&nbsp;skewZ,</div>
-<div class="pre"><a id="l749" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l749" class="linenr"> 749</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scale_fac,&nbsp;detail,&nbsp;display_detail,&nbsp;deform,&nbsp;rough,</div>
-<div class="pre"><a id="l750" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l750" class="linenr"> 750</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;smooth_fac,&nbsp;smooth_it,</div>
-<div class="pre"><a id="l751" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l751" class="linenr"> 751</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numOfRocks=1,&nbsp;userSeed=1.0,</div>
-<div class="pre"><a id="l752" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l752" class="linenr"> 752</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scaleDisplace=False,&nbsp;randomSeed=True):</div>
-<div class="pre"><a id="l753" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l753" class="linenr"> 753</a> &nbsp;&nbsp;&nbsp;&nbsp;global&nbsp;LASTROCK</div>
-<div class="pre"><a id="l754" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l754" class="linenr"> 754</a> &nbsp;&nbsp;&nbsp;&nbsp;sigmaX&nbsp;=&nbsp;0</div>
-<div class="pre"><a id="l755" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l755" class="linenr"> 755</a> &nbsp;&nbsp;&nbsp;&nbsp;sigmaY&nbsp;=&nbsp;0</div>
-<div class="pre"><a id="l756" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l756" class="linenr"> 756</a> &nbsp;&nbsp;&nbsp;&nbsp;sigmaZ&nbsp;=&nbsp;0</div>
-<div class="pre"><a id="l757" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l757" class="linenr"> 757</a> &nbsp;&nbsp;&nbsp;&nbsp;upperSkewX&nbsp;=&nbsp;False</div>
-<div class="pre"><a id="l758" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l758" class="linenr"> 758</a> &nbsp;&nbsp;&nbsp;&nbsp;upperSkewY&nbsp;=&nbsp;False</div>
-<div class="pre"><a id="l759" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l759" class="linenr"> 759</a> &nbsp;&nbsp;&nbsp;&nbsp;upperSkewZ&nbsp;=&nbsp;False</div>
-<div class="pre"><a id="l760" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l760" class="linenr"> 760</a> &nbsp;&nbsp;&nbsp;&nbsp;shift&nbsp;=&nbsp;0</div>
-<div class="pre"><a id="l761" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l761" class="linenr"> 761</a> &nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;vertexScaling&nbsp;=&nbsp;[]</div>
-<div class="pre"><a id="l762" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l762" class="linenr"> 762</a> </div>
-<div class="pre"><a id="l763" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l763" class="linenr"> 763</a> &nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Seed&nbsp;the&nbsp;random&nbsp;Gaussian&nbsp;value&nbsp;generator:</div>
-<div class="pre"><a id="l764" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l764" class="linenr"> 764</a> &nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;randomSeed:</div>
-<div class="pre"><a id="l765" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l765" class="linenr"> 765</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;seed(int(time.time()))</div>
-<div class="pre"><a id="l766" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l766" class="linenr"> 766</a> &nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l767" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l767" class="linenr"> 767</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;seed(userSeed)</div>
-<div class="pre"><a id="l768" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l768" class="linenr"> 768</a> </div>
-<div class="pre"><a id="l769" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l769" class="linenr"> 769</a> &nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;These&nbsp;values&nbsp;need&nbsp;to&nbsp;be&nbsp;really&nbsp;small&nbsp;to&nbsp;look&nbsp;good.</div>
-<div class="pre"><a id="l770" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l770" class="linenr"> 770</a> &nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;So&nbsp;the&nbsp;user&nbsp;does&nbsp;not&nbsp;have&nbsp;to&nbsp;use&nbsp;such&nbsp;ridiculously&nbsp;small&nbsp;values:</div>
-<div class="pre"><a id="l771" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l771" class="linenr"> 771</a> &nbsp;&nbsp;&nbsp;&nbsp;deform&nbsp;/=&nbsp;10</div>
-<div class="pre"><a id="l772" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l772" class="linenr"> 772</a> &nbsp;&nbsp;&nbsp;&nbsp;rough&nbsp;/=&nbsp;100</div>
-<div class="pre"><a id="l773" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l773" class="linenr"> 773</a> </div>
-<div class="pre"><a id="l774" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l774" class="linenr"> 774</a> &nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Verify&nbsp;that&nbsp;the&nbsp;min&nbsp;really&nbsp;is&nbsp;the&nbsp;min:</div>
-<div class="pre"><a id="l775" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l775" class="linenr"> 775</a> &nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;scaleX[1]&nbsp;&lt;&nbsp;scaleX[0]:</div>
-<div class="pre"><a id="l776" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l776" class="linenr"> 776</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scaleX[0],&nbsp;scaleX[1]&nbsp;=&nbsp;scaleX[1],&nbsp;scaleX[0]</div>
-<div class="pre"><a id="l777" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l777" class="linenr"> 777</a> &nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;scaleY[1]&nbsp;&lt;&nbsp;scaleY[0]:</div>
-<div class="pre"><a id="l778" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l778" class="linenr"> 778</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scaleY[0],&nbsp;scaleY[1]&nbsp;=&nbsp;scaleY[1],&nbsp;scaleY[0]</div>
-<div class="pre"><a id="l779" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l779" class="linenr"> 779</a> &nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;scaleZ[1]&nbsp;&lt;&nbsp;scaleZ[0]:</div>
-<div class="pre"><a id="l780" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l780" class="linenr"> 780</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scaleZ[0],&nbsp;scaleZ[1]&nbsp;=&nbsp;scaleZ[1],&nbsp;scaleZ[0]</div>
-<div class="pre"><a id="l781" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l781" class="linenr"> 781</a> </div>
-<div class="pre"><a id="l782" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l782" class="linenr"> 782</a> &nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;todo:&nbsp;edit&nbsp;below&nbsp;to&nbsp;allow&nbsp;for&nbsp;skewing&nbsp;the&nbsp;distribution</div>
-<div class="pre"><a id="l783" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l783" class="linenr"> 783</a> &nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;&nbsp;***&nbsp;todo&nbsp;completed&nbsp;4/22/2011&nbsp;***</div>
-<div class="pre"><a id="l784" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l784" class="linenr"> 784</a> &nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;&nbsp;***&nbsp;Code&nbsp;now&nbsp;generating&nbsp;&quot;int&nbsp;not&nbsp;scriptable&nbsp;error&quot;&nbsp;in&nbsp;Blender&nbsp;***</div>
-<div class="pre"><a id="l785" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l785" class="linenr"> 785</a> &nbsp;&nbsp;&nbsp;&nbsp;#</div>
-<div class="pre"><a id="l786" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l786" class="linenr"> 786</a> &nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Calculate&nbsp;mu&nbsp;and&nbsp;sigma&nbsp;for&nbsp;a&nbsp;Gaussian&nbsp;distributed&nbsp;random&nbsp;number</div>
-<div class="pre"><a id="l787" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l787" class="linenr"> 787</a> &nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;&nbsp;generation:</div>
-<div class="pre"><a id="l788" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l788" class="linenr"> 788</a> &nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;If&nbsp;the&nbsp;lower&nbsp;and&nbsp;upper&nbsp;bounds&nbsp;are&nbsp;the&nbsp;same,&nbsp;skip&nbsp;the&nbsp;math.</div>
-<div class="pre"><a id="l789" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l789" class="linenr"> 789</a> &nbsp;&nbsp;&nbsp;&nbsp;#</div>
-<div class="pre"><a id="l790" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l790" class="linenr"> 790</a> &nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;sigma&nbsp;is&nbsp;the&nbsp;standard&nbsp;deviation&nbsp;of&nbsp;the&nbsp;values.&nbsp;&nbsp;The&nbsp;95%&nbsp;interval&nbsp;is&nbsp;three</div>
-<div class="pre"><a id="l791" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l791" class="linenr"> 791</a> &nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;standard&nbsp;deviations,&nbsp;which&nbsp;is&nbsp;what&nbsp;we&nbsp;want&nbsp;most&nbsp;generated&nbsp;values&nbsp;to&nbsp;fall</div>
-<div class="pre"><a id="l792" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l792" class="linenr"> 792</a> &nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;in.&nbsp;&nbsp;Since&nbsp;it&nbsp;might&nbsp;be&nbsp;skewed&nbsp;we&nbsp;are&nbsp;going&nbsp;to&nbsp;use&nbsp;half&nbsp;the&nbsp;difference</div>
-<div class="pre"><a id="l793" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l793" class="linenr"> 793</a> &nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;betwee&nbsp;the&nbsp;mean&nbsp;and&nbsp;the&nbsp;furthest&nbsp;bound&nbsp;and&nbsp;scale&nbsp;the&nbsp;other&nbsp;side&nbsp;down</div>
-<div class="pre"><a id="l794" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l794" class="linenr"> 794</a> &nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;post-number&nbsp;generation.</div>
-<div class="pre"><a id="l795" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l795" class="linenr"> 795</a> &nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;scaleX[0]&nbsp;!=&nbsp;scaleX[1]:</div>
-<div class="pre"><a id="l796" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l796" class="linenr"> 796</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;skewX&nbsp;=&nbsp;(skewX&nbsp;+&nbsp;1)&nbsp;/&nbsp;2</div>
-<div class="pre"><a id="l797" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l797" class="linenr"> 797</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;muX&nbsp;=&nbsp;scaleX[0]&nbsp;+&nbsp;((scaleX[1]&nbsp;-&nbsp;scaleX[0])&nbsp;*&nbsp;skewX)</div>
-<div class="pre"><a id="l798" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l798" class="linenr"> 798</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;skewX&nbsp;&lt;&nbsp;0.5:</div>
-<div class="pre"><a id="l799" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l799" class="linenr"> 799</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sigmaX&nbsp;=&nbsp;(scaleX[1]&nbsp;-&nbsp;muX)&nbsp;/&nbsp;3</div>
-<div class="pre"><a id="l800" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l800" class="linenr"> 800</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l801" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l801" class="linenr"> 801</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sigmaX&nbsp;=&nbsp;(muX&nbsp;-&nbsp;scaleX[0])&nbsp;/&nbsp;3</div>
-<div class="pre"><a id="l802" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l802" class="linenr"> 802</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;upperSkewX&nbsp;=&nbsp;True</div>
-<div class="pre"><a id="l803" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l803" class="linenr"> 803</a> &nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l804" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l804" class="linenr"> 804</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;muX&nbsp;=&nbsp;scaleX[0]</div>
-<div class="pre"><a id="l805" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l805" class="linenr"> 805</a> &nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;scaleY[0]&nbsp;!=&nbsp;scaleY[1]:</div>
-<div class="pre"><a id="l806" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l806" class="linenr"> 806</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;skewY&nbsp;=&nbsp;(skewY&nbsp;+&nbsp;1)&nbsp;/&nbsp;2</div>
-<div class="pre"><a id="l807" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l807" class="linenr"> 807</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;muY&nbsp;=&nbsp;scaleY[0]&nbsp;+&nbsp;((scaleY[1]&nbsp;-&nbsp;scaleY[0])&nbsp;*&nbsp;skewY)</div>
-<div class="pre"><a id="l808" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l808" class="linenr"> 808</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;skewY&nbsp;&lt;&nbsp;0.5:</div>
-<div class="pre"><a id="l809" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l809" class="linenr"> 809</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sigmaY&nbsp;=&nbsp;(scaleY[1]&nbsp;-&nbsp;muY)&nbsp;/&nbsp;3</div>
-<div class="pre"><a id="l810" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l810" class="linenr"> 810</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l811" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l811" class="linenr"> 811</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sigmaY&nbsp;=&nbsp;(muY&nbsp;-&nbsp;scaleY[0])&nbsp;/&nbsp;3</div>
-<div class="pre"><a id="l812" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l812" class="linenr"> 812</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;upperSkewY&nbsp;=&nbsp;True</div>
-<div class="pre"><a id="l813" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l813" class="linenr"> 813</a> &nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l814" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l814" class="linenr"> 814</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;muY&nbsp;=&nbsp;scaleY[0]</div>
-<div class="pre"><a id="l815" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l815" class="linenr"> 815</a> &nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;scaleZ[0]&nbsp;!=&nbsp;scaleZ[1]:</div>
-<div class="pre"><a id="l816" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l816" class="linenr"> 816</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;skewZ&nbsp;=&nbsp;(skewZ&nbsp;+&nbsp;1)&nbsp;/&nbsp;2</div>
-<div class="pre"><a id="l817" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l817" class="linenr"> 817</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;muZ&nbsp;=&nbsp;scaleZ[0]&nbsp;+&nbsp;((scaleZ[1]&nbsp;-&nbsp;scaleZ[0])&nbsp;*&nbsp;skewZ)</div>
-<div class="pre"><a id="l818" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l818" class="linenr"> 818</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;skewZ&nbsp;&lt;&nbsp;0.5:</div>
-<div class="pre"><a id="l819" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l819" class="linenr"> 819</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sigmaZ&nbsp;=&nbsp;(scaleZ[1]&nbsp;-&nbsp;muZ)&nbsp;/&nbsp;3</div>
-<div class="pre"><a id="l820" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l820" class="linenr"> 820</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l821" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l821" class="linenr"> 821</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sigmaZ&nbsp;=&nbsp;(muZ&nbsp;-&nbsp;scaleZ[0])&nbsp;/&nbsp;3</div>
-<div class="pre"><a id="l822" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l822" class="linenr"> 822</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;upperSkewZ&nbsp;=&nbsp;True</div>
-<div class="pre"><a id="l823" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l823" class="linenr"> 823</a> &nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l824" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l824" class="linenr"> 824</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;muZ&nbsp;=&nbsp;scaleZ</div>
-<div class="pre"><a id="l825" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l825" class="linenr"> 825</a> </div>
-<div class="pre"><a id="l826" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l826" class="linenr"> 826</a> &nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;i&nbsp;in&nbsp;range(numOfRocks):</div>
-<div class="pre"><a id="l827" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l827" class="linenr"> 827</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;todo:&nbsp;enable&nbsp;different&nbsp;random&nbsp;values&nbsp;for&nbsp;each&nbsp;(x,y,z)&nbsp;corrdinate&nbsp;for</div>
-<div class="pre"><a id="l828" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l828" class="linenr"> 828</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;each&nbsp;vertex.&nbsp;&nbsp;This&nbsp;will&nbsp;add&nbsp;additional&nbsp;randomness&nbsp;to&nbsp;the&nbsp;shape&nbsp;of&nbsp;the</div>
-<div class="pre"><a id="l829" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l829" class="linenr"> 829</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;generated&nbsp;rocks.</div>
-<div class="pre"><a id="l830" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l830" class="linenr"> 830</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;&nbsp;***&nbsp;todo&nbsp;completed&nbsp;4/19/2011&nbsp;***</div>
-<div class="pre"><a id="l831" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l831" class="linenr"> 831</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;&nbsp;***&nbsp;Code&nbsp;is&nbsp;notably&nbsp;slower&nbsp;at&nbsp;high&nbsp;rock&nbsp;counts&nbsp;***</div>
-<div class="pre"><a id="l832" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l832" class="linenr"> 832</a> </div>
-<div class="pre"><a id="l833" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l833" class="linenr"> 833</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;name&nbsp;=&nbsp;generateObject(context,&nbsp;muX,&nbsp;sigmaX,&nbsp;scaleX,&nbsp;upperSkewX,&nbsp;muY,</div>
-<div class="pre"><a id="l834" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l834" class="linenr"> 834</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rock&nbsp;=&nbsp;generateObject(</div>
-<div class="pre"><a id="l835" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l835" class="linenr"> 835</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;context,&nbsp;muX,&nbsp;sigmaX,&nbsp;scaleX,&nbsp;upperSkewX,&nbsp;muY,</div>
-<div class="pre"><a id="l836" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l836" class="linenr"> 836</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sigmaY,&nbsp;scaleY,&nbsp;upperSkewY,&nbsp;muZ,&nbsp;sigmaZ,&nbsp;scaleZ,</div>
-<div class="pre"><a id="l837" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l837" class="linenr"> 837</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;upperSkewZ,&nbsp;i,&nbsp;LASTROCK,&nbsp;scaleDisplace,&nbsp;scale_fac)</div>
-<div class="pre"><a id="l838" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l838" class="linenr"> 838</a> </div>
-<div class="pre"><a id="l839" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l839" class="linenr"> 839</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;rock&nbsp;=&nbsp;bpy.data.objects[name]</div>
-<div class="pre"><a id="l840" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l840" class="linenr"> 840</a> </div>
-<div class="pre"><a id="l841" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l841" class="linenr"> 841</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;todo&nbsp;Map&nbsp;what&nbsp;the&nbsp;two&nbsp;new&nbsp;textures&nbsp;will&nbsp;be:</div>
-<div class="pre"><a id="l842" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l842" class="linenr"> 842</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;This&nbsp;is&nbsp;not&nbsp;working.&nbsp;&nbsp;It&nbsp;works&nbsp;on&nbsp;paper&nbsp;so&nbsp;.&nbsp;.&nbsp;.&nbsp;???</div>
-<div class="pre"><a id="l843" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l843" class="linenr"> 843</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;&nbsp;***&nbsp;todo&nbsp;completed&nbsp;on&nbsp;4/23/2011&nbsp;***</div>
-<div class="pre"><a id="l844" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l844" class="linenr"> 844</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;&nbsp;***&nbsp;todo&nbsp;re-added&nbsp;as&nbsp;the&nbsp;first&nbsp;rock&nbsp;is&nbsp;getting</div>
-<div class="pre"><a id="l845" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l845" class="linenr"> 845</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39;Texture.001&#39;&nbsp;twice.&nbsp;***</div>
-<div class="pre"><a id="l846" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l846" class="linenr"> 846</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;&nbsp;***&nbsp;todo&nbsp;completed&nbsp;on&nbsp;4/25/2011&nbsp;***</div>
-<div class="pre"><a id="l847" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l847" class="linenr"> 847</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;&nbsp;***&nbsp;Script&nbsp;no&nbsp;longer&nbsp;needs&nbsp;to&nbsp;map&nbsp;new&nbsp;texture&nbsp;names&nbsp;9/6/2011&nbsp;***</div>
-<div class="pre"><a id="l848" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l848" class="linenr"> 848</a> </div>
-<div class="pre"><a id="l849" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l849" class="linenr"> 849</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Create&nbsp;the&nbsp;four&nbsp;new&nbsp;textures:</div>
-<div class="pre"><a id="l850" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l850" class="linenr"> 850</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;todo&nbsp;Set&nbsp;displacement&nbsp;texture&nbsp;parameters:</div>
-<div class="pre"><a id="l851" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l851" class="linenr"> 851</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;&nbsp;***&nbsp;todo&nbsp;completed&nbsp;on&nbsp;5/31/2011&nbsp;***</div>
-<div class="pre"><a id="l852" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l852" class="linenr"> 852</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Voronoi&nbsp;has&nbsp;been&nbsp;removed&nbsp;from&nbsp;being&nbsp;an&nbsp;option&nbsp;for&nbsp;the&nbsp;fine&nbsp;detail</div>
-<div class="pre"><a id="l853" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l853" class="linenr"> 853</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;&nbsp;texture.</div>
-<div class="pre"><a id="l854" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l854" class="linenr"> 854</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;texTypes&nbsp;=&nbsp;[&#39;CLOUDS&#39;,&nbsp;&#39;MUSGRAVE&#39;,&nbsp;&#39;DISTORTED_NOISE&#39;,&nbsp;&#39;STUCCI&#39;,&nbsp;&#39;VORONOI&#39;]</div>
-<div class="pre"><a id="l855" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l855" class="linenr"> 855</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;newTex&nbsp;=&nbsp;[]</div>
-<div class="pre"><a id="l856" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l856" class="linenr"> 856</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;The&nbsp;first&nbsp;texture&nbsp;is&nbsp;to&nbsp;give&nbsp;a&nbsp;more&nbsp;ranodm&nbsp;base&nbsp;shape&nbsp;appearance:</div>
-<div class="pre"><a id="l857" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l857" class="linenr"> 857</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;newTex.append(bpy.data.textures.new(</div>
-<div class="pre"><a id="l858" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l858" class="linenr"> 858</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name=&#39;rock_displacement&#39;,</div>
-<div class="pre"><a id="l859" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l859" class="linenr"> 859</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type=texTypes[1]))</div>
-<div class="pre"><a id="l860" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l860" class="linenr"> 860</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;randomizeTexture(newTex[0],&nbsp;0)</div>
-<div class="pre"><a id="l861" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l861" class="linenr"> 861</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;newTex.append(bpy.data.textures.new(</div>
-<div class="pre"><a id="l862" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l862" class="linenr"> 862</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name=&#39;rock_displacement&#39;,</div>
-<div class="pre"><a id="l863" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l863" class="linenr"> 863</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type=texTypes[4]))</div>
-<div class="pre"><a id="l864" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l864" class="linenr"> 864</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;randomizeTexture(newTex[1],&nbsp;0)</div>
-<div class="pre"><a id="l865" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l865" class="linenr"> 865</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;numpy:</div>
-<div class="pre"><a id="l866" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l866" class="linenr"> 866</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;newTex.append(bpy.data.textures.new(</div>
-<div class="pre"><a id="l867" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l867" class="linenr"> 867</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name=&#39;rock_displacement&#39;,</div>
-<div class="pre"><a id="l868" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l868" class="linenr"> 868</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type=texTypes[int(round(weibull(1,&nbsp;1)[0]&nbsp;/&nbsp;2.125))]))</div>
-<div class="pre"><a id="l869" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l869" class="linenr"> 869</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;randomizeTexture(newTex[2],&nbsp;1)</div>
-<div class="pre"><a id="l870" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l870" class="linenr"> 870</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;newTex.append(bpy.data.textures.new(</div>
-<div class="pre"><a id="l871" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l871" class="linenr"> 871</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name=&#39;rock_displacement&#39;,</div>
-<div class="pre"><a id="l872" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l872" class="linenr"> 872</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type=texTypes[int(round(weibull(1,&nbsp;1)[0]&nbsp;/&nbsp;2.125))]))</div>
-<div class="pre"><a id="l873" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l873" class="linenr"> 873</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;randomizeTexture(newTex[3],&nbsp;2)</div>
-<div class="pre"><a id="l874" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l874" class="linenr"> 874</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l875" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l875" class="linenr"> 875</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;newTex.append(bpy.data.textures.new(</div>
-<div class="pre"><a id="l876" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l876" class="linenr"> 876</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name=&#39;rock_displacement&#39;,</div>
-<div class="pre"><a id="l877" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l877" class="linenr"> 877</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type=texTypes[int(round(weibull(1,&nbsp;1)&nbsp;/&nbsp;2.125))]))</div>
-<div class="pre"><a id="l878" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l878" class="linenr"> 878</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;randomizeTexture(newTex[2],&nbsp;1)</div>
-<div class="pre"><a id="l879" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l879" class="linenr"> 879</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;newTex.append(bpy.data.textures.new(</div>
-<div class="pre"><a id="l880" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l880" class="linenr"> 880</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name=&#39;rock_displacement&#39;,</div>
-<div class="pre"><a id="l881" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l881" class="linenr"> 881</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type=texTypes[int(round(weibull(1,&nbsp;1)&nbsp;/&nbsp;2.125))]))</div>
-<div class="pre"><a id="l882" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l882" class="linenr"> 882</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;randomizeTexture(newTex[3],&nbsp;2)</div>
-<div class="pre"><a id="l883" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l883" class="linenr"> 883</a> </div>
-<div class="pre"><a id="l884" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l884" class="linenr"> 884</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Add&nbsp;modifiers:</div>
-<div class="pre"><a id="l885" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l885" class="linenr"> 885</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rock.modifiers.new(name=&quot;Subsurf&quot;,&nbsp;type=&#39;SUBSURF&#39;)</div>
-<div class="pre"><a id="l886" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l886" class="linenr"> 886</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rock.modifiers.new(name=&quot;Subsurf&quot;,&nbsp;type=&#39;SUBSURF&#39;)</div>
-<div class="pre"><a id="l887" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l887" class="linenr"> 887</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rock.modifiers.new(name=&quot;Displace&quot;,&nbsp;type=&#39;DISPLACE&#39;)</div>
-<div class="pre"><a id="l888" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l888" class="linenr"> 888</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rock.modifiers.new(name=&quot;Displace&quot;,&nbsp;type=&#39;DISPLACE&#39;)</div>
-<div class="pre"><a id="l889" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l889" class="linenr"> 889</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rock.modifiers.new(name=&quot;Displace&quot;,&nbsp;type=&#39;DISPLACE&#39;)</div>
-<div class="pre"><a id="l890" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l890" class="linenr"> 890</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rock.modifiers.new(name=&quot;Displace&quot;,&nbsp;type=&#39;DISPLACE&#39;)</div>
-<div class="pre"><a id="l891" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l891" class="linenr"> 891</a> </div>
-<div class="pre"><a id="l892" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l892" class="linenr"> 892</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;If&nbsp;smoothing&nbsp;is&nbsp;enabled,&nbsp;allow&nbsp;a&nbsp;little&nbsp;randomness&nbsp;into&nbsp;the</div>
-<div class="pre"><a id="l893" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l893" class="linenr"> 893</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;&nbsp;smoothing&nbsp;factor.&nbsp;Then&nbsp;add&nbsp;the&nbsp;smoothing&nbsp;modifier.</div>
-<div class="pre"><a id="l894" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l894" class="linenr"> 894</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;smooth_fac&nbsp;&gt;&nbsp;0.0&nbsp;and&nbsp;smooth_it&nbsp;&gt;&nbsp;0:</div>
-<div class="pre"><a id="l895" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l895" class="linenr"> 895</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rock.modifiers.new(name=&quot;Smooth&quot;,&nbsp;type=&#39;SMOOTH&#39;)</div>
-<div class="pre"><a id="l896" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l896" class="linenr"> 896</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rock.modifiers[6].factor&nbsp;=&nbsp;gauss(smooth_fac,&nbsp;(smooth_fac&nbsp;**&nbsp;0.5)&nbsp;/&nbsp;12)</div>
-<div class="pre"><a id="l897" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l897" class="linenr"> 897</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rock.modifiers[6].iterations&nbsp;=&nbsp;smooth_it</div>
-<div class="pre"><a id="l898" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l898" class="linenr"> 898</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Make&nbsp;a&nbsp;call&nbsp;to&nbsp;random&nbsp;to&nbsp;keep&nbsp;things&nbsp;consistant:</div>
-<div class="pre"><a id="l899" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l899" class="linenr"> 899</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l900" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l900" class="linenr"> 900</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gauss(0,&nbsp;1)</div>
-<div class="pre"><a id="l901" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l901" class="linenr"> 901</a> </div>
-<div class="pre"><a id="l902" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l902" class="linenr"> 902</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Set&nbsp;subsurf&nbsp;modifier&nbsp;parameters:</div>
-<div class="pre"><a id="l903" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l903" class="linenr"> 903</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rock.modifiers[0].levels&nbsp;=&nbsp;display_detail</div>
-<div class="pre"><a id="l904" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l904" class="linenr"> 904</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rock.modifiers[0].render_levels&nbsp;=&nbsp;detail</div>
-<div class="pre"><a id="l905" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l905" class="linenr"> 905</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rock.modifiers[1].levels&nbsp;=&nbsp;display_detail</div>
-<div class="pre"><a id="l906" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l906" class="linenr"> 906</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rock.modifiers[1].render_levels&nbsp;=&nbsp;detail</div>
-<div class="pre"><a id="l907" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l907" class="linenr"> 907</a> </div>
-<div class="pre"><a id="l908" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l908" class="linenr"> 908</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;todo&nbsp;Set&nbsp;displacement&nbsp;modifier&nbsp;parameters:</div>
-<div class="pre"><a id="l909" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l909" class="linenr"> 909</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;&nbsp;***&nbsp;todo&nbsp;completed&nbsp;on&nbsp;4/23/2011&nbsp;***</div>
-<div class="pre"><a id="l910" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l910" class="linenr"> 910</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;&nbsp;***&nbsp;toned&nbsp;down&nbsp;the&nbsp;variance&nbsp;on&nbsp;4/26/2011&nbsp;***</div>
-<div class="pre"><a id="l911" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l911" class="linenr"> 911</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;&nbsp;***&nbsp;added&nbsp;third&nbsp;modifier&nbsp;on&nbsp;4/28/2011&nbsp;***</div>
-<div class="pre"><a id="l912" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l912" class="linenr"> 912</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;&nbsp;***&nbsp;texture&nbsp;access&nbsp;changed&nbsp;on&nbsp;9/6/2011&nbsp;***</div>
-<div class="pre"><a id="l913" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l913" class="linenr"> 913</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rock.modifiers[2].texture&nbsp;=&nbsp;newTex[0]</div>
-<div class="pre"><a id="l914" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l914" class="linenr"> 914</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rock.modifiers[2].strength&nbsp;=&nbsp;gauss(deform&nbsp;/&nbsp;100,&nbsp;(1&nbsp;/&nbsp;300)&nbsp;*&nbsp;deform)</div>
-<div class="pre"><a id="l915" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l915" class="linenr"> 915</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rock.modifiers[2].mid_level&nbsp;=&nbsp;0</div>
-<div class="pre"><a id="l916" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l916" class="linenr"> 916</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rock.modifiers[3].texture&nbsp;=&nbsp;newTex[1]</div>
-<div class="pre"><a id="l917" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l917" class="linenr"> 917</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rock.modifiers[3].strength&nbsp;=&nbsp;gauss(deform,&nbsp;(1&nbsp;/&nbsp;3)&nbsp;*&nbsp;deform)</div>
-<div class="pre"><a id="l918" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l918" class="linenr"> 918</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rock.modifiers[3].mid_level&nbsp;=&nbsp;0</div>
-<div class="pre"><a id="l919" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l919" class="linenr"> 919</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rock.modifiers[4].texture&nbsp;=&nbsp;newTex[2]</div>
-<div class="pre"><a id="l920" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l920" class="linenr"> 920</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rock.modifiers[4].strength&nbsp;=&nbsp;gauss(rough&nbsp;*&nbsp;2,&nbsp;(1&nbsp;/&nbsp;3)&nbsp;*&nbsp;rough)</div>
-<div class="pre"><a id="l921" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l921" class="linenr"> 921</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rock.modifiers[5].texture&nbsp;=&nbsp;newTex[3]</div>
-<div class="pre"><a id="l922" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l922" class="linenr"> 922</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rock.modifiers[5].strength&nbsp;=&nbsp;gauss(rough,&nbsp;(1&nbsp;/&nbsp;3)&nbsp;*&nbsp;rough)</div>
-<div class="pre"><a id="l923" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l923" class="linenr"> 923</a> </div>
-<div class="pre"><a id="l924" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l924" class="linenr"> 924</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Set&nbsp;mesh&nbsp;to&nbsp;be&nbsp;smooth&nbsp;and&nbsp;fix&nbsp;the&nbsp;normals:</div>
-<div class="pre"><a id="l925" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l925" class="linenr"> 925</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;utils.smooth(rock.data)</div>
-<div class="pre"><a id="l926" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l926" class="linenr"> 926</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;utils.smooth(bpy.data.meshes[name])</div>
-<div class="pre"><a id="l927" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l927" class="linenr"> 927</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bpy.ops.object.editmode_toggle()</div>
-<div class="pre"><a id="l928" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l928" class="linenr"> 928</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bpy.ops.mesh.normals_make_consistent()</div>
-<div class="pre"><a id="l929" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l929" class="linenr"> 929</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bpy.ops.object.editmode_toggle()</div>
-<div class="pre"><a id="l930" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l930" class="linenr"> 930</a> </div>
-<div class="pre"><a id="l931" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l931" class="linenr"> 931</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Store&nbsp;the&nbsp;last&nbsp;value&nbsp;of&nbsp;i:</div>
-<div class="pre"><a id="l932" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l932" class="linenr"> 932</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;shift&nbsp;=&nbsp;i</div>
-<div class="pre"><a id="l933" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l933" class="linenr"> 933</a> </div>
-<div class="pre"><a id="l934" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l934" class="linenr"> 934</a> &nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Add&nbsp;the&nbsp;shift&nbsp;to&nbsp;LASTROCK:</div>
-<div class="pre"><a id="l935" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l935" class="linenr"> 935</a> &nbsp;&nbsp;&nbsp;&nbsp;LASTROCK&nbsp;+=&nbsp;shift&nbsp;+&nbsp;1</div>
-<div class="pre"><a id="l936" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l936" class="linenr"> 936</a> </div>
-<div class="pre"><a id="l937" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l937" class="linenr"> 937</a> &nbsp;&nbsp;&nbsp;&nbsp;return</div>
-<div class="pre"><a id="l938" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l938" class="linenr"> 938</a> </div>
-<div class="pre"><a id="l939" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l939" class="linenr"> 939</a> </div>
-<div class="pre"><a id="l940" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l940" class="linenr"> 940</a> #&nbsp;Much&nbsp;of&nbsp;the&nbsp;code&nbsp;below&nbsp;is&nbsp;more-or-less&nbsp;imitation&nbsp;of&nbsp;other&nbsp;addons&nbsp;and&nbsp;as&nbsp;such</div>
-<div class="pre"><a id="l941" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l941" class="linenr"> 941</a> #&nbsp;I&nbsp;have&nbsp;left&nbsp;it&nbsp;undocumented.</div>
-<div class="pre"><a id="l942" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l942" class="linenr"> 942</a> </div>
-<div class="pre"><a id="l943" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l943" class="linenr"> 943</a> class&nbsp;OBJECT_OT_add_mesh_rock(bpy.types.Operator):</div>
-<div class="pre"><a id="l944" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l944" class="linenr"> 944</a> &nbsp;&nbsp;&nbsp;&nbsp;&quot;&quot;&quot;Add&nbsp;rock&nbsp;objects&quot;&quot;&quot;</div>
-<div class="pre"><a id="l945" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l945" class="linenr"> 945</a> &nbsp;&nbsp;&nbsp;&nbsp;bl_idname&nbsp;=&nbsp;&quot;mesh.add_mesh_rock&quot;</div>
-<div class="pre"><a id="l946" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l946" class="linenr"> 946</a> &nbsp;&nbsp;&nbsp;&nbsp;bl_label&nbsp;=&nbsp;&quot;Add&nbsp;Rocks&quot;</div>
-<div class="pre"><a id="l947" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l947" class="linenr"> 947</a> &nbsp;&nbsp;&nbsp;&nbsp;bl_options&nbsp;=&nbsp;{&#39;REGISTER&#39;,&nbsp;&#39;UNDO&#39;}</div>
-<div class="pre"><a id="l948" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l948" class="linenr"> 948</a> &nbsp;&nbsp;&nbsp;&nbsp;bl_description&nbsp;=&nbsp;&quot;Add&nbsp;rocks&quot;</div>
-<div class="pre"><a id="l949" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l949" class="linenr"> 949</a> </div>
-<div class="pre"><a id="l950" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l950" class="linenr"> 950</a> &nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Get&nbsp;the&nbsp;preset&nbsp;values&nbsp;from&nbsp;the&nbsp;XML&nbsp;file.</div>
-<div class="pre"><a id="l951" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l951" class="linenr"> 951</a> &nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;&nbsp;-&gt;&nbsp;The&nbsp;script&nbsp;was&nbsp;morphed&nbsp;into&nbsp;a&nbsp;Python&nbsp;module</div>
-<div class="pre"><a id="l952" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l952" class="linenr"> 952</a> &nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to&nbsp;support&nbsp;this.</div>
-<div class="pre"><a id="l953" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l953" class="linenr"> 953</a> &nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Tell&nbsp;settings.py&nbsp;to&nbsp;parse&nbsp;the&nbsp;XML&nbsp;file&nbsp;with&nbsp;the&nbsp;settings.</div>
-<div class="pre"><a id="l954" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l954" class="linenr"> 954</a> &nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Then&nbsp;get&nbsp;the&nbsp;default&nbsp;values&nbsp;resulting&nbsp;from&nbsp;the&nbsp;parsing.</div>
-<div class="pre"><a id="l955" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l955" class="linenr"> 955</a> &nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Make&nbsp;a&nbsp;list&nbsp;containing&nbsp;the&nbsp;default&nbsp;values&nbsp;and&nbsp;append&nbsp;to&nbsp;that</div>
-<div class="pre"><a id="l956" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l956" class="linenr"> 956</a> &nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;the&nbsp;presets&nbsp;specified&nbsp;in&nbsp;the&nbsp;same&nbsp;XML&nbsp;file.&nbsp;&nbsp;This&nbsp;list&nbsp;will</div>
-<div class="pre"><a id="l957" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l957" class="linenr"> 957</a> &nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;be&nbsp;used&nbsp;to&nbsp;load&nbsp;preset&nbsp;values.</div>
-<div class="pre"><a id="l958" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l958" class="linenr"> 958</a> &nbsp;&nbsp;&nbsp;&nbsp;settings.parse()</div>
-<div class="pre"><a id="l959" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l959" class="linenr"> 959</a> &nbsp;&nbsp;&nbsp;&nbsp;defaults&nbsp;=&nbsp;settings.getDefault()</div>
-<div class="pre"><a id="l960" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l960" class="linenr"> 960</a> &nbsp;&nbsp;&nbsp;&nbsp;presetsList&nbsp;=&nbsp;[defaults]</div>
-<div class="pre"><a id="l961" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l961" class="linenr"> 961</a> &nbsp;&nbsp;&nbsp;&nbsp;presetsList&nbsp;+=&nbsp;settings.getPresetLists()</div>
-<div class="pre"><a id="l962" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l962" class="linenr"> 962</a> &nbsp;&nbsp;&nbsp;&nbsp;presets&nbsp;=&nbsp;[]</div>
-<div class="pre"><a id="l963" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l963" class="linenr"> 963</a> &nbsp;&nbsp;&nbsp;&nbsp;lastPreset&nbsp;=&nbsp;0</div>
-<div class="pre"><a id="l964" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l964" class="linenr"> 964</a> </div>
-<div class="pre"><a id="l965" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l965" class="linenr"> 965</a> &nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Build&nbsp;the&nbsp;presets&nbsp;list&nbsp;for&nbsp;the&nbsp;enum&nbsp;property.</div>
-<div class="pre"><a id="l966" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l966" class="linenr"> 966</a> &nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;This&nbsp;needs&nbsp;to&nbsp;be&nbsp;a&nbsp;for&nbsp;loop&nbsp;as&nbsp;the&nbsp;user&nbsp;might&nbsp;add&nbsp;presets&nbsp;to</div>
-<div class="pre"><a id="l967" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l967" class="linenr"> 967</a> &nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;the&nbsp;XML&nbsp;file&nbsp;and&nbsp;those&nbsp;should&nbsp;show&nbsp;here:</div>
-<div class="pre"><a id="l968" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l968" class="linenr"> 968</a> &nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;i,&nbsp;preset&nbsp;in&nbsp;enumerate(presetsList):</div>
-<div class="pre"><a id="l969" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l969" class="linenr"> 969</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;presets.append((str(i),&nbsp;preset[0],&nbsp;preset[0]&nbsp;+&nbsp;&quot;&nbsp;preset&nbsp;values&quot;))</div>
-<div class="pre"><a id="l970" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l970" class="linenr"> 970</a> </div>
-<div class="pre"><a id="l971" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l971" class="linenr"> 971</a> &nbsp;&nbsp;&nbsp;&nbsp;preset_values:&nbsp;EnumProperty(</div>
-<div class="pre"><a id="l972" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l972" class="linenr"> 972</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name=&quot;Presets&quot;,</div>
-<div class="pre"><a id="l973" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l973" class="linenr"> 973</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;items=presets,</div>
-<div class="pre"><a id="l974" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l974" class="linenr"> 974</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;description=&quot;Preset&nbsp;values&nbsp;for&nbsp;some&nbsp;rock&nbsp;types&quot;)</div>
-<div class="pre"><a id="l975" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l975" class="linenr"> 975</a> </div>
-<div class="pre"><a id="l976" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l976" class="linenr"> 976</a> &nbsp;&nbsp;&nbsp;&nbsp;num_of_rocks:&nbsp;IntProperty(</div>
-<div class="pre"><a id="l977" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l977" class="linenr"> 977</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name=&quot;Number&nbsp;of&nbsp;rocks&quot;,</div>
-<div class="pre"><a id="l978" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l978" class="linenr"> 978</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;description=&quot;Number&nbsp;of&nbsp;rocks&nbsp;to&nbsp;generate.&nbsp;WARNING:&nbsp;Slow&nbsp;at&nbsp;high&nbsp;values!&quot;,</div>
-<div class="pre"><a id="l979" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l979" class="linenr"> 979</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;min=1,&nbsp;max=1048576,</div>
-<div class="pre"><a id="l980" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l980" class="linenr"> 980</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;soft_max=20,</div>
-<div class="pre"><a id="l981" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l981" class="linenr"> 981</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default=1)</div>
-<div class="pre"><a id="l982" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l982" class="linenr"> 982</a> </div>
-<div class="pre"><a id="l983" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l983" class="linenr"> 983</a> &nbsp;&nbsp;&nbsp;&nbsp;scale_X:&nbsp;FloatVectorProperty(</div>
-<div class="pre"><a id="l984" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l984" class="linenr"> 984</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name=&quot;X&nbsp;scale&quot;,</div>
-<div class="pre"><a id="l985" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l985" class="linenr"> 985</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;description=&quot;X&nbsp;axis&nbsp;scaling&nbsp;range&quot;,</div>
-<div class="pre"><a id="l986" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l986" class="linenr"> 986</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;min=0.0,&nbsp;max=256.0,&nbsp;step=1,</div>
-<div class="pre"><a id="l987" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l987" class="linenr"> 987</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default=defaults[1],&nbsp;size=2)</div>
-<div class="pre"><a id="l988" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l988" class="linenr"> 988</a> &nbsp;&nbsp;&nbsp;&nbsp;skew_X:&nbsp;FloatProperty(</div>
-<div class="pre"><a id="l989" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l989" class="linenr"> 989</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name=&quot;X&nbsp;skew&quot;,</div>
-<div class="pre"><a id="l990" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l990" class="linenr"> 990</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;description=&quot;X&nbsp;Skew&nbsp;ratio.&nbsp;0.5&nbsp;is&nbsp;no&nbsp;skew&quot;,</div>
-<div class="pre"><a id="l991" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l991" class="linenr"> 991</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;min=-1.0,&nbsp;max=1.0,&nbsp;default=defaults[4])</div>
-<div class="pre"><a id="l992" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l992" class="linenr"> 992</a> &nbsp;&nbsp;&nbsp;&nbsp;scale_Y:&nbsp;FloatVectorProperty(</div>
-<div class="pre"><a id="l993" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l993" class="linenr"> 993</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name=&quot;Y&nbsp;scale&quot;,</div>
-<div class="pre"><a id="l994" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l994" class="linenr"> 994</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;description=&quot;Y&nbsp;axis&nbsp;scaling&nbsp;range&quot;,</div>
-<div class="pre"><a id="l995" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l995" class="linenr"> 995</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;min=.0,&nbsp;max=256.0,&nbsp;step=1,</div>
-<div class="pre"><a id="l996" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l996" class="linenr"> 996</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default=defaults[2],&nbsp;size=2)</div>
-<div class="pre"><a id="l997" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l997" class="linenr"> 997</a> &nbsp;&nbsp;&nbsp;&nbsp;skew_Y:&nbsp;FloatProperty(</div>
-<div class="pre"><a id="l998" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l998" class="linenr"> 998</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name=&quot;Y&nbsp;skew&quot;,</div>
-<div class="pre"><a id="l999" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l999" class="linenr"> 999</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;description=&quot;Y&nbsp;Skew&nbsp;ratio.&nbsp;0.5&nbsp;is&nbsp;no&nbsp;skew&quot;,</div>
-<div class="pre"><a id="l1000" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1000" class="linenr">1000</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;min=-1.0,&nbsp;max=1.0,&nbsp;default=defaults[5])</div>
-<div class="pre"><a id="l1001" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1001" class="linenr">1001</a> &nbsp;&nbsp;&nbsp;&nbsp;scale_Z:&nbsp;FloatVectorProperty(</div>
-<div class="pre"><a id="l1002" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1002" class="linenr">1002</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name=&quot;Z&nbsp;scale&quot;,</div>
-<div class="pre"><a id="l1003" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1003" class="linenr">1003</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;description=&quot;Z&nbsp;axis&nbsp;scaling&nbsp;range&quot;,</div>
-<div class="pre"><a id="l1004" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1004" class="linenr">1004</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;min=0.0,&nbsp;max=256.0,&nbsp;step=1,</div>
-<div class="pre"><a id="l1005" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1005" class="linenr">1005</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default=defaults[3],&nbsp;size=2)</div>
-<div class="pre"><a id="l1006" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1006" class="linenr">1006</a> &nbsp;&nbsp;&nbsp;&nbsp;skew_Z:&nbsp;FloatProperty(</div>
-<div class="pre"><a id="l1007" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1007" class="linenr">1007</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name=&quot;Z&nbsp;skew&quot;,</div>
-<div class="pre"><a id="l1008" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1008" class="linenr">1008</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;description=&quot;Z&nbsp;Skew&nbsp;ratio.&nbsp;0.5&nbsp;is&nbsp;no&nbsp;skew&quot;,</div>
-<div class="pre"><a id="l1009" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1009" class="linenr">1009</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;min=-1.0,&nbsp;max=1.0,&nbsp;default=defaults[6])</div>
-<div class="pre"><a id="l1010" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1010" class="linenr">1010</a> &nbsp;&nbsp;&nbsp;&nbsp;use_scale_dis:&nbsp;BoolProperty(</div>
-<div class="pre"><a id="l1011" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1011" class="linenr">1011</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name=&quot;Scale&nbsp;displace&nbsp;textures&quot;,</div>
-<div class="pre"><a id="l1012" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1012" class="linenr">1012</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;description=&quot;Scale&nbsp;displacement&nbsp;textures&nbsp;with&nbsp;dimensions.&nbsp;&nbsp;May&nbsp;cause&nbsp;streched&nbsp;textures&quot;,</div>
-<div class="pre"><a id="l1013" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1013" class="linenr">1013</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default=defaults[7])</div>
-<div class="pre"><a id="l1014" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1014" class="linenr">1014</a> &nbsp;&nbsp;&nbsp;&nbsp;scale_fac:&nbsp;FloatVectorProperty(</div>
-<div class="pre"><a id="l1015" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1015" class="linenr">1015</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name=&quot;Scaling&nbsp;Factor&quot;,</div>
-<div class="pre"><a id="l1016" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1016" class="linenr">1016</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;description=&quot;XYZ&nbsp;scaling&nbsp;factor.&nbsp;&nbsp;1:&nbsp;no&nbsp;scaling&quot;,</div>
-<div class="pre"><a id="l1017" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1017" class="linenr">1017</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;min=0.0001,&nbsp;max=256.0,&nbsp;step=0.1,</div>
-<div class="pre"><a id="l1018" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1018" class="linenr">1018</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default=defaults[8],&nbsp;size=3)</div>
-<div class="pre"><a id="l1019" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1019" class="linenr">1019</a> </div>
-<div class="pre"><a id="l1020" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1020" class="linenr">1020</a> &nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;@todo&nbsp;Possible&nbsp;to&nbsp;title&nbsp;this&nbsp;section&nbsp;&quot;Physical&nbsp;Properties:&quot;?</div>
-<div class="pre"><a id="l1021" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1021" class="linenr">1021</a> &nbsp;&nbsp;&nbsp;&nbsp;deform:&nbsp;FloatProperty(</div>
-<div class="pre"><a id="l1022" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1022" class="linenr">1022</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name=&quot;Deformation&quot;,</div>
-<div class="pre"><a id="l1023" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1023" class="linenr">1023</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;description=&quot;Rock&nbsp;deformation&quot;,</div>
-<div class="pre"><a id="l1024" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1024" class="linenr">1024</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;min=0.0,&nbsp;max=1024.0,&nbsp;default=defaults[9])</div>
-<div class="pre"><a id="l1025" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1025" class="linenr">1025</a> &nbsp;&nbsp;&nbsp;&nbsp;rough:&nbsp;FloatProperty(</div>
-<div class="pre"><a id="l1026" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1026" class="linenr">1026</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name=&quot;Roughness&quot;,</div>
-<div class="pre"><a id="l1027" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1027" class="linenr">1027</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;description=&quot;Rock&nbsp;roughness&quot;,</div>
-<div class="pre"><a id="l1028" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1028" class="linenr">1028</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;min=0.0,&nbsp;max=1024.0,&nbsp;default=defaults[10])</div>
-<div class="pre"><a id="l1029" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1029" class="linenr">1029</a> &nbsp;&nbsp;&nbsp;&nbsp;detail:&nbsp;IntProperty(</div>
-<div class="pre"><a id="l1030" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1030" class="linenr">1030</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name=&quot;Detail&nbsp;level&quot;,</div>
-<div class="pre"><a id="l1031" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1031" class="linenr">1031</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;description=&quot;Detail&nbsp;level.&nbsp;&nbsp;WARNING:&nbsp;Slow&nbsp;at&nbsp;high&nbsp;values!&quot;,</div>
-<div class="pre"><a id="l1032" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1032" class="linenr">1032</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;min=1,&nbsp;max=1024,&nbsp;default=defaults[11])</div>
-<div class="pre"><a id="l1033" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1033" class="linenr">1033</a> &nbsp;&nbsp;&nbsp;&nbsp;display_detail:&nbsp;IntProperty(</div>
-<div class="pre"><a id="l1034" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1034" class="linenr">1034</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name=&quot;Display&nbsp;Detail&quot;,</div>
-<div class="pre"><a id="l1035" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1035" class="linenr">1035</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;description=&quot;Display&nbsp;detail.&nbsp;&nbsp;Use&nbsp;a&nbsp;lower&nbsp;value&nbsp;for&nbsp;high&nbsp;numbers&nbsp;of&nbsp;rocks&quot;,</div>
-<div class="pre"><a id="l1036" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1036" class="linenr">1036</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;min=1,&nbsp;max=128,&nbsp;default=defaults[12])</div>
-<div class="pre"><a id="l1037" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1037" class="linenr">1037</a> &nbsp;&nbsp;&nbsp;&nbsp;smooth_fac:&nbsp;FloatProperty(</div>
-<div class="pre"><a id="l1038" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1038" class="linenr">1038</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name=&quot;Smooth&nbsp;Factor&quot;,</div>
-<div class="pre"><a id="l1039" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1039" class="linenr">1039</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;description=&quot;Smoothing&nbsp;factor.&nbsp;&nbsp;A&nbsp;value&nbsp;of&nbsp;0&nbsp;disables&quot;,</div>
-<div class="pre"><a id="l1040" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1040" class="linenr">1040</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;min=0.0,&nbsp;max=128.0,&nbsp;default=defaults[13])</div>
-<div class="pre"><a id="l1041" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1041" class="linenr">1041</a> &nbsp;&nbsp;&nbsp;&nbsp;smooth_it:&nbsp;IntProperty(</div>
-<div class="pre"><a id="l1042" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1042" class="linenr">1042</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name=&quot;Smooth&nbsp;Iterations&quot;,</div>
-<div class="pre"><a id="l1043" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1043" class="linenr">1043</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;description=&quot;Smoothing&nbsp;iterations.&nbsp;&nbsp;A&nbsp;value&nbsp;of&nbsp;0&nbsp;disables&quot;,</div>
-<div class="pre"><a id="l1044" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1044" class="linenr">1044</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;min=0,&nbsp;max=128,&nbsp;default=defaults[14])</div>
-<div class="pre"><a id="l1045" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1045" class="linenr">1045</a> </div>
-<div class="pre"><a id="l1046" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1046" class="linenr">1046</a> &nbsp;&nbsp;&nbsp;&nbsp;use_generate:&nbsp;BoolProperty(</div>
-<div class="pre"><a id="l1047" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1047" class="linenr">1047</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name=&quot;Generate&nbsp;Rocks&quot;,</div>
-<div class="pre"><a id="l1048" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1048" class="linenr">1048</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;description=&quot;Enable&nbsp;actual&nbsp;generation&quot;,</div>
-<div class="pre"><a id="l1049" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1049" class="linenr">1049</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default=defaults[15])</div>
-<div class="pre"><a id="l1050" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1050" class="linenr">1050</a> &nbsp;&nbsp;&nbsp;&nbsp;use_random_seed:&nbsp;BoolProperty(</div>
-<div class="pre"><a id="l1051" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1051" class="linenr">1051</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name=&quot;Use&nbsp;a&nbsp;random&nbsp;seed&quot;,</div>
-<div class="pre"><a id="l1052" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1052" class="linenr">1052</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;description=&quot;Create&nbsp;a&nbsp;seed&nbsp;based&nbsp;on&nbsp;time.&nbsp;Causes&nbsp;user&nbsp;seed&nbsp;to&nbsp;be&nbsp;ignored&quot;,</div>
-<div class="pre"><a id="l1053" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1053" class="linenr">1053</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default=defaults[16])</div>
-<div class="pre"><a id="l1054" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1054" class="linenr">1054</a> &nbsp;&nbsp;&nbsp;&nbsp;user_seed:&nbsp;IntProperty(</div>
-<div class="pre"><a id="l1055" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1055" class="linenr">1055</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name=&quot;User&nbsp;seed&quot;,</div>
-<div class="pre"><a id="l1056" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1056" class="linenr">1056</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;description=&quot;Use&nbsp;a&nbsp;specific&nbsp;seed&nbsp;for&nbsp;the&nbsp;generator&quot;,</div>
-<div class="pre"><a id="l1057" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1057" class="linenr">1057</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;min=0,&nbsp;max=1048576,&nbsp;default=defaults[17])</div>
-<div class="pre"><a id="l1058" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1058" class="linenr">1058</a> </div>
-<div class="pre"><a id="l1059" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1059" class="linenr">1059</a> &nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;draw(self,&nbsp;context):</div>
-<div class="pre"><a id="l1060" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1060" class="linenr">1060</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;layout&nbsp;=&nbsp;self.layout</div>
-<div class="pre"><a id="l1061" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1061" class="linenr">1061</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;box&nbsp;=&nbsp;layout.box()</div>
-<div class="pre"><a id="l1062" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1062" class="linenr">1062</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;box.prop(self,&nbsp;&#39;num_of_rocks&#39;)</div>
-<div class="pre"><a id="l1063" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1063" class="linenr">1063</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;box&nbsp;=&nbsp;layout.box()</div>
-<div class="pre"><a id="l1064" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1064" class="linenr">1064</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;box.prop(self,&nbsp;&#39;scale_X&#39;)</div>
-<div class="pre"><a id="l1065" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1065" class="linenr">1065</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;box.prop(self,&nbsp;&#39;skew_X&#39;)</div>
-<div class="pre"><a id="l1066" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1066" class="linenr">1066</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;box.prop(self,&nbsp;&#39;scale_Y&#39;)</div>
-<div class="pre"><a id="l1067" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1067" class="linenr">1067</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;box.prop(self,&nbsp;&#39;skew_Y&#39;)</div>
-<div class="pre"><a id="l1068" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1068" class="linenr">1068</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;box.prop(self,&nbsp;&#39;scale_Z&#39;)</div>
-<div class="pre"><a id="l1069" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1069" class="linenr">1069</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;box.prop(self,&nbsp;&#39;skew_Z&#39;)</div>
-<div class="pre"><a id="l1070" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1070" class="linenr">1070</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;box.prop(self,&nbsp;&#39;use_scale_dis&#39;)</div>
-<div class="pre"><a id="l1071" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1071" class="linenr">1071</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;self.use_scale_dis:</div>
-<div class="pre"><a id="l1072" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1072" class="linenr">1072</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;box.prop(self,&nbsp;&#39;scale_fac&#39;)</div>
-<div class="pre"><a id="l1073" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1073" class="linenr">1073</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</div>
-<div class="pre"><a id="l1074" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1074" class="linenr">1074</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.scale_fac&nbsp;=&nbsp;utils.toFloats(self.defaults[8])</div>
-<div class="pre"><a id="l1075" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1075" class="linenr">1075</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;box&nbsp;=&nbsp;layout.box()</div>
-<div class="pre"><a id="l1076" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1076" class="linenr">1076</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;box.prop(self,&nbsp;&#39;deform&#39;)</div>
-<div class="pre"><a id="l1077" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1077" class="linenr">1077</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;box.prop(self,&nbsp;&#39;rough&#39;)</div>
-<div class="pre"><a id="l1078" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1078" class="linenr">1078</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;box.prop(self,&nbsp;&#39;detail&#39;)</div>
-<div class="pre"><a id="l1079" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1079" class="linenr">1079</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;box.prop(self,&nbsp;&#39;display_detail&#39;)</div>
-<div class="pre"><a id="l1080" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1080" class="linenr">1080</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;box.prop(self,&nbsp;&#39;smooth_fac&#39;)</div>
-<div class="pre"><a id="l1081" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1081" class="linenr">1081</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;box.prop(self,&nbsp;&#39;smooth_it&#39;)</div>
-<div class="pre"><a id="l1082" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1082" class="linenr">1082</a> </div>
-<div class="pre"><a id="l1083" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1083" class="linenr">1083</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;box&nbsp;=&nbsp;layout.box()</div>
-<div class="pre"><a id="l1084" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1084" class="linenr">1084</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;box.prop(self,&nbsp;&#39;use_generate&#39;)</div>
-<div class="pre"><a id="l1085" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1085" class="linenr">1085</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;box.prop(self,&nbsp;&#39;use_random_seed&#39;)</div>
-<div class="pre"><a id="l1086" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1086" class="linenr">1086</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;not&nbsp;self.use_random_seed:</div>
-<div class="pre"><a id="l1087" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1087" class="linenr">1087</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;box.prop(self,&nbsp;&#39;user_seed&#39;)</div>
-<div class="pre"><a id="l1088" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1088" class="linenr">1088</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;box.prop(self,&nbsp;&#39;preset_values&#39;)</div>
-<div class="pre"><a id="l1089" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1089" class="linenr">1089</a> </div>
-<div class="pre"><a id="l1090" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1090" class="linenr">1090</a> &nbsp;&nbsp;&nbsp;&nbsp;@classmethod</div>
-<div class="pre"><a id="l1091" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1091" class="linenr">1091</a> &nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;poll(cls,&nbsp;context):</div>
-<div class="pre"><a id="l1092" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1092" class="linenr">1092</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;context.mode&nbsp;==&nbsp;&#39;OBJECT&#39;</div>
-<div class="pre"><a id="l1093" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1093" class="linenr">1093</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;return&nbsp;(context.object&nbsp;is&nbsp;not&nbsp;None&nbsp;and&nbsp;context.object.mode&nbsp;==&nbsp;&#39;OBJECT&#39;)</div>
-<div class="pre"><a id="l1094" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1094" class="linenr">1094</a> </div>
-<div class="pre"><a id="l1095" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1095" class="linenr">1095</a> &nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;execute(self,&nbsp;context):</div>
-<div class="pre"><a id="l1096" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1096" class="linenr">1096</a> </div>
-<div class="pre"><a id="l1097" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1097" class="linenr">1097</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;The&nbsp;following&nbsp;&quot;if&quot;&nbsp;block&nbsp;loads&nbsp;preset&nbsp;values:</div>
-<div class="pre"><a id="l1098" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1098" class="linenr">1098</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;self.lastPreset&nbsp;!=&nbsp;int(self.preset_values):</div>
-<div class="pre"><a id="l1099" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1099" class="linenr">1099</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.scale_X&nbsp;=&nbsp;utils.toFloats(self.presetsList[int(self.preset_values)][1])</div>
-<div class="pre"><a id="l1100" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1100" class="linenr">1100</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.scale_Y&nbsp;=&nbsp;utils.toFloats(self.presetsList[int(self.preset_values)][2])</div>
-<div class="pre"><a id="l1101" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1101" class="linenr">1101</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.scale_Z&nbsp;=&nbsp;utils.toFloats(self.presetsList[int(self.preset_values)][3])</div>
-<div class="pre"><a id="l1102" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1102" class="linenr">1102</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.skew_X&nbsp;=&nbsp;float(self.presetsList[int(self.preset_values)][4])</div>
-<div class="pre"><a id="l1103" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1103" class="linenr">1103</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.skew_Y&nbsp;=&nbsp;float(self.presetsList[int(self.preset_values)][5])</div>
-<div class="pre"><a id="l1104" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1104" class="linenr">1104</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.skew_Z&nbsp;=&nbsp;float(self.presetsList[int(self.preset_values)][6])</div>
-<div class="pre"><a id="l1105" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1105" class="linenr">1105</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.use_scale_dis&nbsp;=&nbsp;bool(self.presetsList[int(self.preset_values)][7])</div>
-<div class="pre"><a id="l1106" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1106" class="linenr">1106</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.scale_fac&nbsp;=&nbsp;utils.toFloats(self.presetsList[int(self.preset_values)][8])</div>
-<div class="pre"><a id="l1107" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1107" class="linenr">1107</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.deform&nbsp;=&nbsp;float(self.presetsList[int(self.preset_values)][9])</div>
-<div class="pre"><a id="l1108" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1108" class="linenr">1108</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.rough&nbsp;=&nbsp;float(self.presetsList[int(self.preset_values)][10])</div>
-<div class="pre"><a id="l1109" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1109" class="linenr">1109</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.detail&nbsp;=&nbsp;int(self.presetsList[int(self.preset_values)][11])</div>
-<div class="pre"><a id="l1110" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1110" class="linenr">1110</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.display_detail&nbsp;=&nbsp;int(self.presetsList[int(self.preset_values)][12])</div>
-<div class="pre"><a id="l1111" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1111" class="linenr">1111</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.smooth_fac&nbsp;=&nbsp;float(self.presetsList[int(self.preset_values)][13])</div>
-<div class="pre"><a id="l1112" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1112" class="linenr">1112</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.smooth_it&nbsp;=&nbsp;int(self.presetsList[int(self.preset_values)][14])</div>
-<div class="pre"><a id="l1113" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1113" class="linenr">1113</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.use_generate&nbsp;=&nbsp;bool(self.presetsList[int(self.preset_values)][15])</div>
-<div class="pre"><a id="l1114" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1114" class="linenr">1114</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.use_random_seed&nbsp;=&nbsp;bool(self.presetsList[int(self.preset_values)][16])</div>
-<div class="pre"><a id="l1115" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1115" class="linenr">1115</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.user_seed&nbsp;=&nbsp;int(self.presetsList[int(self.preset_values)][17])</div>
-<div class="pre"><a id="l1116" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1116" class="linenr">1116</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.lastPreset&nbsp;=&nbsp;int(self.preset_values)</div>
-<div class="pre"><a id="l1117" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1117" class="linenr">1117</a> </div>
-<div class="pre"><a id="l1118" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1118" class="linenr">1118</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;todo&nbsp;Add&nbsp;deform,&nbsp;deform_Var,&nbsp;rough,&nbsp;and&nbsp;rough_Var:</div>
-<div class="pre"><a id="l1119" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1119" class="linenr">1119</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;&nbsp;***&nbsp;todo&nbsp;completed&nbsp;4/23/2011&nbsp;***</div>
-<div class="pre"><a id="l1120" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1120" class="linenr">1120</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;&nbsp;***&nbsp;Eliminated&nbsp;&quot;deform_Var&quot;&nbsp;and&nbsp;&quot;rough_Var&quot;&nbsp;so&nbsp;the&nbsp;script&nbsp;is&nbsp;not</div>
-<div class="pre"><a id="l1121" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1121" class="linenr">1121</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;as&nbsp;complex&nbsp;to&nbsp;use.&nbsp;&nbsp;May&nbsp;add&nbsp;in&nbsp;again&nbsp;as&nbsp;advanced&nbsp;features.&nbsp;***</div>
-<div class="pre"><a id="l1122" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1122" class="linenr">1122</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;self.use_generate:</div>
-<div class="pre"><a id="l1123" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1123" class="linenr">1123</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;generateRocks(context,</div>
-<div class="pre"><a id="l1124" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1124" class="linenr">1124</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.scale_X,</div>
-<div class="pre"><a id="l1125" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1125" class="linenr">1125</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.skew_X,</div>
-<div class="pre"><a id="l1126" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1126" class="linenr">1126</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.scale_Y,</div>
-<div class="pre"><a id="l1127" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1127" class="linenr">1127</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.skew_Y,</div>
-<div class="pre"><a id="l1128" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1128" class="linenr">1128</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.scale_Z,</div>
-<div class="pre"><a id="l1129" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1129" class="linenr">1129</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.skew_Z,</div>
-<div class="pre"><a id="l1130" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1130" class="linenr">1130</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.scale_fac,</div>
-<div class="pre"><a id="l1131" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1131" class="linenr">1131</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.detail,</div>
-<div class="pre"><a id="l1132" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1132" class="linenr">1132</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.display_detail,</div>
-<div class="pre"><a id="l1133" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1133" class="linenr">1133</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.deform,</div>
-<div class="pre"><a id="l1134" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1134" class="linenr">1134</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.rough,</div>
-<div class="pre"><a id="l1135" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1135" class="linenr">1135</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.smooth_fac,</div>
-<div class="pre"><a id="l1136" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1136" class="linenr">1136</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.smooth_it,</div>
-<div class="pre"><a id="l1137" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1137" class="linenr">1137</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.num_of_rocks,</div>
-<div class="pre"><a id="l1138" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1138" class="linenr">1138</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.user_seed,</div>
-<div class="pre"><a id="l1139" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1139" class="linenr">1139</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.use_scale_dis,</div>
-<div class="pre"><a id="l1140" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1140" class="linenr">1140</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.use_random_seed)</div>
-<div class="pre"><a id="l1141" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1141" class="linenr">1141</a> </div>
-<div class="pre"><a id="l1142" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1142" class="linenr">1142</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;{&#39;FINISHED&#39;}</div>
-<div class="pre"><a id="l1143" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1143" class="linenr">1143</a> </div>
-<div class="pre"><a id="l1144" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1144" class="linenr">1144</a> </div>
-<div class="pre"><a id="l1145" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1145" class="linenr">1145</a> #&nbsp;Register:</div>
-<div class="pre"><a id="l1146" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1146" class="linenr">1146</a> def&nbsp;menu_func_rocks(self,&nbsp;context):</div>
-<div class="pre"><a id="l1147" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1147" class="linenr">1147</a> &nbsp;&nbsp;&nbsp;&nbsp;self.layout.operator(</div>
-<div class="pre"><a id="l1148" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1148" class="linenr">1148</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OBJECT_OT_add_mesh_rock.bl_idname,</div>
-<div class="pre"><a id="l1149" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1149" class="linenr">1149</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text=&quot;Rock&nbsp;Generator&quot;,</div>
-<div class="pre"><a id="l1150" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1150" class="linenr">1150</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;icon=&quot;PLUGIN&quot;)</div>
-<div class="pre"><a id="l1151" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1151" class="linenr">1151</a> </div>
-<div class="pre"><a id="l1152" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1152" class="linenr">1152</a> </div>
-<div class="pre"><a id="l1153" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1153" class="linenr">1153</a> classes&nbsp;=&nbsp;(</div>
-<div class="pre"><a id="l1154" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1154" class="linenr">1154</a> &nbsp;&nbsp;&nbsp;&nbsp;OBJECT_OT_add_mesh_rock,</div>
-<div class="pre"><a id="l1155" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1155" class="linenr">1155</a> )</div>
-<div class="pre"><a id="l1156" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1156" class="linenr">1156</a> </div>
-<div class="pre"><a id="l1157" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1157" class="linenr">1157</a> </div>
-<div class="pre"><a id="l1158" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1158" class="linenr">1158</a> def&nbsp;register():</div>
-<div class="pre"><a id="l1159" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1159" class="linenr">1159</a> &nbsp;&nbsp;&nbsp;&nbsp;from&nbsp;bpy.utils&nbsp;import&nbsp;register_class</div>
-<div class="pre"><a id="l1160" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1160" class="linenr">1160</a> &nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;cls&nbsp;in&nbsp;classes:</div>
-<div class="pre"><a id="l1161" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1161" class="linenr">1161</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;register_class(cls)</div>
-<div class="pre"><a id="l1162" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1162" class="linenr">1162</a> &nbsp;&nbsp;&nbsp;&nbsp;bpy.types.VIEW3D_MT_mesh_add.append(menu_func_rocks)</div>
-<div class="pre"><a id="l1163" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1163" class="linenr">1163</a> </div>
-<div class="pre"><a id="l1164" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1164" class="linenr">1164</a> </div>
-<div class="pre"><a id="l1165" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1165" class="linenr">1165</a> def&nbsp;unregister():</div>
-<div class="pre"><a id="l1166" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1166" class="linenr">1166</a> &nbsp;&nbsp;&nbsp;&nbsp;from&nbsp;bpy.utils&nbsp;import&nbsp;unregister_class</div>
-<div class="pre"><a id="l1167" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1167" class="linenr">1167</a> &nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;cls&nbsp;in&nbsp;reversed(classes):</div>
-<div class="pre"><a id="l1168" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1168" class="linenr">1168</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unregister_class(cls)</div>
-<div class="pre"><a id="l1169" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1169" class="linenr">1169</a> &nbsp;&nbsp;&nbsp;&nbsp;bpy.types.VIEW3D_MT_mesh_add.remove(menu_func_rocks)</div>
-<div class="pre"><a id="l1170" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1170" class="linenr">1170</a> </div>
-<div class="pre"><a id="l1171" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1171" class="linenr">1171</a> </div>
-<div class="pre"><a id="l1172" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1172" class="linenr">1172</a> if&nbsp;__name__&nbsp;==&nbsp;&quot;__main__&quot;:</div>
-<div class="pre"><a id="l1173" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/blob/HEAD:/add_mesh_rocks/rockgen.py#l1173" class="linenr">1173</a> &nbsp;&nbsp;&nbsp;&nbsp;register()</div>
-</div><div class="page_footer">
-<div class="page_footer_text">This project founded to maintain a central repository of Blender contrib addons</div>
-<a class="rss_logo" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/rss?f=add_mesh_rocks/rockgen.py" title="history of add_mesh_rocks/rockgen.py RSS feed">RSS</a>
-<a class="rss_logo" href="https://git.blender.org/gitweb/gitweb.cgi/blender-addons-contrib.git/atom?f=add_mesh_rocks/rockgen.py" title="history of add_mesh_rocks/rockgen.py Atom feed">Atom</a>
+
+          <include-fragment class="js-user-status-org-picker" data-url="/users/status/organizations"></include-fragment>
+        </div>
+        <div class="d-flex flex-items-center flex-justify-between p-3 border-top">
+          <button type="submit" disabled class="width-full btn btn-primary mr-2 js-user-status-submit">
+            Set status
+          </button>
+          <button type="button" disabled class="width-full js-clear-user-status-button btn ml-2 ">
+            Clear status
+          </button>
+        </div>
+</form>    </details-dialog>
+  </details>
 </div>
-<script type="text/javascript" src="static/gitweb.js"></script>
-<script type="text/javascript">
-window.onload = function () {
-	var tz_cookie = { name: 'gitweb_tz', expires: 14, path: '/' };
-	onloadTZSetup('local', tz_cookie, 'datetime');
-};
-</script>
-</body>
+
+      </div>
+      <div role="none" class="dropdown-divider"></div>
+
+
+    <a role="menuitem" class="dropdown-item" href="/versluis" data-ga-click="Header, go to profile, text:your profile">Your profile</a>
+
+    <a role="menuitem" class="dropdown-item" href="/versluis?tab=repositories" data-ga-click="Header, go to repositories, text:your repositories">Your repositories</a>
+
+    <a role="menuitem" class="dropdown-item" href="/versluis?tab=projects" data-ga-click="Header, go to projects, text:your projects">Your projects</a>
+
+    <a role="menuitem" class="dropdown-item" href="/versluis?tab=stars" data-ga-click="Header, go to starred repos, text:your stars">Your stars</a>
+      <a role="menuitem" class="dropdown-item" href="https://gist.github.com/mine" data-ga-click="Header, your gists, text:your gists">Your gists</a>
+
+
+
+
+
+    <div role="none" class="dropdown-divider"></div>
+      
+<div id="feature-enrollment-toggle" class="hide-sm hide-md feature-preview-details position-relative">
+  <button
+    type="button"
+    class="dropdown-item btn-link"
+    role="menuitem"
+    data-feature-preview-trigger-url="/users/versluis/feature_previews"
+    data-feature-preview-close-details="{&quot;event_type&quot;:&quot;feature_preview.clicks.close_modal&quot;,&quot;payload&quot;:{&quot;client_id&quot;:&quot;1640592597.1557936150&quot;,&quot;originating_request_id&quot;:&quot;8759:1B5E:C4931E:167EE83:5DE0780C&quot;,&quot;originating_url&quot;:&quot;https://github.com/sobotka/blender-addons-contrib/blob/master/add_mesh_rocks/rockgen.py&quot;,&quot;referrer&quot;:&quot;https://github.com/sobotka/blender-addons-contrib/tree/master/add_mesh_rocks&quot;,&quot;user_id&quot;:1576533}}"
+    data-feature-preview-close-hmac="fb80d6aeb504286685535e0760e951d55eb7cc7e7ce92421423e8d64701ab931"
+    data-hydro-click="{&quot;event_type&quot;:&quot;feature_preview.clicks.open_modal&quot;,&quot;payload&quot;:{&quot;link_location&quot;:&quot;user_dropdown&quot;,&quot;client_id&quot;:&quot;1640592597.1557936150&quot;,&quot;originating_request_id&quot;:&quot;8759:1B5E:C4931E:167EE83:5DE0780C&quot;,&quot;originating_url&quot;:&quot;https://github.com/sobotka/blender-addons-contrib/blob/master/add_mesh_rocks/rockgen.py&quot;,&quot;referrer&quot;:&quot;https://github.com/sobotka/blender-addons-contrib/tree/master/add_mesh_rocks&quot;,&quot;user_id&quot;:1576533}}"
+    data-hydro-click-hmac="7b1608a6025ce6a3b39f6ec00c05ceb527e1f3300ca57e06b7a682f47ff0bd12"
+  >
+    Feature preview
+  </button>
+    <span class="feature-preview-indicator js-feature-preview-indicator" hidden></span>
+</div>
+
+    <a role="menuitem" class="dropdown-item" href="https://help.github.com" data-ga-click="Header, go to help, text:help">Help</a>
+    <a role="menuitem" class="dropdown-item" href="/settings/profile" data-ga-click="Header, go to settings, icon:settings">Settings</a>
+    <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="logout-form" action="/logout" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="GuY/6JnL22EupzbUMnSxIj561Ocu5H829+UDK4stkhvR+OGud846lgMXS8eK9FYN0K61Smo6rhfVTiDpDMSOcA==" />
+      
+      <button type="submit" class="dropdown-item dropdown-signout" data-ga-click="Header, sign out, icon:logout" role="menuitem">
+        Sign out
+      </button>
+</form>  </details-menu>
+</details>
+
+    </div>
+
+  </header>
+
+      
+
+  </div>
+
+  <div id="start-of-content" class="show-on-focus"></div>
+
+
+    <div id="js-flash-container">
+
+</div>
+
+
+
+  <div class="application-main " data-commit-hovercards-enabled>
+        <div itemscope itemtype="http://schema.org/SoftwareSourceCode" class="">
+    <main  >
+      
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  <div class=" pagehead repohead instapaper_ignore readability-menu experiment-repo-nav pt-0 pt-lg-4 ">
+    <div class="repohead-details-container clearfix container-lg p-responsive d-none d-lg-block">
+
+      <ul class="pagehead-actions">
+
+
+
+    <li hidden>
+      <include-fragment src="/sobotka/blender-addons-contrib/used_by_count" accept="text/html; fragment">
+</include-fragment>
+    </li>
+
+  <li>
+    
+    <!-- '"` --><!-- </textarea></xmp> --></option></form><form data-remote="true" class="clearfix js-social-form js-social-container" action="/notifications/subscribe" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="s/857qkxrqeW+fXlYP6dHi3gMp6hk3MOha8ruwRVODX7lnnTfbhR+TVE3GXrEDfHziZ4IK9jUOFNtpSqJOBbWw==" />      <input type="hidden" name="repository_id" value="112905278">
+
+      <details class="details-reset details-overlay select-menu float-left">
+        <summary class="select-menu-button float-left btn btn-sm btn-with-count" data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;WATCH_BUTTON&quot;,&quot;repository_id&quot;:112905278,&quot;client_id&quot;:&quot;1640592597.1557936150&quot;,&quot;originating_request_id&quot;:&quot;8759:1B5E:C4931E:167EE83:5DE0780C&quot;,&quot;originating_url&quot;:&quot;https://github.com/sobotka/blender-addons-contrib/blob/master/add_mesh_rocks/rockgen.py&quot;,&quot;referrer&quot;:&quot;https://github.com/sobotka/blender-addons-contrib/tree/master/add_mesh_rocks&quot;,&quot;user_id&quot;:1576533}}" data-hydro-click-hmac="c000478d757d3518a336d63e31f280ceb6f9801858d2b42b463fc9f9644c9f1b" data-ga-click="Repository, click Watch settings, action:blob#show">          <span data-menu-button>
+              <svg class="octicon octicon-eye v-align-text-bottom" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8.06 2C3 2 0 8 0 8s3 6 8.06 6C13 14 16 8 16 8s-3-6-7.94-6zM8 12c-2.2 0-4-1.78-4-4 0-2.2 1.8-4 4-4 2.22 0 4 1.8 4 4 0 2.22-1.78 4-4 4zm2-4c0 1.11-.89 2-2 2-1.11 0-2-.89-2-2 0-1.11.89-2 2-2 1.11 0 2 .89 2 2z"/></svg>
+              Watch
+          </span>
+</summary>        <details-menu
+          class="select-menu-modal position-absolute mt-5"
+          style="z-index: 99;">
+          <div class="select-menu-header">
+            <span class="select-menu-title">Notifications</span>
+          </div>
+          <div class="select-menu-list">
+            <button type="submit" name="do" value="included" class="select-menu-item width-full" aria-checked="true" role="menuitemradio">
+              <svg class="octicon octicon-check select-menu-item-icon" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"/></svg>
+              <div class="select-menu-item-text">
+                <span class="select-menu-item-heading">Not watching</span>
+                <span class="description">Be notified only when participating or @mentioned.</span>
+                <span class="hidden-select-button-text" data-menu-button-contents>
+                  <svg class="octicon octicon-eye v-align-text-bottom" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8.06 2C3 2 0 8 0 8s3 6 8.06 6C13 14 16 8 16 8s-3-6-7.94-6zM8 12c-2.2 0-4-1.78-4-4 0-2.2 1.8-4 4-4 2.22 0 4 1.8 4 4 0 2.22-1.78 4-4 4zm2-4c0 1.11-.89 2-2 2-1.11 0-2-.89-2-2 0-1.11.89-2 2-2 1.11 0 2 .89 2 2z"/></svg>
+                  Watch
+                </span>
+              </div>
+            </button>
+
+            <button type="submit" name="do" value="release_only" class="select-menu-item width-full" aria-checked="false" role="menuitemradio">
+              <svg class="octicon octicon-check select-menu-item-icon" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"/></svg>
+              <div class="select-menu-item-text">
+                <span class="select-menu-item-heading">Releases only</span>
+                <span class="description">Be notified of new releases, and when participating or @mentioned.</span>
+                <span class="hidden-select-button-text" data-menu-button-contents>
+                  <svg class="octicon octicon-eye v-align-text-bottom" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8.06 2C3 2 0 8 0 8s3 6 8.06 6C13 14 16 8 16 8s-3-6-7.94-6zM8 12c-2.2 0-4-1.78-4-4 0-2.2 1.8-4 4-4 2.22 0 4 1.8 4 4 0 2.22-1.78 4-4 4zm2-4c0 1.11-.89 2-2 2-1.11 0-2-.89-2-2 0-1.11.89-2 2-2 1.11 0 2 .89 2 2z"/></svg>
+                  Unwatch releases
+                </span>
+              </div>
+            </button>
+
+            <button type="submit" name="do" value="subscribed" class="select-menu-item width-full" aria-checked="false" role="menuitemradio">
+              <svg class="octicon octicon-check select-menu-item-icon" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"/></svg>
+              <div class="select-menu-item-text">
+                <span class="select-menu-item-heading">Watching</span>
+                <span class="description">Be notified of all conversations.</span>
+                <span class="hidden-select-button-text" data-menu-button-contents>
+                  <svg class="octicon octicon-eye v-align-text-bottom" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8.06 2C3 2 0 8 0 8s3 6 8.06 6C13 14 16 8 16 8s-3-6-7.94-6zM8 12c-2.2 0-4-1.78-4-4 0-2.2 1.8-4 4-4 2.22 0 4 1.8 4 4 0 2.22-1.78 4-4 4zm2-4c0 1.11-.89 2-2 2-1.11 0-2-.89-2-2 0-1.11.89-2 2-2 1.11 0 2 .89 2 2z"/></svg>
+                  Unwatch
+                </span>
+              </div>
+            </button>
+
+            <button type="submit" name="do" value="ignore" class="select-menu-item width-full" aria-checked="false" role="menuitemradio">
+              <svg class="octicon octicon-check select-menu-item-icon" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"/></svg>
+              <div class="select-menu-item-text">
+                <span class="select-menu-item-heading">Ignoring</span>
+                <span class="description">Never be notified.</span>
+                <span class="hidden-select-button-text" data-menu-button-contents>
+                  <svg class="octicon octicon-mute v-align-text-bottom" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 2.81v10.38c0 .67-.81 1-1.28.53L3 10H1c-.55 0-1-.45-1-1V7c0-.55.45-1 1-1h2l3.72-3.72C7.19 1.81 8 2.14 8 2.81zm7.53 3.22l-1.06-1.06-1.97 1.97-1.97-1.97-1.06 1.06L11.44 8 9.47 9.97l1.06 1.06 1.97-1.97 1.97 1.97 1.06-1.06L13.56 8l1.97-1.97z"/></svg>
+                  Stop ignoring
+                </span>
+              </div>
+            </button>
+          </div>
+        </details-menu>
+      </details>
+        <a class="social-count js-social-count"
+          href="/sobotka/blender-addons-contrib/watchers"
+          aria-label="2 users are watching this repository">
+          2
+        </a>
+</form>
+  </li>
+
+  <li>
+      <div class="js-toggler-container js-social-container starring-container on">
+    <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="starred js-social-form" action="/sobotka/blender-addons-contrib/unstar" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="4TOdbAe8vl13iNuCv3hWew4joOflVdO8iaIpg9ua2/FbN/Ix1JLLBvqOzOeO4Dyl9IXR6bhGyCbIl9U+7zq1ZQ==" />
+      <input type="hidden" name="context" value="repository"></input>
+      <button type="submit" class="btn btn-sm btn-with-count js-toggler-target" aria-label="Unstar this repository" title="Unstar sobotka/blender-addons-contrib" data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;UNSTAR_BUTTON&quot;,&quot;repository_id&quot;:112905278,&quot;client_id&quot;:&quot;1640592597.1557936150&quot;,&quot;originating_request_id&quot;:&quot;8759:1B5E:C4931E:167EE83:5DE0780C&quot;,&quot;originating_url&quot;:&quot;https://github.com/sobotka/blender-addons-contrib/blob/master/add_mesh_rocks/rockgen.py&quot;,&quot;referrer&quot;:&quot;https://github.com/sobotka/blender-addons-contrib/tree/master/add_mesh_rocks&quot;,&quot;user_id&quot;:1576533}}" data-hydro-click-hmac="41ca913d1beacb0c1d2f70dd8ff124b68a21d54988e9c6bb486fc55c0b92126b" data-ga-click="Repository, click unstar button, action:blob#show; text:Unstar">        <svg class="octicon octicon-star v-align-text-bottom" viewBox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M14 6l-4.9-.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14 7 11.67 11.33 14l-.93-4.74L14 6z"/></svg>
+        Unstar
+</button>        <a class="social-count js-social-count" href="/sobotka/blender-addons-contrib/stargazers"
+           aria-label="16 users starred this repository">
+           16
+        </a>
+</form>
+    <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="unstarred js-social-form" action="/sobotka/blender-addons-contrib/star" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="0U5hHltuA4qvfM0EU8ItmEtRjPD7d6zHwrE1b+CvY0uYl2w7fXshzt0+1r8owxgiyOnw/jdhS6/cZufP7o3Fkg==" />
+      <input type="hidden" name="context" value="repository"></input>
+      <button type="submit" class="btn btn-sm btn-with-count js-toggler-target" aria-label="Unstar this repository" title="Star sobotka/blender-addons-contrib" data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;STAR_BUTTON&quot;,&quot;repository_id&quot;:112905278,&quot;client_id&quot;:&quot;1640592597.1557936150&quot;,&quot;originating_request_id&quot;:&quot;8759:1B5E:C4931E:167EE83:5DE0780C&quot;,&quot;originating_url&quot;:&quot;https://github.com/sobotka/blender-addons-contrib/blob/master/add_mesh_rocks/rockgen.py&quot;,&quot;referrer&quot;:&quot;https://github.com/sobotka/blender-addons-contrib/tree/master/add_mesh_rocks&quot;,&quot;user_id&quot;:1576533}}" data-hydro-click-hmac="2ac3e0504fbf20c878993831d19340fb35195981f5e208c207596c197f40bbcd" data-ga-click="Repository, click star button, action:blob#show; text:Star">        <svg class="octicon octicon-star v-align-text-bottom" viewBox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M14 6l-4.9-.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14 7 11.67 11.33 14l-.93-4.74L14 6z"/></svg>
+        Star
+</button>        <a class="social-count js-social-count" href="/sobotka/blender-addons-contrib/stargazers"
+           aria-label="16 users starred this repository">
+          16
+        </a>
+</form>  </div>
+
+  </li>
+
+  <li>
+          <details class="details-reset details-overlay details-overlay-dark d-inline-block float-left">
+            <summary class="btn btn-sm btn-with-count" data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;FORK_BUTTON&quot;,&quot;repository_id&quot;:112905278,&quot;client_id&quot;:&quot;1640592597.1557936150&quot;,&quot;originating_request_id&quot;:&quot;8759:1B5E:C4931E:167EE83:5DE0780C&quot;,&quot;originating_url&quot;:&quot;https://github.com/sobotka/blender-addons-contrib/blob/master/add_mesh_rocks/rockgen.py&quot;,&quot;referrer&quot;:&quot;https://github.com/sobotka/blender-addons-contrib/tree/master/add_mesh_rocks&quot;,&quot;user_id&quot;:1576533}}" data-hydro-click-hmac="38411b2a6463fb80c617144ffe6a2d8673286d0d2a0b85e57dcac518d50d31ce" data-ga-click="Repository, show fork modal, action:blob#show; text:Fork" title="Fork your own copy of sobotka/blender-addons-contrib to your account">              <svg class="octicon octicon-repo-forked v-align-text-bottom" viewBox="0 0 10 16" version="1.1" width="10" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1a1.993 1.993 0 00-1 3.72V6L5 8 3 6V4.72A1.993 1.993 0 002 1a1.993 1.993 0 00-1 3.72V6.5l3 3v1.78A1.993 1.993 0 005 15a1.993 1.993 0 001-3.72V9.5l3-3V4.72A1.993 1.993 0 008 1zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3 10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3-10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"/></svg>
+              Fork
+</summary>            <details-dialog
+              class="anim-fade-in fast Box Box--overlay d-flex flex-column"
+              src="/sobotka/blender-addons-contrib/fork?fragment=1"
+              preload>
+              <div class="Box-header">
+                <button class="Box-btn-octicon btn-octicon float-right" type="button" aria-label="Close dialog" data-close-dialog>
+                  <svg class="octicon octicon-x" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"/></svg>
+                </button>
+                <h3 class="Box-title">Fork blender-addons-contrib</h3>
+              </div>
+              <div class="overflow-auto text-center">
+                <include-fragment>
+                  <div class="octocat-spinner my-3" aria-label="Loading..."></div>
+                  <p class="f5 text-gray">If this dialog fails to load, you can visit <a href="/sobotka/blender-addons-contrib/fork">the fork page</a> directly.</p>
+                </include-fragment>
+              </div>
+            </details-dialog>
+          </details>
+
+    <a href="/sobotka/blender-addons-contrib/network/members" class="social-count"
+       aria-label="11 users forked this repository">
+      11
+    </a>
+  </li>
+</ul>
+
+      <h1 class="public ">
+    <svg class="octicon octicon-repo" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9H3V8h1v1zm0-3H3v1h1V6zm0-2H3v1h1V4zm0-2H3v1h1V2zm8-1v12c0 .55-.45 1-1 1H6v2l-1.5-1.5L3 16v-2H1c-.55 0-1-.45-1-1V1c0-.55.45-1 1-1h10c.55 0 1 .45 1 1zm-1 10H1v2h2v-1h3v1h5v-2zm0-10H2v9h9V1z"/></svg>
+  <span class="author" itemprop="author"><a class="url fn" rel="author" data-hovercard-type="user" data-hovercard-url="/users/sobotka/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/sobotka">sobotka</a></span><!--
+--><span class="path-divider">/</span><!--
+--><strong itemprop="name"><a data-pjax="#js-repo-pjax-container" href="/sobotka/blender-addons-contrib">blender-addons-contrib</a></strong>
+  
+
+</h1>
+
+    </div>
+    
+<nav class="hx_reponav reponav js-repo-nav js-sidenav-container-pjax container-lg p-responsive d-none d-lg-block"
+     itemscope
+     itemtype="http://schema.org/BreadcrumbList"
+    aria-label="Repository"
+     data-pjax="#js-repo-pjax-container">
+
+  <span itemscope itemtype="http://schema.org/ListItem" itemprop="itemListElement">
+    <a class="js-selected-navigation-item selected reponav-item" itemprop="url" data-hotkey="g c" aria-current="page" data-selected-links="repo_source repo_downloads repo_commits repo_releases repo_tags repo_branches repo_packages /sobotka/blender-addons-contrib" href="/sobotka/blender-addons-contrib">
+      <svg class="octicon octicon-code" viewBox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M9.5 3L8 4.5 11.5 8 8 11.5 9.5 13 14 8 9.5 3zm-5 0L0 8l4.5 5L6 11.5 2.5 8 6 4.5 4.5 3z"/></svg>
+      <span itemprop="name">Code</span>
+      <meta itemprop="position" content="1">
+</a>  </span>
+
+    <span itemscope itemtype="http://schema.org/ListItem" itemprop="itemListElement">
+      <a itemprop="url" data-hotkey="g i" class="js-selected-navigation-item reponav-item" data-selected-links="repo_issues repo_labels repo_milestones /sobotka/blender-addons-contrib/issues" href="/sobotka/blender-addons-contrib/issues">
+        <svg class="octicon octicon-issue-opened" viewBox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 011.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"/></svg>
+        <span itemprop="name">Issues</span>
+        <span class="Counter">0</span>
+        <meta itemprop="position" content="2">
+</a>    </span>
+
+  <span itemscope itemtype="http://schema.org/ListItem" itemprop="itemListElement">
+    <a data-hotkey="g p" data-skip-pjax="true" itemprop="url" class="js-selected-navigation-item reponav-item" data-selected-links="repo_pulls checks /sobotka/blender-addons-contrib/pulls" href="/sobotka/blender-addons-contrib/pulls">
+      <svg class="octicon octicon-git-pull-request" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M11 11.28V5c-.03-.78-.34-1.47-.94-2.06C9.46 2.35 8.78 2.03 8 2H7V0L4 3l3 3V4h1c.27.02.48.11.69.31.21.2.3.42.31.69v6.28A1.993 1.993 0 0010 15a1.993 1.993 0 001-3.72zm-1 2.92c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zM4 3c0-1.11-.89-2-2-2a1.993 1.993 0 00-1 3.72v6.56A1.993 1.993 0 002 15a1.993 1.993 0 001-3.72V4.72c.59-.34 1-.98 1-1.72zm-.8 10c0 .66-.55 1.2-1.2 1.2-.65 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"/></svg>
+      <span itemprop="name">Pull requests</span>
+      <span class="Counter">0</span>
+      <meta itemprop="position" content="3">
+</a>  </span>
+
+    <span itemscope itemtype="http://schema.org/ListItem" itemprop="itemListElement" class="position-relative float-left">
+      <a data-hotkey="g w" data-skip-pjax="true" class="js-selected-navigation-item reponav-item" data-selected-links="repo_actions /sobotka/blender-addons-contrib/actions" href="/sobotka/blender-addons-contrib/actions">
+        <svg class="octicon octicon-play" viewBox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M14 8A7 7 0 110 8a7 7 0 0114 0zm-8.223 3.482l4.599-3.066a.5.5 0 000-.832L5.777 4.518A.5.5 0 005 4.934v6.132a.5.5 0 00.777.416z"/></svg>
+        Actions
+</a>
+    </span>
+
+    <a data-hotkey="g b" class="js-selected-navigation-item reponav-item" data-selected-links="repo_projects new_repo_project repo_project /sobotka/blender-addons-contrib/projects" href="/sobotka/blender-addons-contrib/projects">
+      <svg class="octicon octicon-project" viewBox="0 0 15 16" version="1.1" width="15" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M10 12h3V2h-3v10zm-4-2h3V2H6v8zm-4 4h3V2H2v12zm-1 1h13V1H1v14zM14 0H1a1 1 0 00-1 1v14a1 1 0 001 1h13a1 1 0 001-1V1a1 1 0 00-1-1z"/></svg>
+      Projects
+      <span class="Counter" >0</span>
+</a>
+
+    <a class="js-selected-navigation-item reponav-item" data-hotkey="g w" data-selected-links="repo_wiki /sobotka/blender-addons-contrib/wiki" href="/sobotka/blender-addons-contrib/wiki">
+      <svg class="octicon octicon-book" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M3 5h4v1H3V5zm0 3h4V7H3v1zm0 2h4V9H3v1zm11-5h-4v1h4V5zm0 2h-4v1h4V7zm0 2h-4v1h4V9zm2-6v9c0 .55-.45 1-1 1H9.5l-1 1-1-1H2c-.55 0-1-.45-1-1V3c0-.55.45-1 1-1h5.5l1 1 1-1H15c.55 0 1 .45 1 1zm-8 .5L7.5 3H2v9h6V3.5zm7-.5H9.5l-.5.5V12h6V3z"/></svg>
+      Wiki
+</a>
+    <a data-skip-pjax="true" class="js-selected-navigation-item reponav-item" data-selected-links="security alerts policy code_scanning /sobotka/blender-addons-contrib/security/advisories" href="/sobotka/blender-addons-contrib/security/advisories">
+      <svg class="octicon octicon-shield" viewBox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M0 2l7-2 7 2v6.02C14 12.69 8.69 16 7 16c-1.69 0-7-3.31-7-7.98V2zm1 .75L7 1l6 1.75v5.268C13 12.104 8.449 15 7 15c-1.449 0-6-2.896-6-6.982V2.75zm1 .75L7 2v12c-1.207 0-5-2.482-5-5.985V3.5z"/></svg>
+      Security
+</a>
+    <a class="js-selected-navigation-item reponav-item" data-selected-links="repo_graphs repo_contributors dependency_graph pulse people /sobotka/blender-addons-contrib/pulse" href="/sobotka/blender-addons-contrib/pulse">
+      <svg class="octicon octicon-graph" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M16 14v1H0V0h1v14h15zM5 13H3V8h2v5zm4 0H7V3h2v10zm4 0h-2V6h2v7z"/></svg>
+      Insights
+</a>
+
+</nav>
+
+  <div class="reponav-wrapper reponav-small d-lg-none">
+  <nav class="reponav js-reponav text-center no-wrap"
+       itemscope
+       itemtype="http://schema.org/BreadcrumbList">
+
+    <span itemscope itemtype="http://schema.org/ListItem" itemprop="itemListElement">
+      <a class="js-selected-navigation-item selected reponav-item" itemprop="url" aria-current="page" data-selected-links="repo_source repo_downloads repo_commits repo_releases repo_tags repo_branches repo_packages /sobotka/blender-addons-contrib" href="/sobotka/blender-addons-contrib">
+        <span itemprop="name">Code</span>
+        <meta itemprop="position" content="1">
+</a>    </span>
+
+      <span itemscope itemtype="http://schema.org/ListItem" itemprop="itemListElement">
+        <a itemprop="url" class="js-selected-navigation-item reponav-item" data-selected-links="repo_issues repo_labels repo_milestones /sobotka/blender-addons-contrib/issues" href="/sobotka/blender-addons-contrib/issues">
+          <span itemprop="name">Issues</span>
+          <span class="Counter">0</span>
+          <meta itemprop="position" content="2">
+</a>      </span>
+
+    <span itemscope itemtype="http://schema.org/ListItem" itemprop="itemListElement">
+      <a itemprop="url" class="js-selected-navigation-item reponav-item" data-selected-links="repo_pulls checks /sobotka/blender-addons-contrib/pulls" href="/sobotka/blender-addons-contrib/pulls">
+        <span itemprop="name">Pull requests</span>
+        <span class="Counter">0</span>
+        <meta itemprop="position" content="3">
+</a>    </span>
+
+      <span itemscope itemtype="http://schema.org/ListItem" itemprop="itemListElement">
+        <a itemprop="url" class="js-selected-navigation-item reponav-item" data-selected-links="repo_projects new_repo_project repo_project /sobotka/blender-addons-contrib/projects" href="/sobotka/blender-addons-contrib/projects">
+          <span itemprop="name">Projects</span>
+          <span class="Counter">0</span>
+          <meta itemprop="position" content="4">
+</a>      </span>
+
+      <span itemscope itemtype="http://schema.org/ListItem" itemprop="itemListElement">
+        <a itemprop="url" class="js-selected-navigation-item reponav-item" data-selected-links="repo_wiki /sobotka/blender-addons-contrib/wiki" href="/sobotka/blender-addons-contrib/wiki">
+          <span itemprop="name">Wiki</span>
+          <meta itemprop="position" content="5">
+</a>      </span>
+
+      <a itemprop="url" class="js-selected-navigation-item reponav-item" data-selected-links="security alerts policy code_scanning /sobotka/blender-addons-contrib/security/advisories" href="/sobotka/blender-addons-contrib/security/advisories">
+        <span itemprop="name">Security</span>
+        <meta itemprop="position" content="6">
+</a>
+      <a class="js-selected-navigation-item reponav-item" data-selected-links="pulse /sobotka/blender-addons-contrib/pulse" href="/sobotka/blender-addons-contrib/pulse">
+        Pulse
+</a>
+      <span itemscope itemtype="http://schema.org/ListItem" itemprop="itemListElement">
+        <a itemprop="url" class="js-selected-navigation-item reponav-item" data-selected-links="community /sobotka/blender-addons-contrib/community" href="/sobotka/blender-addons-contrib/community">
+          Community
+</a>      </span>
+
+  </nav>
+</div>
+
+
+  </div>
+<div class="container-lg clearfix new-discussion-timeline experiment-repo-nav  p-responsive">
+  <div class="repository-content ">
+
+    
+    
+
+
+  
+
+
+    <a class="d-none js-permalink-shortcut" data-hotkey="y" href="/sobotka/blender-addons-contrib/blob/af1d8170e6fb19851fd547fe228bceede3375bfe/add_mesh_rocks/rockgen.py">Permalink</a>
+
+    <!-- blob contrib key: blob_contributors:v21:37af8f38f5c18ecddcd87409886ebea2 -->
+      
+
+    <div class="d-flex flex-items-start flex-shrink-0 pb-3 flex-column flex-md-row">
+      <span class="d-flex flex-justify-between width-full width-md-auto">
+        
+<details class="details-reset details-overlay select-menu branch-select-menu  hx_rsm" id="branch-select-menu">
+  <summary class="btn btn-sm select-menu-button css-truncate"
+           data-hotkey="w"
+           title="Switch branches or tags">
+    <i>Branch:</i>
+    <span class="css-truncate-target" data-menu-button>master</span>
+  </summary>
+
+  <details-menu class="select-menu-modal hx_rsm-modal position-absolute" style="z-index: 99;" src="/sobotka/blender-addons-contrib/ref-list/master/add_mesh_rocks/rockgen.py?source_action=show&amp;source_controller=blob" preload>
+    <include-fragment class="select-menu-loading-overlay anim-pulse">
+      <svg height="32" class="octicon octicon-octoface" viewBox="0 0 16 16" version="1.1" width="32" aria-hidden="true"><path fill-rule="evenodd" d="M14.7 5.34c.13-.32.55-1.59-.13-3.31 0 0-1.05-.33-3.44 1.3-1-.28-2.07-.32-3.13-.32s-2.13.04-3.13.32c-2.39-1.64-3.44-1.3-3.44-1.3-.68 1.72-.26 2.99-.13 3.31C.49 6.21 0 7.33 0 8.69 0 13.84 3.33 15 7.98 15S16 13.84 16 8.69c0-1.36-.49-2.48-1.3-3.35zM8 14.02c-3.3 0-5.98-.15-5.98-3.35 0-.76.38-1.48 1.02-2.07 1.07-.98 2.9-.46 4.96-.46 2.07 0 3.88-.52 4.96.46.65.59 1.02 1.3 1.02 2.07 0 3.19-2.68 3.35-5.98 3.35zM5.49 9.01c-.66 0-1.2.8-1.2 1.78s.54 1.79 1.2 1.79c.66 0 1.2-.8 1.2-1.79s-.54-1.78-1.2-1.78zm5.02 0c-.66 0-1.2.79-1.2 1.78s.54 1.79 1.2 1.79c.66 0 1.2-.8 1.2-1.79s-.53-1.78-1.2-1.78z"/></svg>
+    </include-fragment>
+  </details-menu>
+</details>
+
+        <div class="BtnGroup flex-shrink-0 d-md-none">
+          <a href="/sobotka/blender-addons-contrib/find/master"
+                class="js-pjax-capture-input btn btn-sm BtnGroup-item"
+                data-pjax
+                data-hotkey="t">
+            Find file
+          </a>
+          <clipboard-copy value="add_mesh_rocks/rockgen.py" class="btn btn-sm BtnGroup-item">
+            Copy path
+          </clipboard-copy>
+        </div>
+      </span>
+      <h2 id="blob-path" class="breadcrumb flex-auto min-width-0 text-normal flex-md-self-center ml-md-2 mr-md-3 my-2 my-md-0">
+        <span class="js-repo-root text-bold"><span class="js-path-segment"><a data-pjax="true" href="/sobotka/blender-addons-contrib"><span>blender-addons-contrib</span></a></span></span><span class="separator">/</span><span class="js-path-segment"><a data-pjax="true" href="/sobotka/blender-addons-contrib/tree/master/add_mesh_rocks"><span>add_mesh_rocks</span></a></span><span class="separator">/</span><strong class="final-path">rockgen.py</strong>
+          <span class="separator">/</span>
+          
+<details class="details-reset details-overlay select-menu d-inline">
+  <summary class="btn-link link-gray select-menu-button css-truncate" data-hotkey="r" data-hydro-click="{&quot;event_type&quot;:&quot;code_navigation.click_on_blob_definitions&quot;,&quot;payload&quot;:{&quot;action&quot;:&quot;click_on_blob_definitions&quot;,&quot;repository_id&quot;:112905278,&quot;ref&quot;:&quot;master&quot;,&quot;language&quot;:&quot;Python&quot;,&quot;client_id&quot;:&quot;1640592597.1557936150&quot;,&quot;originating_request_id&quot;:&quot;8759:1B5E:C4931E:167EE83:5DE0780C&quot;,&quot;originating_url&quot;:&quot;https://github.com/sobotka/blender-addons-contrib/blob/master/add_mesh_rocks/rockgen.py&quot;,&quot;referrer&quot;:&quot;https://github.com/sobotka/blender-addons-contrib/tree/master/add_mesh_rocks&quot;,&quot;user_id&quot;:1576533}}" data-hydro-click-hmac="9af08303718b2a3ab9eaa3dc2de2801200cbaf2ac9d0a6a3095e616210da1b6d">
+    <span data-menu-button>Jump to</span>
+  </summary>
+  <details-menu class="select-menu-modal position-absolute" style="z-index: 99;">
+    <div class="select-menu-header">
+      <span class="select-menu-title">Code definitions</span>
+    </div>
+    <div class="select-menu-filters">
+      <div class="select-menu-text-filter">
+        <input
+          type="text"
+          id="code-def-filter-field"
+          class="form-control js-filterable-field"
+          placeholder="Filter definitions"
+          aria-label="Filter definitions"
+          autofocus
+          autocomplete="off">
+      </div>
+    </div>
+    <div class="select-menu-list lh-default" data-filterable-for="code-def-filter-field" data-filterable-type="substring">
+      
+<a class="select-menu-item d-flex css-truncate" role="menuitemradio" aria-checked="false" rel="nofollow" data-hydro-click="{&quot;event_type&quot;:&quot;code_navigation.navigate_to_blob_definition&quot;,&quot;payload&quot;:{&quot;action&quot;:&quot;navigate_to_blob_definition&quot;,&quot;repository_id&quot;:112905278,&quot;ref&quot;:&quot;master&quot;,&quot;language&quot;:&quot;Python&quot;,&quot;client_id&quot;:&quot;1640592597.1557936150&quot;,&quot;originating_request_id&quot;:&quot;8759:1B5E:C4931E:167EE83:5DE0780C&quot;,&quot;originating_url&quot;:&quot;https://github.com/sobotka/blender-addons-contrib/blob/master/add_mesh_rocks/rockgen.py&quot;,&quot;referrer&quot;:&quot;https://github.com/sobotka/blender-addons-contrib/tree/master/add_mesh_rocks&quot;,&quot;user_id&quot;:1576533}}" data-hydro-click-hmac="ff1383ec4f0d75c7075460750973980e6848d141af94750d48446d038d8a0659" href="/sobotka/blender-addons-contrib/blob/master/add_mesh_rocks/rockgen.py#L164">
+  <div class="mx-1">
+    <svg class="octicon octicon-check select-menu-item-icon" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"/></svg>
+  </div>
+  <div class="select-menu-item-text flex-auto css-truncate-target" data-menu-button-text>
+    createMeshObject
+  </div>
+  <div class="ml-1">
+    Function
+  </div>
+</a>
+<a class="select-menu-item d-flex css-truncate" role="menuitemradio" aria-checked="false" rel="nofollow" data-hydro-click="{&quot;event_type&quot;:&quot;code_navigation.navigate_to_blob_definition&quot;,&quot;payload&quot;:{&quot;action&quot;:&quot;navigate_to_blob_definition&quot;,&quot;repository_id&quot;:112905278,&quot;ref&quot;:&quot;master&quot;,&quot;language&quot;:&quot;Python&quot;,&quot;client_id&quot;:&quot;1640592597.1557936150&quot;,&quot;originating_request_id&quot;:&quot;8759:1B5E:C4931E:167EE83:5DE0780C&quot;,&quot;originating_url&quot;:&quot;https://github.com/sobotka/blender-addons-contrib/blob/master/add_mesh_rocks/rockgen.py&quot;,&quot;referrer&quot;:&quot;https://github.com/sobotka/blender-addons-contrib/tree/master/add_mesh_rocks&quot;,&quot;user_id&quot;:1576533}}" data-hydro-click-hmac="ff1383ec4f0d75c7075460750973980e6848d141af94750d48446d038d8a0659" href="/sobotka/blender-addons-contrib/blob/master/add_mesh_rocks/rockgen.py#L201">
+  <div class="mx-1">
+    <svg class="octicon octicon-check select-menu-item-icon" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"/></svg>
+  </div>
+  <div class="select-menu-item-text flex-auto css-truncate-target" data-menu-button-text>
+    generateObject
+  </div>
+  <div class="ml-1">
+    Function
+  </div>
+</a>
+<a class="select-menu-item d-flex css-truncate" role="menuitemradio" aria-checked="false" rel="nofollow" data-hydro-click="{&quot;event_type&quot;:&quot;code_navigation.navigate_to_blob_definition&quot;,&quot;payload&quot;:{&quot;action&quot;:&quot;navigate_to_blob_definition&quot;,&quot;repository_id&quot;:112905278,&quot;ref&quot;:&quot;master&quot;,&quot;language&quot;:&quot;Python&quot;,&quot;client_id&quot;:&quot;1640592597.1557936150&quot;,&quot;originating_request_id&quot;:&quot;8759:1B5E:C4931E:167EE83:5DE0780C&quot;,&quot;originating_url&quot;:&quot;https://github.com/sobotka/blender-addons-contrib/blob/master/add_mesh_rocks/rockgen.py&quot;,&quot;referrer&quot;:&quot;https://github.com/sobotka/blender-addons-contrib/tree/master/add_mesh_rocks&quot;,&quot;user_id&quot;:1576533}}" data-hydro-click-hmac="ff1383ec4f0d75c7075460750973980e6848d141af94750d48446d038d8a0659" href="/sobotka/blender-addons-contrib/blob/master/add_mesh_rocks/rockgen.py#L748">
+  <div class="mx-1">
+    <svg class="octicon octicon-check select-menu-item-icon" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"/></svg>
+  </div>
+  <div class="select-menu-item-text flex-auto css-truncate-target" data-menu-button-text>
+    generateRocks
+  </div>
+  <div class="ml-1">
+    Function
+  </div>
+</a>
+<a class="select-menu-item d-flex css-truncate" role="menuitemradio" aria-checked="false" rel="nofollow" data-hydro-click="{&quot;event_type&quot;:&quot;code_navigation.navigate_to_blob_definition&quot;,&quot;payload&quot;:{&quot;action&quot;:&quot;navigate_to_blob_definition&quot;,&quot;repository_id&quot;:112905278,&quot;ref&quot;:&quot;master&quot;,&quot;language&quot;:&quot;Python&quot;,&quot;client_id&quot;:&quot;1640592597.1557936150&quot;,&quot;originating_request_id&quot;:&quot;8759:1B5E:C4931E:167EE83:5DE0780C&quot;,&quot;originating_url&quot;:&quot;https://github.com/sobotka/blender-addons-contrib/blob/master/add_mesh_rocks/rockgen.py&quot;,&quot;referrer&quot;:&quot;https://github.com/sobotka/blender-addons-contrib/tree/master/add_mesh_rocks&quot;,&quot;user_id&quot;:1576533}}" data-hydro-click-hmac="ff1383ec4f0d75c7075460750973980e6848d141af94750d48446d038d8a0659" href="/sobotka/blender-addons-contrib/blob/master/add_mesh_rocks/rockgen.py#L943">
+  <div class="mx-1">
+    <svg class="octicon octicon-check select-menu-item-icon" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"/></svg>
+  </div>
+  <div class="select-menu-item-text flex-auto css-truncate-target" data-menu-button-text>
+    OBJECT_OT_add_mesh_rock
+  </div>
+  <div class="ml-1">
+    Class
+  </div>
+</a>
+<a class="select-menu-item d-flex css-truncate" role="menuitemradio" aria-checked="false" rel="nofollow" data-hydro-click="{&quot;event_type&quot;:&quot;code_navigation.navigate_to_blob_definition&quot;,&quot;payload&quot;:{&quot;action&quot;:&quot;navigate_to_blob_definition&quot;,&quot;repository_id&quot;:112905278,&quot;ref&quot;:&quot;master&quot;,&quot;language&quot;:&quot;Python&quot;,&quot;client_id&quot;:&quot;1640592597.1557936150&quot;,&quot;originating_request_id&quot;:&quot;8759:1B5E:C4931E:167EE83:5DE0780C&quot;,&quot;originating_url&quot;:&quot;https://github.com/sobotka/blender-addons-contrib/blob/master/add_mesh_rocks/rockgen.py&quot;,&quot;referrer&quot;:&quot;https://github.com/sobotka/blender-addons-contrib/tree/master/add_mesh_rocks&quot;,&quot;user_id&quot;:1576533}}" data-hydro-click-hmac="ff1383ec4f0d75c7075460750973980e6848d141af94750d48446d038d8a0659" href="/sobotka/blender-addons-contrib/blob/master/add_mesh_rocks/rockgen.py#L1059">
+  <div class="mx-1">
+    <svg class="octicon octicon-check select-menu-item-icon" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"/></svg>
+  </div>
+  <div class="select-menu-item-text flex-auto css-truncate-target" data-menu-button-text>
+    draw
+  </div>
+  <div class="ml-1">
+    Function
+  </div>
+</a>
+<a class="select-menu-item d-flex css-truncate" role="menuitemradio" aria-checked="false" rel="nofollow" data-hydro-click="{&quot;event_type&quot;:&quot;code_navigation.navigate_to_blob_definition&quot;,&quot;payload&quot;:{&quot;action&quot;:&quot;navigate_to_blob_definition&quot;,&quot;repository_id&quot;:112905278,&quot;ref&quot;:&quot;master&quot;,&quot;language&quot;:&quot;Python&quot;,&quot;client_id&quot;:&quot;1640592597.1557936150&quot;,&quot;originating_request_id&quot;:&quot;8759:1B5E:C4931E:167EE83:5DE0780C&quot;,&quot;originating_url&quot;:&quot;https://github.com/sobotka/blender-addons-contrib/blob/master/add_mesh_rocks/rockgen.py&quot;,&quot;referrer&quot;:&quot;https://github.com/sobotka/blender-addons-contrib/tree/master/add_mesh_rocks&quot;,&quot;user_id&quot;:1576533}}" data-hydro-click-hmac="ff1383ec4f0d75c7075460750973980e6848d141af94750d48446d038d8a0659" href="/sobotka/blender-addons-contrib/blob/master/add_mesh_rocks/rockgen.py#L1091">
+  <div class="mx-1">
+    <svg class="octicon octicon-check select-menu-item-icon" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"/></svg>
+  </div>
+  <div class="select-menu-item-text flex-auto css-truncate-target" data-menu-button-text>
+    poll
+  </div>
+  <div class="ml-1">
+    Function
+  </div>
+</a>
+<a class="select-menu-item d-flex css-truncate" role="menuitemradio" aria-checked="false" rel="nofollow" data-hydro-click="{&quot;event_type&quot;:&quot;code_navigation.navigate_to_blob_definition&quot;,&quot;payload&quot;:{&quot;action&quot;:&quot;navigate_to_blob_definition&quot;,&quot;repository_id&quot;:112905278,&quot;ref&quot;:&quot;master&quot;,&quot;language&quot;:&quot;Python&quot;,&quot;client_id&quot;:&quot;1640592597.1557936150&quot;,&quot;originating_request_id&quot;:&quot;8759:1B5E:C4931E:167EE83:5DE0780C&quot;,&quot;originating_url&quot;:&quot;https://github.com/sobotka/blender-addons-contrib/blob/master/add_mesh_rocks/rockgen.py&quot;,&quot;referrer&quot;:&quot;https://github.com/sobotka/blender-addons-contrib/tree/master/add_mesh_rocks&quot;,&quot;user_id&quot;:1576533}}" data-hydro-click-hmac="ff1383ec4f0d75c7075460750973980e6848d141af94750d48446d038d8a0659" href="/sobotka/blender-addons-contrib/blob/master/add_mesh_rocks/rockgen.py#L1095">
+  <div class="mx-1">
+    <svg class="octicon octicon-check select-menu-item-icon" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"/></svg>
+  </div>
+  <div class="select-menu-item-text flex-auto css-truncate-target" data-menu-button-text>
+    execute
+  </div>
+  <div class="ml-1">
+    Function
+  </div>
+</a>
+<a class="select-menu-item d-flex css-truncate" role="menuitemradio" aria-checked="false" rel="nofollow" data-hydro-click="{&quot;event_type&quot;:&quot;code_navigation.navigate_to_blob_definition&quot;,&quot;payload&quot;:{&quot;action&quot;:&quot;navigate_to_blob_definition&quot;,&quot;repository_id&quot;:112905278,&quot;ref&quot;:&quot;master&quot;,&quot;language&quot;:&quot;Python&quot;,&quot;client_id&quot;:&quot;1640592597.1557936150&quot;,&quot;originating_request_id&quot;:&quot;8759:1B5E:C4931E:167EE83:5DE0780C&quot;,&quot;originating_url&quot;:&quot;https://github.com/sobotka/blender-addons-contrib/blob/master/add_mesh_rocks/rockgen.py&quot;,&quot;referrer&quot;:&quot;https://github.com/sobotka/blender-addons-contrib/tree/master/add_mesh_rocks&quot;,&quot;user_id&quot;:1576533}}" data-hydro-click-hmac="ff1383ec4f0d75c7075460750973980e6848d141af94750d48446d038d8a0659" href="/sobotka/blender-addons-contrib/blob/master/add_mesh_rocks/rockgen.py#L1146">
+  <div class="mx-1">
+    <svg class="octicon octicon-check select-menu-item-icon" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"/></svg>
+  </div>
+  <div class="select-menu-item-text flex-auto css-truncate-target" data-menu-button-text>
+    menu_func_rocks
+  </div>
+  <div class="ml-1">
+    Function
+  </div>
+</a>
+<a class="select-menu-item d-flex css-truncate" role="menuitemradio" aria-checked="false" rel="nofollow" data-hydro-click="{&quot;event_type&quot;:&quot;code_navigation.navigate_to_blob_definition&quot;,&quot;payload&quot;:{&quot;action&quot;:&quot;navigate_to_blob_definition&quot;,&quot;repository_id&quot;:112905278,&quot;ref&quot;:&quot;master&quot;,&quot;language&quot;:&quot;Python&quot;,&quot;client_id&quot;:&quot;1640592597.1557936150&quot;,&quot;originating_request_id&quot;:&quot;8759:1B5E:C4931E:167EE83:5DE0780C&quot;,&quot;originating_url&quot;:&quot;https://github.com/sobotka/blender-addons-contrib/blob/master/add_mesh_rocks/rockgen.py&quot;,&quot;referrer&quot;:&quot;https://github.com/sobotka/blender-addons-contrib/tree/master/add_mesh_rocks&quot;,&quot;user_id&quot;:1576533}}" data-hydro-click-hmac="ff1383ec4f0d75c7075460750973980e6848d141af94750d48446d038d8a0659" href="/sobotka/blender-addons-contrib/blob/master/add_mesh_rocks/rockgen.py#L1158">
+  <div class="mx-1">
+    <svg class="octicon octicon-check select-menu-item-icon" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"/></svg>
+  </div>
+  <div class="select-menu-item-text flex-auto css-truncate-target" data-menu-button-text>
+    register
+  </div>
+  <div class="ml-1">
+    Function
+  </div>
+</a>
+<a class="select-menu-item d-flex css-truncate" role="menuitemradio" aria-checked="false" rel="nofollow" data-hydro-click="{&quot;event_type&quot;:&quot;code_navigation.navigate_to_blob_definition&quot;,&quot;payload&quot;:{&quot;action&quot;:&quot;navigate_to_blob_definition&quot;,&quot;repository_id&quot;:112905278,&quot;ref&quot;:&quot;master&quot;,&quot;language&quot;:&quot;Python&quot;,&quot;client_id&quot;:&quot;1640592597.1557936150&quot;,&quot;originating_request_id&quot;:&quot;8759:1B5E:C4931E:167EE83:5DE0780C&quot;,&quot;originating_url&quot;:&quot;https://github.com/sobotka/blender-addons-contrib/blob/master/add_mesh_rocks/rockgen.py&quot;,&quot;referrer&quot;:&quot;https://github.com/sobotka/blender-addons-contrib/tree/master/add_mesh_rocks&quot;,&quot;user_id&quot;:1576533}}" data-hydro-click-hmac="ff1383ec4f0d75c7075460750973980e6848d141af94750d48446d038d8a0659" href="/sobotka/blender-addons-contrib/blob/master/add_mesh_rocks/rockgen.py#L1165">
+  <div class="mx-1">
+    <svg class="octicon octicon-check select-menu-item-icon" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"/></svg>
+  </div>
+  <div class="select-menu-item-text flex-auto css-truncate-target" data-menu-button-text>
+    unregister
+  </div>
+  <div class="ml-1">
+    Function
+  </div>
+</a>
+    </div>
+  </details-menu>
+</details>
+
+      </h2>
+
+      <div class="BtnGroup flex-shrink-0 d-none d-md-inline-block">
+        <a href="/sobotka/blender-addons-contrib/find/master"
+              class="js-pjax-capture-input btn btn-sm BtnGroup-item"
+              data-pjax
+              data-hotkey="t">
+          Find file
+        </a>
+        <clipboard-copy value="add_mesh_rocks/rockgen.py" class="btn btn-sm BtnGroup-item">
+          Copy path
+        </clipboard-copy>
+      </div>
+    </div>
+
+    
+
+
+
+    
+  <div class="Box Box--condensed d-flex flex-column flex-shrink-0">
+      <div class="Box-body d-flex flex-justify-between bg-blue-light flex-column flex-md-row flex-items-start flex-md-items-center">
+        <span class="pr-md-4 f6">
+          <a rel="contributor" data-skip-pjax="true" data-hovercard-type="user" data-hovercard-url="/users/angavrilov/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/angavrilov"><img class="avatar" src="https://avatars1.githubusercontent.com/u/42666?s=40&amp;v=4" width="20" height="20" alt="@angavrilov" /></a>
+          <a class="text-bold link-gray-dark lh-default v-align-middle" rel="contributor" data-hovercard-type="user" data-hovercard-url="/users/angavrilov/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/angavrilov">angavrilov</a>
+            <span class="lh-default v-align-middle">
+              <a data-pjax="true" title="add_mesh_rocks: fix the error due to an unnecessary &#39;description&#39; field.
+
+Also fix warnings about periods in descriptions." class="link-gray" href="/sobotka/blender-addons-contrib/commit/1624eb1880e8b70c159cba9f0d6cd31670e1052b">add_mesh_rocks: fix the error due to an unnecessary 'description' field.</a>
+            </span>
+        </span>
+        <span class="d-inline-block flex-shrink-0 v-align-bottom f6 mt-2 mt-md-0">
+          <a class="pr-2 text-mono link-gray" href="/sobotka/blender-addons-contrib/commit/1624eb1880e8b70c159cba9f0d6cd31670e1052b" data-pjax>1624eb1</a>
+          <relative-time datetime="2019-09-08T12:47:43Z" class="no-wrap">Sep 8, 2019</relative-time>
+        </span>
+      </div>
+
+    <div class="Box-body d-flex flex-items-center flex-auto f6 border-bottom-0 flex-wrap" >
+      <details class="details-reset details-overlay details-overlay-dark lh-default text-gray-dark float-left mr-2" id="blob_contributors_box">
+        <summary class="btn-link">
+          <span><strong>6</strong> contributors</span>
+        </summary>
+        <details-dialog
+          class="Box Box--overlay d-flex flex-column anim-fade-in fast"
+          aria-label="Users who have contributed to this file"
+          src="/sobotka/blender-addons-contrib/contributors-list/master/add_mesh_rocks/rockgen.py" preload>
+          <div class="Box-header">
+            <button class="Box-btn-octicon btn-octicon float-right" type="button" aria-label="Close dialog" data-close-dialog>
+              <svg class="octicon octicon-x" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"/></svg>
+            </button>
+            <h3 class="Box-title">
+              Users who have contributed to this file
+            </h3>
+          </div>
+          <include-fragment class="octocat-spinner my-3" aria-label="Loading..."></include-fragment>
+        </details-dialog>
+      </details>
+        <span class="">
+    <a class="avatar-link" data-hovercard-type="user" data-hovercard-url="/users/brikbot/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/sobotka/blender-addons-contrib/commits/master/add_mesh_rocks/rockgen.py?author=brikbot">
+      <img class="avatar mr-1" src="https://avatars3.githubusercontent.com/u/4315582?s=40&amp;v=4" width="20" height="20" alt="@brikbot" /> 
+</a>    <a class="avatar-link" data-hovercard-type="user" data-hovercard-url="/users/meta-androcto/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/sobotka/blender-addons-contrib/commits/master/add_mesh_rocks/rockgen.py?author=meta-androcto">
+      <img class="avatar mr-1" src="https://avatars3.githubusercontent.com/u/3157289?s=40&amp;v=4" width="20" height="20" alt="@meta-androcto" /> 
+</a>    <a class="avatar-link" data-hovercard-type="user" data-hovercard-url="/users/ideasman42/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/sobotka/blender-addons-contrib/commits/master/add_mesh_rocks/rockgen.py?author=ideasman42">
+      <img class="avatar mr-1" src="https://avatars1.githubusercontent.com/u/1869379?s=40&amp;v=4" width="20" height="20" alt="@ideasman42" /> 
+</a>    <a class="avatar-link" data-hovercard-type="user" data-hovercard-url="/users/mont29/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/sobotka/blender-addons-contrib/commits/master/add_mesh_rocks/rockgen.py?author=mont29">
+      <img class="avatar mr-1" src="https://avatars2.githubusercontent.com/u/1299702?s=40&amp;v=4" width="20" height="20" alt="@mont29" /> 
+</a>    <a class="avatar-link" data-hovercard-type="user" data-hovercard-url="/users/florianfelix/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/sobotka/blender-addons-contrib/commits/master/add_mesh_rocks/rockgen.py?author=florianfelix">
+      <img class="avatar mr-1" src="https://avatars3.githubusercontent.com/u/6705978?s=40&amp;v=4" width="20" height="20" alt="@florianfelix" /> 
+</a>    <a class="avatar-link" data-hovercard-type="user" data-hovercard-url="/users/angavrilov/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/sobotka/blender-addons-contrib/commits/master/add_mesh_rocks/rockgen.py?author=angavrilov">
+      <img class="avatar mr-1" src="https://avatars1.githubusercontent.com/u/42666?s=40&amp;v=4" width="20" height="20" alt="@angavrilov" /> 
+</a>
+</span>
+
+    </div>
+  </div>
+
+
+
+
+
+    <div class="Box mt-3 position-relative">
+      
+<div class="Box-header py-2 d-flex flex-column flex-shrink-0 flex-md-row flex-md-items-center">
+  <div class="text-mono f6 flex-auto pr-3 flex-order-2 flex-md-order-1 mt-2 mt-md-0">
+
+      1173 lines (1106 sloc)
+      <span class="file-info-divider"></span>
+    46.7 KB
+  </div>
+
+  <div class="d-flex py-1 py-md-0 flex-auto flex-order-1 flex-md-order-2 flex-sm-grow-0 flex-justify-between">
+
+    <div class="BtnGroup">
+      <a id="raw-url" class="btn btn-sm BtnGroup-item" href="/sobotka/blender-addons-contrib/raw/master/add_mesh_rocks/rockgen.py">Raw</a>
+        <a class="btn btn-sm js-update-url-with-hash BtnGroup-item" data-hotkey="b" href="/sobotka/blender-addons-contrib/blame/master/add_mesh_rocks/rockgen.py">Blame</a>
+      <a rel="nofollow" class="btn btn-sm BtnGroup-item" href="/sobotka/blender-addons-contrib/commits/master/add_mesh_rocks/rockgen.py">History</a>
+    </div>
+
+
+    <div>
+            <a class="btn-octicon tooltipped tooltipped-nw hide-sm"
+               href="x-github-client://openRepo/https://github.com/sobotka/blender-addons-contrib?branch=master&amp;filepath=add_mesh_rocks%2Frockgen.py"
+               aria-label="Open this file in GitHub Desktop"
+               data-ga-click="Repository, open with desktop, type:windows">
+                <svg class="octicon octicon-device-desktop" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M15 2H1c-.55 0-1 .45-1 1v9c0 .55.45 1 1 1h5.34c-.25.61-.86 1.39-2.34 2h8c-1.48-.61-2.09-1.39-2.34-2H15c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm0 9H1V3h14v8z"/></svg>
+            </a>
+
+            <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="inline-form js-update-url-with-hash" action="/sobotka/blender-addons-contrib/edit/master/add_mesh_rocks/rockgen.py" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="MuLcz2seL6hLZUWSI4m+LTBM1MmaYw9jLZXX5r7DlAbeJ5RqQuVrwOkG5Yb7lbf6jhBYWLGfSjRSDfjevcqJmA==" />
+              <button class="btn-octicon tooltipped tooltipped-nw" type="submit"
+                aria-label="Fork this project and edit the file" data-hotkey="e" data-disable-with>
+                <svg class="octicon octicon-pencil" viewBox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M0 12v3h3l8-8-3-3-8 8zm3 2H1v-2h1v1h1v1zm10.3-9.3L12 6 9 3l1.3-1.3a.996.996 0 011.41 0l1.59 1.59c.39.39.39 1.02 0 1.41z"/></svg>
+              </button>
+</form>
+          <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="inline-form" action="/sobotka/blender-addons-contrib/delete/master/add_mesh_rocks/rockgen.py" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="+BeGGCThi0tSJ4oW3IaDzJ309G1PX7d0BNbRbQmPSfG6fhYeh+Dcko2IR4vcIlTwthbnadkdebFRvWFy2icS9Q==" />
+            <button class="btn-octicon btn-octicon-danger tooltipped tooltipped-nw" type="submit"
+              aria-label="Fork this project and delete the file" data-disable-with>
+              <svg class="octicon octicon-trashcan" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M11 2H9c0-.55-.45-1-1-1H5c-.55 0-1 .45-1 1H2c-.55 0-1 .45-1 1v1c0 .55.45 1 1 1v9c0 .55.45 1 1 1h7c.55 0 1-.45 1-1V5c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm-1 12H3V5h1v8h1V5h1v8h1V5h1v8h1V5h1v9zm1-10H2V3h9v1z"/></svg>
+            </button>
+</form>    </div>
+  </div>
+</div>
+
+
+        <div class="js-notice border-bottom p-2">
+          <div class="d-flex rounded-1 code-navigation-banner">
+            <div class="col-6 pt-4 pl-4 pb-4">
+              <div class="d-flex flex-items-center f6">
+                <h3 class="mr-2">Code navigation is available!</h3>
+              </div>
+              <p class="text-gray pt-2">
+                Navigate your code with ease. Click on function and method calls to jump to their definitions or references in the same repository.
+                <a href="https://help.github.com/en/articles/navigating-code-on-github">Learn more</a>
+              </p>
+            </div>
+            <div class="col-6 p-2 text-right code-navigation-banner-illo">
+              <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="js-notice-dismiss" action="/settings/dismiss-notice/aleph_code_navigation_banner" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="bJfWNJajQrDY2r1w9ZcRRG9qckGvJZBlZJ2O7QdwPBs8oYjdNlka9IfWfxL66UuefDlWVa9SP8SKIKz37DIU8g==" />
+                <button name="button" type="submit" class="btn-link link-gray" aria-label="Dismiss">
+                  <svg width="20" height="20" class="octicon octicon-x" viewBox="0 0 12 16" version="1.1" aria-hidden="true"><path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"/></svg>
+</button></form>            </div>
+          </div>
+        </div>
+
+        <div class="f6 v-align-middle text-gray px-3 py-2 border-bottom bg-gray-light d-flex flex-justify-between">
+            <div class="d-flex text-mono">
+              <svg style="color: #28a745;" class="octicon octicon-primitive-dot mr-2" viewBox="0 0 8 16" version="1.1" width="8" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M0 8c0-2.2 1.8-4 4-4s4 1.8 4 4-1.8 4-4 4-4-1.8-4-4z"/></svg>
+              <span>You're using code navigation to jump to definitions or references.</span>
+            </div>
+            <div>
+              <a href="https://help.github.com/en/articles/navigating-code-on-github">Learn more</a>
+              or
+              <a href="mailto:code-nav@github.com">give us feedback</a>
+            </div>
+        </div>
+
+      
+
+  <div itemprop="text" class="Box-body p-0 blob-wrapper data type-python ">
+      
+<table class="highlight tab-size js-file-line-container" data-tab-size="8">
+      <tr>
+        <td id="L1" class="blob-num js-line-number" data-line-number="1"></td>
+        <td id="LC1" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> Blender rock creation tool</span></td>
+      </tr>
+      <tr>
+        <td id="L2" class="blob-num js-line-number" data-line-number="2"></td>
+        <td id="LC2" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span></span></td>
+      </tr>
+      <tr>
+        <td id="L3" class="blob-num js-line-number" data-line-number="3"></td>
+        <td id="LC3" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> Based on BlenderGuru&#39;s asteroid tutorial and personal experimentation.</span></td>
+      </tr>
+      <tr>
+        <td id="L4" class="blob-num js-line-number" data-line-number="4"></td>
+        <td id="LC4" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>   Tutorial: http://www.blenderguru.com/how-to-make-a-realistic-asteroid/</span></td>
+      </tr>
+      <tr>
+        <td id="L5" class="blob-num js-line-number" data-line-number="5"></td>
+        <td id="LC5" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> Update with another tutorial shared by &quot;rusted&quot; of BlenderArtists:</span></td>
+      </tr>
+      <tr>
+        <td id="L6" class="blob-num js-line-number" data-line-number="6"></td>
+        <td id="LC6" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>   Tutorial: http://saschahenrichs.blogspot.com/2010/03/3dsmax-environment-modeling-1.html</span></td>
+      </tr>
+      <tr>
+        <td id="L7" class="blob-num js-line-number" data-line-number="7"></td>
+        <td id="LC7" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span></span></td>
+      </tr>
+      <tr>
+        <td id="L8" class="blob-num js-line-number" data-line-number="8"></td>
+        <td id="LC8" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> Uses the NumPy Gaussian random number generator to generate a</span></td>
+      </tr>
+      <tr>
+        <td id="L9" class="blob-num js-line-number" data-line-number="9"></td>
+        <td id="LC9" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> a rock within a given range and give some randomness to the displacement</span></td>
+      </tr>
+      <tr>
+        <td id="L10" class="blob-num js-line-number" data-line-number="10"></td>
+        <td id="LC10" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> texture values.  NumPy&#39;s gaussian generator was chosen as, based on</span></td>
+      </tr>
+      <tr>
+        <td id="L11" class="blob-num js-line-number" data-line-number="11"></td>
+        <td id="LC11" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> profiling I performed, it runs in about half the time as the built in</span></td>
+      </tr>
+      <tr>
+        <td id="L12" class="blob-num js-line-number" data-line-number="12"></td>
+        <td id="LC12" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> Python gaussian equivalent.  I would like to shift the script to use the</span></td>
+      </tr>
+      <tr>
+        <td id="L13" class="blob-num js-line-number" data-line-number="13"></td>
+        <td id="LC13" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> NumPy beta distribution as it ran in about half the time as the NumPy</span></td>
+      </tr>
+      <tr>
+        <td id="L14" class="blob-num js-line-number" data-line-number="14"></td>
+        <td id="LC14" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> gaussian once the skew calculations are added.</span></td>
+      </tr>
+      <tr>
+        <td id="L15" class="blob-num js-line-number" data-line-number="15"></td>
+        <td id="LC15" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span></span></td>
+      </tr>
+      <tr>
+        <td id="L16" class="blob-num js-line-number" data-line-number="16"></td>
+        <td id="LC16" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> Set lower and upper bounds to the same for no randomness.</span></td>
+      </tr>
+      <tr>
+        <td id="L17" class="blob-num js-line-number" data-line-number="17"></td>
+        <td id="LC17" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span></span></td>
+      </tr>
+      <tr>
+        <td id="L18" class="blob-num js-line-number" data-line-number="18"></td>
+        <td id="LC18" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> Tasks:</span></td>
+      </tr>
+      <tr>
+        <td id="L19" class="blob-num js-line-number" data-line-number="19"></td>
+        <td id="LC19" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>   Generate meshes with random scaling between given values.</span></td>
+      </tr>
+      <tr>
+        <td id="L20" class="blob-num js-line-number" data-line-number="20"></td>
+        <td id="LC20" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>       - Allow for a skewed distribution</span></td>
+      </tr>
+      <tr>
+        <td id="L21" class="blob-num js-line-number" data-line-number="21"></td>
+        <td id="LC21" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>           *** Completed on 4/17/2011 ***</span></td>
+      </tr>
+      <tr>
+        <td id="L22" class="blob-num js-line-number" data-line-number="22"></td>
+        <td id="LC22" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>       - Create a set of meshes that can be used</span></td>
+      </tr>
+      <tr>
+        <td id="L23" class="blob-num js-line-number" data-line-number="23"></td>
+        <td id="LC23" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>   Give the user the ability to set the subsurf level (detail level)</span></td>
+      </tr>
+      <tr>
+        <td id="L24" class="blob-num js-line-number" data-line-number="24"></td>
+        <td id="LC24" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>       *** Completed on 4/29/2011 ***</span></td>
+      </tr>
+      <tr>
+        <td id="L25" class="blob-num js-line-number" data-line-number="25"></td>
+        <td id="LC25" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>       - Set subsurf modifiers to default at view:3, render:3.</span></td>
+      </tr>
+      <tr>
+        <td id="L26" class="blob-num js-line-number" data-line-number="26"></td>
+        <td id="LC26" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>           *** Completed on 4/17/2011 ***</span></td>
+      </tr>
+      <tr>
+        <td id="L27" class="blob-num js-line-number" data-line-number="27"></td>
+        <td id="LC27" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>       - Set crease values to allow for hard edges on first subsurf.</span></td>
+      </tr>
+      <tr>
+        <td id="L28" class="blob-num js-line-number" data-line-number="28"></td>
+        <td id="LC28" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>           *** Completed on 4/29/2011 ***</span></td>
+      </tr>
+      <tr>
+        <td id="L29" class="blob-num js-line-number" data-line-number="29"></td>
+        <td id="LC29" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>   Be able to generate and add a texture to the displacement modifiers.</span></td>
+      </tr>
+      <tr>
+        <td id="L30" class="blob-num js-line-number" data-line-number="30"></td>
+        <td id="LC30" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>       *** Completed 5/17/2011 ***</span></td>
+      </tr>
+      <tr>
+        <td id="L31" class="blob-num js-line-number" data-line-number="31"></td>
+        <td id="LC31" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>       - Generate three displacement modifiers.</span></td>
+      </tr>
+      <tr>
+        <td id="L32" class="blob-num js-line-number" data-line-number="32"></td>
+        <td id="LC32" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>           - The first only uses a Musgrave for initial intentations.</span></td>
+      </tr>
+      <tr>
+        <td id="L33" class="blob-num js-line-number" data-line-number="33"></td>
+        <td id="LC33" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>           *** Now generating four displacement modifiers ***</span></td>
+      </tr>
+      <tr>
+        <td id="L34" class="blob-num js-line-number" data-line-number="34"></td>
+        <td id="LC34" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>           *** Completed on 5/17/2011 ***</span></td>
+      </tr>
+      <tr>
+        <td id="L35" class="blob-num js-line-number" data-line-number="35"></td>
+        <td id="LC35" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>       - Set a randomness for the type and values of the displacement texture.</span></td>
+      </tr>
+      <tr>
+        <td id="L36" class="blob-num js-line-number" data-line-number="36"></td>
+        <td id="LC36" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>           *** Completed 5/9/2011 ***</span></td>
+      </tr>
+      <tr>
+        <td id="L37" class="blob-num js-line-number" data-line-number="37"></td>
+        <td id="LC37" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>       - Allow the user to set a value for the range of displacement.</span></td>
+      </tr>
+      <tr>
+        <td id="L38" class="blob-num js-line-number" data-line-number="38"></td>
+        <td id="LC38" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>           -&gt; Modification: have user set &quot;roughness&quot; and &quot;roughness range&quot;.</span></td>
+      </tr>
+      <tr>
+        <td id="L39" class="blob-num js-line-number" data-line-number="39"></td>
+        <td id="LC39" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>           *** Compleded on 4/23/2011 ***</span></td>
+      </tr>
+      <tr>
+        <td id="L40" class="blob-num js-line-number" data-line-number="40"></td>
+        <td id="LC40" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>   Set material settings and assign material textures</span></td>
+      </tr>
+      <tr>
+        <td id="L41" class="blob-num js-line-number" data-line-number="41"></td>
+        <td id="LC41" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>       *** Completed 6/9/2011 ***</span></td>
+      </tr>
+      <tr>
+        <td id="L42" class="blob-num js-line-number" data-line-number="42"></td>
+        <td id="LC42" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>       - Mossiness of the rocks.</span></td>
+      </tr>
+      <tr>
+        <td id="L43" class="blob-num js-line-number" data-line-number="43"></td>
+        <td id="LC43" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>           *** Completed 6/9/2011 ***</span></td>
+      </tr>
+      <tr>
+        <td id="L44" class="blob-num js-line-number" data-line-number="44"></td>
+        <td id="LC44" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>       - Color of the rocks.</span></td>
+      </tr>
+      <tr>
+        <td id="L45" class="blob-num js-line-number" data-line-number="45"></td>
+        <td id="LC45" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>           *** Completed 5/16/2011 ***</span></td>
+      </tr>
+      <tr>
+        <td id="L46" class="blob-num js-line-number" data-line-number="46"></td>
+        <td id="LC46" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>       - Wetness/shinyness of the rock.</span></td>
+      </tr>
+      <tr>
+        <td id="L47" class="blob-num js-line-number" data-line-number="47"></td>
+        <td id="LC47" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>           *** Completed 5/6/2011 ***</span></td>
+      </tr>
+      <tr>
+        <td id="L48" class="blob-num js-line-number" data-line-number="48"></td>
+        <td id="LC48" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>       - For all the user provides a mean value for a skewed distribution.</span></td>
+      </tr>
+      <tr>
+        <td id="L49" class="blob-num js-line-number" data-line-number="49"></td>
+        <td id="LC49" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>           *** Removed to lessen usage complexity ***</span></td>
+      </tr>
+      <tr>
+        <td id="L50" class="blob-num js-line-number" data-line-number="50"></td>
+        <td id="LC50" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>   Add some presets (mesh) to make it easier to use</span></td>
+      </tr>
+      <tr>
+        <td id="L51" class="blob-num js-line-number" data-line-number="51"></td>
+        <td id="LC51" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>       - Examples: river rock, asteroid, quaried rock, etc</span></td>
+      </tr>
+      <tr>
+        <td id="L52" class="blob-num js-line-number" data-line-number="52"></td>
+        <td id="LC52" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>           *** Completed 7/12/2011 ***</span></td>
+      </tr>
+      <tr>
+        <td id="L53" class="blob-num js-line-number" data-line-number="53"></td>
+        <td id="LC53" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span></span></td>
+      </tr>
+      <tr>
+        <td id="L54" class="blob-num js-line-number" data-line-number="54"></td>
+        <td id="LC54" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> Code Optimization:</span></td>
+      </tr>
+      <tr>
+        <td id="L55" class="blob-num js-line-number" data-line-number="55"></td>
+        <td id="LC55" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>   Remove all &quot;bpy.ops&quot; operations with &quot;bpy.data&quot; base operations.</span></td>
+      </tr>
+      <tr>
+        <td id="L56" class="blob-num js-line-number" data-line-number="56"></td>
+        <td id="LC56" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>   Remove material/texture cataloging with building a list of</span></td>
+      </tr>
+      <tr>
+        <td id="L57" class="blob-num js-line-number" data-line-number="57"></td>
+        <td id="LC57" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>       returned values from bpy.data.*.new() operations.</span></td>
+      </tr>
+      <tr>
+        <td id="L58" class="blob-num js-line-number" data-line-number="58"></td>
+        <td id="LC58" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>       *** Completed on 9/6/2011 ***</span></td>
+      </tr>
+      <tr>
+        <td id="L59" class="blob-num js-line-number" data-line-number="59"></td>
+        <td id="LC59" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>   Search for places where list comprehensions can be used.</span></td>
+      </tr>
+      <tr>
+        <td id="L60" class="blob-num js-line-number" data-line-number="60"></td>
+        <td id="LC60" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>   Look for alternate methods</span></td>
+      </tr>
+      <tr>
+        <td id="L61" class="blob-num js-line-number" data-line-number="61"></td>
+        <td id="LC61" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>       - Possible alternate and more efficient data structures</span></td>
+      </tr>
+      <tr>
+        <td id="L62" class="blob-num js-line-number" data-line-number="62"></td>
+        <td id="LC62" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>       - Possible alternate algorithms may realize greater performance</span></td>
+      </tr>
+      <tr>
+        <td id="L63" class="blob-num js-line-number" data-line-number="63"></td>
+        <td id="LC63" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>       - Look again at multi-processing.  Without bpy.ops is might</span></td>
+      </tr>
+      <tr>
+        <td id="L64" class="blob-num js-line-number" data-line-number="64"></td>
+        <td id="LC64" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>           be viable.</span></td>
+      </tr>
+      <tr>
+        <td id="L65" class="blob-num js-line-number" data-line-number="65"></td>
+        <td id="LC65" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span></span></td>
+      </tr>
+      <tr>
+        <td id="L66" class="blob-num js-line-number" data-line-number="66"></td>
+        <td id="LC66" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> Future tasks:</span></td>
+      </tr>
+      <tr>
+        <td id="L67" class="blob-num js-line-number" data-line-number="67"></td>
+        <td id="LC67" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>   Multi-thread the script</span></td>
+      </tr>
+      <tr>
+        <td id="L68" class="blob-num js-line-number" data-line-number="68"></td>
+        <td id="LC68" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>       *** Will not be implemented.  Multi-processing is adding to much</span></td>
+      </tr>
+      <tr>
+        <td id="L69" class="blob-num js-line-number" data-line-number="69"></td>
+        <td id="LC69" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>           overhead to realize a performance increase ***</span></td>
+      </tr>
+      <tr>
+        <td id="L70" class="blob-num js-line-number" data-line-number="70"></td>
+        <td id="LC70" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>       - Learn basic multi-threading in Python (multiprocessing)</span></td>
+      </tr>
+      <tr>
+        <td id="L71" class="blob-num js-line-number" data-line-number="71"></td>
+        <td id="LC71" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>       - Break material generation into separate threads (processes)</span></td>
+      </tr>
+      <tr>
+        <td id="L72" class="blob-num js-line-number" data-line-number="72"></td>
+        <td id="LC72" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>       - Break mesh generation into separate threads (processes)</span></td>
+      </tr>
+      <tr>
+        <td id="L73" class="blob-num js-line-number" data-line-number="73"></td>
+        <td id="LC73" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>       - Move name generation, texture ID generation, etc to process first</span></td>
+      </tr>
+      <tr>
+        <td id="L74" class="blob-num js-line-number" data-line-number="74"></td>
+        <td id="LC74" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>       - Roll version to 2.0 on completion</span></td>
+      </tr>
+      <tr>
+        <td id="L75" class="blob-num js-line-number" data-line-number="75"></td>
+        <td id="LC75" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span></span></td>
+      </tr>
+      <tr>
+        <td id="L76" class="blob-num js-line-number" data-line-number="76"></td>
+        <td id="LC76" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> Paul &quot;BrikBot&quot; Marshall</span></td>
+      </tr>
+      <tr>
+        <td id="L77" class="blob-num js-line-number" data-line-number="77"></td>
+        <td id="LC77" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> Created: April 17, 2011</span></td>
+      </tr>
+      <tr>
+        <td id="L78" class="blob-num js-line-number" data-line-number="78"></td>
+        <td id="LC78" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> Last Modified: November 17, 2011</span></td>
+      </tr>
+      <tr>
+        <td id="L79" class="blob-num js-line-number" data-line-number="79"></td>
+        <td id="LC79" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> Homepage (blog): http://post.darkarsenic.com/</span></td>
+      </tr>
+      <tr>
+        <td id="L80" class="blob-num js-line-number" data-line-number="80"></td>
+        <td id="LC80" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>                       //blog.darkarsenic.com/</span></td>
+      </tr>
+      <tr>
+        <td id="L81" class="blob-num js-line-number" data-line-number="81"></td>
+        <td id="LC81" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> Thanks to Meta-Androco, RickyBlender, Ace Dragon, and PKHG for ideas</span></td>
+      </tr>
+      <tr>
+        <td id="L82" class="blob-num js-line-number" data-line-number="82"></td>
+        <td id="LC82" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>   and testing.</span></td>
+      </tr>
+      <tr>
+        <td id="L83" class="blob-num js-line-number" data-line-number="83"></td>
+        <td id="LC83" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span></span></td>
+      </tr>
+      <tr>
+        <td id="L84" class="blob-num js-line-number" data-line-number="84"></td>
+        <td id="LC84" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> Coded in IDLE, tested in Blender 2.59.  NumPy Recommended.</span></td>
+      </tr>
+      <tr>
+        <td id="L85" class="blob-num js-line-number" data-line-number="85"></td>
+        <td id="LC85" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> Search for &quot;@todo&quot; to quickly find sections that need work.</span></td>
+      </tr>
+      <tr>
+        <td id="L86" class="blob-num js-line-number" data-line-number="86"></td>
+        <td id="LC86" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span></span></td>
+      </tr>
+      <tr>
+        <td id="L87" class="blob-num js-line-number" data-line-number="87"></td>
+        <td id="LC87" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> Remeber -</span></td>
+      </tr>
+      <tr>
+        <td id="L88" class="blob-num js-line-number" data-line-number="88"></td>
+        <td id="LC88" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>   Functional code comes before fast code.  Once it works, then worry about</span></td>
+      </tr>
+      <tr>
+        <td id="L89" class="blob-num js-line-number" data-line-number="89"></td>
+        <td id="LC89" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>   making it faster/more efficient.</span></td>
+      </tr>
+      <tr>
+        <td id="L90" class="blob-num js-line-number" data-line-number="90"></td>
+        <td id="LC90" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span></span></td>
+      </tr>
+      <tr>
+        <td id="L91" class="blob-num js-line-number" data-line-number="91"></td>
+        <td id="LC91" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> ##### BEGIN GPL LICENSE BLOCK #####</span></td>
+      </tr>
+      <tr>
+        <td id="L92" class="blob-num js-line-number" data-line-number="92"></td>
+        <td id="LC92" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span></span></td>
+      </tr>
+      <tr>
+        <td id="L93" class="blob-num js-line-number" data-line-number="93"></td>
+        <td id="LC93" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>  The Blender Rock Creation tool is for rapid generation of mesh rocks.</span></td>
+      </tr>
+      <tr>
+        <td id="L94" class="blob-num js-line-number" data-line-number="94"></td>
+        <td id="LC94" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>  Copyright (C) 2011  Paul Marshall</span></td>
+      </tr>
+      <tr>
+        <td id="L95" class="blob-num js-line-number" data-line-number="95"></td>
+        <td id="LC95" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span></span></td>
+      </tr>
+      <tr>
+        <td id="L96" class="blob-num js-line-number" data-line-number="96"></td>
+        <td id="LC96" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>  This program is free software: you can redistribute it and/or modify</span></td>
+      </tr>
+      <tr>
+        <td id="L97" class="blob-num js-line-number" data-line-number="97"></td>
+        <td id="LC97" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>  it under the terms of the GNU General Public License as published by</span></td>
+      </tr>
+      <tr>
+        <td id="L98" class="blob-num js-line-number" data-line-number="98"></td>
+        <td id="LC98" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>  the Free Software Foundation, either version 3 of the License, or</span></td>
+      </tr>
+      <tr>
+        <td id="L99" class="blob-num js-line-number" data-line-number="99"></td>
+        <td id="LC99" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>  (at your option) any later version.</span></td>
+      </tr>
+      <tr>
+        <td id="L100" class="blob-num js-line-number" data-line-number="100"></td>
+        <td id="LC100" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span></span></td>
+      </tr>
+      <tr>
+        <td id="L101" class="blob-num js-line-number" data-line-number="101"></td>
+        <td id="LC101" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>  This program is distributed in the hope that it will be useful,</span></td>
+      </tr>
+      <tr>
+        <td id="L102" class="blob-num js-line-number" data-line-number="102"></td>
+        <td id="LC102" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>  but WITHOUT ANY WARRANTY; without even the implied warranty of</span></td>
+      </tr>
+      <tr>
+        <td id="L103" class="blob-num js-line-number" data-line-number="103"></td>
+        <td id="LC103" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span></td>
+      </tr>
+      <tr>
+        <td id="L104" class="blob-num js-line-number" data-line-number="104"></td>
+        <td id="LC104" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>  GNU General Public License for more details.</span></td>
+      </tr>
+      <tr>
+        <td id="L105" class="blob-num js-line-number" data-line-number="105"></td>
+        <td id="LC105" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span></span></td>
+      </tr>
+      <tr>
+        <td id="L106" class="blob-num js-line-number" data-line-number="106"></td>
+        <td id="LC106" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>  You should have received a copy of the GNU General Public License</span></td>
+      </tr>
+      <tr>
+        <td id="L107" class="blob-num js-line-number" data-line-number="107"></td>
+        <td id="LC107" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>  along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span></td>
+      </tr>
+      <tr>
+        <td id="L108" class="blob-num js-line-number" data-line-number="108"></td>
+        <td id="LC108" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span></span></td>
+      </tr>
+      <tr>
+        <td id="L109" class="blob-num js-line-number" data-line-number="109"></td>
+        <td id="LC109" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> ##### END GPL LICENSE BLOCK #####</span></td>
+      </tr>
+      <tr>
+        <td id="L110" class="blob-num js-line-number" data-line-number="110"></td>
+        <td id="LC110" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L111" class="blob-num js-line-number" data-line-number="111"></td>
+        <td id="LC111" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> &lt;pep8 compliant&gt;</span></td>
+      </tr>
+      <tr>
+        <td id="L112" class="blob-num js-line-number" data-line-number="112"></td>
+        <td id="LC112" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L113" class="blob-num js-line-number" data-line-number="113"></td>
+        <td id="LC113" class="blob-code blob-code-inner js-file-line"><span class="pl-k">import</span> bpy</td>
+      </tr>
+      <tr>
+        <td id="L114" class="blob-num js-line-number" data-line-number="114"></td>
+        <td id="LC114" class="blob-code blob-code-inner js-file-line"><span class="pl-k">import</span> time</td>
+      </tr>
+      <tr>
+        <td id="L115" class="blob-num js-line-number" data-line-number="115"></td>
+        <td id="LC115" class="blob-code blob-code-inner js-file-line"><span class="pl-k">from</span> add_mesh_rocks <span class="pl-k">import</span> (</td>
+      </tr>
+      <tr>
+        <td id="L116" class="blob-num js-line-number" data-line-number="116"></td>
+        <td id="LC116" class="blob-code blob-code-inner js-file-line">    settings,</td>
+      </tr>
+      <tr>
+        <td id="L117" class="blob-num js-line-number" data-line-number="117"></td>
+        <td id="LC117" class="blob-code blob-code-inner js-file-line">    utils</td>
+      </tr>
+      <tr>
+        <td id="L118" class="blob-num js-line-number" data-line-number="118"></td>
+        <td id="LC118" class="blob-code blob-code-inner js-file-line">)</td>
+      </tr>
+      <tr>
+        <td id="L119" class="blob-num js-line-number" data-line-number="119"></td>
+        <td id="LC119" class="blob-code blob-code-inner js-file-line"><span class="pl-k">from</span> add_mesh_rocks.utils <span class="pl-k">import</span> skewedGauss</td>
+      </tr>
+      <tr>
+        <td id="L120" class="blob-num js-line-number" data-line-number="120"></td>
+        <td id="LC120" class="blob-code blob-code-inner js-file-line"><span class="pl-k">from</span> add_mesh_rocks.randomize_texture <span class="pl-k">import</span> randomizeTexture</td>
+      </tr>
+      <tr>
+        <td id="L121" class="blob-num js-line-number" data-line-number="121"></td>
+        <td id="LC121" class="blob-code blob-code-inner js-file-line"><span class="pl-k">from</span> bpy_extras <span class="pl-k">import</span> object_utils</td>
+      </tr>
+      <tr>
+        <td id="L122" class="blob-num js-line-number" data-line-number="122"></td>
+        <td id="LC122" class="blob-code blob-code-inner js-file-line"><span class="pl-k">from</span> mathutils <span class="pl-k">import</span> (</td>
+      </tr>
+      <tr>
+        <td id="L123" class="blob-num js-line-number" data-line-number="123"></td>
+        <td id="LC123" class="blob-code blob-code-inner js-file-line">    Vector</td>
+      </tr>
+      <tr>
+        <td id="L124" class="blob-num js-line-number" data-line-number="124"></td>
+        <td id="LC124" class="blob-code blob-code-inner js-file-line">)</td>
+      </tr>
+      <tr>
+        <td id="L125" class="blob-num js-line-number" data-line-number="125"></td>
+        <td id="LC125" class="blob-code blob-code-inner js-file-line"><span class="pl-k">from</span> bpy.props <span class="pl-k">import</span> (</td>
+      </tr>
+      <tr>
+        <td id="L126" class="blob-num js-line-number" data-line-number="126"></td>
+        <td id="LC126" class="blob-code blob-code-inner js-file-line">    BoolProperty,</td>
+      </tr>
+      <tr>
+        <td id="L127" class="blob-num js-line-number" data-line-number="127"></td>
+        <td id="LC127" class="blob-code blob-code-inner js-file-line">    IntProperty,</td>
+      </tr>
+      <tr>
+        <td id="L128" class="blob-num js-line-number" data-line-number="128"></td>
+        <td id="LC128" class="blob-code blob-code-inner js-file-line">    FloatProperty,</td>
+      </tr>
+      <tr>
+        <td id="L129" class="blob-num js-line-number" data-line-number="129"></td>
+        <td id="LC129" class="blob-code blob-code-inner js-file-line">    FloatVectorProperty,</td>
+      </tr>
+      <tr>
+        <td id="L130" class="blob-num js-line-number" data-line-number="130"></td>
+        <td id="LC130" class="blob-code blob-code-inner js-file-line">    EnumProperty</td>
+      </tr>
+      <tr>
+        <td id="L131" class="blob-num js-line-number" data-line-number="131"></td>
+        <td id="LC131" class="blob-code blob-code-inner js-file-line">)</td>
+      </tr>
+      <tr>
+        <td id="L132" class="blob-num js-line-number" data-line-number="132"></td>
+        <td id="LC132" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L133" class="blob-num js-line-number" data-line-number="133"></td>
+        <td id="LC133" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> This try block allows for the script to psudo-intelligently select the</span></td>
+      </tr>
+      <tr>
+        <td id="L134" class="blob-num js-line-number" data-line-number="134"></td>
+        <td id="LC134" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> appropriate random to use.  If Numpy&#39;s random is present it will use that.</span></td>
+      </tr>
+      <tr>
+        <td id="L135" class="blob-num js-line-number" data-line-number="135"></td>
+        <td id="LC135" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> If Numpy&#39;s random is not present, it will through a &quot;module not found&quot;</span></td>
+      </tr>
+      <tr>
+        <td id="L136" class="blob-num js-line-number" data-line-number="136"></td>
+        <td id="LC136" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> exception and instead use the slower built-in random that Python has.</span></td>
+      </tr>
+      <tr>
+        <td id="L137" class="blob-num js-line-number" data-line-number="137"></td>
+        <td id="LC137" class="blob-code blob-code-inner js-file-line"><span class="pl-k">try</span>:</td>
+      </tr>
+      <tr>
+        <td id="L138" class="blob-num js-line-number" data-line-number="138"></td>
+        <td id="LC138" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">from</span> numpy.random <span class="pl-k">import</span> random_integers <span class="pl-k">as</span> randint</td>
+      </tr>
+      <tr>
+        <td id="L139" class="blob-num js-line-number" data-line-number="139"></td>
+        <td id="LC139" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">from</span> numpy.random <span class="pl-k">import</span> normal <span class="pl-k">as</span> gauss</td>
+      </tr>
+      <tr>
+        <td id="L140" class="blob-num js-line-number" data-line-number="140"></td>
+        <td id="LC140" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">from</span> numpy.random <span class="pl-k">import</span> (</td>
+      </tr>
+      <tr>
+        <td id="L141" class="blob-num js-line-number" data-line-number="141"></td>
+        <td id="LC141" class="blob-code blob-code-inner js-file-line">        seed,</td>
+      </tr>
+      <tr>
+        <td id="L142" class="blob-num js-line-number" data-line-number="142"></td>
+        <td id="LC142" class="blob-code blob-code-inner js-file-line">        weibull)</td>
+      </tr>
+      <tr>
+        <td id="L143" class="blob-num js-line-number" data-line-number="143"></td>
+        <td id="LC143" class="blob-code blob-code-inner js-file-line">    <span class="pl-c1">print</span>(<span class="pl-s"><span class="pl-pds">&quot;</span>Rock Generator: Numpy found.<span class="pl-pds">&quot;</span></span>)</td>
+      </tr>
+      <tr>
+        <td id="L144" class="blob-num js-line-number" data-line-number="144"></td>
+        <td id="LC144" class="blob-code blob-code-inner js-file-line">    numpy <span class="pl-k">=</span> <span class="pl-c1">True</span></td>
+      </tr>
+      <tr>
+        <td id="L145" class="blob-num js-line-number" data-line-number="145"></td>
+        <td id="LC145" class="blob-code blob-code-inner js-file-line"><span class="pl-k">except</span>:</td>
+      </tr>
+      <tr>
+        <td id="L146" class="blob-num js-line-number" data-line-number="146"></td>
+        <td id="LC146" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">from</span> random <span class="pl-k">import</span> (</td>
+      </tr>
+      <tr>
+        <td id="L147" class="blob-num js-line-number" data-line-number="147"></td>
+        <td id="LC147" class="blob-code blob-code-inner js-file-line">        randint,</td>
+      </tr>
+      <tr>
+        <td id="L148" class="blob-num js-line-number" data-line-number="148"></td>
+        <td id="LC148" class="blob-code blob-code-inner js-file-line">        gauss,</td>
+      </tr>
+      <tr>
+        <td id="L149" class="blob-num js-line-number" data-line-number="149"></td>
+        <td id="LC149" class="blob-code blob-code-inner js-file-line">        seed)</td>
+      </tr>
+      <tr>
+        <td id="L150" class="blob-num js-line-number" data-line-number="150"></td>
+        <td id="LC150" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">from</span> random <span class="pl-k">import</span> weibullvariate <span class="pl-k">as</span> weibull</td>
+      </tr>
+      <tr>
+        <td id="L151" class="blob-num js-line-number" data-line-number="151"></td>
+        <td id="LC151" class="blob-code blob-code-inner js-file-line">    <span class="pl-c1">print</span>(<span class="pl-s"><span class="pl-pds">&quot;</span>Rock Generator: Numpy not found.  Using Python&#39;s random.<span class="pl-pds">&quot;</span></span>)</td>
+      </tr>
+      <tr>
+        <td id="L152" class="blob-num js-line-number" data-line-number="152"></td>
+        <td id="LC152" class="blob-code blob-code-inner js-file-line">    numpy <span class="pl-k">=</span> <span class="pl-c1">False</span></td>
+      </tr>
+      <tr>
+        <td id="L153" class="blob-num js-line-number" data-line-number="153"></td>
+        <td id="LC153" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L154" class="blob-num js-line-number" data-line-number="154"></td>
+        <td id="LC154" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> Global variables:</span></td>
+      </tr>
+      <tr>
+        <td id="L155" class="blob-num js-line-number" data-line-number="155"></td>
+        <td id="LC155" class="blob-code blob-code-inner js-file-line"><span class="pl-c1">LASTROCK</span> <span class="pl-k">=</span> <span class="pl-c1">0</span></td>
+      </tr>
+      <tr>
+        <td id="L156" class="blob-num js-line-number" data-line-number="156"></td>
+        <td id="LC156" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L157" class="blob-num js-line-number" data-line-number="157"></td>
+        <td id="LC157" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L158" class="blob-num js-line-number" data-line-number="158"></td>
+        <td id="LC158" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> Creates a new mesh:</span></td>
+      </tr>
+      <tr>
+        <td id="L159" class="blob-num js-line-number" data-line-number="159"></td>
+        <td id="LC159" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span></span></td>
+      </tr>
+      <tr>
+        <td id="L160" class="blob-num js-line-number" data-line-number="160"></td>
+        <td id="LC160" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> param: verts - Vector of vertices for the mesh.</span></td>
+      </tr>
+      <tr>
+        <td id="L161" class="blob-num js-line-number" data-line-number="161"></td>
+        <td id="LC161" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>        edges - Edges for the mesh.  Can be &quot;[]&quot;.</span></td>
+      </tr>
+      <tr>
+        <td id="L162" class="blob-num js-line-number" data-line-number="162"></td>
+        <td id="LC162" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>        faces - Face tuples corresponding to vertices.</span></td>
+      </tr>
+      <tr>
+        <td id="L163" class="blob-num js-line-number" data-line-number="163"></td>
+        <td id="LC163" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>        name  - Name of the mesh.</span></td>
+      </tr>
+      <tr>
+        <td id="L164" class="blob-num js-line-number" data-line-number="164"></td>
+        <td id="LC164" class="blob-code blob-code-inner js-file-line"><span class="pl-k">def</span> <span class="pl-en">createMeshObject</span>(<span class="pl-smi">context</span>, <span class="pl-smi">verts</span>, <span class="pl-smi">edges</span>, <span class="pl-smi">faces</span>, <span class="pl-smi">name</span>):</td>
+      </tr>
+      <tr>
+        <td id="L165" class="blob-num js-line-number" data-line-number="165"></td>
+        <td id="LC165" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> Create new mesh</span></td>
+      </tr>
+      <tr>
+        <td id="L166" class="blob-num js-line-number" data-line-number="166"></td>
+        <td id="LC166" class="blob-code blob-code-inner js-file-line">    mesh <span class="pl-k">=</span> bpy.data.meshes.new(name)</td>
+      </tr>
+      <tr>
+        <td id="L167" class="blob-num js-line-number" data-line-number="167"></td>
+        <td id="LC167" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L168" class="blob-num js-line-number" data-line-number="168"></td>
+        <td id="LC168" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> Make a mesh from a list of verts/edges/faces.</span></td>
+      </tr>
+      <tr>
+        <td id="L169" class="blob-num js-line-number" data-line-number="169"></td>
+        <td id="LC169" class="blob-code blob-code-inner js-file-line">    mesh.from_pydata(verts, edges, faces)</td>
+      </tr>
+      <tr>
+        <td id="L170" class="blob-num js-line-number" data-line-number="170"></td>
+        <td id="LC170" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L171" class="blob-num js-line-number" data-line-number="171"></td>
+        <td id="LC171" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> Set mesh to use auto smoothing:</span></td>
+      </tr>
+      <tr>
+        <td id="L172" class="blob-num js-line-number" data-line-number="172"></td>
+        <td id="LC172" class="blob-code blob-code-inner js-file-line">    mesh.use_auto_smooth <span class="pl-k">=</span> <span class="pl-c1">True</span></td>
+      </tr>
+      <tr>
+        <td id="L173" class="blob-num js-line-number" data-line-number="173"></td>
+        <td id="LC173" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L174" class="blob-num js-line-number" data-line-number="174"></td>
+        <td id="LC174" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> Update mesh geometry after adding stuff.</span></td>
+      </tr>
+      <tr>
+        <td id="L175" class="blob-num js-line-number" data-line-number="175"></td>
+        <td id="LC175" class="blob-code blob-code-inner js-file-line">    mesh.update()</td>
+      </tr>
+      <tr>
+        <td id="L176" class="blob-num js-line-number" data-line-number="176"></td>
+        <td id="LC176" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L177" class="blob-num js-line-number" data-line-number="177"></td>
+        <td id="LC177" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">return</span> object_utils.object_data_add(context, mesh, <span class="pl-v">operator</span><span class="pl-k">=</span><span class="pl-c1">None</span>)</td>
+      </tr>
+      <tr>
+        <td id="L178" class="blob-num js-line-number" data-line-number="178"></td>
+        <td id="LC178" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L179" class="blob-num js-line-number" data-line-number="179"></td>
+        <td id="LC179" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L180" class="blob-num js-line-number" data-line-number="180"></td>
+        <td id="LC180" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> Generates an object based on one of several different mesh types.</span></td>
+      </tr>
+      <tr>
+        <td id="L181" class="blob-num js-line-number" data-line-number="181"></td>
+        <td id="LC181" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> All meshes have exactly eight vertices, and may be built from either</span></td>
+      </tr>
+      <tr>
+        <td id="L182" class="blob-num js-line-number" data-line-number="182"></td>
+        <td id="LC182" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> tri&#39;s or quads.</span></td>
+      </tr>
+      <tr>
+        <td id="L183" class="blob-num js-line-number" data-line-number="183"></td>
+        <td id="LC183" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span></span></td>
+      </tr>
+      <tr>
+        <td id="L184" class="blob-num js-line-number" data-line-number="184"></td>
+        <td id="LC184" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> param: muX        - mean X offset value</span></td>
+      </tr>
+      <tr>
+        <td id="L185" class="blob-num js-line-number" data-line-number="185"></td>
+        <td id="LC185" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>        sigmaX     - X offset standard deviation</span></td>
+      </tr>
+      <tr>
+        <td id="L186" class="blob-num js-line-number" data-line-number="186"></td>
+        <td id="LC186" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>        scaleX     - X upper and lower bounds</span></td>
+      </tr>
+      <tr>
+        <td id="L187" class="blob-num js-line-number" data-line-number="187"></td>
+        <td id="LC187" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>        upperSkewX - Is the distribution upperskewed?</span></td>
+      </tr>
+      <tr>
+        <td id="L188" class="blob-num js-line-number" data-line-number="188"></td>
+        <td id="LC188" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>        muY        - mean Y offset value</span></td>
+      </tr>
+      <tr>
+        <td id="L189" class="blob-num js-line-number" data-line-number="189"></td>
+        <td id="LC189" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>        sigmaY     - Y offset standard deviation</span></td>
+      </tr>
+      <tr>
+        <td id="L190" class="blob-num js-line-number" data-line-number="190"></td>
+        <td id="LC190" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>        scaleY     - Y upper and lower bounds</span></td>
+      </tr>
+      <tr>
+        <td id="L191" class="blob-num js-line-number" data-line-number="191"></td>
+        <td id="LC191" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>        upperSkewY - Is the distribution upperskewed?</span></td>
+      </tr>
+      <tr>
+        <td id="L192" class="blob-num js-line-number" data-line-number="192"></td>
+        <td id="LC192" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>        muZ        - mean Z offset value</span></td>
+      </tr>
+      <tr>
+        <td id="L193" class="blob-num js-line-number" data-line-number="193"></td>
+        <td id="LC193" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>        sigmaZ     - Z offset standard deviation</span></td>
+      </tr>
+      <tr>
+        <td id="L194" class="blob-num js-line-number" data-line-number="194"></td>
+        <td id="LC194" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>        scaleZ     - Z upper and lower bounds</span></td>
+      </tr>
+      <tr>
+        <td id="L195" class="blob-num js-line-number" data-line-number="195"></td>
+        <td id="LC195" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>        upperSkewY - Is the distribution upperskewed?</span></td>
+      </tr>
+      <tr>
+        <td id="L196" class="blob-num js-line-number" data-line-number="196"></td>
+        <td id="LC196" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>        base       - base number on the end of the object name</span></td>
+      </tr>
+      <tr>
+        <td id="L197" class="blob-num js-line-number" data-line-number="197"></td>
+        <td id="LC197" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>        shift      - Addition to the base number for multiple runs.</span></td>
+      </tr>
+      <tr>
+        <td id="L198" class="blob-num js-line-number" data-line-number="198"></td>
+        <td id="LC198" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>        scaleDisplace - Scale the displacement maps</span></td>
+      </tr>
+      <tr>
+        <td id="L199" class="blob-num js-line-number" data-line-number="199"></td>
+        <td id="LC199" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span></span></td>
+      </tr>
+      <tr>
+        <td id="L200" class="blob-num js-line-number" data-line-number="200"></td>
+        <td id="LC200" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> return: name      - the built name of the object</span></td>
+      </tr>
+      <tr>
+        <td id="L201" class="blob-num js-line-number" data-line-number="201"></td>
+        <td id="LC201" class="blob-code blob-code-inner js-file-line"><span class="pl-k">def</span> <span class="pl-en">generateObject</span>(<span class="pl-smi">context</span>, <span class="pl-smi">muX</span>, <span class="pl-smi">sigmaX</span>, <span class="pl-smi">scaleX</span>, <span class="pl-smi">upperSkewX</span>, <span class="pl-smi">muY</span>, <span class="pl-smi">sigmaY</span>,</td>
+      </tr>
+      <tr>
+        <td id="L202" class="blob-num js-line-number" data-line-number="202"></td>
+        <td id="LC202" class="blob-code blob-code-inner js-file-line">                   <span class="pl-smi">scaleY</span>, <span class="pl-smi">upperSkewY</span>, <span class="pl-smi">muZ</span>, <span class="pl-smi">sigmaZ</span>, <span class="pl-smi">scaleZ</span>, <span class="pl-smi">upperSkewZ</span>, <span class="pl-smi">base</span>,</td>
+      </tr>
+      <tr>
+        <td id="L203" class="blob-num js-line-number" data-line-number="203"></td>
+        <td id="LC203" class="blob-code blob-code-inner js-file-line">                   <span class="pl-smi">shift</span>, <span class="pl-smi">scaleDisplace</span>, <span class="pl-smi">scale_fac</span>):</td>
+      </tr>
+      <tr>
+        <td id="L204" class="blob-num js-line-number" data-line-number="204"></td>
+        <td id="LC204" class="blob-code blob-code-inner js-file-line">    x <span class="pl-k">=</span> []</td>
+      </tr>
+      <tr>
+        <td id="L205" class="blob-num js-line-number" data-line-number="205"></td>
+        <td id="LC205" class="blob-code blob-code-inner js-file-line">    y <span class="pl-k">=</span> []</td>
+      </tr>
+      <tr>
+        <td id="L206" class="blob-num js-line-number" data-line-number="206"></td>
+        <td id="LC206" class="blob-code blob-code-inner js-file-line">    z <span class="pl-k">=</span> []</td>
+      </tr>
+      <tr>
+        <td id="L207" class="blob-num js-line-number" data-line-number="207"></td>
+        <td id="LC207" class="blob-code blob-code-inner js-file-line">    shape <span class="pl-k">=</span> randint(<span class="pl-c1">0</span>, <span class="pl-c1">11</span>)</td>
+      </tr>
+      <tr>
+        <td id="L208" class="blob-num js-line-number" data-line-number="208"></td>
+        <td id="LC208" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L209" class="blob-num js-line-number" data-line-number="209"></td>
+        <td id="LC209" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> Cube</span></td>
+      </tr>
+      <tr>
+        <td id="L210" class="blob-num js-line-number" data-line-number="210"></td>
+        <td id="LC210" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> Use parameters to re-scale cube:</span></td>
+      </tr>
+      <tr>
+        <td id="L211" class="blob-num js-line-number" data-line-number="211"></td>
+        <td id="LC211" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> Reversed if/for nesting.  Should be a little faster.</span></td>
+      </tr>
+      <tr>
+        <td id="L212" class="blob-num js-line-number" data-line-number="212"></td>
+        <td id="LC212" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">if</span> shape <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L213" class="blob-num js-line-number" data-line-number="213"></td>
+        <td id="LC213" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">for</span> j <span class="pl-k">in</span> <span class="pl-c1">range</span>(<span class="pl-c1">8</span>):</td>
+      </tr>
+      <tr>
+        <td id="L214" class="blob-num js-line-number" data-line-number="214"></td>
+        <td id="LC214" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">if</span> sigmaX <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L215" class="blob-num js-line-number" data-line-number="215"></td>
+        <td id="LC215" class="blob-code blob-code-inner js-file-line">                x.append(scaleX[<span class="pl-c1">0</span>] <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L216" class="blob-num js-line-number" data-line-number="216"></td>
+        <td id="LC216" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L217" class="blob-num js-line-number" data-line-number="217"></td>
+        <td id="LC217" class="blob-code blob-code-inner js-file-line">                x.append(skewedGauss(muX, sigmaX, scaleX, upperSkewX) <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L218" class="blob-num js-line-number" data-line-number="218"></td>
+        <td id="LC218" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">if</span> sigmaY <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L219" class="blob-num js-line-number" data-line-number="219"></td>
+        <td id="LC219" class="blob-code blob-code-inner js-file-line">                y.append(scaleY[<span class="pl-c1">0</span>] <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L220" class="blob-num js-line-number" data-line-number="220"></td>
+        <td id="LC220" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L221" class="blob-num js-line-number" data-line-number="221"></td>
+        <td id="LC221" class="blob-code blob-code-inner js-file-line">                y.append(skewedGauss(muY, sigmaY, scaleY, upperSkewY) <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L222" class="blob-num js-line-number" data-line-number="222"></td>
+        <td id="LC222" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">if</span> sigmaZ <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L223" class="blob-num js-line-number" data-line-number="223"></td>
+        <td id="LC223" class="blob-code blob-code-inner js-file-line">                z.append(scaleZ[<span class="pl-c1">0</span>] <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L224" class="blob-num js-line-number" data-line-number="224"></td>
+        <td id="LC224" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L225" class="blob-num js-line-number" data-line-number="225"></td>
+        <td id="LC225" class="blob-code blob-code-inner js-file-line">                z.append(skewedGauss(muZ, sigmaZ, scaleZ, upperSkewZ) <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L226" class="blob-num js-line-number" data-line-number="226"></td>
+        <td id="LC226" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">elif</span> shape <span class="pl-k">==</span> <span class="pl-c1">1</span>:</td>
+      </tr>
+      <tr>
+        <td id="L227" class="blob-num js-line-number" data-line-number="227"></td>
+        <td id="LC227" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">for</span> j <span class="pl-k">in</span> <span class="pl-c1">range</span>(<span class="pl-c1">8</span>):</td>
+      </tr>
+      <tr>
+        <td id="L228" class="blob-num js-line-number" data-line-number="228"></td>
+        <td id="LC228" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">if</span> j <span class="pl-k">in</span> [<span class="pl-c1">0</span>, <span class="pl-c1">1</span>, <span class="pl-c1">3</span>, <span class="pl-c1">4</span>]:</td>
+      </tr>
+      <tr>
+        <td id="L229" class="blob-num js-line-number" data-line-number="229"></td>
+        <td id="LC229" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaX <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L230" class="blob-num js-line-number" data-line-number="230"></td>
+        <td id="LC230" class="blob-code blob-code-inner js-file-line">                    x.append(scaleX[<span class="pl-c1">0</span>] <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L231" class="blob-num js-line-number" data-line-number="231"></td>
+        <td id="LC231" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L232" class="blob-num js-line-number" data-line-number="232"></td>
+        <td id="LC232" class="blob-code blob-code-inner js-file-line">                    x.append(skewedGauss(muX, sigmaX, scaleX, upperSkewX) <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L233" class="blob-num js-line-number" data-line-number="233"></td>
+        <td id="LC233" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaY <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L234" class="blob-num js-line-number" data-line-number="234"></td>
+        <td id="LC234" class="blob-code blob-code-inner js-file-line">                    y.append(scaleY[<span class="pl-c1">0</span>] <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L235" class="blob-num js-line-number" data-line-number="235"></td>
+        <td id="LC235" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L236" class="blob-num js-line-number" data-line-number="236"></td>
+        <td id="LC236" class="blob-code blob-code-inner js-file-line">                    y.append(skewedGauss(muY, sigmaY, scaleY, upperSkewY) <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L237" class="blob-num js-line-number" data-line-number="237"></td>
+        <td id="LC237" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaZ <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L238" class="blob-num js-line-number" data-line-number="238"></td>
+        <td id="LC238" class="blob-code blob-code-inner js-file-line">                    z.append(scaleZ[<span class="pl-c1">0</span>] <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L239" class="blob-num js-line-number" data-line-number="239"></td>
+        <td id="LC239" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L240" class="blob-num js-line-number" data-line-number="240"></td>
+        <td id="LC240" class="blob-code blob-code-inner js-file-line">                    z.append(skewedGauss(muZ, sigmaZ, scaleZ, upperSkewZ) <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L241" class="blob-num js-line-number" data-line-number="241"></td>
+        <td id="LC241" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">elif</span> j <span class="pl-k">in</span> [<span class="pl-c1">2</span>, <span class="pl-c1">5</span>]:</td>
+      </tr>
+      <tr>
+        <td id="L242" class="blob-num js-line-number" data-line-number="242"></td>
+        <td id="LC242" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaX <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L243" class="blob-num js-line-number" data-line-number="243"></td>
+        <td id="LC243" class="blob-code blob-code-inner js-file-line">                    x.append(<span class="pl-c1">0</span>)</td>
+      </tr>
+      <tr>
+        <td id="L244" class="blob-num js-line-number" data-line-number="244"></td>
+        <td id="LC244" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L245" class="blob-num js-line-number" data-line-number="245"></td>
+        <td id="LC245" class="blob-code blob-code-inner js-file-line">                    x.append(skewedGauss(muX, sigmaX, scaleX, upperSkewX) <span class="pl-k">/</span> <span class="pl-c1">4</span>)</td>
+      </tr>
+      <tr>
+        <td id="L246" class="blob-num js-line-number" data-line-number="246"></td>
+        <td id="LC246" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaY <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L247" class="blob-num js-line-number" data-line-number="247"></td>
+        <td id="LC247" class="blob-code blob-code-inner js-file-line">                    y.append(scaleY[<span class="pl-c1">0</span>] <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L248" class="blob-num js-line-number" data-line-number="248"></td>
+        <td id="LC248" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L249" class="blob-num js-line-number" data-line-number="249"></td>
+        <td id="LC249" class="blob-code blob-code-inner js-file-line">                    y.append(skewedGauss(muY, sigmaY, scaleY, upperSkewY) <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L250" class="blob-num js-line-number" data-line-number="250"></td>
+        <td id="LC250" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaZ <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L251" class="blob-num js-line-number" data-line-number="251"></td>
+        <td id="LC251" class="blob-code blob-code-inner js-file-line">                    z.append(scaleZ[<span class="pl-c1">0</span>] <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L252" class="blob-num js-line-number" data-line-number="252"></td>
+        <td id="LC252" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L253" class="blob-num js-line-number" data-line-number="253"></td>
+        <td id="LC253" class="blob-code blob-code-inner js-file-line">                    z.append(skewedGauss(muZ, sigmaZ, scaleZ, upperSkewZ) <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L254" class="blob-num js-line-number" data-line-number="254"></td>
+        <td id="LC254" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">elif</span> j <span class="pl-k">in</span> [<span class="pl-c1">6</span>, <span class="pl-c1">7</span>]:</td>
+      </tr>
+      <tr>
+        <td id="L255" class="blob-num js-line-number" data-line-number="255"></td>
+        <td id="LC255" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaX <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L256" class="blob-num js-line-number" data-line-number="256"></td>
+        <td id="LC256" class="blob-code blob-code-inner js-file-line">                    x.append(<span class="pl-c1">0</span>)</td>
+      </tr>
+      <tr>
+        <td id="L257" class="blob-num js-line-number" data-line-number="257"></td>
+        <td id="LC257" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L258" class="blob-num js-line-number" data-line-number="258"></td>
+        <td id="LC258" class="blob-code blob-code-inner js-file-line">                    x.append(skewedGauss(<span class="pl-c1">0</span>, sigmaX, scaleX, upperSkewX) <span class="pl-k">/</span> <span class="pl-c1">4</span>)</td>
+      </tr>
+      <tr>
+        <td id="L259" class="blob-num js-line-number" data-line-number="259"></td>
+        <td id="LC259" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaY <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L260" class="blob-num js-line-number" data-line-number="260"></td>
+        <td id="LC260" class="blob-code blob-code-inner js-file-line">                    y.append(<span class="pl-c1">0</span>)</td>
+      </tr>
+      <tr>
+        <td id="L261" class="blob-num js-line-number" data-line-number="261"></td>
+        <td id="LC261" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L262" class="blob-num js-line-number" data-line-number="262"></td>
+        <td id="LC262" class="blob-code blob-code-inner js-file-line">                    y.append(skewedGauss(<span class="pl-c1">0</span>, sigmaY, scaleY, upperSkewY) <span class="pl-k">/</span> <span class="pl-c1">4</span>)</td>
+      </tr>
+      <tr>
+        <td id="L263" class="blob-num js-line-number" data-line-number="263"></td>
+        <td id="LC263" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaZ <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L264" class="blob-num js-line-number" data-line-number="264"></td>
+        <td id="LC264" class="blob-code blob-code-inner js-file-line">                    z.append(scaleZ[<span class="pl-c1">0</span>] <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L265" class="blob-num js-line-number" data-line-number="265"></td>
+        <td id="LC265" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L266" class="blob-num js-line-number" data-line-number="266"></td>
+        <td id="LC266" class="blob-code blob-code-inner js-file-line">                    z.append(skewedGauss(muZ, sigmaZ, scaleZ, upperSkewZ) <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L267" class="blob-num js-line-number" data-line-number="267"></td>
+        <td id="LC267" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">elif</span> shape <span class="pl-k">==</span> <span class="pl-c1">2</span>:</td>
+      </tr>
+      <tr>
+        <td id="L268" class="blob-num js-line-number" data-line-number="268"></td>
+        <td id="LC268" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">for</span> j <span class="pl-k">in</span> <span class="pl-c1">range</span>(<span class="pl-c1">8</span>):</td>
+      </tr>
+      <tr>
+        <td id="L269" class="blob-num js-line-number" data-line-number="269"></td>
+        <td id="LC269" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">if</span> j <span class="pl-k">in</span> [<span class="pl-c1">0</span>, <span class="pl-c1">2</span>, <span class="pl-c1">5</span>, <span class="pl-c1">7</span>]:</td>
+      </tr>
+      <tr>
+        <td id="L270" class="blob-num js-line-number" data-line-number="270"></td>
+        <td id="LC270" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaX <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L271" class="blob-num js-line-number" data-line-number="271"></td>
+        <td id="LC271" class="blob-code blob-code-inner js-file-line">                    x.append(scaleX[<span class="pl-c1">0</span>] <span class="pl-k">/</span> <span class="pl-c1">4</span>)</td>
+      </tr>
+      <tr>
+        <td id="L272" class="blob-num js-line-number" data-line-number="272"></td>
+        <td id="LC272" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L273" class="blob-num js-line-number" data-line-number="273"></td>
+        <td id="LC273" class="blob-code blob-code-inner js-file-line">                    x.append(skewedGauss(muX, sigmaX, scaleX, upperSkewX) <span class="pl-k">/</span> <span class="pl-c1">4</span>)</td>
+      </tr>
+      <tr>
+        <td id="L274" class="blob-num js-line-number" data-line-number="274"></td>
+        <td id="LC274" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaY <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L275" class="blob-num js-line-number" data-line-number="275"></td>
+        <td id="LC275" class="blob-code blob-code-inner js-file-line">                    y.append(<span class="pl-c1">0</span>)</td>
+      </tr>
+      <tr>
+        <td id="L276" class="blob-num js-line-number" data-line-number="276"></td>
+        <td id="LC276" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L277" class="blob-num js-line-number" data-line-number="277"></td>
+        <td id="LC277" class="blob-code blob-code-inner js-file-line">                    y.append(skewedGauss(<span class="pl-c1">0</span>, sigmaY, scaleY, upperSkewY) <span class="pl-k">/</span> <span class="pl-c1">4</span>)</td>
+      </tr>
+      <tr>
+        <td id="L278" class="blob-num js-line-number" data-line-number="278"></td>
+        <td id="LC278" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaZ <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L279" class="blob-num js-line-number" data-line-number="279"></td>
+        <td id="LC279" class="blob-code blob-code-inner js-file-line">                    z.append(scaleZ[<span class="pl-c1">0</span>] <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L280" class="blob-num js-line-number" data-line-number="280"></td>
+        <td id="LC280" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L281" class="blob-num js-line-number" data-line-number="281"></td>
+        <td id="LC281" class="blob-code blob-code-inner js-file-line">                    z.append(skewedGauss(muZ, sigmaZ, scaleZ, upperSkewZ) <span class="pl-k">/</span> <span class="pl-c1">4</span>)</td>
+      </tr>
+      <tr>
+        <td id="L282" class="blob-num js-line-number" data-line-number="282"></td>
+        <td id="LC282" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">elif</span> j <span class="pl-k">in</span> [<span class="pl-c1">1</span>, <span class="pl-c1">3</span>, <span class="pl-c1">4</span>, <span class="pl-c1">6</span>]:</td>
+      </tr>
+      <tr>
+        <td id="L283" class="blob-num js-line-number" data-line-number="283"></td>
+        <td id="LC283" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaX <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L284" class="blob-num js-line-number" data-line-number="284"></td>
+        <td id="LC284" class="blob-code blob-code-inner js-file-line">                    x.append(scaleX[<span class="pl-c1">0</span>] <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L285" class="blob-num js-line-number" data-line-number="285"></td>
+        <td id="LC285" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L286" class="blob-num js-line-number" data-line-number="286"></td>
+        <td id="LC286" class="blob-code blob-code-inner js-file-line">                    x.append(skewedGauss(muX, sigmaX, scaleX, upperSkewX) <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L287" class="blob-num js-line-number" data-line-number="287"></td>
+        <td id="LC287" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaY <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L288" class="blob-num js-line-number" data-line-number="288"></td>
+        <td id="LC288" class="blob-code blob-code-inner js-file-line">                    y.append(scaleY[<span class="pl-c1">0</span>] <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L289" class="blob-num js-line-number" data-line-number="289"></td>
+        <td id="LC289" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L290" class="blob-num js-line-number" data-line-number="290"></td>
+        <td id="LC290" class="blob-code blob-code-inner js-file-line">                    y.append(skewedGauss(muY, sigmaY, scaleY, upperSkewY) <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L291" class="blob-num js-line-number" data-line-number="291"></td>
+        <td id="LC291" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaZ <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L292" class="blob-num js-line-number" data-line-number="292"></td>
+        <td id="LC292" class="blob-code blob-code-inner js-file-line">                    z.append(scaleZ[<span class="pl-c1">0</span>] <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L293" class="blob-num js-line-number" data-line-number="293"></td>
+        <td id="LC293" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L294" class="blob-num js-line-number" data-line-number="294"></td>
+        <td id="LC294" class="blob-code blob-code-inner js-file-line">                    z.append(skewedGauss(muZ, sigmaZ, scaleZ, upperSkewZ) <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L295" class="blob-num js-line-number" data-line-number="295"></td>
+        <td id="LC295" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">elif</span> shape <span class="pl-k">==</span> <span class="pl-c1">3</span>:</td>
+      </tr>
+      <tr>
+        <td id="L296" class="blob-num js-line-number" data-line-number="296"></td>
+        <td id="LC296" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">for</span> j <span class="pl-k">in</span> <span class="pl-c1">range</span>(<span class="pl-c1">8</span>):</td>
+      </tr>
+      <tr>
+        <td id="L297" class="blob-num js-line-number" data-line-number="297"></td>
+        <td id="LC297" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">if</span> j <span class="pl-k">&gt;</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L298" class="blob-num js-line-number" data-line-number="298"></td>
+        <td id="LC298" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaX <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L299" class="blob-num js-line-number" data-line-number="299"></td>
+        <td id="LC299" class="blob-code blob-code-inner js-file-line">                    x.append(scaleX[<span class="pl-c1">0</span>] <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L300" class="blob-num js-line-number" data-line-number="300"></td>
+        <td id="LC300" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L301" class="blob-num js-line-number" data-line-number="301"></td>
+        <td id="LC301" class="blob-code blob-code-inner js-file-line">                    x.append(skewedGauss(muX, sigmaX, scaleX, upperSkewX) <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L302" class="blob-num js-line-number" data-line-number="302"></td>
+        <td id="LC302" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaY <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L303" class="blob-num js-line-number" data-line-number="303"></td>
+        <td id="LC303" class="blob-code blob-code-inner js-file-line">                    y.append(scaleY[<span class="pl-c1">0</span>] <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L304" class="blob-num js-line-number" data-line-number="304"></td>
+        <td id="LC304" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L305" class="blob-num js-line-number" data-line-number="305"></td>
+        <td id="LC305" class="blob-code blob-code-inner js-file-line">                    y.append(skewedGauss(muY, sigmaY, scaleY, upperSkewY) <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L306" class="blob-num js-line-number" data-line-number="306"></td>
+        <td id="LC306" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaZ <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L307" class="blob-num js-line-number" data-line-number="307"></td>
+        <td id="LC307" class="blob-code blob-code-inner js-file-line">                    z.append(scaleZ[<span class="pl-c1">0</span>] <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L308" class="blob-num js-line-number" data-line-number="308"></td>
+        <td id="LC308" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L309" class="blob-num js-line-number" data-line-number="309"></td>
+        <td id="LC309" class="blob-code blob-code-inner js-file-line">                    z.append(skewedGauss(muZ, sigmaZ, scaleZ, upperSkewZ) <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L310" class="blob-num js-line-number" data-line-number="310"></td>
+        <td id="LC310" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L311" class="blob-num js-line-number" data-line-number="311"></td>
+        <td id="LC311" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaX <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L312" class="blob-num js-line-number" data-line-number="312"></td>
+        <td id="LC312" class="blob-code blob-code-inner js-file-line">                    x.append(<span class="pl-c1">0</span>)</td>
+      </tr>
+      <tr>
+        <td id="L313" class="blob-num js-line-number" data-line-number="313"></td>
+        <td id="LC313" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L314" class="blob-num js-line-number" data-line-number="314"></td>
+        <td id="LC314" class="blob-code blob-code-inner js-file-line">                    x.append(skewedGauss(<span class="pl-c1">0</span>, sigmaX, scaleX, upperSkewX) <span class="pl-k">/</span> <span class="pl-c1">8</span>)</td>
+      </tr>
+      <tr>
+        <td id="L315" class="blob-num js-line-number" data-line-number="315"></td>
+        <td id="LC315" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaY <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L316" class="blob-num js-line-number" data-line-number="316"></td>
+        <td id="LC316" class="blob-code blob-code-inner js-file-line">                    y.append(<span class="pl-c1">0</span>)</td>
+      </tr>
+      <tr>
+        <td id="L317" class="blob-num js-line-number" data-line-number="317"></td>
+        <td id="LC317" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L318" class="blob-num js-line-number" data-line-number="318"></td>
+        <td id="LC318" class="blob-code blob-code-inner js-file-line">                    y.append(skewedGauss(<span class="pl-c1">0</span>, sigmaY, scaleY, upperSkewY) <span class="pl-k">/</span> <span class="pl-c1">8</span>)</td>
+      </tr>
+      <tr>
+        <td id="L319" class="blob-num js-line-number" data-line-number="319"></td>
+        <td id="LC319" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaZ <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L320" class="blob-num js-line-number" data-line-number="320"></td>
+        <td id="LC320" class="blob-code blob-code-inner js-file-line">                    z.append(<span class="pl-c1">0</span>)</td>
+      </tr>
+      <tr>
+        <td id="L321" class="blob-num js-line-number" data-line-number="321"></td>
+        <td id="LC321" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L322" class="blob-num js-line-number" data-line-number="322"></td>
+        <td id="LC322" class="blob-code blob-code-inner js-file-line">                    z.append(skewedGauss(<span class="pl-c1">0</span>, sigmaZ, scaleZ, upperSkewZ) <span class="pl-k">/</span> <span class="pl-c1">8</span>)</td>
+      </tr>
+      <tr>
+        <td id="L323" class="blob-num js-line-number" data-line-number="323"></td>
+        <td id="LC323" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">elif</span> shape <span class="pl-k">==</span> <span class="pl-c1">4</span>:</td>
+      </tr>
+      <tr>
+        <td id="L324" class="blob-num js-line-number" data-line-number="324"></td>
+        <td id="LC324" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">for</span> j <span class="pl-k">in</span> <span class="pl-c1">range</span>(<span class="pl-c1">10</span>):</td>
+      </tr>
+      <tr>
+        <td id="L325" class="blob-num js-line-number" data-line-number="325"></td>
+        <td id="LC325" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">if</span> j <span class="pl-k">in</span> [<span class="pl-c1">0</span>, <span class="pl-c1">9</span>]:</td>
+      </tr>
+      <tr>
+        <td id="L326" class="blob-num js-line-number" data-line-number="326"></td>
+        <td id="LC326" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaX <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L327" class="blob-num js-line-number" data-line-number="327"></td>
+        <td id="LC327" class="blob-code blob-code-inner js-file-line">                    x.append(<span class="pl-c1">0</span>)</td>
+      </tr>
+      <tr>
+        <td id="L328" class="blob-num js-line-number" data-line-number="328"></td>
+        <td id="LC328" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L329" class="blob-num js-line-number" data-line-number="329"></td>
+        <td id="LC329" class="blob-code blob-code-inner js-file-line">                    x.append(skewedGauss(<span class="pl-c1">0</span>, sigmaX, scaleX, upperSkewX) <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L330" class="blob-num js-line-number" data-line-number="330"></td>
+        <td id="LC330" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaY <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L331" class="blob-num js-line-number" data-line-number="331"></td>
+        <td id="LC331" class="blob-code blob-code-inner js-file-line">                    y.append(<span class="pl-c1">0</span>)</td>
+      </tr>
+      <tr>
+        <td id="L332" class="blob-num js-line-number" data-line-number="332"></td>
+        <td id="LC332" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L333" class="blob-num js-line-number" data-line-number="333"></td>
+        <td id="LC333" class="blob-code blob-code-inner js-file-line">                    y.append(skewedGauss(<span class="pl-c1">0</span>, sigmaY, scaleY, upperSkewY) <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L334" class="blob-num js-line-number" data-line-number="334"></td>
+        <td id="LC334" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaZ <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L335" class="blob-num js-line-number" data-line-number="335"></td>
+        <td id="LC335" class="blob-code blob-code-inner js-file-line">                    z.append(scaleZ[<span class="pl-c1">0</span>] <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L336" class="blob-num js-line-number" data-line-number="336"></td>
+        <td id="LC336" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L337" class="blob-num js-line-number" data-line-number="337"></td>
+        <td id="LC337" class="blob-code blob-code-inner js-file-line">                    z.append(skewedGauss(muZ, sigmaZ, scaleZ, upperSkewZ) <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L338" class="blob-num js-line-number" data-line-number="338"></td>
+        <td id="LC338" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">elif</span> j <span class="pl-k">in</span> [<span class="pl-c1">1</span>, <span class="pl-c1">2</span>, <span class="pl-c1">3</span>, <span class="pl-c1">4</span>]:</td>
+      </tr>
+      <tr>
+        <td id="L339" class="blob-num js-line-number" data-line-number="339"></td>
+        <td id="LC339" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaX <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L340" class="blob-num js-line-number" data-line-number="340"></td>
+        <td id="LC340" class="blob-code blob-code-inner js-file-line">                    x.append(scaleX[<span class="pl-c1">0</span>] <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L341" class="blob-num js-line-number" data-line-number="341"></td>
+        <td id="LC341" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L342" class="blob-num js-line-number" data-line-number="342"></td>
+        <td id="LC342" class="blob-code blob-code-inner js-file-line">                    x.append(skewedGauss(muX, sigmaX, scaleX, upperSkewX) <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L343" class="blob-num js-line-number" data-line-number="343"></td>
+        <td id="LC343" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaY <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L344" class="blob-num js-line-number" data-line-number="344"></td>
+        <td id="LC344" class="blob-code blob-code-inner js-file-line">                    y.append(scaleY[<span class="pl-c1">0</span>] <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L345" class="blob-num js-line-number" data-line-number="345"></td>
+        <td id="LC345" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L346" class="blob-num js-line-number" data-line-number="346"></td>
+        <td id="LC346" class="blob-code blob-code-inner js-file-line">                    y.append(skewedGauss(muY, sigmaY, scaleY, upperSkewY) <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L347" class="blob-num js-line-number" data-line-number="347"></td>
+        <td id="LC347" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaZ <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L348" class="blob-num js-line-number" data-line-number="348"></td>
+        <td id="LC348" class="blob-code blob-code-inner js-file-line">                    z.append(scaleZ[<span class="pl-c1">0</span>] <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L349" class="blob-num js-line-number" data-line-number="349"></td>
+        <td id="LC349" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L350" class="blob-num js-line-number" data-line-number="350"></td>
+        <td id="LC350" class="blob-code blob-code-inner js-file-line">                    z.append(skewedGauss(muZ, sigmaZ, scaleZ, upperSkewZ) <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L351" class="blob-num js-line-number" data-line-number="351"></td>
+        <td id="LC351" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">elif</span> j <span class="pl-k">in</span> [<span class="pl-c1">5</span>, <span class="pl-c1">7</span>]:</td>
+      </tr>
+      <tr>
+        <td id="L352" class="blob-num js-line-number" data-line-number="352"></td>
+        <td id="LC352" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaX <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L353" class="blob-num js-line-number" data-line-number="353"></td>
+        <td id="LC353" class="blob-code blob-code-inner js-file-line">                    x.append(<span class="pl-c1">0</span>)</td>
+      </tr>
+      <tr>
+        <td id="L354" class="blob-num js-line-number" data-line-number="354"></td>
+        <td id="LC354" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L355" class="blob-num js-line-number" data-line-number="355"></td>
+        <td id="LC355" class="blob-code blob-code-inner js-file-line">                    x.append(skewedGauss(<span class="pl-c1">0</span>, sigmaX, scaleX, upperSkewX) <span class="pl-k">/</span> <span class="pl-c1">3</span>)</td>
+      </tr>
+      <tr>
+        <td id="L356" class="blob-num js-line-number" data-line-number="356"></td>
+        <td id="LC356" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaY <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L357" class="blob-num js-line-number" data-line-number="357"></td>
+        <td id="LC357" class="blob-code blob-code-inner js-file-line">                    y.append(scaleY[<span class="pl-c1">0</span>] <span class="pl-k">/</span> <span class="pl-c1">3</span>)</td>
+      </tr>
+      <tr>
+        <td id="L358" class="blob-num js-line-number" data-line-number="358"></td>
+        <td id="LC358" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L359" class="blob-num js-line-number" data-line-number="359"></td>
+        <td id="LC359" class="blob-code blob-code-inner js-file-line">                    y.append(skewedGauss(muY, sigmaY, scaleY, upperSkewY) <span class="pl-k">/</span> <span class="pl-c1">3</span>)</td>
+      </tr>
+      <tr>
+        <td id="L360" class="blob-num js-line-number" data-line-number="360"></td>
+        <td id="LC360" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaZ <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L361" class="blob-num js-line-number" data-line-number="361"></td>
+        <td id="LC361" class="blob-code blob-code-inner js-file-line">                    z.append(<span class="pl-c1">0</span>)</td>
+      </tr>
+      <tr>
+        <td id="L362" class="blob-num js-line-number" data-line-number="362"></td>
+        <td id="LC362" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L363" class="blob-num js-line-number" data-line-number="363"></td>
+        <td id="LC363" class="blob-code blob-code-inner js-file-line">                    z.append(skewedGauss(<span class="pl-c1">0</span>, sigmaZ, scaleZ, upperSkewZ) <span class="pl-k">/</span> <span class="pl-c1">6</span>)</td>
+      </tr>
+      <tr>
+        <td id="L364" class="blob-num js-line-number" data-line-number="364"></td>
+        <td id="LC364" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">elif</span> j <span class="pl-k">in</span> [<span class="pl-c1">6</span>, <span class="pl-c1">8</span>]:</td>
+      </tr>
+      <tr>
+        <td id="L365" class="blob-num js-line-number" data-line-number="365"></td>
+        <td id="LC365" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaX <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L366" class="blob-num js-line-number" data-line-number="366"></td>
+        <td id="LC366" class="blob-code blob-code-inner js-file-line">                    x.append(scaleX[<span class="pl-c1">0</span>] <span class="pl-k">/</span> <span class="pl-c1">3</span>)</td>
+      </tr>
+      <tr>
+        <td id="L367" class="blob-num js-line-number" data-line-number="367"></td>
+        <td id="LC367" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L368" class="blob-num js-line-number" data-line-number="368"></td>
+        <td id="LC368" class="blob-code blob-code-inner js-file-line">                    x.append(skewedGauss(muX, sigmaX, scaleX, upperSkewX) <span class="pl-k">/</span> <span class="pl-c1">3</span>)</td>
+      </tr>
+      <tr>
+        <td id="L369" class="blob-num js-line-number" data-line-number="369"></td>
+        <td id="LC369" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaY <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L370" class="blob-num js-line-number" data-line-number="370"></td>
+        <td id="LC370" class="blob-code blob-code-inner js-file-line">                    y.append(<span class="pl-c1">0</span>)</td>
+      </tr>
+      <tr>
+        <td id="L371" class="blob-num js-line-number" data-line-number="371"></td>
+        <td id="LC371" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L372" class="blob-num js-line-number" data-line-number="372"></td>
+        <td id="LC372" class="blob-code blob-code-inner js-file-line">                    y.append(skewedGauss(<span class="pl-c1">0</span>, sigmaY, scaleY, upperSkewY) <span class="pl-k">/</span> <span class="pl-c1">3</span>)</td>
+      </tr>
+      <tr>
+        <td id="L373" class="blob-num js-line-number" data-line-number="373"></td>
+        <td id="LC373" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaZ <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L374" class="blob-num js-line-number" data-line-number="374"></td>
+        <td id="LC374" class="blob-code blob-code-inner js-file-line">                    z.append(<span class="pl-c1">0</span>)</td>
+      </tr>
+      <tr>
+        <td id="L375" class="blob-num js-line-number" data-line-number="375"></td>
+        <td id="LC375" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L376" class="blob-num js-line-number" data-line-number="376"></td>
+        <td id="LC376" class="blob-code blob-code-inner js-file-line">                    z.append(skewedGauss(<span class="pl-c1">0</span>, sigmaZ, scaleZ, upperSkewZ) <span class="pl-k">/</span> <span class="pl-c1">6</span>)</td>
+      </tr>
+      <tr>
+        <td id="L377" class="blob-num js-line-number" data-line-number="377"></td>
+        <td id="LC377" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">elif</span> shape <span class="pl-k">==</span> <span class="pl-c1">5</span>:</td>
+      </tr>
+      <tr>
+        <td id="L378" class="blob-num js-line-number" data-line-number="378"></td>
+        <td id="LC378" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">for</span> j <span class="pl-k">in</span> <span class="pl-c1">range</span>(<span class="pl-c1">10</span>):</td>
+      </tr>
+      <tr>
+        <td id="L379" class="blob-num js-line-number" data-line-number="379"></td>
+        <td id="LC379" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">if</span> j <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L380" class="blob-num js-line-number" data-line-number="380"></td>
+        <td id="LC380" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaX <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L381" class="blob-num js-line-number" data-line-number="381"></td>
+        <td id="LC381" class="blob-code blob-code-inner js-file-line">                    x.append(<span class="pl-c1">0</span>)</td>
+      </tr>
+      <tr>
+        <td id="L382" class="blob-num js-line-number" data-line-number="382"></td>
+        <td id="LC382" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L383" class="blob-num js-line-number" data-line-number="383"></td>
+        <td id="LC383" class="blob-code blob-code-inner js-file-line">                    x.append(skewedGauss(<span class="pl-c1">0</span>, sigmaX, scaleX, upperSkewX) <span class="pl-k">/</span> <span class="pl-c1">8</span>)</td>
+      </tr>
+      <tr>
+        <td id="L384" class="blob-num js-line-number" data-line-number="384"></td>
+        <td id="LC384" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaY <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L385" class="blob-num js-line-number" data-line-number="385"></td>
+        <td id="LC385" class="blob-code blob-code-inner js-file-line">                    y.append(<span class="pl-c1">0</span>)</td>
+      </tr>
+      <tr>
+        <td id="L386" class="blob-num js-line-number" data-line-number="386"></td>
+        <td id="LC386" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L387" class="blob-num js-line-number" data-line-number="387"></td>
+        <td id="LC387" class="blob-code blob-code-inner js-file-line">                    y.append(skewedGauss(<span class="pl-c1">0</span>, sigmaY, scaleY, upperSkewY) <span class="pl-k">/</span> <span class="pl-c1">8</span>)</td>
+      </tr>
+      <tr>
+        <td id="L388" class="blob-num js-line-number" data-line-number="388"></td>
+        <td id="LC388" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaZ <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L389" class="blob-num js-line-number" data-line-number="389"></td>
+        <td id="LC389" class="blob-code blob-code-inner js-file-line">                    z.append(scaleZ[<span class="pl-c1">0</span>] <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L390" class="blob-num js-line-number" data-line-number="390"></td>
+        <td id="LC390" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L391" class="blob-num js-line-number" data-line-number="391"></td>
+        <td id="LC391" class="blob-code blob-code-inner js-file-line">                    z.append(skewedGauss(muZ, sigmaZ, scaleZ, upperSkewZ) <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L392" class="blob-num js-line-number" data-line-number="392"></td>
+        <td id="LC392" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">elif</span> j <span class="pl-k">in</span> [<span class="pl-c1">1</span>, <span class="pl-c1">2</span>]:</td>
+      </tr>
+      <tr>
+        <td id="L393" class="blob-num js-line-number" data-line-number="393"></td>
+        <td id="LC393" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaX <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L394" class="blob-num js-line-number" data-line-number="394"></td>
+        <td id="LC394" class="blob-code blob-code-inner js-file-line">                    x.append(scaleZ[<span class="pl-c1">0</span>] <span class="pl-k">*</span> <span class="pl-c1">.125</span>)</td>
+      </tr>
+      <tr>
+        <td id="L395" class="blob-num js-line-number" data-line-number="395"></td>
+        <td id="LC395" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L396" class="blob-num js-line-number" data-line-number="396"></td>
+        <td id="LC396" class="blob-code blob-code-inner js-file-line">                    x.append(skewedGauss(muX, sigmaX, scaleX, upperSkewX) <span class="pl-k">*</span> <span class="pl-c1">0.125</span>)</td>
+      </tr>
+      <tr>
+        <td id="L397" class="blob-num js-line-number" data-line-number="397"></td>
+        <td id="LC397" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaY <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L398" class="blob-num js-line-number" data-line-number="398"></td>
+        <td id="LC398" class="blob-code blob-code-inner js-file-line">                    y.append(scaleZ[<span class="pl-c1">0</span>] <span class="pl-k">*</span> <span class="pl-c1">0.2165</span>)</td>
+      </tr>
+      <tr>
+        <td id="L399" class="blob-num js-line-number" data-line-number="399"></td>
+        <td id="LC399" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L400" class="blob-num js-line-number" data-line-number="400"></td>
+        <td id="LC400" class="blob-code blob-code-inner js-file-line">                    y.append(skewedGauss(muY, sigmaY, scaleY, upperSkewY) <span class="pl-k">*</span> <span class="pl-c1">0.2165</span>)</td>
+      </tr>
+      <tr>
+        <td id="L401" class="blob-num js-line-number" data-line-number="401"></td>
+        <td id="LC401" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaZ <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L402" class="blob-num js-line-number" data-line-number="402"></td>
+        <td id="LC402" class="blob-code blob-code-inner js-file-line">                    z.append(<span class="pl-c1">0</span>)</td>
+      </tr>
+      <tr>
+        <td id="L403" class="blob-num js-line-number" data-line-number="403"></td>
+        <td id="LC403" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L404" class="blob-num js-line-number" data-line-number="404"></td>
+        <td id="LC404" class="blob-code blob-code-inner js-file-line">                    z.append(skewedGauss(<span class="pl-c1">0</span>, sigmaZ, scaleZ, upperSkewZ) <span class="pl-k">/</span> <span class="pl-c1">4</span>)</td>
+      </tr>
+      <tr>
+        <td id="L405" class="blob-num js-line-number" data-line-number="405"></td>
+        <td id="LC405" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">elif</span> j <span class="pl-k">==</span> <span class="pl-c1">3</span>:</td>
+      </tr>
+      <tr>
+        <td id="L406" class="blob-num js-line-number" data-line-number="406"></td>
+        <td id="LC406" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaX <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L407" class="blob-num js-line-number" data-line-number="407"></td>
+        <td id="LC407" class="blob-code blob-code-inner js-file-line">                    x.append(scaleX[<span class="pl-c1">0</span>] <span class="pl-k">/</span> <span class="pl-c1">4</span>)</td>
+      </tr>
+      <tr>
+        <td id="L408" class="blob-num js-line-number" data-line-number="408"></td>
+        <td id="LC408" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L409" class="blob-num js-line-number" data-line-number="409"></td>
+        <td id="LC409" class="blob-code blob-code-inner js-file-line">                    x.append(skewedGauss(muX, sigmaX, scaleX, upperSkewX) <span class="pl-k">/</span> <span class="pl-c1">4</span>)</td>
+      </tr>
+      <tr>
+        <td id="L410" class="blob-num js-line-number" data-line-number="410"></td>
+        <td id="LC410" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaY <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L411" class="blob-num js-line-number" data-line-number="411"></td>
+        <td id="LC411" class="blob-code blob-code-inner js-file-line">                    y.append(<span class="pl-c1">0</span>)</td>
+      </tr>
+      <tr>
+        <td id="L412" class="blob-num js-line-number" data-line-number="412"></td>
+        <td id="LC412" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L413" class="blob-num js-line-number" data-line-number="413"></td>
+        <td id="LC413" class="blob-code blob-code-inner js-file-line">                    y.append(skewedGauss(<span class="pl-c1">0</span>, sigmaY, scaleY, upperSkewY) <span class="pl-k">/</span> <span class="pl-c1">4</span>)</td>
+      </tr>
+      <tr>
+        <td id="L414" class="blob-num js-line-number" data-line-number="414"></td>
+        <td id="LC414" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaZ <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L415" class="blob-num js-line-number" data-line-number="415"></td>
+        <td id="LC415" class="blob-code blob-code-inner js-file-line">                    z.append(<span class="pl-c1">0</span>)</td>
+      </tr>
+      <tr>
+        <td id="L416" class="blob-num js-line-number" data-line-number="416"></td>
+        <td id="LC416" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L417" class="blob-num js-line-number" data-line-number="417"></td>
+        <td id="LC417" class="blob-code blob-code-inner js-file-line">                    z.append(skewedGauss(<span class="pl-c1">0</span>, sigmaZ, scaleZ, upperSkewZ) <span class="pl-k">/</span> <span class="pl-c1">4</span>)</td>
+      </tr>
+      <tr>
+        <td id="L418" class="blob-num js-line-number" data-line-number="418"></td>
+        <td id="LC418" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">elif</span> j <span class="pl-k">in</span> [<span class="pl-c1">4</span>, <span class="pl-c1">6</span>]:</td>
+      </tr>
+      <tr>
+        <td id="L419" class="blob-num js-line-number" data-line-number="419"></td>
+        <td id="LC419" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaX <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L420" class="blob-num js-line-number" data-line-number="420"></td>
+        <td id="LC420" class="blob-code blob-code-inner js-file-line">                    x.append(scaleX[<span class="pl-c1">0</span>] <span class="pl-k">*</span> <span class="pl-c1">0.25</span>)</td>
+      </tr>
+      <tr>
+        <td id="L421" class="blob-num js-line-number" data-line-number="421"></td>
+        <td id="LC421" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L422" class="blob-num js-line-number" data-line-number="422"></td>
+        <td id="LC422" class="blob-code blob-code-inner js-file-line">                    x.append(skewedGauss(muX, sigmaX, scaleX, upperSkewX) <span class="pl-k">*</span> <span class="pl-c1">0.25</span>)</td>
+      </tr>
+      <tr>
+        <td id="L423" class="blob-num js-line-number" data-line-number="423"></td>
+        <td id="LC423" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaY <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L424" class="blob-num js-line-number" data-line-number="424"></td>
+        <td id="LC424" class="blob-code blob-code-inner js-file-line">                    y.append(scaleY[<span class="pl-c1">0</span>] <span class="pl-k">*</span> <span class="pl-c1">0.433</span>)</td>
+      </tr>
+      <tr>
+        <td id="L425" class="blob-num js-line-number" data-line-number="425"></td>
+        <td id="LC425" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L426" class="blob-num js-line-number" data-line-number="426"></td>
+        <td id="LC426" class="blob-code blob-code-inner js-file-line">                    y.append(skewedGauss(muY, sigmaY, scaleY, upperSkewY) <span class="pl-k">*</span> <span class="pl-c1">0.433</span>)</td>
+      </tr>
+      <tr>
+        <td id="L427" class="blob-num js-line-number" data-line-number="427"></td>
+        <td id="LC427" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaZ <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L428" class="blob-num js-line-number" data-line-number="428"></td>
+        <td id="LC428" class="blob-code blob-code-inner js-file-line">                    z.append(scaleZ[<span class="pl-c1">0</span>] <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L429" class="blob-num js-line-number" data-line-number="429"></td>
+        <td id="LC429" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L430" class="blob-num js-line-number" data-line-number="430"></td>
+        <td id="LC430" class="blob-code blob-code-inner js-file-line">                    z.append(skewedGauss(muZ, sigmaZ, scaleZ, upperSkewZ) <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L431" class="blob-num js-line-number" data-line-number="431"></td>
+        <td id="LC431" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">elif</span> j <span class="pl-k">==</span> <span class="pl-c1">5</span>:</td>
+      </tr>
+      <tr>
+        <td id="L432" class="blob-num js-line-number" data-line-number="432"></td>
+        <td id="LC432" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaX <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L433" class="blob-num js-line-number" data-line-number="433"></td>
+        <td id="LC433" class="blob-code blob-code-inner js-file-line">                    x.append(scaleX[<span class="pl-c1">0</span>] <span class="pl-k">/</span> <span class="pl-c1">4</span>)</td>
+      </tr>
+      <tr>
+        <td id="L434" class="blob-num js-line-number" data-line-number="434"></td>
+        <td id="LC434" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L435" class="blob-num js-line-number" data-line-number="435"></td>
+        <td id="LC435" class="blob-code blob-code-inner js-file-line">                    x.append(skewedGauss(muX, sigmaX, scaleX, upperSkewX) <span class="pl-k">/</span> <span class="pl-c1">4</span>)</td>
+      </tr>
+      <tr>
+        <td id="L436" class="blob-num js-line-number" data-line-number="436"></td>
+        <td id="LC436" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaY <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L437" class="blob-num js-line-number" data-line-number="437"></td>
+        <td id="LC437" class="blob-code blob-code-inner js-file-line">                    y.append(<span class="pl-c1">0</span>)</td>
+      </tr>
+      <tr>
+        <td id="L438" class="blob-num js-line-number" data-line-number="438"></td>
+        <td id="LC438" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L439" class="blob-num js-line-number" data-line-number="439"></td>
+        <td id="LC439" class="blob-code blob-code-inner js-file-line">                    y.append(skewedGauss(<span class="pl-c1">0</span>, sigmaY, scaleY, upperSkewY) <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L440" class="blob-num js-line-number" data-line-number="440"></td>
+        <td id="LC440" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaZ <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L441" class="blob-num js-line-number" data-line-number="441"></td>
+        <td id="LC441" class="blob-code blob-code-inner js-file-line">                    z.append(scaleZ[<span class="pl-c1">0</span>] <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L442" class="blob-num js-line-number" data-line-number="442"></td>
+        <td id="LC442" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L443" class="blob-num js-line-number" data-line-number="443"></td>
+        <td id="LC443" class="blob-code blob-code-inner js-file-line">                    z.append(skewedGauss(muZ, sigmaZ, scaleZ, upperSkewZ) <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L444" class="blob-num js-line-number" data-line-number="444"></td>
+        <td id="LC444" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">elif</span> j <span class="pl-k">in</span> [<span class="pl-c1">7</span>, <span class="pl-c1">9</span>]:</td>
+      </tr>
+      <tr>
+        <td id="L445" class="blob-num js-line-number" data-line-number="445"></td>
+        <td id="LC445" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaX <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L446" class="blob-num js-line-number" data-line-number="446"></td>
+        <td id="LC446" class="blob-code blob-code-inner js-file-line">                    x.append(scaleX[<span class="pl-c1">0</span>] <span class="pl-k">*</span> <span class="pl-c1">0.10825</span>)</td>
+      </tr>
+      <tr>
+        <td id="L447" class="blob-num js-line-number" data-line-number="447"></td>
+        <td id="LC447" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L448" class="blob-num js-line-number" data-line-number="448"></td>
+        <td id="LC448" class="blob-code blob-code-inner js-file-line">                    x.append(skewedGauss(muX, sigmaX, scaleX, upperSkewX) <span class="pl-k">*</span> <span class="pl-c1">0.10825</span>)</td>
+      </tr>
+      <tr>
+        <td id="L449" class="blob-num js-line-number" data-line-number="449"></td>
+        <td id="LC449" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaY <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L450" class="blob-num js-line-number" data-line-number="450"></td>
+        <td id="LC450" class="blob-code blob-code-inner js-file-line">                    y.append(scaleY[<span class="pl-c1">0</span>] <span class="pl-k">*</span> <span class="pl-c1">0.2165</span>)</td>
+      </tr>
+      <tr>
+        <td id="L451" class="blob-num js-line-number" data-line-number="451"></td>
+        <td id="LC451" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L452" class="blob-num js-line-number" data-line-number="452"></td>
+        <td id="LC452" class="blob-code blob-code-inner js-file-line">                    y.append(skewedGauss(muY, sigmaY, scaleY, upperSkewY) <span class="pl-k">*</span> <span class="pl-c1">0.2165</span>)</td>
+      </tr>
+      <tr>
+        <td id="L453" class="blob-num js-line-number" data-line-number="453"></td>
+        <td id="LC453" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaZ <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L454" class="blob-num js-line-number" data-line-number="454"></td>
+        <td id="LC454" class="blob-code blob-code-inner js-file-line">                    z.append(scaleZ[<span class="pl-c1">0</span>] <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L455" class="blob-num js-line-number" data-line-number="455"></td>
+        <td id="LC455" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L456" class="blob-num js-line-number" data-line-number="456"></td>
+        <td id="LC456" class="blob-code blob-code-inner js-file-line">                    z.append(skewedGauss(muZ, sigmaZ, scaleZ, upperSkewZ) <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L457" class="blob-num js-line-number" data-line-number="457"></td>
+        <td id="LC457" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">elif</span> j <span class="pl-k">==</span> <span class="pl-c1">8</span>:</td>
+      </tr>
+      <tr>
+        <td id="L458" class="blob-num js-line-number" data-line-number="458"></td>
+        <td id="LC458" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaX <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L459" class="blob-num js-line-number" data-line-number="459"></td>
+        <td id="LC459" class="blob-code blob-code-inner js-file-line">                    x.append(scaleX[<span class="pl-c1">0</span>] <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L460" class="blob-num js-line-number" data-line-number="460"></td>
+        <td id="LC460" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L461" class="blob-num js-line-number" data-line-number="461"></td>
+        <td id="LC461" class="blob-code blob-code-inner js-file-line">                    x.append(skewedGauss(muX, sigmaX, scaleX, upperSkewX) <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L462" class="blob-num js-line-number" data-line-number="462"></td>
+        <td id="LC462" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaY <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L463" class="blob-num js-line-number" data-line-number="463"></td>
+        <td id="LC463" class="blob-code blob-code-inner js-file-line">                    y.append(<span class="pl-c1">0</span>)</td>
+      </tr>
+      <tr>
+        <td id="L464" class="blob-num js-line-number" data-line-number="464"></td>
+        <td id="LC464" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L465" class="blob-num js-line-number" data-line-number="465"></td>
+        <td id="LC465" class="blob-code blob-code-inner js-file-line">                    y.append(skewedGauss(<span class="pl-c1">0</span>, sigmaY, scaleY, upperSkewY) <span class="pl-k">/</span> <span class="pl-c1">4</span>)</td>
+      </tr>
+      <tr>
+        <td id="L466" class="blob-num js-line-number" data-line-number="466"></td>
+        <td id="LC466" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaZ <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L467" class="blob-num js-line-number" data-line-number="467"></td>
+        <td id="LC467" class="blob-code blob-code-inner js-file-line">                    z.append(scaleZ[<span class="pl-c1">0</span>] <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L468" class="blob-num js-line-number" data-line-number="468"></td>
+        <td id="LC468" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L469" class="blob-num js-line-number" data-line-number="469"></td>
+        <td id="LC469" class="blob-code blob-code-inner js-file-line">                    z.append(skewedGauss(muZ, sigmaZ, scaleZ, upperSkewZ) <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L470" class="blob-num js-line-number" data-line-number="470"></td>
+        <td id="LC470" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">elif</span> shape <span class="pl-k">==</span> <span class="pl-c1">6</span>:</td>
+      </tr>
+      <tr>
+        <td id="L471" class="blob-num js-line-number" data-line-number="471"></td>
+        <td id="LC471" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">for</span> j <span class="pl-k">in</span> <span class="pl-c1">range</span>(<span class="pl-c1">7</span>):</td>
+      </tr>
+      <tr>
+        <td id="L472" class="blob-num js-line-number" data-line-number="472"></td>
+        <td id="LC472" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">if</span> j <span class="pl-k">&gt;</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L473" class="blob-num js-line-number" data-line-number="473"></td>
+        <td id="LC473" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaX <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L474" class="blob-num js-line-number" data-line-number="474"></td>
+        <td id="LC474" class="blob-code blob-code-inner js-file-line">                    x.append(scaleX[<span class="pl-c1">0</span>] <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L475" class="blob-num js-line-number" data-line-number="475"></td>
+        <td id="LC475" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L476" class="blob-num js-line-number" data-line-number="476"></td>
+        <td id="LC476" class="blob-code blob-code-inner js-file-line">                    x.append(skewedGauss(muX, sigmaX, scaleX, upperSkewX) <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L477" class="blob-num js-line-number" data-line-number="477"></td>
+        <td id="LC477" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaY <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L478" class="blob-num js-line-number" data-line-number="478"></td>
+        <td id="LC478" class="blob-code blob-code-inner js-file-line">                    y.append(scaleY[<span class="pl-c1">0</span>] <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L479" class="blob-num js-line-number" data-line-number="479"></td>
+        <td id="LC479" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L480" class="blob-num js-line-number" data-line-number="480"></td>
+        <td id="LC480" class="blob-code blob-code-inner js-file-line">                    y.append(skewedGauss(muY, sigmaY, scaleY, upperSkewY) <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L481" class="blob-num js-line-number" data-line-number="481"></td>
+        <td id="LC481" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaZ <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L482" class="blob-num js-line-number" data-line-number="482"></td>
+        <td id="LC482" class="blob-code blob-code-inner js-file-line">                    z.append(scaleZ[<span class="pl-c1">0</span>] <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L483" class="blob-num js-line-number" data-line-number="483"></td>
+        <td id="LC483" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L484" class="blob-num js-line-number" data-line-number="484"></td>
+        <td id="LC484" class="blob-code blob-code-inner js-file-line">                    z.append(skewedGauss(muZ, sigmaZ, scaleZ, upperSkewZ) <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L485" class="blob-num js-line-number" data-line-number="485"></td>
+        <td id="LC485" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L486" class="blob-num js-line-number" data-line-number="486"></td>
+        <td id="LC486" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaX <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L487" class="blob-num js-line-number" data-line-number="487"></td>
+        <td id="LC487" class="blob-code blob-code-inner js-file-line">                    x.append(scaleX[<span class="pl-c1">0</span>] <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L488" class="blob-num js-line-number" data-line-number="488"></td>
+        <td id="LC488" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L489" class="blob-num js-line-number" data-line-number="489"></td>
+        <td id="LC489" class="blob-code blob-code-inner js-file-line">                    x.append(skewedGauss(muX, sigmaX, scaleX, upperSkewX) <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L490" class="blob-num js-line-number" data-line-number="490"></td>
+        <td id="LC490" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaY <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L491" class="blob-num js-line-number" data-line-number="491"></td>
+        <td id="LC491" class="blob-code blob-code-inner js-file-line">                    y.append(<span class="pl-c1">0</span>)</td>
+      </tr>
+      <tr>
+        <td id="L492" class="blob-num js-line-number" data-line-number="492"></td>
+        <td id="LC492" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L493" class="blob-num js-line-number" data-line-number="493"></td>
+        <td id="LC493" class="blob-code blob-code-inner js-file-line">                    y.append(skewedGauss(<span class="pl-c1">0</span>, sigmaY, scaleY, upperSkewY) <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L494" class="blob-num js-line-number" data-line-number="494"></td>
+        <td id="LC494" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaZ <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L495" class="blob-num js-line-number" data-line-number="495"></td>
+        <td id="LC495" class="blob-code blob-code-inner js-file-line">                    z.append(scaleZ[<span class="pl-c1">0</span>] <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L496" class="blob-num js-line-number" data-line-number="496"></td>
+        <td id="LC496" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L497" class="blob-num js-line-number" data-line-number="497"></td>
+        <td id="LC497" class="blob-code blob-code-inner js-file-line">                    z.append(skewedGauss(muZ, sigmaZ, scaleZ, upperSkewZ) <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L498" class="blob-num js-line-number" data-line-number="498"></td>
+        <td id="LC498" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">elif</span> shape <span class="pl-k">==</span> <span class="pl-c1">7</span>:</td>
+      </tr>
+      <tr>
+        <td id="L499" class="blob-num js-line-number" data-line-number="499"></td>
+        <td id="LC499" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">for</span> j <span class="pl-k">in</span> <span class="pl-c1">range</span>(<span class="pl-c1">10</span>):</td>
+      </tr>
+      <tr>
+        <td id="L500" class="blob-num js-line-number" data-line-number="500"></td>
+        <td id="LC500" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">if</span> j <span class="pl-k">in</span> [<span class="pl-c1">1</span>, <span class="pl-c1">3</span>, <span class="pl-c1">4</span>, <span class="pl-c1">5</span>, <span class="pl-c1">8</span>, <span class="pl-c1">9</span>]:</td>
+      </tr>
+      <tr>
+        <td id="L501" class="blob-num js-line-number" data-line-number="501"></td>
+        <td id="LC501" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaX <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L502" class="blob-num js-line-number" data-line-number="502"></td>
+        <td id="LC502" class="blob-code blob-code-inner js-file-line">                    x.append(scaleX[<span class="pl-c1">0</span>] <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L503" class="blob-num js-line-number" data-line-number="503"></td>
+        <td id="LC503" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L504" class="blob-num js-line-number" data-line-number="504"></td>
+        <td id="LC504" class="blob-code blob-code-inner js-file-line">                    x.append(skewedGauss(muX, sigmaX, scaleX, upperSkewX) <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L505" class="blob-num js-line-number" data-line-number="505"></td>
+        <td id="LC505" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaY <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L506" class="blob-num js-line-number" data-line-number="506"></td>
+        <td id="LC506" class="blob-code blob-code-inner js-file-line">                    y.append(scaleY[<span class="pl-c1">0</span>] <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L507" class="blob-num js-line-number" data-line-number="507"></td>
+        <td id="LC507" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L508" class="blob-num js-line-number" data-line-number="508"></td>
+        <td id="LC508" class="blob-code blob-code-inner js-file-line">                    y.append(skewedGauss(muY, sigmaY, scaleY, upperSkewY) <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L509" class="blob-num js-line-number" data-line-number="509"></td>
+        <td id="LC509" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaZ <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L510" class="blob-num js-line-number" data-line-number="510"></td>
+        <td id="LC510" class="blob-code blob-code-inner js-file-line">                    z.append(scaleZ[<span class="pl-c1">0</span>] <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L511" class="blob-num js-line-number" data-line-number="511"></td>
+        <td id="LC511" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L512" class="blob-num js-line-number" data-line-number="512"></td>
+        <td id="LC512" class="blob-code blob-code-inner js-file-line">                    z.append(skewedGauss(muZ, sigmaZ, scaleZ, upperSkewZ) <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L513" class="blob-num js-line-number" data-line-number="513"></td>
+        <td id="LC513" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L514" class="blob-num js-line-number" data-line-number="514"></td>
+        <td id="LC514" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaX <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L515" class="blob-num js-line-number" data-line-number="515"></td>
+        <td id="LC515" class="blob-code blob-code-inner js-file-line">                    x.append(scaleX[<span class="pl-c1">0</span>] <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L516" class="blob-num js-line-number" data-line-number="516"></td>
+        <td id="LC516" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L517" class="blob-num js-line-number" data-line-number="517"></td>
+        <td id="LC517" class="blob-code blob-code-inner js-file-line">                    x.append(skewedGauss(muX, sigmaX, scaleX, upperSkewX) <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L518" class="blob-num js-line-number" data-line-number="518"></td>
+        <td id="LC518" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaY <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L519" class="blob-num js-line-number" data-line-number="519"></td>
+        <td id="LC519" class="blob-code blob-code-inner js-file-line">                    y.append(<span class="pl-c1">0</span>)</td>
+      </tr>
+      <tr>
+        <td id="L520" class="blob-num js-line-number" data-line-number="520"></td>
+        <td id="LC520" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L521" class="blob-num js-line-number" data-line-number="521"></td>
+        <td id="LC521" class="blob-code blob-code-inner js-file-line">                    y.append(skewedGauss(<span class="pl-c1">0</span>, sigmaY, scaleY, upperSkewY) <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L522" class="blob-num js-line-number" data-line-number="522"></td>
+        <td id="LC522" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">if</span> sigmaZ <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L523" class="blob-num js-line-number" data-line-number="523"></td>
+        <td id="LC523" class="blob-code blob-code-inner js-file-line">                    z.append(scaleZ[<span class="pl-c1">0</span>] <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L524" class="blob-num js-line-number" data-line-number="524"></td>
+        <td id="LC524" class="blob-code blob-code-inner js-file-line">                <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L525" class="blob-num js-line-number" data-line-number="525"></td>
+        <td id="LC525" class="blob-code blob-code-inner js-file-line">                    z.append(skewedGauss(muZ, sigmaZ, scaleZ, upperSkewZ) <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L526" class="blob-num js-line-number" data-line-number="526"></td>
+        <td id="LC526" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">elif</span> shape <span class="pl-k">==</span> <span class="pl-c1">8</span>:</td>
+      </tr>
+      <tr>
+        <td id="L527" class="blob-num js-line-number" data-line-number="527"></td>
+        <td id="LC527" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">for</span> j <span class="pl-k">in</span> <span class="pl-c1">range</span>(<span class="pl-c1">7</span>):</td>
+      </tr>
+      <tr>
+        <td id="L528" class="blob-num js-line-number" data-line-number="528"></td>
+        <td id="LC528" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">if</span> sigmaX <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L529" class="blob-num js-line-number" data-line-number="529"></td>
+        <td id="LC529" class="blob-code blob-code-inner js-file-line">                x.append(scaleX[<span class="pl-c1">0</span>] <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L530" class="blob-num js-line-number" data-line-number="530"></td>
+        <td id="LC530" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L531" class="blob-num js-line-number" data-line-number="531"></td>
+        <td id="LC531" class="blob-code blob-code-inner js-file-line">                x.append(skewedGauss(muX, sigmaX, scaleX, upperSkewX) <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L532" class="blob-num js-line-number" data-line-number="532"></td>
+        <td id="LC532" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">if</span> sigmaY <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L533" class="blob-num js-line-number" data-line-number="533"></td>
+        <td id="LC533" class="blob-code blob-code-inner js-file-line">                y.append(scaleY[<span class="pl-c1">0</span>] <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L534" class="blob-num js-line-number" data-line-number="534"></td>
+        <td id="LC534" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L535" class="blob-num js-line-number" data-line-number="535"></td>
+        <td id="LC535" class="blob-code blob-code-inner js-file-line">                y.append(skewedGauss(muY, sigmaY, scaleY, upperSkewY) <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L536" class="blob-num js-line-number" data-line-number="536"></td>
+        <td id="LC536" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">if</span> sigmaZ <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L537" class="blob-num js-line-number" data-line-number="537"></td>
+        <td id="LC537" class="blob-code blob-code-inner js-file-line">                z.append(scaleZ[<span class="pl-c1">0</span>] <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L538" class="blob-num js-line-number" data-line-number="538"></td>
+        <td id="LC538" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L539" class="blob-num js-line-number" data-line-number="539"></td>
+        <td id="LC539" class="blob-code blob-code-inner js-file-line">                z.append(skewedGauss(muZ, sigmaZ, scaleZ, upperSkewZ) <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L540" class="blob-num js-line-number" data-line-number="540"></td>
+        <td id="LC540" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">elif</span> shape <span class="pl-k">==</span> <span class="pl-c1">9</span>:</td>
+      </tr>
+      <tr>
+        <td id="L541" class="blob-num js-line-number" data-line-number="541"></td>
+        <td id="LC541" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">for</span> j <span class="pl-k">in</span> <span class="pl-c1">range</span>(<span class="pl-c1">8</span>):</td>
+      </tr>
+      <tr>
+        <td id="L542" class="blob-num js-line-number" data-line-number="542"></td>
+        <td id="LC542" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">if</span> sigmaX <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L543" class="blob-num js-line-number" data-line-number="543"></td>
+        <td id="LC543" class="blob-code blob-code-inner js-file-line">                x.append(scaleX[<span class="pl-c1">0</span>] <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L544" class="blob-num js-line-number" data-line-number="544"></td>
+        <td id="LC544" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L545" class="blob-num js-line-number" data-line-number="545"></td>
+        <td id="LC545" class="blob-code blob-code-inner js-file-line">                x.append(skewedGauss(muX, sigmaX, scaleX, upperSkewX) <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L546" class="blob-num js-line-number" data-line-number="546"></td>
+        <td id="LC546" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">if</span> sigmaY <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L547" class="blob-num js-line-number" data-line-number="547"></td>
+        <td id="LC547" class="blob-code blob-code-inner js-file-line">                y.append(scaleY[<span class="pl-c1">0</span>] <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L548" class="blob-num js-line-number" data-line-number="548"></td>
+        <td id="LC548" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L549" class="blob-num js-line-number" data-line-number="549"></td>
+        <td id="LC549" class="blob-code blob-code-inner js-file-line">                y.append(skewedGauss(muY, sigmaY, scaleY, upperSkewY) <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L550" class="blob-num js-line-number" data-line-number="550"></td>
+        <td id="LC550" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">if</span> sigmaZ <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L551" class="blob-num js-line-number" data-line-number="551"></td>
+        <td id="LC551" class="blob-code blob-code-inner js-file-line">                z.append(scaleZ[<span class="pl-c1">0</span>] <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L552" class="blob-num js-line-number" data-line-number="552"></td>
+        <td id="LC552" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L553" class="blob-num js-line-number" data-line-number="553"></td>
+        <td id="LC553" class="blob-code blob-code-inner js-file-line">                z.append(skewedGauss(muZ, sigmaZ, scaleZ, upperSkewZ) <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L554" class="blob-num js-line-number" data-line-number="554"></td>
+        <td id="LC554" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">elif</span> shape <span class="pl-k">==</span> <span class="pl-c1">10</span>:</td>
+      </tr>
+      <tr>
+        <td id="L555" class="blob-num js-line-number" data-line-number="555"></td>
+        <td id="LC555" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">for</span> j <span class="pl-k">in</span> <span class="pl-c1">range</span>(<span class="pl-c1">7</span>):</td>
+      </tr>
+      <tr>
+        <td id="L556" class="blob-num js-line-number" data-line-number="556"></td>
+        <td id="LC556" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">if</span> sigmaX <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L557" class="blob-num js-line-number" data-line-number="557"></td>
+        <td id="LC557" class="blob-code blob-code-inner js-file-line">                x.append(scaleX[<span class="pl-c1">0</span>] <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L558" class="blob-num js-line-number" data-line-number="558"></td>
+        <td id="LC558" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L559" class="blob-num js-line-number" data-line-number="559"></td>
+        <td id="LC559" class="blob-code blob-code-inner js-file-line">                x.append(skewedGauss(muX, sigmaX, scaleX, upperSkewX) <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L560" class="blob-num js-line-number" data-line-number="560"></td>
+        <td id="LC560" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">if</span> sigmaY <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L561" class="blob-num js-line-number" data-line-number="561"></td>
+        <td id="LC561" class="blob-code blob-code-inner js-file-line">                y.append(scaleY[<span class="pl-c1">0</span>] <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L562" class="blob-num js-line-number" data-line-number="562"></td>
+        <td id="LC562" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L563" class="blob-num js-line-number" data-line-number="563"></td>
+        <td id="LC563" class="blob-code blob-code-inner js-file-line">                y.append(skewedGauss(muY, sigmaY, scaleY, upperSkewY) <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L564" class="blob-num js-line-number" data-line-number="564"></td>
+        <td id="LC564" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">if</span> sigmaZ <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L565" class="blob-num js-line-number" data-line-number="565"></td>
+        <td id="LC565" class="blob-code blob-code-inner js-file-line">                z.append(scaleZ[<span class="pl-c1">0</span>] <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L566" class="blob-num js-line-number" data-line-number="566"></td>
+        <td id="LC566" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L567" class="blob-num js-line-number" data-line-number="567"></td>
+        <td id="LC567" class="blob-code blob-code-inner js-file-line">                z.append(skewedGauss(muZ, sigmaZ, scaleZ, upperSkewZ) <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L568" class="blob-num js-line-number" data-line-number="568"></td>
+        <td id="LC568" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">elif</span> shape <span class="pl-k">==</span> <span class="pl-c1">11</span>:</td>
+      </tr>
+      <tr>
+        <td id="L569" class="blob-num js-line-number" data-line-number="569"></td>
+        <td id="LC569" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">for</span> j <span class="pl-k">in</span> <span class="pl-c1">range</span>(<span class="pl-c1">7</span>):</td>
+      </tr>
+      <tr>
+        <td id="L570" class="blob-num js-line-number" data-line-number="570"></td>
+        <td id="LC570" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">if</span> sigmaX <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L571" class="blob-num js-line-number" data-line-number="571"></td>
+        <td id="LC571" class="blob-code blob-code-inner js-file-line">                x.append(scaleX[<span class="pl-c1">0</span>] <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L572" class="blob-num js-line-number" data-line-number="572"></td>
+        <td id="LC572" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L573" class="blob-num js-line-number" data-line-number="573"></td>
+        <td id="LC573" class="blob-code blob-code-inner js-file-line">                x.append(skewedGauss(muX, sigmaX, scaleX, upperSkewX) <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L574" class="blob-num js-line-number" data-line-number="574"></td>
+        <td id="LC574" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">if</span> sigmaY <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L575" class="blob-num js-line-number" data-line-number="575"></td>
+        <td id="LC575" class="blob-code blob-code-inner js-file-line">                y.append(scaleY[<span class="pl-c1">0</span>] <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L576" class="blob-num js-line-number" data-line-number="576"></td>
+        <td id="LC576" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L577" class="blob-num js-line-number" data-line-number="577"></td>
+        <td id="LC577" class="blob-code blob-code-inner js-file-line">                y.append(skewedGauss(muY, sigmaY, scaleY, upperSkewY) <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L578" class="blob-num js-line-number" data-line-number="578"></td>
+        <td id="LC578" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">if</span> sigmaZ <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L579" class="blob-num js-line-number" data-line-number="579"></td>
+        <td id="LC579" class="blob-code blob-code-inner js-file-line">                z.append(scaleZ[<span class="pl-c1">0</span>] <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L580" class="blob-num js-line-number" data-line-number="580"></td>
+        <td id="LC580" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L581" class="blob-num js-line-number" data-line-number="581"></td>
+        <td id="LC581" class="blob-code blob-code-inner js-file-line">                z.append(skewedGauss(muZ, sigmaZ, scaleZ, upperSkewZ) <span class="pl-k">/</span> <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L582" class="blob-num js-line-number" data-line-number="582"></td>
+        <td id="LC582" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L583" class="blob-num js-line-number" data-line-number="583"></td>
+        <td id="LC583" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> This is for scaling the displacement textures.</span></td>
+      </tr>
+      <tr>
+        <td id="L584" class="blob-num js-line-number" data-line-number="584"></td>
+        <td id="LC584" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> Scale the vertices so that their average is equal to 1 * scale factor.</span></td>
+      </tr>
+      <tr>
+        <td id="L585" class="blob-num js-line-number" data-line-number="585"></td>
+        <td id="LC585" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">if</span> scaleDisplace:</td>
+      </tr>
+      <tr>
+        <td id="L586" class="blob-num js-line-number" data-line-number="586"></td>
+        <td id="LC586" class="blob-code blob-code-inner js-file-line">        averageX <span class="pl-k">=</span> (<span class="pl-c1">sum</span>(x) <span class="pl-k">/</span> <span class="pl-c1">len</span>(x)) <span class="pl-k">*</span> scale_fac[<span class="pl-c1">0</span>]</td>
+      </tr>
+      <tr>
+        <td id="L587" class="blob-num js-line-number" data-line-number="587"></td>
+        <td id="LC587" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">for</span> i <span class="pl-k">in</span> <span class="pl-c1">range</span>(<span class="pl-c1">len</span>(x)):</td>
+      </tr>
+      <tr>
+        <td id="L588" class="blob-num js-line-number" data-line-number="588"></td>
+        <td id="LC588" class="blob-code blob-code-inner js-file-line">            x[i] <span class="pl-k">/=</span> averageX</td>
+      </tr>
+      <tr>
+        <td id="L589" class="blob-num js-line-number" data-line-number="589"></td>
+        <td id="LC589" class="blob-code blob-code-inner js-file-line">        averageY <span class="pl-k">=</span> (<span class="pl-c1">sum</span>(y) <span class="pl-k">/</span> <span class="pl-c1">len</span>(y)) <span class="pl-k">*</span> scale_fac[<span class="pl-c1">1</span>]</td>
+      </tr>
+      <tr>
+        <td id="L590" class="blob-num js-line-number" data-line-number="590"></td>
+        <td id="LC590" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">for</span> i <span class="pl-k">in</span> <span class="pl-c1">range</span>(<span class="pl-c1">len</span>(y)):</td>
+      </tr>
+      <tr>
+        <td id="L591" class="blob-num js-line-number" data-line-number="591"></td>
+        <td id="LC591" class="blob-code blob-code-inner js-file-line">            y[i] <span class="pl-k">/=</span> averageY</td>
+      </tr>
+      <tr>
+        <td id="L592" class="blob-num js-line-number" data-line-number="592"></td>
+        <td id="LC592" class="blob-code blob-code-inner js-file-line">        averageZ <span class="pl-k">=</span> (<span class="pl-c1">sum</span>(z) <span class="pl-k">/</span> <span class="pl-c1">len</span>(z)) <span class="pl-k">*</span> scale_fac[<span class="pl-c1">2</span>]</td>
+      </tr>
+      <tr>
+        <td id="L593" class="blob-num js-line-number" data-line-number="593"></td>
+        <td id="LC593" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">for</span> i <span class="pl-k">in</span> <span class="pl-c1">range</span>(<span class="pl-c1">len</span>(z)):</td>
+      </tr>
+      <tr>
+        <td id="L594" class="blob-num js-line-number" data-line-number="594"></td>
+        <td id="LC594" class="blob-code blob-code-inner js-file-line">            z[i] <span class="pl-k">/=</span> averageZ</td>
+      </tr>
+      <tr>
+        <td id="L595" class="blob-num js-line-number" data-line-number="595"></td>
+        <td id="LC595" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L596" class="blob-num js-line-number" data-line-number="596"></td>
+        <td id="LC596" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> Build vertex and face arrays:</span></td>
+      </tr>
+      <tr>
+        <td id="L597" class="blob-num js-line-number" data-line-number="597"></td>
+        <td id="LC597" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">if</span> shape <span class="pl-k">==</span> <span class="pl-c1">1</span>:</td>
+      </tr>
+      <tr>
+        <td id="L598" class="blob-num js-line-number" data-line-number="598"></td>
+        <td id="LC598" class="blob-code blob-code-inner js-file-line">        verts <span class="pl-k">=</span> [(<span class="pl-k">-</span>x[<span class="pl-c1">0</span>], <span class="pl-k">-</span>y[<span class="pl-c1">0</span>], <span class="pl-k">-</span>z[<span class="pl-c1">0</span>]), (x[<span class="pl-c1">1</span>], <span class="pl-k">-</span>y[<span class="pl-c1">1</span>], <span class="pl-k">-</span>z[<span class="pl-c1">1</span>]), (x[<span class="pl-c1">2</span>], <span class="pl-k">-</span>y[<span class="pl-c1">2</span>], z[<span class="pl-c1">2</span>]),</td>
+      </tr>
+      <tr>
+        <td id="L599" class="blob-num js-line-number" data-line-number="599"></td>
+        <td id="LC599" class="blob-code blob-code-inner js-file-line">                 (<span class="pl-k">-</span>x[<span class="pl-c1">3</span>], y[<span class="pl-c1">3</span>], <span class="pl-k">-</span>z[<span class="pl-c1">3</span>]), (x[<span class="pl-c1">4</span>], y[<span class="pl-c1">4</span>], <span class="pl-k">-</span>z[<span class="pl-c1">4</span>]), (x[<span class="pl-c1">5</span>], y[<span class="pl-c1">5</span>], z[<span class="pl-c1">5</span>]),</td>
+      </tr>
+      <tr>
+        <td id="L600" class="blob-num js-line-number" data-line-number="600"></td>
+        <td id="LC600" class="blob-code blob-code-inner js-file-line">                 (x[<span class="pl-c1">6</span>], y[<span class="pl-c1">6</span>], z[<span class="pl-c1">6</span>]), (x[<span class="pl-c1">7</span>], y[<span class="pl-c1">7</span>], <span class="pl-k">-</span>z[<span class="pl-c1">7</span>])]</td>
+      </tr>
+      <tr>
+        <td id="L601" class="blob-num js-line-number" data-line-number="601"></td>
+        <td id="LC601" class="blob-code blob-code-inner js-file-line">        faces <span class="pl-k">=</span> [[<span class="pl-c1">0</span>, <span class="pl-c1">1</span>, <span class="pl-c1">2</span>], [<span class="pl-c1">0</span>, <span class="pl-c1">1</span>, <span class="pl-c1">7</span>], [<span class="pl-c1">3</span>, <span class="pl-c1">0</span>, <span class="pl-c1">7</span>], [<span class="pl-c1">3</span>, <span class="pl-c1">4</span>, <span class="pl-c1">7</span>], [<span class="pl-c1">1</span>, <span class="pl-c1">4</span>, <span class="pl-c1">7</span>], [<span class="pl-c1">3</span>, <span class="pl-c1">4</span>, <span class="pl-c1">5</span>], [<span class="pl-c1">1</span>, <span class="pl-c1">2</span>, <span class="pl-c1">6</span>],</td>
+      </tr>
+      <tr>
+        <td id="L602" class="blob-num js-line-number" data-line-number="602"></td>
+        <td id="LC602" class="blob-code blob-code-inner js-file-line">                 [<span class="pl-c1">1</span>, <span class="pl-c1">4</span>, <span class="pl-c1">6</span>], [<span class="pl-c1">4</span>, <span class="pl-c1">5</span>, <span class="pl-c1">6</span>], [<span class="pl-c1">0</span>, <span class="pl-c1">2</span>, <span class="pl-c1">6</span>], [<span class="pl-c1">0</span>, <span class="pl-c1">3</span>, <span class="pl-c1">6</span>], [<span class="pl-c1">3</span>, <span class="pl-c1">5</span>, <span class="pl-c1">6</span>]]</td>
+      </tr>
+      <tr>
+        <td id="L603" class="blob-num js-line-number" data-line-number="603"></td>
+        <td id="LC603" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">elif</span> shape <span class="pl-k">==</span> <span class="pl-c1">2</span>:</td>
+      </tr>
+      <tr>
+        <td id="L604" class="blob-num js-line-number" data-line-number="604"></td>
+        <td id="LC604" class="blob-code blob-code-inner js-file-line">        verts <span class="pl-k">=</span> [(<span class="pl-k">-</span>x[<span class="pl-c1">0</span>], y[<span class="pl-c1">0</span>], <span class="pl-k">-</span>z[<span class="pl-c1">0</span>]), (x[<span class="pl-c1">1</span>], <span class="pl-k">-</span>y[<span class="pl-c1">1</span>], <span class="pl-k">-</span>z[<span class="pl-c1">1</span>]), (x[<span class="pl-c1">2</span>], y[<span class="pl-c1">2</span>], <span class="pl-k">-</span>z[<span class="pl-c1">2</span>]),</td>
+      </tr>
+      <tr>
+        <td id="L605" class="blob-num js-line-number" data-line-number="605"></td>
+        <td id="LC605" class="blob-code blob-code-inner js-file-line">                 (<span class="pl-k">-</span>x[<span class="pl-c1">3</span>], y[<span class="pl-c1">3</span>], <span class="pl-k">-</span>z[<span class="pl-c1">3</span>]), (<span class="pl-k">-</span>x[<span class="pl-c1">4</span>], <span class="pl-k">-</span>y[<span class="pl-c1">4</span>], z[<span class="pl-c1">4</span>]), (x[<span class="pl-c1">5</span>], y[<span class="pl-c1">5</span>], z[<span class="pl-c1">5</span>]),</td>
+      </tr>
+      <tr>
+        <td id="L606" class="blob-num js-line-number" data-line-number="606"></td>
+        <td id="LC606" class="blob-code blob-code-inner js-file-line">                 (x[<span class="pl-c1">6</span>], y[<span class="pl-c1">6</span>], z[<span class="pl-c1">6</span>]), (<span class="pl-k">-</span>x[<span class="pl-c1">7</span>], y[<span class="pl-c1">7</span>], z[<span class="pl-c1">7</span>])]</td>
+      </tr>
+      <tr>
+        <td id="L607" class="blob-num js-line-number" data-line-number="607"></td>
+        <td id="LC607" class="blob-code blob-code-inner js-file-line">        faces <span class="pl-k">=</span> [[<span class="pl-c1">0</span>, <span class="pl-c1">1</span>, <span class="pl-c1">2</span>], [<span class="pl-c1">0</span>, <span class="pl-c1">2</span>, <span class="pl-c1">3</span>], [<span class="pl-c1">0</span>, <span class="pl-c1">3</span>, <span class="pl-c1">7</span>], [<span class="pl-c1">0</span>, <span class="pl-c1">7</span>, <span class="pl-c1">4</span>], [<span class="pl-c1">1</span>, <span class="pl-c1">4</span>, <span class="pl-c1">5</span>], [<span class="pl-c1">0</span>, <span class="pl-c1">1</span>, <span class="pl-c1">4</span>], [<span class="pl-c1">5</span>, <span class="pl-c1">1</span>, <span class="pl-c1">2</span>],</td>
+      </tr>
+      <tr>
+        <td id="L608" class="blob-num js-line-number" data-line-number="608"></td>
+        <td id="LC608" class="blob-code blob-code-inner js-file-line">                 [<span class="pl-c1">5</span>, <span class="pl-c1">2</span>, <span class="pl-c1">6</span>], [<span class="pl-c1">3</span>, <span class="pl-c1">2</span>, <span class="pl-c1">6</span>], [<span class="pl-c1">3</span>, <span class="pl-c1">6</span>, <span class="pl-c1">7</span>], [<span class="pl-c1">5</span>, <span class="pl-c1">4</span>, <span class="pl-c1">7</span>], [<span class="pl-c1">5</span>, <span class="pl-c1">6</span>, <span class="pl-c1">7</span>]]</td>
+      </tr>
+      <tr>
+        <td id="L609" class="blob-num js-line-number" data-line-number="609"></td>
+        <td id="LC609" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">elif</span> shape <span class="pl-k">==</span> <span class="pl-c1">3</span>:</td>
+      </tr>
+      <tr>
+        <td id="L610" class="blob-num js-line-number" data-line-number="610"></td>
+        <td id="LC610" class="blob-code blob-code-inner js-file-line">        verts <span class="pl-k">=</span> [(x[<span class="pl-c1">0</span>], y[<span class="pl-c1">0</span>], z[<span class="pl-c1">0</span>]), (x[<span class="pl-c1">1</span>], <span class="pl-k">-</span>y[<span class="pl-c1">1</span>], <span class="pl-k">-</span>z[<span class="pl-c1">1</span>]), (x[<span class="pl-c1">2</span>], y[<span class="pl-c1">2</span>], <span class="pl-k">-</span>z[<span class="pl-c1">2</span>]),</td>
+      </tr>
+      <tr>
+        <td id="L611" class="blob-num js-line-number" data-line-number="611"></td>
+        <td id="LC611" class="blob-code blob-code-inner js-file-line">                 (<span class="pl-k">-</span>x[<span class="pl-c1">3</span>], y[<span class="pl-c1">3</span>], <span class="pl-k">-</span>z[<span class="pl-c1">3</span>]), (x[<span class="pl-c1">4</span>], <span class="pl-k">-</span>y[<span class="pl-c1">4</span>], z[<span class="pl-c1">4</span>]), (x[<span class="pl-c1">5</span>], y[<span class="pl-c1">5</span>], z[<span class="pl-c1">5</span>]),</td>
+      </tr>
+      <tr>
+        <td id="L612" class="blob-num js-line-number" data-line-number="612"></td>
+        <td id="LC612" class="blob-code blob-code-inner js-file-line">                 (<span class="pl-k">-</span>x[<span class="pl-c1">6</span>], y[<span class="pl-c1">6</span>], z[<span class="pl-c1">6</span>]), (<span class="pl-k">-</span>x[<span class="pl-c1">7</span>], <span class="pl-k">-</span>y[<span class="pl-c1">7</span>], z[<span class="pl-c1">7</span>])]</td>
+      </tr>
+      <tr>
+        <td id="L613" class="blob-num js-line-number" data-line-number="613"></td>
+        <td id="LC613" class="blob-code blob-code-inner js-file-line">        faces <span class="pl-k">=</span> [[<span class="pl-c1">0</span>, <span class="pl-c1">1</span>, <span class="pl-c1">2</span>], [<span class="pl-c1">0</span>, <span class="pl-c1">2</span>, <span class="pl-c1">3</span>], [<span class="pl-c1">0</span>, <span class="pl-c1">3</span>, <span class="pl-c1">6</span>], [<span class="pl-c1">0</span>, <span class="pl-c1">6</span>, <span class="pl-c1">7</span>], [<span class="pl-c1">0</span>, <span class="pl-c1">7</span>, <span class="pl-c1">4</span>], [<span class="pl-c1">0</span>, <span class="pl-c1">4</span>, <span class="pl-c1">1</span>], [<span class="pl-c1">5</span>, <span class="pl-c1">4</span>, <span class="pl-c1">1</span>, <span class="pl-c1">2</span>],</td>
+      </tr>
+      <tr>
+        <td id="L614" class="blob-num js-line-number" data-line-number="614"></td>
+        <td id="LC614" class="blob-code blob-code-inner js-file-line">                 [<span class="pl-c1">5</span>, <span class="pl-c1">6</span>, <span class="pl-c1">3</span>, <span class="pl-c1">2</span>], [<span class="pl-c1">5</span>, <span class="pl-c1">4</span>, <span class="pl-c1">7</span>, <span class="pl-c1">6</span>]]</td>
+      </tr>
+      <tr>
+        <td id="L615" class="blob-num js-line-number" data-line-number="615"></td>
+        <td id="LC615" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">elif</span> shape <span class="pl-k">==</span> <span class="pl-c1">4</span>:</td>
+      </tr>
+      <tr>
+        <td id="L616" class="blob-num js-line-number" data-line-number="616"></td>
+        <td id="LC616" class="blob-code blob-code-inner js-file-line">        verts <span class="pl-k">=</span> [(x[<span class="pl-c1">0</span>], y[<span class="pl-c1">0</span>], z[<span class="pl-c1">0</span>]), (x[<span class="pl-c1">1</span>], <span class="pl-k">-</span>y[<span class="pl-c1">1</span>], <span class="pl-k">-</span>z[<span class="pl-c1">1</span>]), (x[<span class="pl-c1">2</span>], y[<span class="pl-c1">2</span>], <span class="pl-k">-</span>z[<span class="pl-c1">2</span>]),</td>
+      </tr>
+      <tr>
+        <td id="L617" class="blob-num js-line-number" data-line-number="617"></td>
+        <td id="LC617" class="blob-code blob-code-inner js-file-line">                 (<span class="pl-k">-</span>x[<span class="pl-c1">3</span>], y[<span class="pl-c1">3</span>], <span class="pl-k">-</span>z[<span class="pl-c1">3</span>]), (<span class="pl-k">-</span>x[<span class="pl-c1">4</span>], <span class="pl-k">-</span>y[<span class="pl-c1">4</span>], <span class="pl-k">-</span>z[<span class="pl-c1">4</span>]), (x[<span class="pl-c1">5</span>], <span class="pl-k">-</span>y[<span class="pl-c1">5</span>], <span class="pl-k">-</span>z[<span class="pl-c1">5</span>]),</td>
+      </tr>
+      <tr>
+        <td id="L618" class="blob-num js-line-number" data-line-number="618"></td>
+        <td id="LC618" class="blob-code blob-code-inner js-file-line">                 (x[<span class="pl-c1">6</span>], y[<span class="pl-c1">6</span>], <span class="pl-k">-</span>z[<span class="pl-c1">6</span>]), (x[<span class="pl-c1">7</span>], y[<span class="pl-c1">7</span>], <span class="pl-k">-</span>z[<span class="pl-c1">7</span>]), (<span class="pl-k">-</span>x[<span class="pl-c1">8</span>], y[<span class="pl-c1">8</span>], <span class="pl-k">-</span>z[<span class="pl-c1">8</span>]),</td>
+      </tr>
+      <tr>
+        <td id="L619" class="blob-num js-line-number" data-line-number="619"></td>
+        <td id="LC619" class="blob-code blob-code-inner js-file-line">                 (x[<span class="pl-c1">9</span>], y[<span class="pl-c1">9</span>], <span class="pl-k">-</span>z[<span class="pl-c1">9</span>])]</td>
+      </tr>
+      <tr>
+        <td id="L620" class="blob-num js-line-number" data-line-number="620"></td>
+        <td id="LC620" class="blob-code blob-code-inner js-file-line">        faces <span class="pl-k">=</span> [[<span class="pl-c1">0</span>, <span class="pl-c1">1</span>, <span class="pl-c1">6</span>], [<span class="pl-c1">0</span>, <span class="pl-c1">6</span>, <span class="pl-c1">2</span>], [<span class="pl-c1">0</span>, <span class="pl-c1">2</span>, <span class="pl-c1">7</span>], [<span class="pl-c1">0</span>, <span class="pl-c1">7</span>, <span class="pl-c1">3</span>], [<span class="pl-c1">0</span>, <span class="pl-c1">3</span>, <span class="pl-c1">8</span>], [<span class="pl-c1">0</span>, <span class="pl-c1">8</span>, <span class="pl-c1">4</span>], [<span class="pl-c1">0</span>, <span class="pl-c1">4</span>, <span class="pl-c1">5</span>],</td>
+      </tr>
+      <tr>
+        <td id="L621" class="blob-num js-line-number" data-line-number="621"></td>
+        <td id="LC621" class="blob-code blob-code-inner js-file-line">                 [<span class="pl-c1">0</span>, <span class="pl-c1">5</span>, <span class="pl-c1">1</span>], [<span class="pl-c1">1</span>, <span class="pl-c1">9</span>, <span class="pl-c1">2</span>], [<span class="pl-c1">2</span>, <span class="pl-c1">9</span>, <span class="pl-c1">3</span>], [<span class="pl-c1">3</span>, <span class="pl-c1">9</span>, <span class="pl-c1">4</span>], [<span class="pl-c1">4</span>, <span class="pl-c1">9</span>, <span class="pl-c1">1</span>], [<span class="pl-c1">1</span>, <span class="pl-c1">6</span>, <span class="pl-c1">2</span>], [<span class="pl-c1">2</span>, <span class="pl-c1">7</span>, <span class="pl-c1">3</span>],</td>
+      </tr>
+      <tr>
+        <td id="L622" class="blob-num js-line-number" data-line-number="622"></td>
+        <td id="LC622" class="blob-code blob-code-inner js-file-line">                 [<span class="pl-c1">3</span>, <span class="pl-c1">8</span>, <span class="pl-c1">4</span>], [<span class="pl-c1">4</span>, <span class="pl-c1">5</span>, <span class="pl-c1">1</span>]]</td>
+      </tr>
+      <tr>
+        <td id="L623" class="blob-num js-line-number" data-line-number="623"></td>
+        <td id="LC623" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">elif</span> shape <span class="pl-k">==</span> <span class="pl-c1">5</span>:</td>
+      </tr>
+      <tr>
+        <td id="L624" class="blob-num js-line-number" data-line-number="624"></td>
+        <td id="LC624" class="blob-code blob-code-inner js-file-line">        verts <span class="pl-k">=</span> [(x[<span class="pl-c1">0</span>], y[<span class="pl-c1">0</span>], z[<span class="pl-c1">0</span>]), (x[<span class="pl-c1">1</span>], <span class="pl-k">-</span>y[<span class="pl-c1">1</span>], z[<span class="pl-c1">1</span>]), (x[<span class="pl-c1">2</span>], y[<span class="pl-c1">2</span>], z[<span class="pl-c1">2</span>]),</td>
+      </tr>
+      <tr>
+        <td id="L625" class="blob-num js-line-number" data-line-number="625"></td>
+        <td id="LC625" class="blob-code blob-code-inner js-file-line">                 (<span class="pl-k">-</span>x[<span class="pl-c1">3</span>], y[<span class="pl-c1">3</span>], z[<span class="pl-c1">3</span>]), (x[<span class="pl-c1">4</span>], <span class="pl-k">-</span>y[<span class="pl-c1">4</span>], <span class="pl-k">-</span>z[<span class="pl-c1">4</span>]), (x[<span class="pl-c1">5</span>], y[<span class="pl-c1">5</span>], <span class="pl-k">-</span>z[<span class="pl-c1">5</span>]),</td>
+      </tr>
+      <tr>
+        <td id="L626" class="blob-num js-line-number" data-line-number="626"></td>
+        <td id="LC626" class="blob-code blob-code-inner js-file-line">                 (x[<span class="pl-c1">6</span>], y[<span class="pl-c1">6</span>], <span class="pl-k">-</span>z[<span class="pl-c1">6</span>]), (<span class="pl-k">-</span>x[<span class="pl-c1">7</span>], y[<span class="pl-c1">7</span>], <span class="pl-k">-</span>z[<span class="pl-c1">7</span>]), (<span class="pl-k">-</span>x[<span class="pl-c1">8</span>], y[<span class="pl-c1">8</span>], <span class="pl-k">-</span>z[<span class="pl-c1">8</span>]),</td>
+      </tr>
+      <tr>
+        <td id="L627" class="blob-num js-line-number" data-line-number="627"></td>
+        <td id="LC627" class="blob-code blob-code-inner js-file-line">                 (<span class="pl-k">-</span>x[<span class="pl-c1">9</span>], <span class="pl-k">-</span>y[<span class="pl-c1">9</span>], <span class="pl-k">-</span>z[<span class="pl-c1">9</span>])]</td>
+      </tr>
+      <tr>
+        <td id="L628" class="blob-num js-line-number" data-line-number="628"></td>
+        <td id="LC628" class="blob-code blob-code-inner js-file-line">        faces <span class="pl-k">=</span> [[<span class="pl-c1">0</span>, <span class="pl-c1">1</span>, <span class="pl-c1">2</span>], [<span class="pl-c1">0</span>, <span class="pl-c1">2</span>, <span class="pl-c1">3</span>], [<span class="pl-c1">0</span>, <span class="pl-c1">3</span>, <span class="pl-c1">1</span>], [<span class="pl-c1">1</span>, <span class="pl-c1">4</span>, <span class="pl-c1">5</span>], [<span class="pl-c1">1</span>, <span class="pl-c1">5</span>, <span class="pl-c1">2</span>], [<span class="pl-c1">2</span>, <span class="pl-c1">5</span>, <span class="pl-c1">6</span>], [<span class="pl-c1">2</span>, <span class="pl-c1">6</span>, <span class="pl-c1">7</span>],</td>
+      </tr>
+      <tr>
+        <td id="L629" class="blob-num js-line-number" data-line-number="629"></td>
+        <td id="LC629" class="blob-code blob-code-inner js-file-line">                 [<span class="pl-c1">2</span>, <span class="pl-c1">7</span>, <span class="pl-c1">3</span>], [<span class="pl-c1">3</span>, <span class="pl-c1">7</span>, <span class="pl-c1">8</span>], [<span class="pl-c1">3</span>, <span class="pl-c1">8</span>, <span class="pl-c1">9</span>], [<span class="pl-c1">3</span>, <span class="pl-c1">9</span>, <span class="pl-c1">1</span>], [<span class="pl-c1">1</span>, <span class="pl-c1">9</span>, <span class="pl-c1">4</span>], [<span class="pl-c1">4</span>, <span class="pl-c1">5</span>, <span class="pl-c1">9</span>], [<span class="pl-c1">5</span>, <span class="pl-c1">6</span>, <span class="pl-c1">7</span>],</td>
+      </tr>
+      <tr>
+        <td id="L630" class="blob-num js-line-number" data-line-number="630"></td>
+        <td id="LC630" class="blob-code blob-code-inner js-file-line">                 [<span class="pl-c1">7</span>, <span class="pl-c1">8</span>, <span class="pl-c1">9</span>], [<span class="pl-c1">9</span>, <span class="pl-c1">5</span>, <span class="pl-c1">7</span>]]</td>
+      </tr>
+      <tr>
+        <td id="L631" class="blob-num js-line-number" data-line-number="631"></td>
+        <td id="LC631" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">elif</span> shape <span class="pl-k">==</span> <span class="pl-c1">6</span>:</td>
+      </tr>
+      <tr>
+        <td id="L632" class="blob-num js-line-number" data-line-number="632"></td>
+        <td id="LC632" class="blob-code blob-code-inner js-file-line">        verts <span class="pl-k">=</span> [(x[<span class="pl-c1">0</span>], y[<span class="pl-c1">0</span>], z[<span class="pl-c1">0</span>]), (x[<span class="pl-c1">1</span>], <span class="pl-k">-</span>y[<span class="pl-c1">1</span>], <span class="pl-k">-</span>z[<span class="pl-c1">1</span>]), (x[<span class="pl-c1">2</span>], y[<span class="pl-c1">2</span>], <span class="pl-k">-</span>z[<span class="pl-c1">2</span>]),</td>
+      </tr>
+      <tr>
+        <td id="L633" class="blob-num js-line-number" data-line-number="633"></td>
+        <td id="LC633" class="blob-code blob-code-inner js-file-line">                 (<span class="pl-k">-</span>x[<span class="pl-c1">3</span>], y[<span class="pl-c1">3</span>], <span class="pl-k">-</span>z[<span class="pl-c1">3</span>]), (<span class="pl-k">-</span>x[<span class="pl-c1">4</span>], y[<span class="pl-c1">4</span>], z[<span class="pl-c1">4</span>]), (<span class="pl-k">-</span>x[<span class="pl-c1">5</span>], <span class="pl-k">-</span>y[<span class="pl-c1">5</span>], z[<span class="pl-c1">5</span>]),</td>
+      </tr>
+      <tr>
+        <td id="L634" class="blob-num js-line-number" data-line-number="634"></td>
+        <td id="LC634" class="blob-code blob-code-inner js-file-line">                 (<span class="pl-k">-</span>x[<span class="pl-c1">6</span>], <span class="pl-k">-</span>y[<span class="pl-c1">6</span>], <span class="pl-k">-</span>z[<span class="pl-c1">6</span>])]</td>
+      </tr>
+      <tr>
+        <td id="L635" class="blob-num js-line-number" data-line-number="635"></td>
+        <td id="LC635" class="blob-code blob-code-inner js-file-line">        faces <span class="pl-k">=</span> [[<span class="pl-c1">0</span>, <span class="pl-c1">1</span>, <span class="pl-c1">2</span>], [<span class="pl-c1">0</span>, <span class="pl-c1">2</span>, <span class="pl-c1">3</span>, <span class="pl-c1">4</span>], [<span class="pl-c1">0</span>, <span class="pl-c1">1</span>, <span class="pl-c1">6</span>, <span class="pl-c1">5</span>], [<span class="pl-c1">0</span>, <span class="pl-c1">4</span>, <span class="pl-c1">5</span>], [<span class="pl-c1">1</span>, <span class="pl-c1">2</span>, <span class="pl-c1">3</span>, <span class="pl-c1">6</span>], [<span class="pl-c1">3</span>, <span class="pl-c1">4</span>, <span class="pl-c1">5</span>, <span class="pl-c1">6</span>]]</td>
+      </tr>
+      <tr>
+        <td id="L636" class="blob-num js-line-number" data-line-number="636"></td>
+        <td id="LC636" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">elif</span> shape <span class="pl-k">==</span> <span class="pl-c1">7</span>:</td>
+      </tr>
+      <tr>
+        <td id="L637" class="blob-num js-line-number" data-line-number="637"></td>
+        <td id="LC637" class="blob-code blob-code-inner js-file-line">        verts <span class="pl-k">=</span> [(x[<span class="pl-c1">0</span>], y[<span class="pl-c1">0</span>], z[<span class="pl-c1">0</span>]), (x[<span class="pl-c1">1</span>], <span class="pl-k">-</span>y[<span class="pl-c1">1</span>], <span class="pl-k">-</span>z[<span class="pl-c1">1</span>]), (x[<span class="pl-c1">2</span>], y[<span class="pl-c1">2</span>], <span class="pl-k">-</span>z[<span class="pl-c1">2</span>]),</td>
+      </tr>
+      <tr>
+        <td id="L638" class="blob-num js-line-number" data-line-number="638"></td>
+        <td id="LC638" class="blob-code blob-code-inner js-file-line">                 (x[<span class="pl-c1">3</span>], y[<span class="pl-c1">3</span>], <span class="pl-k">-</span>z[<span class="pl-c1">3</span>]), (<span class="pl-k">-</span>x[<span class="pl-c1">4</span>], y[<span class="pl-c1">4</span>], <span class="pl-k">-</span>z[<span class="pl-c1">4</span>]), (<span class="pl-k">-</span>x[<span class="pl-c1">5</span>], y[<span class="pl-c1">5</span>], z[<span class="pl-c1">5</span>]),</td>
+      </tr>
+      <tr>
+        <td id="L639" class="blob-num js-line-number" data-line-number="639"></td>
+        <td id="LC639" class="blob-code blob-code-inner js-file-line">                 (<span class="pl-k">-</span>x[<span class="pl-c1">6</span>], y[<span class="pl-c1">6</span>], z[<span class="pl-c1">6</span>]), (<span class="pl-k">-</span>x[<span class="pl-c1">7</span>], y[<span class="pl-c1">7</span>], <span class="pl-k">-</span>z[<span class="pl-c1">7</span>]), (<span class="pl-k">-</span>x[<span class="pl-c1">8</span>], <span class="pl-k">-</span>y[<span class="pl-c1">8</span>], <span class="pl-k">-</span>z[<span class="pl-c1">8</span>]),</td>
+      </tr>
+      <tr>
+        <td id="L640" class="blob-num js-line-number" data-line-number="640"></td>
+        <td id="LC640" class="blob-code blob-code-inner js-file-line">                 (<span class="pl-k">-</span>x[<span class="pl-c1">9</span>], <span class="pl-k">-</span>y[<span class="pl-c1">9</span>], z[<span class="pl-c1">9</span>])]</td>
+      </tr>
+      <tr>
+        <td id="L641" class="blob-num js-line-number" data-line-number="641"></td>
+        <td id="LC641" class="blob-code blob-code-inner js-file-line">        faces <span class="pl-k">=</span> [[<span class="pl-c1">0</span>, <span class="pl-c1">1</span>, <span class="pl-c1">2</span>], [<span class="pl-c1">0</span>, <span class="pl-c1">2</span>, <span class="pl-c1">3</span>], [<span class="pl-c1">0</span>, <span class="pl-c1">5</span>, <span class="pl-c1">6</span>], [<span class="pl-c1">0</span>, <span class="pl-c1">6</span>, <span class="pl-c1">9</span>], [<span class="pl-c1">0</span>, <span class="pl-c1">1</span>, <span class="pl-c1">8</span>, <span class="pl-c1">9</span>], [<span class="pl-c1">0</span>, <span class="pl-c1">3</span>, <span class="pl-c1">4</span>, <span class="pl-c1">5</span>],</td>
+      </tr>
+      <tr>
+        <td id="L642" class="blob-num js-line-number" data-line-number="642"></td>
+        <td id="LC642" class="blob-code blob-code-inner js-file-line">                 [<span class="pl-c1">1</span>, <span class="pl-c1">2</span>, <span class="pl-c1">7</span>, <span class="pl-c1">8</span>], [<span class="pl-c1">2</span>, <span class="pl-c1">3</span>, <span class="pl-c1">4</span>, <span class="pl-c1">7</span>], [<span class="pl-c1">4</span>, <span class="pl-c1">5</span>, <span class="pl-c1">6</span>, <span class="pl-c1">7</span>], [<span class="pl-c1">6</span>, <span class="pl-c1">7</span>, <span class="pl-c1">8</span>, <span class="pl-c1">9</span>]]</td>
+      </tr>
+      <tr>
+        <td id="L643" class="blob-num js-line-number" data-line-number="643"></td>
+        <td id="LC643" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">elif</span> shape <span class="pl-k">==</span> <span class="pl-c1">8</span>:</td>
+      </tr>
+      <tr>
+        <td id="L644" class="blob-num js-line-number" data-line-number="644"></td>
+        <td id="LC644" class="blob-code blob-code-inner js-file-line">        verts <span class="pl-k">=</span> [(x[<span class="pl-c1">0</span>], y[<span class="pl-c1">0</span>], z[<span class="pl-c1">0</span>]), (x[<span class="pl-c1">1</span>], <span class="pl-k">-</span>y[<span class="pl-c1">1</span>], <span class="pl-k">-</span>z[<span class="pl-c1">1</span>]), (x[<span class="pl-c1">2</span>], y[<span class="pl-c1">2</span>], <span class="pl-k">-</span>z[<span class="pl-c1">2</span>]),</td>
+      </tr>
+      <tr>
+        <td id="L645" class="blob-num js-line-number" data-line-number="645"></td>
+        <td id="LC645" class="blob-code blob-code-inner js-file-line">                 (<span class="pl-k">-</span>x[<span class="pl-c1">3</span>], y[<span class="pl-c1">3</span>], <span class="pl-k">-</span>z[<span class="pl-c1">3</span>]), (<span class="pl-k">-</span>x[<span class="pl-c1">4</span>], <span class="pl-k">-</span>y[<span class="pl-c1">4</span>], <span class="pl-k">-</span>z[<span class="pl-c1">4</span>]), (<span class="pl-k">-</span>x[<span class="pl-c1">5</span>], <span class="pl-k">-</span>y[<span class="pl-c1">5</span>], z[<span class="pl-c1">5</span>]),</td>
+      </tr>
+      <tr>
+        <td id="L646" class="blob-num js-line-number" data-line-number="646"></td>
+        <td id="LC646" class="blob-code blob-code-inner js-file-line">                 (<span class="pl-k">-</span>x[<span class="pl-c1">6</span>], y[<span class="pl-c1">6</span>], z[<span class="pl-c1">6</span>])]</td>
+      </tr>
+      <tr>
+        <td id="L647" class="blob-num js-line-number" data-line-number="647"></td>
+        <td id="LC647" class="blob-code blob-code-inner js-file-line">        faces <span class="pl-k">=</span> [[<span class="pl-c1">0</span>, <span class="pl-c1">2</span>, <span class="pl-c1">1</span>], [<span class="pl-c1">0</span>, <span class="pl-c1">1</span>, <span class="pl-c1">4</span>], [<span class="pl-c1">0</span>, <span class="pl-c1">4</span>, <span class="pl-c1">5</span>], [<span class="pl-c1">0</span>, <span class="pl-c1">5</span>, <span class="pl-c1">6</span>], [<span class="pl-c1">0</span>, <span class="pl-c1">6</span>, <span class="pl-c1">3</span>, <span class="pl-c1">2</span>], [<span class="pl-c1">2</span>, <span class="pl-c1">1</span>, <span class="pl-c1">4</span>, <span class="pl-c1">3</span>],</td>
+      </tr>
+      <tr>
+        <td id="L648" class="blob-num js-line-number" data-line-number="648"></td>
+        <td id="LC648" class="blob-code blob-code-inner js-file-line">                 [<span class="pl-c1">3</span>, <span class="pl-c1">6</span>, <span class="pl-c1">5</span>, <span class="pl-c1">4</span>]]</td>
+      </tr>
+      <tr>
+        <td id="L649" class="blob-num js-line-number" data-line-number="649"></td>
+        <td id="LC649" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">elif</span> shape <span class="pl-k">==</span> <span class="pl-c1">9</span>:</td>
+      </tr>
+      <tr>
+        <td id="L650" class="blob-num js-line-number" data-line-number="650"></td>
+        <td id="LC650" class="blob-code blob-code-inner js-file-line">        verts <span class="pl-k">=</span> [(<span class="pl-k">-</span>x[<span class="pl-c1">0</span>], <span class="pl-k">-</span>y[<span class="pl-c1">0</span>], <span class="pl-k">-</span>z[<span class="pl-c1">0</span>]), (<span class="pl-k">-</span>x[<span class="pl-c1">1</span>], y[<span class="pl-c1">1</span>], <span class="pl-k">-</span>z[<span class="pl-c1">1</span>]), (<span class="pl-k">-</span>x[<span class="pl-c1">2</span>], y[<span class="pl-c1">2</span>], z[<span class="pl-c1">2</span>]),</td>
+      </tr>
+      <tr>
+        <td id="L651" class="blob-num js-line-number" data-line-number="651"></td>
+        <td id="LC651" class="blob-code blob-code-inner js-file-line">                 (<span class="pl-k">-</span>x[<span class="pl-c1">3</span>], <span class="pl-k">-</span>y[<span class="pl-c1">3</span>], z[<span class="pl-c1">3</span>]), (x[<span class="pl-c1">4</span>], <span class="pl-k">-</span>y[<span class="pl-c1">4</span>], <span class="pl-k">-</span>z[<span class="pl-c1">4</span>]), (x[<span class="pl-c1">5</span>], y[<span class="pl-c1">5</span>], <span class="pl-k">-</span>z[<span class="pl-c1">5</span>]),</td>
+      </tr>
+      <tr>
+        <td id="L652" class="blob-num js-line-number" data-line-number="652"></td>
+        <td id="LC652" class="blob-code blob-code-inner js-file-line">                 (x[<span class="pl-c1">6</span>], y[<span class="pl-c1">6</span>], z[<span class="pl-c1">6</span>]), (x[<span class="pl-c1">7</span>], <span class="pl-k">-</span>y[<span class="pl-c1">7</span>], z[<span class="pl-c1">7</span>])]</td>
+      </tr>
+      <tr>
+        <td id="L653" class="blob-num js-line-number" data-line-number="653"></td>
+        <td id="LC653" class="blob-code blob-code-inner js-file-line">        faces <span class="pl-k">=</span> [[<span class="pl-c1">0</span>, <span class="pl-c1">1</span>, <span class="pl-c1">6</span>, <span class="pl-c1">2</span>], [<span class="pl-c1">1</span>, <span class="pl-c1">5</span>, <span class="pl-c1">7</span>, <span class="pl-c1">6</span>], [<span class="pl-c1">5</span>, <span class="pl-c1">4</span>, <span class="pl-c1">3</span>, <span class="pl-c1">7</span>], [<span class="pl-c1">4</span>, <span class="pl-c1">0</span>, <span class="pl-c1">2</span>, <span class="pl-c1">3</span>], [<span class="pl-c1">0</span>, <span class="pl-c1">1</span>, <span class="pl-c1">5</span>, <span class="pl-c1">4</span>], [<span class="pl-c1">3</span>, <span class="pl-c1">2</span>, <span class="pl-c1">6</span>, <span class="pl-c1">7</span>]]</td>
+      </tr>
+      <tr>
+        <td id="L654" class="blob-num js-line-number" data-line-number="654"></td>
+        <td id="LC654" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">elif</span> shape <span class="pl-k">==</span> <span class="pl-c1">10</span>:</td>
+      </tr>
+      <tr>
+        <td id="L655" class="blob-num js-line-number" data-line-number="655"></td>
+        <td id="LC655" class="blob-code blob-code-inner js-file-line">        verts <span class="pl-k">=</span> [(<span class="pl-k">-</span>x[<span class="pl-c1">0</span>], <span class="pl-k">-</span>y[<span class="pl-c1">0</span>], <span class="pl-k">-</span>z[<span class="pl-c1">0</span>]), (<span class="pl-k">-</span>x[<span class="pl-c1">1</span>], y[<span class="pl-c1">1</span>], <span class="pl-k">-</span>z[<span class="pl-c1">1</span>]), (<span class="pl-k">-</span>x[<span class="pl-c1">2</span>], y[<span class="pl-c1">2</span>], z[<span class="pl-c1">2</span>]),</td>
+      </tr>
+      <tr>
+        <td id="L656" class="blob-num js-line-number" data-line-number="656"></td>
+        <td id="LC656" class="blob-code blob-code-inner js-file-line">                 (x[<span class="pl-c1">3</span>], <span class="pl-k">-</span>y[<span class="pl-c1">3</span>], z[<span class="pl-c1">3</span>]), (x[<span class="pl-c1">4</span>], y[<span class="pl-c1">4</span>], z[<span class="pl-c1">4</span>]), (x[<span class="pl-c1">5</span>], y[<span class="pl-c1">5</span>], <span class="pl-k">-</span>z[<span class="pl-c1">5</span>]),</td>
+      </tr>
+      <tr>
+        <td id="L657" class="blob-num js-line-number" data-line-number="657"></td>
+        <td id="LC657" class="blob-code blob-code-inner js-file-line">                 (x[<span class="pl-c1">6</span>], <span class="pl-k">-</span>y[<span class="pl-c1">6</span>], <span class="pl-k">-</span>z[<span class="pl-c1">6</span>])]</td>
+      </tr>
+      <tr>
+        <td id="L658" class="blob-num js-line-number" data-line-number="658"></td>
+        <td id="LC658" class="blob-code blob-code-inner js-file-line">        faces <span class="pl-k">=</span> [[<span class="pl-c1">0</span>, <span class="pl-c1">2</span>, <span class="pl-c1">3</span>], [<span class="pl-c1">0</span>, <span class="pl-c1">3</span>, <span class="pl-c1">6</span>], [<span class="pl-c1">0</span>, <span class="pl-c1">1</span>, <span class="pl-c1">5</span>, <span class="pl-c1">6</span>], [<span class="pl-c1">2</span>, <span class="pl-c1">3</span>, <span class="pl-c1">4</span>], [<span class="pl-c1">0</span>, <span class="pl-c1">1</span>, <span class="pl-c1">2</span>], [<span class="pl-c1">1</span>, <span class="pl-c1">2</span>, <span class="pl-c1">4</span>, <span class="pl-c1">5</span>], [<span class="pl-c1">3</span>, <span class="pl-c1">4</span>, <span class="pl-c1">5</span>, <span class="pl-c1">6</span>]]</td>
+      </tr>
+      <tr>
+        <td id="L659" class="blob-num js-line-number" data-line-number="659"></td>
+        <td id="LC659" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">elif</span> shape <span class="pl-k">==</span> <span class="pl-c1">11</span>:</td>
+      </tr>
+      <tr>
+        <td id="L660" class="blob-num js-line-number" data-line-number="660"></td>
+        <td id="LC660" class="blob-code blob-code-inner js-file-line">        verts <span class="pl-k">=</span> [(<span class="pl-k">-</span>x[<span class="pl-c1">0</span>], <span class="pl-k">-</span>y[<span class="pl-c1">0</span>], <span class="pl-k">-</span>z[<span class="pl-c1">0</span>]), (<span class="pl-k">-</span>x[<span class="pl-c1">1</span>], y[<span class="pl-c1">1</span>], <span class="pl-k">-</span>z[<span class="pl-c1">1</span>]), (<span class="pl-k">-</span>x[<span class="pl-c1">2</span>], y[<span class="pl-c1">2</span>], z[<span class="pl-c1">2</span>]),</td>
+      </tr>
+      <tr>
+        <td id="L661" class="blob-num js-line-number" data-line-number="661"></td>
+        <td id="LC661" class="blob-code blob-code-inner js-file-line">                 (x[<span class="pl-c1">3</span>], <span class="pl-k">-</span>y[<span class="pl-c1">3</span>], z[<span class="pl-c1">3</span>]), (x[<span class="pl-c1">4</span>], y[<span class="pl-c1">4</span>], z[<span class="pl-c1">4</span>]), (x[<span class="pl-c1">5</span>], y[<span class="pl-c1">5</span>], <span class="pl-k">-</span>z[<span class="pl-c1">5</span>]),</td>
+      </tr>
+      <tr>
+        <td id="L662" class="blob-num js-line-number" data-line-number="662"></td>
+        <td id="LC662" class="blob-code blob-code-inner js-file-line">                 (x[<span class="pl-c1">6</span>], <span class="pl-k">-</span>y[<span class="pl-c1">6</span>], <span class="pl-k">-</span>z[<span class="pl-c1">6</span>])]</td>
+      </tr>
+      <tr>
+        <td id="L663" class="blob-num js-line-number" data-line-number="663"></td>
+        <td id="LC663" class="blob-code blob-code-inner js-file-line">        faces <span class="pl-k">=</span> [[<span class="pl-c1">0</span>, <span class="pl-c1">2</span>, <span class="pl-c1">3</span>], [<span class="pl-c1">0</span>, <span class="pl-c1">3</span>, <span class="pl-c1">6</span>], [<span class="pl-c1">0</span>, <span class="pl-c1">1</span>, <span class="pl-c1">5</span>, <span class="pl-c1">6</span>], [<span class="pl-c1">2</span>, <span class="pl-c1">3</span>, <span class="pl-c1">4</span>], [<span class="pl-c1">5</span>, <span class="pl-c1">6</span>, <span class="pl-c1">3</span>], [<span class="pl-c1">1</span>, <span class="pl-c1">5</span>, <span class="pl-c1">3</span>, <span class="pl-c1">4</span>], [<span class="pl-c1">0</span>, <span class="pl-c1">1</span>, <span class="pl-c1">4</span>, <span class="pl-c1">2</span>]]</td>
+      </tr>
+      <tr>
+        <td id="L664" class="blob-num js-line-number" data-line-number="664"></td>
+        <td id="LC664" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L665" class="blob-num js-line-number" data-line-number="665"></td>
+        <td id="LC665" class="blob-code blob-code-inner js-file-line">        verts <span class="pl-k">=</span> [(<span class="pl-k">-</span>x[<span class="pl-c1">0</span>], <span class="pl-k">-</span>y[<span class="pl-c1">0</span>], <span class="pl-k">-</span>z[<span class="pl-c1">0</span>]), (<span class="pl-k">-</span>x[<span class="pl-c1">1</span>], y[<span class="pl-c1">1</span>], <span class="pl-k">-</span>z[<span class="pl-c1">1</span>]), (<span class="pl-k">-</span>x[<span class="pl-c1">2</span>], <span class="pl-k">-</span>y[<span class="pl-c1">2</span>], z[<span class="pl-c1">2</span>]),</td>
+      </tr>
+      <tr>
+        <td id="L666" class="blob-num js-line-number" data-line-number="666"></td>
+        <td id="LC666" class="blob-code blob-code-inner js-file-line">                 (<span class="pl-k">-</span>x[<span class="pl-c1">3</span>], y[<span class="pl-c1">3</span>], z[<span class="pl-c1">3</span>]), (x[<span class="pl-c1">4</span>], <span class="pl-k">-</span>y[<span class="pl-c1">4</span>], <span class="pl-k">-</span>z[<span class="pl-c1">4</span>]), (x[<span class="pl-c1">5</span>], y[<span class="pl-c1">5</span>], <span class="pl-k">-</span>z[<span class="pl-c1">5</span>]),</td>
+      </tr>
+      <tr>
+        <td id="L667" class="blob-num js-line-number" data-line-number="667"></td>
+        <td id="LC667" class="blob-code blob-code-inner js-file-line">                 (x[<span class="pl-c1">6</span>], <span class="pl-k">-</span>y[<span class="pl-c1">6</span>], z[<span class="pl-c1">6</span>]), (x[<span class="pl-c1">7</span>], y[<span class="pl-c1">7</span>], z[<span class="pl-c1">7</span>])]</td>
+      </tr>
+      <tr>
+        <td id="L668" class="blob-num js-line-number" data-line-number="668"></td>
+        <td id="LC668" class="blob-code blob-code-inner js-file-line">        faces <span class="pl-k">=</span> [[<span class="pl-c1">0</span>, <span class="pl-c1">1</span>, <span class="pl-c1">3</span>, <span class="pl-c1">2</span>], [<span class="pl-c1">0</span>, <span class="pl-c1">1</span>, <span class="pl-c1">5</span>, <span class="pl-c1">4</span>], [<span class="pl-c1">0</span>, <span class="pl-c1">4</span>, <span class="pl-c1">6</span>, <span class="pl-c1">2</span>], [<span class="pl-c1">7</span>, <span class="pl-c1">5</span>, <span class="pl-c1">4</span>, <span class="pl-c1">6</span>], [<span class="pl-c1">7</span>, <span class="pl-c1">3</span>, <span class="pl-c1">2</span>, <span class="pl-c1">6</span>], [<span class="pl-c1">7</span>, <span class="pl-c1">5</span>, <span class="pl-c1">1</span>, <span class="pl-c1">3</span>]]</td>
+      </tr>
+      <tr>
+        <td id="L669" class="blob-num js-line-number" data-line-number="669"></td>
+        <td id="LC669" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L670" class="blob-num js-line-number" data-line-number="670"></td>
+        <td id="LC670" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> name = &quot;Rock.&quot; + str(base + shift).zfill(3)</span></td>
+      </tr>
+      <tr>
+        <td id="L671" class="blob-num js-line-number" data-line-number="671"></td>
+        <td id="LC671" class="blob-code blob-code-inner js-file-line">    name <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">&quot;</span>rock<span class="pl-pds">&quot;</span></span></td>
+      </tr>
+      <tr>
+        <td id="L672" class="blob-num js-line-number" data-line-number="672"></td>
+        <td id="LC672" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L673" class="blob-num js-line-number" data-line-number="673"></td>
+        <td id="LC673" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> Make object:</span></td>
+      </tr>
+      <tr>
+        <td id="L674" class="blob-num js-line-number" data-line-number="674"></td>
+        <td id="LC674" class="blob-code blob-code-inner js-file-line">    obj <span class="pl-k">=</span> createMeshObject(context, verts, [], faces, name)</td>
+      </tr>
+      <tr>
+        <td id="L675" class="blob-num js-line-number" data-line-number="675"></td>
+        <td id="LC675" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L676" class="blob-num js-line-number" data-line-number="676"></td>
+        <td id="LC676" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">if</span> scaleDisplace:</td>
+      </tr>
+      <tr>
+        <td id="L677" class="blob-num js-line-number" data-line-number="677"></td>
+        <td id="LC677" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">#</span> bpy.data.objects[name].scale = Vector((averageX, averageY, averageZ))</span></td>
+      </tr>
+      <tr>
+        <td id="L678" class="blob-num js-line-number" data-line-number="678"></td>
+        <td id="LC678" class="blob-code blob-code-inner js-file-line">        obj.scale <span class="pl-k">=</span> Vector((averageX, averageY, averageZ))</td>
+      </tr>
+      <tr>
+        <td id="L679" class="blob-num js-line-number" data-line-number="679"></td>
+        <td id="LC679" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L680" class="blob-num js-line-number" data-line-number="680"></td>
+        <td id="LC680" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> For a slight speed bump / Readability:</span></td>
+      </tr>
+      <tr>
+        <td id="L681" class="blob-num js-line-number" data-line-number="681"></td>
+        <td id="LC681" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> mesh = bpy.data.meshes[name]</span></td>
+      </tr>
+      <tr>
+        <td id="L682" class="blob-num js-line-number" data-line-number="682"></td>
+        <td id="LC682" class="blob-code blob-code-inner js-file-line">    mesh <span class="pl-k">=</span> obj.data</td>
+      </tr>
+      <tr>
+        <td id="L683" class="blob-num js-line-number" data-line-number="683"></td>
+        <td id="LC683" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L684" class="blob-num js-line-number" data-line-number="684"></td>
+        <td id="LC684" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> Apply creasing:</span></td>
+      </tr>
+      <tr>
+        <td id="L685" class="blob-num js-line-number" data-line-number="685"></td>
+        <td id="LC685" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">if</span> shape <span class="pl-k">==</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L686" class="blob-num js-line-number" data-line-number="686"></td>
+        <td id="LC686" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">for</span> i <span class="pl-k">in</span> <span class="pl-c1">range</span>(<span class="pl-c1">12</span>):</td>
+      </tr>
+      <tr>
+        <td id="L687" class="blob-num js-line-number" data-line-number="687"></td>
+        <td id="LC687" class="blob-code blob-code-inner js-file-line">            <span class="pl-c"><span class="pl-c">#</span> todo: &quot;0.375 / 3&quot;?  WTF?  That = 0.125. . . .</span></td>
+      </tr>
+      <tr>
+        <td id="L688" class="blob-num js-line-number" data-line-number="688"></td>
+        <td id="LC688" class="blob-code blob-code-inner js-file-line">            <span class="pl-c"><span class="pl-c">#</span>   *** Completed 7/15/2011: Changed second one ***</span></td>
+      </tr>
+      <tr>
+        <td id="L689" class="blob-num js-line-number" data-line-number="689"></td>
+        <td id="LC689" class="blob-code blob-code-inner js-file-line">            mesh.edges[i].crease <span class="pl-k">=</span> gauss(<span class="pl-c1">0.125</span>, <span class="pl-c1">0.125</span>)</td>
+      </tr>
+      <tr>
+        <td id="L690" class="blob-num js-line-number" data-line-number="690"></td>
+        <td id="LC690" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">elif</span> shape <span class="pl-k">==</span> <span class="pl-c1">1</span>:</td>
+      </tr>
+      <tr>
+        <td id="L691" class="blob-num js-line-number" data-line-number="691"></td>
+        <td id="LC691" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">for</span> i <span class="pl-k">in</span> [<span class="pl-c1">0</span>, <span class="pl-c1">2</span>]:</td>
+      </tr>
+      <tr>
+        <td id="L692" class="blob-num js-line-number" data-line-number="692"></td>
+        <td id="LC692" class="blob-code blob-code-inner js-file-line">            mesh.edges[i].crease <span class="pl-k">=</span> gauss(<span class="pl-c1">0.5</span>, <span class="pl-c1">0.125</span>)</td>
+      </tr>
+      <tr>
+        <td id="L693" class="blob-num js-line-number" data-line-number="693"></td>
+        <td id="LC693" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">for</span> i <span class="pl-k">in</span> [<span class="pl-c1">6</span>, <span class="pl-c1">9</span>, <span class="pl-c1">11</span>, <span class="pl-c1">12</span>]:</td>
+      </tr>
+      <tr>
+        <td id="L694" class="blob-num js-line-number" data-line-number="694"></td>
+        <td id="LC694" class="blob-code blob-code-inner js-file-line">            mesh.edges[i].crease <span class="pl-k">=</span> gauss(<span class="pl-c1">0.25</span>, <span class="pl-c1">0.05</span>)</td>
+      </tr>
+      <tr>
+        <td id="L695" class="blob-num js-line-number" data-line-number="695"></td>
+        <td id="LC695" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">for</span> i <span class="pl-k">in</span> [<span class="pl-c1">5</span>, <span class="pl-c1">7</span>, <span class="pl-c1">15</span>, <span class="pl-c1">16</span>]:</td>
+      </tr>
+      <tr>
+        <td id="L696" class="blob-num js-line-number" data-line-number="696"></td>
+        <td id="LC696" class="blob-code blob-code-inner js-file-line">            mesh.edges[i].crease <span class="pl-k">=</span> gauss(<span class="pl-c1">0.125</span>, <span class="pl-c1">0.025</span>)</td>
+      </tr>
+      <tr>
+        <td id="L697" class="blob-num js-line-number" data-line-number="697"></td>
+        <td id="LC697" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">elif</span> shape <span class="pl-k">==</span> <span class="pl-c1">2</span>:</td>
+      </tr>
+      <tr>
+        <td id="L698" class="blob-num js-line-number" data-line-number="698"></td>
+        <td id="LC698" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">for</span> i <span class="pl-k">in</span> <span class="pl-c1">range</span>(<span class="pl-c1">18</span>):</td>
+      </tr>
+      <tr>
+        <td id="L699" class="blob-num js-line-number" data-line-number="699"></td>
+        <td id="LC699" class="blob-code blob-code-inner js-file-line">            mesh.edges[i].crease <span class="pl-k">=</span> gauss(<span class="pl-c1">0.125</span>, <span class="pl-c1">0.025</span>)</td>
+      </tr>
+      <tr>
+        <td id="L700" class="blob-num js-line-number" data-line-number="700"></td>
+        <td id="LC700" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">elif</span> shape <span class="pl-k">==</span> <span class="pl-c1">3</span>:</td>
+      </tr>
+      <tr>
+        <td id="L701" class="blob-num js-line-number" data-line-number="701"></td>
+        <td id="LC701" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">for</span> i <span class="pl-k">in</span> [<span class="pl-c1">0</span>, <span class="pl-c1">1</span>, <span class="pl-c1">6</span>, <span class="pl-c1">10</span>, <span class="pl-c1">13</span>]:</td>
+      </tr>
+      <tr>
+        <td id="L702" class="blob-num js-line-number" data-line-number="702"></td>
+        <td id="LC702" class="blob-code blob-code-inner js-file-line">            mesh.edges[i].crease <span class="pl-k">=</span> gauss(<span class="pl-c1">0.25</span>, <span class="pl-c1">0.05</span>)</td>
+      </tr>
+      <tr>
+        <td id="L703" class="blob-num js-line-number" data-line-number="703"></td>
+        <td id="LC703" class="blob-code blob-code-inner js-file-line">        mesh.edges[<span class="pl-c1">8</span>].crease <span class="pl-k">=</span> gauss(<span class="pl-c1">0.5</span>, <span class="pl-c1">0.125</span>)</td>
+      </tr>
+      <tr>
+        <td id="L704" class="blob-num js-line-number" data-line-number="704"></td>
+        <td id="LC704" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">elif</span> shape <span class="pl-k">==</span> <span class="pl-c1">4</span>:</td>
+      </tr>
+      <tr>
+        <td id="L705" class="blob-num js-line-number" data-line-number="705"></td>
+        <td id="LC705" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">for</span> i <span class="pl-k">in</span> [<span class="pl-c1">5</span>, <span class="pl-c1">6</span>, <span class="pl-c1">7</span>, <span class="pl-c1">10</span>, <span class="pl-c1">14</span>, <span class="pl-c1">16</span>, <span class="pl-c1">19</span>, <span class="pl-c1">21</span>]:</td>
+      </tr>
+      <tr>
+        <td id="L706" class="blob-num js-line-number" data-line-number="706"></td>
+        <td id="LC706" class="blob-code blob-code-inner js-file-line">            mesh.edges[i].crease <span class="pl-k">=</span> gauss(<span class="pl-c1">0.5</span>, <span class="pl-c1">0.125</span>)</td>
+      </tr>
+      <tr>
+        <td id="L707" class="blob-num js-line-number" data-line-number="707"></td>
+        <td id="LC707" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">elif</span> shape <span class="pl-k">==</span> <span class="pl-c1">7</span>:</td>
+      </tr>
+      <tr>
+        <td id="L708" class="blob-num js-line-number" data-line-number="708"></td>
+        <td id="LC708" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">for</span> i <span class="pl-k">in</span> <span class="pl-c1">range</span>(<span class="pl-c1">18</span>):</td>
+      </tr>
+      <tr>
+        <td id="L709" class="blob-num js-line-number" data-line-number="709"></td>
+        <td id="LC709" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">if</span> i <span class="pl-k">in</span> [<span class="pl-c1">0</span>, <span class="pl-c1">1</span>, <span class="pl-c1">2</span>, <span class="pl-c1">3</span>, <span class="pl-c1">6</span>, <span class="pl-c1">7</span>, <span class="pl-c1">8</span>, <span class="pl-c1">9</span>, <span class="pl-c1">13</span>, <span class="pl-c1">16</span>]:</td>
+      </tr>
+      <tr>
+        <td id="L710" class="blob-num js-line-number" data-line-number="710"></td>
+        <td id="LC710" class="blob-code blob-code-inner js-file-line">                mesh.edges[i].crease <span class="pl-k">=</span> gauss(<span class="pl-c1">0.5</span>, <span class="pl-c1">0.125</span>)</td>
+      </tr>
+      <tr>
+        <td id="L711" class="blob-num js-line-number" data-line-number="711"></td>
+        <td id="LC711" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">elif</span> i <span class="pl-k">in</span> [<span class="pl-c1">11</span>, <span class="pl-c1">17</span>]:</td>
+      </tr>
+      <tr>
+        <td id="L712" class="blob-num js-line-number" data-line-number="712"></td>
+        <td id="LC712" class="blob-code blob-code-inner js-file-line">                mesh.edges[i].crease <span class="pl-k">=</span> gauss(<span class="pl-c1">0.25</span>, <span class="pl-c1">0.05</span>)</td>
+      </tr>
+      <tr>
+        <td id="L713" class="blob-num js-line-number" data-line-number="713"></td>
+        <td id="LC713" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L714" class="blob-num js-line-number" data-line-number="714"></td>
+        <td id="LC714" class="blob-code blob-code-inner js-file-line">                mesh.edges[i].crease <span class="pl-k">=</span> gauss(<span class="pl-c1">0.125</span>, <span class="pl-c1">0.025</span>)</td>
+      </tr>
+      <tr>
+        <td id="L715" class="blob-num js-line-number" data-line-number="715"></td>
+        <td id="LC715" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">elif</span> shape <span class="pl-k">==</span> <span class="pl-c1">8</span>:</td>
+      </tr>
+      <tr>
+        <td id="L716" class="blob-num js-line-number" data-line-number="716"></td>
+        <td id="LC716" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">for</span> i <span class="pl-k">in</span> <span class="pl-c1">range</span>(<span class="pl-c1">12</span>):</td>
+      </tr>
+      <tr>
+        <td id="L717" class="blob-num js-line-number" data-line-number="717"></td>
+        <td id="LC717" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">if</span> i <span class="pl-k">in</span> [<span class="pl-c1">0</span>, <span class="pl-c1">3</span>, <span class="pl-c1">8</span>, <span class="pl-c1">9</span>, <span class="pl-c1">10</span>]:</td>
+      </tr>
+      <tr>
+        <td id="L718" class="blob-num js-line-number" data-line-number="718"></td>
+        <td id="LC718" class="blob-code blob-code-inner js-file-line">                mesh.edges[i].crease <span class="pl-k">=</span> gauss(<span class="pl-c1">0.5</span>, <span class="pl-c1">0.125</span>)</td>
+      </tr>
+      <tr>
+        <td id="L719" class="blob-num js-line-number" data-line-number="719"></td>
+        <td id="LC719" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">elif</span> i <span class="pl-k">==</span> <span class="pl-c1">11</span>:</td>
+      </tr>
+      <tr>
+        <td id="L720" class="blob-num js-line-number" data-line-number="720"></td>
+        <td id="LC720" class="blob-code blob-code-inner js-file-line">                mesh.edges[i].crease <span class="pl-k">=</span> gauss(<span class="pl-c1">0.25</span>, <span class="pl-c1">0.05</span>)</td>
+      </tr>
+      <tr>
+        <td id="L721" class="blob-num js-line-number" data-line-number="721"></td>
+        <td id="LC721" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L722" class="blob-num js-line-number" data-line-number="722"></td>
+        <td id="LC722" class="blob-code blob-code-inner js-file-line">                mesh.edges[i].crease <span class="pl-k">=</span> gauss(<span class="pl-c1">0.125</span>, <span class="pl-c1">0.025</span>)</td>
+      </tr>
+      <tr>
+        <td id="L723" class="blob-num js-line-number" data-line-number="723"></td>
+        <td id="LC723" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">elif</span> shape <span class="pl-k">==</span> <span class="pl-c1">9</span>:</td>
+      </tr>
+      <tr>
+        <td id="L724" class="blob-num js-line-number" data-line-number="724"></td>
+        <td id="LC724" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">for</span> i <span class="pl-k">in</span> <span class="pl-c1">range</span>(<span class="pl-c1">12</span>):</td>
+      </tr>
+      <tr>
+        <td id="L725" class="blob-num js-line-number" data-line-number="725"></td>
+        <td id="LC725" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">if</span> i <span class="pl-k">in</span> [<span class="pl-c1">0</span>, <span class="pl-c1">3</span>, <span class="pl-c1">4</span>, <span class="pl-c1">11</span>]:</td>
+      </tr>
+      <tr>
+        <td id="L726" class="blob-num js-line-number" data-line-number="726"></td>
+        <td id="LC726" class="blob-code blob-code-inner js-file-line">                mesh.edges[i].crease <span class="pl-k">=</span> gauss(<span class="pl-c1">0.5</span>, <span class="pl-c1">0.125</span>)</td>
+      </tr>
+      <tr>
+        <td id="L727" class="blob-num js-line-number" data-line-number="727"></td>
+        <td id="LC727" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L728" class="blob-num js-line-number" data-line-number="728"></td>
+        <td id="LC728" class="blob-code blob-code-inner js-file-line">                mesh.edges[i].crease <span class="pl-k">=</span> gauss(<span class="pl-c1">0.25</span>, <span class="pl-c1">0.05</span>)</td>
+      </tr>
+      <tr>
+        <td id="L729" class="blob-num js-line-number" data-line-number="729"></td>
+        <td id="LC729" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">elif</span> shape <span class="pl-k">==</span> <span class="pl-c1">10</span>:</td>
+      </tr>
+      <tr>
+        <td id="L730" class="blob-num js-line-number" data-line-number="730"></td>
+        <td id="LC730" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">for</span> i <span class="pl-k">in</span> <span class="pl-c1">range</span>(<span class="pl-c1">12</span>):</td>
+      </tr>
+      <tr>
+        <td id="L731" class="blob-num js-line-number" data-line-number="731"></td>
+        <td id="LC731" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">if</span> i <span class="pl-k">in</span> [<span class="pl-c1">0</span>, <span class="pl-c1">2</span>, <span class="pl-c1">3</span>, <span class="pl-c1">4</span>, <span class="pl-c1">8</span>, <span class="pl-c1">11</span>]:</td>
+      </tr>
+      <tr>
+        <td id="L732" class="blob-num js-line-number" data-line-number="732"></td>
+        <td id="LC732" class="blob-code blob-code-inner js-file-line">                mesh.edges[i].crease <span class="pl-k">=</span> gauss(<span class="pl-c1">0.5</span>, <span class="pl-c1">0.125</span>)</td>
+      </tr>
+      <tr>
+        <td id="L733" class="blob-num js-line-number" data-line-number="733"></td>
+        <td id="LC733" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">elif</span> i <span class="pl-k">in</span> [<span class="pl-c1">1</span>, <span class="pl-c1">5</span>, <span class="pl-c1">7</span>]:</td>
+      </tr>
+      <tr>
+        <td id="L734" class="blob-num js-line-number" data-line-number="734"></td>
+        <td id="LC734" class="blob-code blob-code-inner js-file-line">                mesh.edges[i].crease <span class="pl-k">=</span> gauss(<span class="pl-c1">0.25</span>, <span class="pl-c1">0.05</span>)</td>
+      </tr>
+      <tr>
+        <td id="L735" class="blob-num js-line-number" data-line-number="735"></td>
+        <td id="LC735" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L736" class="blob-num js-line-number" data-line-number="736"></td>
+        <td id="LC736" class="blob-code blob-code-inner js-file-line">                mesh.edges[i].crease <span class="pl-k">=</span> gauss(<span class="pl-c1">0.125</span>, <span class="pl-c1">0.025</span>)</td>
+      </tr>
+      <tr>
+        <td id="L737" class="blob-num js-line-number" data-line-number="737"></td>
+        <td id="LC737" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">elif</span> shape <span class="pl-k">==</span> <span class="pl-c1">11</span>:</td>
+      </tr>
+      <tr>
+        <td id="L738" class="blob-num js-line-number" data-line-number="738"></td>
+        <td id="LC738" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">for</span> i <span class="pl-k">in</span> <span class="pl-c1">range</span>(<span class="pl-c1">11</span>):</td>
+      </tr>
+      <tr>
+        <td id="L739" class="blob-num js-line-number" data-line-number="739"></td>
+        <td id="LC739" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">if</span> i <span class="pl-k">in</span> [<span class="pl-c1">1</span>, <span class="pl-c1">2</span>, <span class="pl-c1">3</span>, <span class="pl-c1">4</span>, <span class="pl-c1">8</span>, <span class="pl-c1">11</span>]:</td>
+      </tr>
+      <tr>
+        <td id="L740" class="blob-num js-line-number" data-line-number="740"></td>
+        <td id="LC740" class="blob-code blob-code-inner js-file-line">                mesh.edges[i].crease <span class="pl-k">=</span> gauss(<span class="pl-c1">0.25</span>, <span class="pl-c1">0.05</span>)</td>
+      </tr>
+      <tr>
+        <td id="L741" class="blob-num js-line-number" data-line-number="741"></td>
+        <td id="LC741" class="blob-code blob-code-inner js-file-line">            <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L742" class="blob-num js-line-number" data-line-number="742"></td>
+        <td id="LC742" class="blob-code blob-code-inner js-file-line">                mesh.edges[i].crease <span class="pl-k">=</span> gauss(<span class="pl-c1">0.125</span>, <span class="pl-c1">0.025</span>)</td>
+      </tr>
+      <tr>
+        <td id="L743" class="blob-num js-line-number" data-line-number="743"></td>
+        <td id="LC743" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L744" class="blob-num js-line-number" data-line-number="744"></td>
+        <td id="LC744" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">return</span> obj</td>
+      </tr>
+      <tr>
+        <td id="L745" class="blob-num js-line-number" data-line-number="745"></td>
+        <td id="LC745" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L746" class="blob-num js-line-number" data-line-number="746"></td>
+        <td id="LC746" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L747" class="blob-num js-line-number" data-line-number="747"></td>
+        <td id="LC747" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> Creates rock objects:</span></td>
+      </tr>
+      <tr>
+        <td id="L748" class="blob-num js-line-number" data-line-number="748"></td>
+        <td id="LC748" class="blob-code blob-code-inner js-file-line"><span class="pl-k">def</span> <span class="pl-en">generateRocks</span>(<span class="pl-smi">context</span>, <span class="pl-smi">scaleX</span>, <span class="pl-smi">skewX</span>, <span class="pl-smi">scaleY</span>, <span class="pl-smi">skewY</span>, <span class="pl-smi">scaleZ</span>, <span class="pl-smi">skewZ</span>,</td>
+      </tr>
+      <tr>
+        <td id="L749" class="blob-num js-line-number" data-line-number="749"></td>
+        <td id="LC749" class="blob-code blob-code-inner js-file-line">                  <span class="pl-smi">scale_fac</span>, <span class="pl-smi">detail</span>, <span class="pl-smi">display_detail</span>, <span class="pl-smi">deform</span>, <span class="pl-smi">rough</span>,</td>
+      </tr>
+      <tr>
+        <td id="L750" class="blob-num js-line-number" data-line-number="750"></td>
+        <td id="LC750" class="blob-code blob-code-inner js-file-line">                  <span class="pl-smi">smooth_fac</span>, <span class="pl-smi">smooth_it</span>,</td>
+      </tr>
+      <tr>
+        <td id="L751" class="blob-num js-line-number" data-line-number="751"></td>
+        <td id="LC751" class="blob-code blob-code-inner js-file-line">                  <span class="pl-smi">numOfRocks</span><span class="pl-k">=</span><span class="pl-c1">1</span>, <span class="pl-smi">userSeed</span><span class="pl-k">=</span><span class="pl-c1">1.0</span>,</td>
+      </tr>
+      <tr>
+        <td id="L752" class="blob-num js-line-number" data-line-number="752"></td>
+        <td id="LC752" class="blob-code blob-code-inner js-file-line">                  <span class="pl-smi">scaleDisplace</span><span class="pl-k">=</span><span class="pl-c1">False</span>, <span class="pl-smi">randomSeed</span><span class="pl-k">=</span><span class="pl-c1">True</span>):</td>
+      </tr>
+      <tr>
+        <td id="L753" class="blob-num js-line-number" data-line-number="753"></td>
+        <td id="LC753" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">global</span> <span class="pl-c1">LASTROCK</span></td>
+      </tr>
+      <tr>
+        <td id="L754" class="blob-num js-line-number" data-line-number="754"></td>
+        <td id="LC754" class="blob-code blob-code-inner js-file-line">    sigmaX <span class="pl-k">=</span> <span class="pl-c1">0</span></td>
+      </tr>
+      <tr>
+        <td id="L755" class="blob-num js-line-number" data-line-number="755"></td>
+        <td id="LC755" class="blob-code blob-code-inner js-file-line">    sigmaY <span class="pl-k">=</span> <span class="pl-c1">0</span></td>
+      </tr>
+      <tr>
+        <td id="L756" class="blob-num js-line-number" data-line-number="756"></td>
+        <td id="LC756" class="blob-code blob-code-inner js-file-line">    sigmaZ <span class="pl-k">=</span> <span class="pl-c1">0</span></td>
+      </tr>
+      <tr>
+        <td id="L757" class="blob-num js-line-number" data-line-number="757"></td>
+        <td id="LC757" class="blob-code blob-code-inner js-file-line">    upperSkewX <span class="pl-k">=</span> <span class="pl-c1">False</span></td>
+      </tr>
+      <tr>
+        <td id="L758" class="blob-num js-line-number" data-line-number="758"></td>
+        <td id="LC758" class="blob-code blob-code-inner js-file-line">    upperSkewY <span class="pl-k">=</span> <span class="pl-c1">False</span></td>
+      </tr>
+      <tr>
+        <td id="L759" class="blob-num js-line-number" data-line-number="759"></td>
+        <td id="LC759" class="blob-code blob-code-inner js-file-line">    upperSkewZ <span class="pl-k">=</span> <span class="pl-c1">False</span></td>
+      </tr>
+      <tr>
+        <td id="L760" class="blob-num js-line-number" data-line-number="760"></td>
+        <td id="LC760" class="blob-code blob-code-inner js-file-line">    shift <span class="pl-k">=</span> <span class="pl-c1">0</span></td>
+      </tr>
+      <tr>
+        <td id="L761" class="blob-num js-line-number" data-line-number="761"></td>
+        <td id="LC761" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> vertexScaling = []</span></td>
+      </tr>
+      <tr>
+        <td id="L762" class="blob-num js-line-number" data-line-number="762"></td>
+        <td id="LC762" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L763" class="blob-num js-line-number" data-line-number="763"></td>
+        <td id="LC763" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> Seed the random Gaussian value generator:</span></td>
+      </tr>
+      <tr>
+        <td id="L764" class="blob-num js-line-number" data-line-number="764"></td>
+        <td id="LC764" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">if</span> randomSeed:</td>
+      </tr>
+      <tr>
+        <td id="L765" class="blob-num js-line-number" data-line-number="765"></td>
+        <td id="LC765" class="blob-code blob-code-inner js-file-line">        seed(<span class="pl-c1">int</span>(time.time()))</td>
+      </tr>
+      <tr>
+        <td id="L766" class="blob-num js-line-number" data-line-number="766"></td>
+        <td id="LC766" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L767" class="blob-num js-line-number" data-line-number="767"></td>
+        <td id="LC767" class="blob-code blob-code-inner js-file-line">        seed(userSeed)</td>
+      </tr>
+      <tr>
+        <td id="L768" class="blob-num js-line-number" data-line-number="768"></td>
+        <td id="LC768" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L769" class="blob-num js-line-number" data-line-number="769"></td>
+        <td id="LC769" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> These values need to be really small to look good.</span></td>
+      </tr>
+      <tr>
+        <td id="L770" class="blob-num js-line-number" data-line-number="770"></td>
+        <td id="LC770" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> So the user does not have to use such ridiculously small values:</span></td>
+      </tr>
+      <tr>
+        <td id="L771" class="blob-num js-line-number" data-line-number="771"></td>
+        <td id="LC771" class="blob-code blob-code-inner js-file-line">    deform <span class="pl-k">/=</span> <span class="pl-c1">10</span></td>
+      </tr>
+      <tr>
+        <td id="L772" class="blob-num js-line-number" data-line-number="772"></td>
+        <td id="LC772" class="blob-code blob-code-inner js-file-line">    rough <span class="pl-k">/=</span> <span class="pl-c1">100</span></td>
+      </tr>
+      <tr>
+        <td id="L773" class="blob-num js-line-number" data-line-number="773"></td>
+        <td id="LC773" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L774" class="blob-num js-line-number" data-line-number="774"></td>
+        <td id="LC774" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> Verify that the min really is the min:</span></td>
+      </tr>
+      <tr>
+        <td id="L775" class="blob-num js-line-number" data-line-number="775"></td>
+        <td id="LC775" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">if</span> scaleX[<span class="pl-c1">1</span>] <span class="pl-k">&lt;</span> scaleX[<span class="pl-c1">0</span>]:</td>
+      </tr>
+      <tr>
+        <td id="L776" class="blob-num js-line-number" data-line-number="776"></td>
+        <td id="LC776" class="blob-code blob-code-inner js-file-line">        scaleX[<span class="pl-c1">0</span>], scaleX[<span class="pl-c1">1</span>] <span class="pl-k">=</span> scaleX[<span class="pl-c1">1</span>], scaleX[<span class="pl-c1">0</span>]</td>
+      </tr>
+      <tr>
+        <td id="L777" class="blob-num js-line-number" data-line-number="777"></td>
+        <td id="LC777" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">if</span> scaleY[<span class="pl-c1">1</span>] <span class="pl-k">&lt;</span> scaleY[<span class="pl-c1">0</span>]:</td>
+      </tr>
+      <tr>
+        <td id="L778" class="blob-num js-line-number" data-line-number="778"></td>
+        <td id="LC778" class="blob-code blob-code-inner js-file-line">        scaleY[<span class="pl-c1">0</span>], scaleY[<span class="pl-c1">1</span>] <span class="pl-k">=</span> scaleY[<span class="pl-c1">1</span>], scaleY[<span class="pl-c1">0</span>]</td>
+      </tr>
+      <tr>
+        <td id="L779" class="blob-num js-line-number" data-line-number="779"></td>
+        <td id="LC779" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">if</span> scaleZ[<span class="pl-c1">1</span>] <span class="pl-k">&lt;</span> scaleZ[<span class="pl-c1">0</span>]:</td>
+      </tr>
+      <tr>
+        <td id="L780" class="blob-num js-line-number" data-line-number="780"></td>
+        <td id="LC780" class="blob-code blob-code-inner js-file-line">        scaleZ[<span class="pl-c1">0</span>], scaleZ[<span class="pl-c1">1</span>] <span class="pl-k">=</span> scaleZ[<span class="pl-c1">1</span>], scaleZ[<span class="pl-c1">0</span>]</td>
+      </tr>
+      <tr>
+        <td id="L781" class="blob-num js-line-number" data-line-number="781"></td>
+        <td id="LC781" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L782" class="blob-num js-line-number" data-line-number="782"></td>
+        <td id="LC782" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> todo: edit below to allow for skewing the distribution</span></td>
+      </tr>
+      <tr>
+        <td id="L783" class="blob-num js-line-number" data-line-number="783"></td>
+        <td id="LC783" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span>   *** todo completed 4/22/2011 ***</span></td>
+      </tr>
+      <tr>
+        <td id="L784" class="blob-num js-line-number" data-line-number="784"></td>
+        <td id="LC784" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span>   *** Code now generating &quot;int not scriptable error&quot; in Blender ***</span></td>
+      </tr>
+      <tr>
+        <td id="L785" class="blob-num js-line-number" data-line-number="785"></td>
+        <td id="LC785" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span></span></td>
+      </tr>
+      <tr>
+        <td id="L786" class="blob-num js-line-number" data-line-number="786"></td>
+        <td id="LC786" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> Calculate mu and sigma for a Gaussian distributed random number</span></td>
+      </tr>
+      <tr>
+        <td id="L787" class="blob-num js-line-number" data-line-number="787"></td>
+        <td id="LC787" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span>   generation:</span></td>
+      </tr>
+      <tr>
+        <td id="L788" class="blob-num js-line-number" data-line-number="788"></td>
+        <td id="LC788" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> If the lower and upper bounds are the same, skip the math.</span></td>
+      </tr>
+      <tr>
+        <td id="L789" class="blob-num js-line-number" data-line-number="789"></td>
+        <td id="LC789" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span></span></td>
+      </tr>
+      <tr>
+        <td id="L790" class="blob-num js-line-number" data-line-number="790"></td>
+        <td id="LC790" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> sigma is the standard deviation of the values.  The 95% interval is three</span></td>
+      </tr>
+      <tr>
+        <td id="L791" class="blob-num js-line-number" data-line-number="791"></td>
+        <td id="LC791" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> standard deviations, which is what we want most generated values to fall</span></td>
+      </tr>
+      <tr>
+        <td id="L792" class="blob-num js-line-number" data-line-number="792"></td>
+        <td id="LC792" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> in.  Since it might be skewed we are going to use half the difference</span></td>
+      </tr>
+      <tr>
+        <td id="L793" class="blob-num js-line-number" data-line-number="793"></td>
+        <td id="LC793" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> betwee the mean and the furthest bound and scale the other side down</span></td>
+      </tr>
+      <tr>
+        <td id="L794" class="blob-num js-line-number" data-line-number="794"></td>
+        <td id="LC794" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> post-number generation.</span></td>
+      </tr>
+      <tr>
+        <td id="L795" class="blob-num js-line-number" data-line-number="795"></td>
+        <td id="LC795" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">if</span> scaleX[<span class="pl-c1">0</span>] <span class="pl-k">!=</span> scaleX[<span class="pl-c1">1</span>]:</td>
+      </tr>
+      <tr>
+        <td id="L796" class="blob-num js-line-number" data-line-number="796"></td>
+        <td id="LC796" class="blob-code blob-code-inner js-file-line">        skewX <span class="pl-k">=</span> (skewX <span class="pl-k">+</span> <span class="pl-c1">1</span>) <span class="pl-k">/</span> <span class="pl-c1">2</span></td>
+      </tr>
+      <tr>
+        <td id="L797" class="blob-num js-line-number" data-line-number="797"></td>
+        <td id="LC797" class="blob-code blob-code-inner js-file-line">        muX <span class="pl-k">=</span> scaleX[<span class="pl-c1">0</span>] <span class="pl-k">+</span> ((scaleX[<span class="pl-c1">1</span>] <span class="pl-k">-</span> scaleX[<span class="pl-c1">0</span>]) <span class="pl-k">*</span> skewX)</td>
+      </tr>
+      <tr>
+        <td id="L798" class="blob-num js-line-number" data-line-number="798"></td>
+        <td id="LC798" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">if</span> skewX <span class="pl-k">&lt;</span> <span class="pl-c1">0.5</span>:</td>
+      </tr>
+      <tr>
+        <td id="L799" class="blob-num js-line-number" data-line-number="799"></td>
+        <td id="LC799" class="blob-code blob-code-inner js-file-line">            sigmaX <span class="pl-k">=</span> (scaleX[<span class="pl-c1">1</span>] <span class="pl-k">-</span> muX) <span class="pl-k">/</span> <span class="pl-c1">3</span></td>
+      </tr>
+      <tr>
+        <td id="L800" class="blob-num js-line-number" data-line-number="800"></td>
+        <td id="LC800" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L801" class="blob-num js-line-number" data-line-number="801"></td>
+        <td id="LC801" class="blob-code blob-code-inner js-file-line">            sigmaX <span class="pl-k">=</span> (muX <span class="pl-k">-</span> scaleX[<span class="pl-c1">0</span>]) <span class="pl-k">/</span> <span class="pl-c1">3</span></td>
+      </tr>
+      <tr>
+        <td id="L802" class="blob-num js-line-number" data-line-number="802"></td>
+        <td id="LC802" class="blob-code blob-code-inner js-file-line">            upperSkewX <span class="pl-k">=</span> <span class="pl-c1">True</span></td>
+      </tr>
+      <tr>
+        <td id="L803" class="blob-num js-line-number" data-line-number="803"></td>
+        <td id="LC803" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L804" class="blob-num js-line-number" data-line-number="804"></td>
+        <td id="LC804" class="blob-code blob-code-inner js-file-line">        muX <span class="pl-k">=</span> scaleX[<span class="pl-c1">0</span>]</td>
+      </tr>
+      <tr>
+        <td id="L805" class="blob-num js-line-number" data-line-number="805"></td>
+        <td id="LC805" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">if</span> scaleY[<span class="pl-c1">0</span>] <span class="pl-k">!=</span> scaleY[<span class="pl-c1">1</span>]:</td>
+      </tr>
+      <tr>
+        <td id="L806" class="blob-num js-line-number" data-line-number="806"></td>
+        <td id="LC806" class="blob-code blob-code-inner js-file-line">        skewY <span class="pl-k">=</span> (skewY <span class="pl-k">+</span> <span class="pl-c1">1</span>) <span class="pl-k">/</span> <span class="pl-c1">2</span></td>
+      </tr>
+      <tr>
+        <td id="L807" class="blob-num js-line-number" data-line-number="807"></td>
+        <td id="LC807" class="blob-code blob-code-inner js-file-line">        muY <span class="pl-k">=</span> scaleY[<span class="pl-c1">0</span>] <span class="pl-k">+</span> ((scaleY[<span class="pl-c1">1</span>] <span class="pl-k">-</span> scaleY[<span class="pl-c1">0</span>]) <span class="pl-k">*</span> skewY)</td>
+      </tr>
+      <tr>
+        <td id="L808" class="blob-num js-line-number" data-line-number="808"></td>
+        <td id="LC808" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">if</span> skewY <span class="pl-k">&lt;</span> <span class="pl-c1">0.5</span>:</td>
+      </tr>
+      <tr>
+        <td id="L809" class="blob-num js-line-number" data-line-number="809"></td>
+        <td id="LC809" class="blob-code blob-code-inner js-file-line">            sigmaY <span class="pl-k">=</span> (scaleY[<span class="pl-c1">1</span>] <span class="pl-k">-</span> muY) <span class="pl-k">/</span> <span class="pl-c1">3</span></td>
+      </tr>
+      <tr>
+        <td id="L810" class="blob-num js-line-number" data-line-number="810"></td>
+        <td id="LC810" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L811" class="blob-num js-line-number" data-line-number="811"></td>
+        <td id="LC811" class="blob-code blob-code-inner js-file-line">            sigmaY <span class="pl-k">=</span> (muY <span class="pl-k">-</span> scaleY[<span class="pl-c1">0</span>]) <span class="pl-k">/</span> <span class="pl-c1">3</span></td>
+      </tr>
+      <tr>
+        <td id="L812" class="blob-num js-line-number" data-line-number="812"></td>
+        <td id="LC812" class="blob-code blob-code-inner js-file-line">            upperSkewY <span class="pl-k">=</span> <span class="pl-c1">True</span></td>
+      </tr>
+      <tr>
+        <td id="L813" class="blob-num js-line-number" data-line-number="813"></td>
+        <td id="LC813" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L814" class="blob-num js-line-number" data-line-number="814"></td>
+        <td id="LC814" class="blob-code blob-code-inner js-file-line">        muY <span class="pl-k">=</span> scaleY[<span class="pl-c1">0</span>]</td>
+      </tr>
+      <tr>
+        <td id="L815" class="blob-num js-line-number" data-line-number="815"></td>
+        <td id="LC815" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">if</span> scaleZ[<span class="pl-c1">0</span>] <span class="pl-k">!=</span> scaleZ[<span class="pl-c1">1</span>]:</td>
+      </tr>
+      <tr>
+        <td id="L816" class="blob-num js-line-number" data-line-number="816"></td>
+        <td id="LC816" class="blob-code blob-code-inner js-file-line">        skewZ <span class="pl-k">=</span> (skewZ <span class="pl-k">+</span> <span class="pl-c1">1</span>) <span class="pl-k">/</span> <span class="pl-c1">2</span></td>
+      </tr>
+      <tr>
+        <td id="L817" class="blob-num js-line-number" data-line-number="817"></td>
+        <td id="LC817" class="blob-code blob-code-inner js-file-line">        muZ <span class="pl-k">=</span> scaleZ[<span class="pl-c1">0</span>] <span class="pl-k">+</span> ((scaleZ[<span class="pl-c1">1</span>] <span class="pl-k">-</span> scaleZ[<span class="pl-c1">0</span>]) <span class="pl-k">*</span> skewZ)</td>
+      </tr>
+      <tr>
+        <td id="L818" class="blob-num js-line-number" data-line-number="818"></td>
+        <td id="LC818" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">if</span> skewZ <span class="pl-k">&lt;</span> <span class="pl-c1">0.5</span>:</td>
+      </tr>
+      <tr>
+        <td id="L819" class="blob-num js-line-number" data-line-number="819"></td>
+        <td id="LC819" class="blob-code blob-code-inner js-file-line">            sigmaZ <span class="pl-k">=</span> (scaleZ[<span class="pl-c1">1</span>] <span class="pl-k">-</span> muZ) <span class="pl-k">/</span> <span class="pl-c1">3</span></td>
+      </tr>
+      <tr>
+        <td id="L820" class="blob-num js-line-number" data-line-number="820"></td>
+        <td id="LC820" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L821" class="blob-num js-line-number" data-line-number="821"></td>
+        <td id="LC821" class="blob-code blob-code-inner js-file-line">            sigmaZ <span class="pl-k">=</span> (muZ <span class="pl-k">-</span> scaleZ[<span class="pl-c1">0</span>]) <span class="pl-k">/</span> <span class="pl-c1">3</span></td>
+      </tr>
+      <tr>
+        <td id="L822" class="blob-num js-line-number" data-line-number="822"></td>
+        <td id="LC822" class="blob-code blob-code-inner js-file-line">            upperSkewZ <span class="pl-k">=</span> <span class="pl-c1">True</span></td>
+      </tr>
+      <tr>
+        <td id="L823" class="blob-num js-line-number" data-line-number="823"></td>
+        <td id="LC823" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L824" class="blob-num js-line-number" data-line-number="824"></td>
+        <td id="LC824" class="blob-code blob-code-inner js-file-line">        muZ <span class="pl-k">=</span> scaleZ</td>
+      </tr>
+      <tr>
+        <td id="L825" class="blob-num js-line-number" data-line-number="825"></td>
+        <td id="LC825" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L826" class="blob-num js-line-number" data-line-number="826"></td>
+        <td id="LC826" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">for</span> i <span class="pl-k">in</span> <span class="pl-c1">range</span>(numOfRocks):</td>
+      </tr>
+      <tr>
+        <td id="L827" class="blob-num js-line-number" data-line-number="827"></td>
+        <td id="LC827" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">#</span> todo: enable different random values for each (x,y,z) corrdinate for</span></td>
+      </tr>
+      <tr>
+        <td id="L828" class="blob-num js-line-number" data-line-number="828"></td>
+        <td id="LC828" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">#</span> each vertex.  This will add additional randomness to the shape of the</span></td>
+      </tr>
+      <tr>
+        <td id="L829" class="blob-num js-line-number" data-line-number="829"></td>
+        <td id="LC829" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">#</span> generated rocks.</span></td>
+      </tr>
+      <tr>
+        <td id="L830" class="blob-num js-line-number" data-line-number="830"></td>
+        <td id="LC830" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">#</span>   *** todo completed 4/19/2011 ***</span></td>
+      </tr>
+      <tr>
+        <td id="L831" class="blob-num js-line-number" data-line-number="831"></td>
+        <td id="LC831" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">#</span>   *** Code is notably slower at high rock counts ***</span></td>
+      </tr>
+      <tr>
+        <td id="L832" class="blob-num js-line-number" data-line-number="832"></td>
+        <td id="LC832" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L833" class="blob-num js-line-number" data-line-number="833"></td>
+        <td id="LC833" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">#</span> name = generateObject(context, muX, sigmaX, scaleX, upperSkewX, muY,</span></td>
+      </tr>
+      <tr>
+        <td id="L834" class="blob-num js-line-number" data-line-number="834"></td>
+        <td id="LC834" class="blob-code blob-code-inner js-file-line">        rock <span class="pl-k">=</span> generateObject(</td>
+      </tr>
+      <tr>
+        <td id="L835" class="blob-num js-line-number" data-line-number="835"></td>
+        <td id="LC835" class="blob-code blob-code-inner js-file-line">            context, muX, sigmaX, scaleX, upperSkewX, muY,</td>
+      </tr>
+      <tr>
+        <td id="L836" class="blob-num js-line-number" data-line-number="836"></td>
+        <td id="LC836" class="blob-code blob-code-inner js-file-line">            sigmaY, scaleY, upperSkewY, muZ, sigmaZ, scaleZ,</td>
+      </tr>
+      <tr>
+        <td id="L837" class="blob-num js-line-number" data-line-number="837"></td>
+        <td id="LC837" class="blob-code blob-code-inner js-file-line">            upperSkewZ, i, <span class="pl-c1">LASTROCK</span>, scaleDisplace, scale_fac)</td>
+      </tr>
+      <tr>
+        <td id="L838" class="blob-num js-line-number" data-line-number="838"></td>
+        <td id="LC838" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L839" class="blob-num js-line-number" data-line-number="839"></td>
+        <td id="LC839" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">#</span> rock = bpy.data.objects[name]</span></td>
+      </tr>
+      <tr>
+        <td id="L840" class="blob-num js-line-number" data-line-number="840"></td>
+        <td id="LC840" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L841" class="blob-num js-line-number" data-line-number="841"></td>
+        <td id="LC841" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">#</span> todo Map what the two new textures will be:</span></td>
+      </tr>
+      <tr>
+        <td id="L842" class="blob-num js-line-number" data-line-number="842"></td>
+        <td id="LC842" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">#</span> This is not working.  It works on paper so . . . ???</span></td>
+      </tr>
+      <tr>
+        <td id="L843" class="blob-num js-line-number" data-line-number="843"></td>
+        <td id="LC843" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">#</span>   *** todo completed on 4/23/2011 ***</span></td>
+      </tr>
+      <tr>
+        <td id="L844" class="blob-num js-line-number" data-line-number="844"></td>
+        <td id="LC844" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">#</span>   *** todo re-added as the first rock is getting</span></td>
+      </tr>
+      <tr>
+        <td id="L845" class="blob-num js-line-number" data-line-number="845"></td>
+        <td id="LC845" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">#</span>       &#39;Texture.001&#39; twice. ***</span></td>
+      </tr>
+      <tr>
+        <td id="L846" class="blob-num js-line-number" data-line-number="846"></td>
+        <td id="LC846" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">#</span>   *** todo completed on 4/25/2011 ***</span></td>
+      </tr>
+      <tr>
+        <td id="L847" class="blob-num js-line-number" data-line-number="847"></td>
+        <td id="LC847" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">#</span>   *** Script no longer needs to map new texture names 9/6/2011 ***</span></td>
+      </tr>
+      <tr>
+        <td id="L848" class="blob-num js-line-number" data-line-number="848"></td>
+        <td id="LC848" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L849" class="blob-num js-line-number" data-line-number="849"></td>
+        <td id="LC849" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">#</span> Create the four new textures:</span></td>
+      </tr>
+      <tr>
+        <td id="L850" class="blob-num js-line-number" data-line-number="850"></td>
+        <td id="LC850" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">#</span> todo Set displacement texture parameters:</span></td>
+      </tr>
+      <tr>
+        <td id="L851" class="blob-num js-line-number" data-line-number="851"></td>
+        <td id="LC851" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">#</span>   *** todo completed on 5/31/2011 ***</span></td>
+      </tr>
+      <tr>
+        <td id="L852" class="blob-num js-line-number" data-line-number="852"></td>
+        <td id="LC852" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">#</span> Voronoi has been removed from being an option for the fine detail</span></td>
+      </tr>
+      <tr>
+        <td id="L853" class="blob-num js-line-number" data-line-number="853"></td>
+        <td id="LC853" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">#</span>   texture.</span></td>
+      </tr>
+      <tr>
+        <td id="L854" class="blob-num js-line-number" data-line-number="854"></td>
+        <td id="LC854" class="blob-code blob-code-inner js-file-line">        texTypes <span class="pl-k">=</span> [<span class="pl-s"><span class="pl-pds">&#39;</span>CLOUDS<span class="pl-pds">&#39;</span></span>, <span class="pl-s"><span class="pl-pds">&#39;</span>MUSGRAVE<span class="pl-pds">&#39;</span></span>, <span class="pl-s"><span class="pl-pds">&#39;</span>DISTORTED_NOISE<span class="pl-pds">&#39;</span></span>, <span class="pl-s"><span class="pl-pds">&#39;</span>STUCCI<span class="pl-pds">&#39;</span></span>, <span class="pl-s"><span class="pl-pds">&#39;</span>VORONOI<span class="pl-pds">&#39;</span></span>]</td>
+      </tr>
+      <tr>
+        <td id="L855" class="blob-num js-line-number" data-line-number="855"></td>
+        <td id="LC855" class="blob-code blob-code-inner js-file-line">        newTex <span class="pl-k">=</span> []</td>
+      </tr>
+      <tr>
+        <td id="L856" class="blob-num js-line-number" data-line-number="856"></td>
+        <td id="LC856" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">#</span> The first texture is to give a more ranodm base shape appearance:</span></td>
+      </tr>
+      <tr>
+        <td id="L857" class="blob-num js-line-number" data-line-number="857"></td>
+        <td id="LC857" class="blob-code blob-code-inner js-file-line">        newTex.append(bpy.data.textures.new(</td>
+      </tr>
+      <tr>
+        <td id="L858" class="blob-num js-line-number" data-line-number="858"></td>
+        <td id="LC858" class="blob-code blob-code-inner js-file-line">            <span class="pl-v">name</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&#39;</span>rock_displacement<span class="pl-pds">&#39;</span></span>,</td>
+      </tr>
+      <tr>
+        <td id="L859" class="blob-num js-line-number" data-line-number="859"></td>
+        <td id="LC859" class="blob-code blob-code-inner js-file-line">            <span class="pl-v">type</span><span class="pl-k">=</span>texTypes[<span class="pl-c1">1</span>]))</td>
+      </tr>
+      <tr>
+        <td id="L860" class="blob-num js-line-number" data-line-number="860"></td>
+        <td id="LC860" class="blob-code blob-code-inner js-file-line">        randomizeTexture(newTex[<span class="pl-c1">0</span>], <span class="pl-c1">0</span>)</td>
+      </tr>
+      <tr>
+        <td id="L861" class="blob-num js-line-number" data-line-number="861"></td>
+        <td id="LC861" class="blob-code blob-code-inner js-file-line">        newTex.append(bpy.data.textures.new(</td>
+      </tr>
+      <tr>
+        <td id="L862" class="blob-num js-line-number" data-line-number="862"></td>
+        <td id="LC862" class="blob-code blob-code-inner js-file-line">            <span class="pl-v">name</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&#39;</span>rock_displacement<span class="pl-pds">&#39;</span></span>,</td>
+      </tr>
+      <tr>
+        <td id="L863" class="blob-num js-line-number" data-line-number="863"></td>
+        <td id="LC863" class="blob-code blob-code-inner js-file-line">            <span class="pl-v">type</span><span class="pl-k">=</span>texTypes[<span class="pl-c1">4</span>]))</td>
+      </tr>
+      <tr>
+        <td id="L864" class="blob-num js-line-number" data-line-number="864"></td>
+        <td id="LC864" class="blob-code blob-code-inner js-file-line">        randomizeTexture(newTex[<span class="pl-c1">1</span>], <span class="pl-c1">0</span>)</td>
+      </tr>
+      <tr>
+        <td id="L865" class="blob-num js-line-number" data-line-number="865"></td>
+        <td id="LC865" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">if</span> numpy:</td>
+      </tr>
+      <tr>
+        <td id="L866" class="blob-num js-line-number" data-line-number="866"></td>
+        <td id="LC866" class="blob-code blob-code-inner js-file-line">            newTex.append(bpy.data.textures.new(</td>
+      </tr>
+      <tr>
+        <td id="L867" class="blob-num js-line-number" data-line-number="867"></td>
+        <td id="LC867" class="blob-code blob-code-inner js-file-line">                <span class="pl-v">name</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&#39;</span>rock_displacement<span class="pl-pds">&#39;</span></span>,</td>
+      </tr>
+      <tr>
+        <td id="L868" class="blob-num js-line-number" data-line-number="868"></td>
+        <td id="LC868" class="blob-code blob-code-inner js-file-line">                <span class="pl-v">type</span><span class="pl-k">=</span>texTypes[<span class="pl-c1">int</span>(<span class="pl-c1">round</span>(weibull(<span class="pl-c1">1</span>, <span class="pl-c1">1</span>)[<span class="pl-c1">0</span>] <span class="pl-k">/</span> <span class="pl-c1">2.125</span>))]))</td>
+      </tr>
+      <tr>
+        <td id="L869" class="blob-num js-line-number" data-line-number="869"></td>
+        <td id="LC869" class="blob-code blob-code-inner js-file-line">            randomizeTexture(newTex[<span class="pl-c1">2</span>], <span class="pl-c1">1</span>)</td>
+      </tr>
+      <tr>
+        <td id="L870" class="blob-num js-line-number" data-line-number="870"></td>
+        <td id="LC870" class="blob-code blob-code-inner js-file-line">            newTex.append(bpy.data.textures.new(</td>
+      </tr>
+      <tr>
+        <td id="L871" class="blob-num js-line-number" data-line-number="871"></td>
+        <td id="LC871" class="blob-code blob-code-inner js-file-line">                <span class="pl-v">name</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&#39;</span>rock_displacement<span class="pl-pds">&#39;</span></span>,</td>
+      </tr>
+      <tr>
+        <td id="L872" class="blob-num js-line-number" data-line-number="872"></td>
+        <td id="LC872" class="blob-code blob-code-inner js-file-line">                <span class="pl-v">type</span><span class="pl-k">=</span>texTypes[<span class="pl-c1">int</span>(<span class="pl-c1">round</span>(weibull(<span class="pl-c1">1</span>, <span class="pl-c1">1</span>)[<span class="pl-c1">0</span>] <span class="pl-k">/</span> <span class="pl-c1">2.125</span>))]))</td>
+      </tr>
+      <tr>
+        <td id="L873" class="blob-num js-line-number" data-line-number="873"></td>
+        <td id="LC873" class="blob-code blob-code-inner js-file-line">            randomizeTexture(newTex[<span class="pl-c1">3</span>], <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L874" class="blob-num js-line-number" data-line-number="874"></td>
+        <td id="LC874" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L875" class="blob-num js-line-number" data-line-number="875"></td>
+        <td id="LC875" class="blob-code blob-code-inner js-file-line">            newTex.append(bpy.data.textures.new(</td>
+      </tr>
+      <tr>
+        <td id="L876" class="blob-num js-line-number" data-line-number="876"></td>
+        <td id="LC876" class="blob-code blob-code-inner js-file-line">                <span class="pl-v">name</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&#39;</span>rock_displacement<span class="pl-pds">&#39;</span></span>,</td>
+      </tr>
+      <tr>
+        <td id="L877" class="blob-num js-line-number" data-line-number="877"></td>
+        <td id="LC877" class="blob-code blob-code-inner js-file-line">                <span class="pl-v">type</span><span class="pl-k">=</span>texTypes[<span class="pl-c1">int</span>(<span class="pl-c1">round</span>(weibull(<span class="pl-c1">1</span>, <span class="pl-c1">1</span>) <span class="pl-k">/</span> <span class="pl-c1">2.125</span>))]))</td>
+      </tr>
+      <tr>
+        <td id="L878" class="blob-num js-line-number" data-line-number="878"></td>
+        <td id="LC878" class="blob-code blob-code-inner js-file-line">            randomizeTexture(newTex[<span class="pl-c1">2</span>], <span class="pl-c1">1</span>)</td>
+      </tr>
+      <tr>
+        <td id="L879" class="blob-num js-line-number" data-line-number="879"></td>
+        <td id="LC879" class="blob-code blob-code-inner js-file-line">            newTex.append(bpy.data.textures.new(</td>
+      </tr>
+      <tr>
+        <td id="L880" class="blob-num js-line-number" data-line-number="880"></td>
+        <td id="LC880" class="blob-code blob-code-inner js-file-line">                <span class="pl-v">name</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&#39;</span>rock_displacement<span class="pl-pds">&#39;</span></span>,</td>
+      </tr>
+      <tr>
+        <td id="L881" class="blob-num js-line-number" data-line-number="881"></td>
+        <td id="LC881" class="blob-code blob-code-inner js-file-line">                <span class="pl-v">type</span><span class="pl-k">=</span>texTypes[<span class="pl-c1">int</span>(<span class="pl-c1">round</span>(weibull(<span class="pl-c1">1</span>, <span class="pl-c1">1</span>) <span class="pl-k">/</span> <span class="pl-c1">2.125</span>))]))</td>
+      </tr>
+      <tr>
+        <td id="L882" class="blob-num js-line-number" data-line-number="882"></td>
+        <td id="LC882" class="blob-code blob-code-inner js-file-line">            randomizeTexture(newTex[<span class="pl-c1">3</span>], <span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L883" class="blob-num js-line-number" data-line-number="883"></td>
+        <td id="LC883" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L884" class="blob-num js-line-number" data-line-number="884"></td>
+        <td id="LC884" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">#</span> Add modifiers:</span></td>
+      </tr>
+      <tr>
+        <td id="L885" class="blob-num js-line-number" data-line-number="885"></td>
+        <td id="LC885" class="blob-code blob-code-inner js-file-line">        rock.modifiers.new(<span class="pl-v">name</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&quot;</span>Subsurf<span class="pl-pds">&quot;</span></span>, <span class="pl-v">type</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&#39;</span>SUBSURF<span class="pl-pds">&#39;</span></span>)</td>
+      </tr>
+      <tr>
+        <td id="L886" class="blob-num js-line-number" data-line-number="886"></td>
+        <td id="LC886" class="blob-code blob-code-inner js-file-line">        rock.modifiers.new(<span class="pl-v">name</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&quot;</span>Subsurf<span class="pl-pds">&quot;</span></span>, <span class="pl-v">type</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&#39;</span>SUBSURF<span class="pl-pds">&#39;</span></span>)</td>
+      </tr>
+      <tr>
+        <td id="L887" class="blob-num js-line-number" data-line-number="887"></td>
+        <td id="LC887" class="blob-code blob-code-inner js-file-line">        rock.modifiers.new(<span class="pl-v">name</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&quot;</span>Displace<span class="pl-pds">&quot;</span></span>, <span class="pl-v">type</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&#39;</span>DISPLACE<span class="pl-pds">&#39;</span></span>)</td>
+      </tr>
+      <tr>
+        <td id="L888" class="blob-num js-line-number" data-line-number="888"></td>
+        <td id="LC888" class="blob-code blob-code-inner js-file-line">        rock.modifiers.new(<span class="pl-v">name</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&quot;</span>Displace<span class="pl-pds">&quot;</span></span>, <span class="pl-v">type</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&#39;</span>DISPLACE<span class="pl-pds">&#39;</span></span>)</td>
+      </tr>
+      <tr>
+        <td id="L889" class="blob-num js-line-number" data-line-number="889"></td>
+        <td id="LC889" class="blob-code blob-code-inner js-file-line">        rock.modifiers.new(<span class="pl-v">name</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&quot;</span>Displace<span class="pl-pds">&quot;</span></span>, <span class="pl-v">type</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&#39;</span>DISPLACE<span class="pl-pds">&#39;</span></span>)</td>
+      </tr>
+      <tr>
+        <td id="L890" class="blob-num js-line-number" data-line-number="890"></td>
+        <td id="LC890" class="blob-code blob-code-inner js-file-line">        rock.modifiers.new(<span class="pl-v">name</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&quot;</span>Displace<span class="pl-pds">&quot;</span></span>, <span class="pl-v">type</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&#39;</span>DISPLACE<span class="pl-pds">&#39;</span></span>)</td>
+      </tr>
+      <tr>
+        <td id="L891" class="blob-num js-line-number" data-line-number="891"></td>
+        <td id="LC891" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L892" class="blob-num js-line-number" data-line-number="892"></td>
+        <td id="LC892" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">#</span> If smoothing is enabled, allow a little randomness into the</span></td>
+      </tr>
+      <tr>
+        <td id="L893" class="blob-num js-line-number" data-line-number="893"></td>
+        <td id="LC893" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">#</span>   smoothing factor. Then add the smoothing modifier.</span></td>
+      </tr>
+      <tr>
+        <td id="L894" class="blob-num js-line-number" data-line-number="894"></td>
+        <td id="LC894" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">if</span> smooth_fac <span class="pl-k">&gt;</span> <span class="pl-c1">0.0</span> <span class="pl-k">and</span> smooth_it <span class="pl-k">&gt;</span> <span class="pl-c1">0</span>:</td>
+      </tr>
+      <tr>
+        <td id="L895" class="blob-num js-line-number" data-line-number="895"></td>
+        <td id="LC895" class="blob-code blob-code-inner js-file-line">            rock.modifiers.new(<span class="pl-v">name</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&quot;</span>Smooth<span class="pl-pds">&quot;</span></span>, <span class="pl-v">type</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&#39;</span>SMOOTH<span class="pl-pds">&#39;</span></span>)</td>
+      </tr>
+      <tr>
+        <td id="L896" class="blob-num js-line-number" data-line-number="896"></td>
+        <td id="LC896" class="blob-code blob-code-inner js-file-line">            rock.modifiers[<span class="pl-c1">6</span>].factor <span class="pl-k">=</span> gauss(smooth_fac, (smooth_fac <span class="pl-k">**</span> <span class="pl-c1">0.5</span>) <span class="pl-k">/</span> <span class="pl-c1">12</span>)</td>
+      </tr>
+      <tr>
+        <td id="L897" class="blob-num js-line-number" data-line-number="897"></td>
+        <td id="LC897" class="blob-code blob-code-inner js-file-line">            rock.modifiers[<span class="pl-c1">6</span>].iterations <span class="pl-k">=</span> smooth_it</td>
+      </tr>
+      <tr>
+        <td id="L898" class="blob-num js-line-number" data-line-number="898"></td>
+        <td id="LC898" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">#</span> Make a call to random to keep things consistant:</span></td>
+      </tr>
+      <tr>
+        <td id="L899" class="blob-num js-line-number" data-line-number="899"></td>
+        <td id="LC899" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L900" class="blob-num js-line-number" data-line-number="900"></td>
+        <td id="LC900" class="blob-code blob-code-inner js-file-line">            gauss(<span class="pl-c1">0</span>, <span class="pl-c1">1</span>)</td>
+      </tr>
+      <tr>
+        <td id="L901" class="blob-num js-line-number" data-line-number="901"></td>
+        <td id="LC901" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L902" class="blob-num js-line-number" data-line-number="902"></td>
+        <td id="LC902" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">#</span> Set subsurf modifier parameters:</span></td>
+      </tr>
+      <tr>
+        <td id="L903" class="blob-num js-line-number" data-line-number="903"></td>
+        <td id="LC903" class="blob-code blob-code-inner js-file-line">        rock.modifiers[<span class="pl-c1">0</span>].levels <span class="pl-k">=</span> display_detail</td>
+      </tr>
+      <tr>
+        <td id="L904" class="blob-num js-line-number" data-line-number="904"></td>
+        <td id="LC904" class="blob-code blob-code-inner js-file-line">        rock.modifiers[<span class="pl-c1">0</span>].render_levels <span class="pl-k">=</span> detail</td>
+      </tr>
+      <tr>
+        <td id="L905" class="blob-num js-line-number" data-line-number="905"></td>
+        <td id="LC905" class="blob-code blob-code-inner js-file-line">        rock.modifiers[<span class="pl-c1">1</span>].levels <span class="pl-k">=</span> display_detail</td>
+      </tr>
+      <tr>
+        <td id="L906" class="blob-num js-line-number" data-line-number="906"></td>
+        <td id="LC906" class="blob-code blob-code-inner js-file-line">        rock.modifiers[<span class="pl-c1">1</span>].render_levels <span class="pl-k">=</span> detail</td>
+      </tr>
+      <tr>
+        <td id="L907" class="blob-num js-line-number" data-line-number="907"></td>
+        <td id="LC907" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L908" class="blob-num js-line-number" data-line-number="908"></td>
+        <td id="LC908" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">#</span> todo Set displacement modifier parameters:</span></td>
+      </tr>
+      <tr>
+        <td id="L909" class="blob-num js-line-number" data-line-number="909"></td>
+        <td id="LC909" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">#</span>   *** todo completed on 4/23/2011 ***</span></td>
+      </tr>
+      <tr>
+        <td id="L910" class="blob-num js-line-number" data-line-number="910"></td>
+        <td id="LC910" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">#</span>   *** toned down the variance on 4/26/2011 ***</span></td>
+      </tr>
+      <tr>
+        <td id="L911" class="blob-num js-line-number" data-line-number="911"></td>
+        <td id="LC911" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">#</span>   *** added third modifier on 4/28/2011 ***</span></td>
+      </tr>
+      <tr>
+        <td id="L912" class="blob-num js-line-number" data-line-number="912"></td>
+        <td id="LC912" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">#</span>   *** texture access changed on 9/6/2011 ***</span></td>
+      </tr>
+      <tr>
+        <td id="L913" class="blob-num js-line-number" data-line-number="913"></td>
+        <td id="LC913" class="blob-code blob-code-inner js-file-line">        rock.modifiers[<span class="pl-c1">2</span>].texture <span class="pl-k">=</span> newTex[<span class="pl-c1">0</span>]</td>
+      </tr>
+      <tr>
+        <td id="L914" class="blob-num js-line-number" data-line-number="914"></td>
+        <td id="LC914" class="blob-code blob-code-inner js-file-line">        rock.modifiers[<span class="pl-c1">2</span>].strength <span class="pl-k">=</span> gauss(deform <span class="pl-k">/</span> <span class="pl-c1">100</span>, (<span class="pl-c1">1</span> <span class="pl-k">/</span> <span class="pl-c1">300</span>) <span class="pl-k">*</span> deform)</td>
+      </tr>
+      <tr>
+        <td id="L915" class="blob-num js-line-number" data-line-number="915"></td>
+        <td id="LC915" class="blob-code blob-code-inner js-file-line">        rock.modifiers[<span class="pl-c1">2</span>].mid_level <span class="pl-k">=</span> <span class="pl-c1">0</span></td>
+      </tr>
+      <tr>
+        <td id="L916" class="blob-num js-line-number" data-line-number="916"></td>
+        <td id="LC916" class="blob-code blob-code-inner js-file-line">        rock.modifiers[<span class="pl-c1">3</span>].texture <span class="pl-k">=</span> newTex[<span class="pl-c1">1</span>]</td>
+      </tr>
+      <tr>
+        <td id="L917" class="blob-num js-line-number" data-line-number="917"></td>
+        <td id="LC917" class="blob-code blob-code-inner js-file-line">        rock.modifiers[<span class="pl-c1">3</span>].strength <span class="pl-k">=</span> gauss(deform, (<span class="pl-c1">1</span> <span class="pl-k">/</span> <span class="pl-c1">3</span>) <span class="pl-k">*</span> deform)</td>
+      </tr>
+      <tr>
+        <td id="L918" class="blob-num js-line-number" data-line-number="918"></td>
+        <td id="LC918" class="blob-code blob-code-inner js-file-line">        rock.modifiers[<span class="pl-c1">3</span>].mid_level <span class="pl-k">=</span> <span class="pl-c1">0</span></td>
+      </tr>
+      <tr>
+        <td id="L919" class="blob-num js-line-number" data-line-number="919"></td>
+        <td id="LC919" class="blob-code blob-code-inner js-file-line">        rock.modifiers[<span class="pl-c1">4</span>].texture <span class="pl-k">=</span> newTex[<span class="pl-c1">2</span>]</td>
+      </tr>
+      <tr>
+        <td id="L920" class="blob-num js-line-number" data-line-number="920"></td>
+        <td id="LC920" class="blob-code blob-code-inner js-file-line">        rock.modifiers[<span class="pl-c1">4</span>].strength <span class="pl-k">=</span> gauss(rough <span class="pl-k">*</span> <span class="pl-c1">2</span>, (<span class="pl-c1">1</span> <span class="pl-k">/</span> <span class="pl-c1">3</span>) <span class="pl-k">*</span> rough)</td>
+      </tr>
+      <tr>
+        <td id="L921" class="blob-num js-line-number" data-line-number="921"></td>
+        <td id="LC921" class="blob-code blob-code-inner js-file-line">        rock.modifiers[<span class="pl-c1">5</span>].texture <span class="pl-k">=</span> newTex[<span class="pl-c1">3</span>]</td>
+      </tr>
+      <tr>
+        <td id="L922" class="blob-num js-line-number" data-line-number="922"></td>
+        <td id="LC922" class="blob-code blob-code-inner js-file-line">        rock.modifiers[<span class="pl-c1">5</span>].strength <span class="pl-k">=</span> gauss(rough, (<span class="pl-c1">1</span> <span class="pl-k">/</span> <span class="pl-c1">3</span>) <span class="pl-k">*</span> rough)</td>
+      </tr>
+      <tr>
+        <td id="L923" class="blob-num js-line-number" data-line-number="923"></td>
+        <td id="LC923" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L924" class="blob-num js-line-number" data-line-number="924"></td>
+        <td id="LC924" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">#</span> Set mesh to be smooth and fix the normals:</span></td>
+      </tr>
+      <tr>
+        <td id="L925" class="blob-num js-line-number" data-line-number="925"></td>
+        <td id="LC925" class="blob-code blob-code-inner js-file-line">        utils.smooth(rock.data)</td>
+      </tr>
+      <tr>
+        <td id="L926" class="blob-num js-line-number" data-line-number="926"></td>
+        <td id="LC926" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">#</span> utils.smooth(bpy.data.meshes[name])</span></td>
+      </tr>
+      <tr>
+        <td id="L927" class="blob-num js-line-number" data-line-number="927"></td>
+        <td id="LC927" class="blob-code blob-code-inner js-file-line">        bpy.ops.object.editmode_toggle()</td>
+      </tr>
+      <tr>
+        <td id="L928" class="blob-num js-line-number" data-line-number="928"></td>
+        <td id="LC928" class="blob-code blob-code-inner js-file-line">        bpy.ops.mesh.normals_make_consistent()</td>
+      </tr>
+      <tr>
+        <td id="L929" class="blob-num js-line-number" data-line-number="929"></td>
+        <td id="LC929" class="blob-code blob-code-inner js-file-line">        bpy.ops.object.editmode_toggle()</td>
+      </tr>
+      <tr>
+        <td id="L930" class="blob-num js-line-number" data-line-number="930"></td>
+        <td id="LC930" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L931" class="blob-num js-line-number" data-line-number="931"></td>
+        <td id="LC931" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">#</span> Store the last value of i:</span></td>
+      </tr>
+      <tr>
+        <td id="L932" class="blob-num js-line-number" data-line-number="932"></td>
+        <td id="LC932" class="blob-code blob-code-inner js-file-line">        shift <span class="pl-k">=</span> i</td>
+      </tr>
+      <tr>
+        <td id="L933" class="blob-num js-line-number" data-line-number="933"></td>
+        <td id="LC933" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L934" class="blob-num js-line-number" data-line-number="934"></td>
+        <td id="LC934" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> Add the shift to LASTROCK:</span></td>
+      </tr>
+      <tr>
+        <td id="L935" class="blob-num js-line-number" data-line-number="935"></td>
+        <td id="LC935" class="blob-code blob-code-inner js-file-line">    <span class="pl-c1">LASTROCK</span> <span class="pl-k">+=</span> shift <span class="pl-k">+</span> <span class="pl-c1">1</span></td>
+      </tr>
+      <tr>
+        <td id="L936" class="blob-num js-line-number" data-line-number="936"></td>
+        <td id="LC936" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L937" class="blob-num js-line-number" data-line-number="937"></td>
+        <td id="LC937" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">return</span></td>
+      </tr>
+      <tr>
+        <td id="L938" class="blob-num js-line-number" data-line-number="938"></td>
+        <td id="LC938" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L939" class="blob-num js-line-number" data-line-number="939"></td>
+        <td id="LC939" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L940" class="blob-num js-line-number" data-line-number="940"></td>
+        <td id="LC940" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> Much of the code below is more-or-less imitation of other addons and as such</span></td>
+      </tr>
+      <tr>
+        <td id="L941" class="blob-num js-line-number" data-line-number="941"></td>
+        <td id="LC941" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> I have left it undocumented.</span></td>
+      </tr>
+      <tr>
+        <td id="L942" class="blob-num js-line-number" data-line-number="942"></td>
+        <td id="LC942" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L943" class="blob-num js-line-number" data-line-number="943"></td>
+        <td id="LC943" class="blob-code blob-code-inner js-file-line"><span class="pl-k">class</span> <span class="pl-en">OBJECT_OT_add_mesh_rock</span>(<span class="pl-e">bpy</span>.<span class="pl-e">types</span>.<span class="pl-e">Operator</span>):</td>
+      </tr>
+      <tr>
+        <td id="L944" class="blob-num js-line-number" data-line-number="944"></td>
+        <td id="LC944" class="blob-code blob-code-inner js-file-line">    <span class="pl-s"><span class="pl-pds">&quot;&quot;&quot;</span>Add rock objects<span class="pl-pds">&quot;&quot;&quot;</span></span></td>
+      </tr>
+      <tr>
+        <td id="L945" class="blob-num js-line-number" data-line-number="945"></td>
+        <td id="LC945" class="blob-code blob-code-inner js-file-line">    bl_idname <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">&quot;</span>mesh.add_mesh_rock<span class="pl-pds">&quot;</span></span></td>
+      </tr>
+      <tr>
+        <td id="L946" class="blob-num js-line-number" data-line-number="946"></td>
+        <td id="LC946" class="blob-code blob-code-inner js-file-line">    bl_label <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">&quot;</span>Add Rocks<span class="pl-pds">&quot;</span></span></td>
+      </tr>
+      <tr>
+        <td id="L947" class="blob-num js-line-number" data-line-number="947"></td>
+        <td id="LC947" class="blob-code blob-code-inner js-file-line">    bl_options <span class="pl-k">=</span> {<span class="pl-s"><span class="pl-pds">&#39;</span>REGISTER<span class="pl-pds">&#39;</span></span>, <span class="pl-s"><span class="pl-pds">&#39;</span>UNDO<span class="pl-pds">&#39;</span></span>}</td>
+      </tr>
+      <tr>
+        <td id="L948" class="blob-num js-line-number" data-line-number="948"></td>
+        <td id="LC948" class="blob-code blob-code-inner js-file-line">    bl_description <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">&quot;</span>Add rocks<span class="pl-pds">&quot;</span></span></td>
+      </tr>
+      <tr>
+        <td id="L949" class="blob-num js-line-number" data-line-number="949"></td>
+        <td id="LC949" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L950" class="blob-num js-line-number" data-line-number="950"></td>
+        <td id="LC950" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> Get the preset values from the XML file.</span></td>
+      </tr>
+      <tr>
+        <td id="L951" class="blob-num js-line-number" data-line-number="951"></td>
+        <td id="LC951" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span>   -&gt; The script was morphed into a Python module</span></td>
+      </tr>
+      <tr>
+        <td id="L952" class="blob-num js-line-number" data-line-number="952"></td>
+        <td id="LC952" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span>       to support this.</span></td>
+      </tr>
+      <tr>
+        <td id="L953" class="blob-num js-line-number" data-line-number="953"></td>
+        <td id="LC953" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> Tell settings.py to parse the XML file with the settings.</span></td>
+      </tr>
+      <tr>
+        <td id="L954" class="blob-num js-line-number" data-line-number="954"></td>
+        <td id="LC954" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> Then get the default values resulting from the parsing.</span></td>
+      </tr>
+      <tr>
+        <td id="L955" class="blob-num js-line-number" data-line-number="955"></td>
+        <td id="LC955" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> Make a list containing the default values and append to that</span></td>
+      </tr>
+      <tr>
+        <td id="L956" class="blob-num js-line-number" data-line-number="956"></td>
+        <td id="LC956" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> the presets specified in the same XML file.  This list will</span></td>
+      </tr>
+      <tr>
+        <td id="L957" class="blob-num js-line-number" data-line-number="957"></td>
+        <td id="LC957" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> be used to load preset values.</span></td>
+      </tr>
+      <tr>
+        <td id="L958" class="blob-num js-line-number" data-line-number="958"></td>
+        <td id="LC958" class="blob-code blob-code-inner js-file-line">    settings.parse()</td>
+      </tr>
+      <tr>
+        <td id="L959" class="blob-num js-line-number" data-line-number="959"></td>
+        <td id="LC959" class="blob-code blob-code-inner js-file-line">    defaults <span class="pl-k">=</span> settings.getDefault()</td>
+      </tr>
+      <tr>
+        <td id="L960" class="blob-num js-line-number" data-line-number="960"></td>
+        <td id="LC960" class="blob-code blob-code-inner js-file-line">    presetsList <span class="pl-k">=</span> [defaults]</td>
+      </tr>
+      <tr>
+        <td id="L961" class="blob-num js-line-number" data-line-number="961"></td>
+        <td id="LC961" class="blob-code blob-code-inner js-file-line">    presetsList <span class="pl-k">+=</span> settings.getPresetLists()</td>
+      </tr>
+      <tr>
+        <td id="L962" class="blob-num js-line-number" data-line-number="962"></td>
+        <td id="LC962" class="blob-code blob-code-inner js-file-line">    presets <span class="pl-k">=</span> []</td>
+      </tr>
+      <tr>
+        <td id="L963" class="blob-num js-line-number" data-line-number="963"></td>
+        <td id="LC963" class="blob-code blob-code-inner js-file-line">    lastPreset <span class="pl-k">=</span> <span class="pl-c1">0</span></td>
+      </tr>
+      <tr>
+        <td id="L964" class="blob-num js-line-number" data-line-number="964"></td>
+        <td id="LC964" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L965" class="blob-num js-line-number" data-line-number="965"></td>
+        <td id="LC965" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> Build the presets list for the enum property.</span></td>
+      </tr>
+      <tr>
+        <td id="L966" class="blob-num js-line-number" data-line-number="966"></td>
+        <td id="LC966" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> This needs to be a for loop as the user might add presets to</span></td>
+      </tr>
+      <tr>
+        <td id="L967" class="blob-num js-line-number" data-line-number="967"></td>
+        <td id="LC967" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> the XML file and those should show here:</span></td>
+      </tr>
+      <tr>
+        <td id="L968" class="blob-num js-line-number" data-line-number="968"></td>
+        <td id="LC968" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">for</span> i, preset <span class="pl-k">in</span> <span class="pl-c1">enumerate</span>(presetsList):</td>
+      </tr>
+      <tr>
+        <td id="L969" class="blob-num js-line-number" data-line-number="969"></td>
+        <td id="LC969" class="blob-code blob-code-inner js-file-line">        presets.append((<span class="pl-c1">str</span>(i), preset[<span class="pl-c1">0</span>], preset[<span class="pl-c1">0</span>] <span class="pl-k">+</span> <span class="pl-s"><span class="pl-pds">&quot;</span> preset values<span class="pl-pds">&quot;</span></span>))</td>
+      </tr>
+      <tr>
+        <td id="L970" class="blob-num js-line-number" data-line-number="970"></td>
+        <td id="LC970" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L971" class="blob-num js-line-number" data-line-number="971"></td>
+        <td id="LC971" class="blob-code blob-code-inner js-file-line">    preset_values: EnumProperty(</td>
+      </tr>
+      <tr>
+        <td id="L972" class="blob-num js-line-number" data-line-number="972"></td>
+        <td id="LC972" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">name</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&quot;</span>Presets<span class="pl-pds">&quot;</span></span>,</td>
+      </tr>
+      <tr>
+        <td id="L973" class="blob-num js-line-number" data-line-number="973"></td>
+        <td id="LC973" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">items</span><span class="pl-k">=</span>presets,</td>
+      </tr>
+      <tr>
+        <td id="L974" class="blob-num js-line-number" data-line-number="974"></td>
+        <td id="LC974" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">description</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&quot;</span>Preset values for some rock types<span class="pl-pds">&quot;</span></span>)</td>
+      </tr>
+      <tr>
+        <td id="L975" class="blob-num js-line-number" data-line-number="975"></td>
+        <td id="LC975" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L976" class="blob-num js-line-number" data-line-number="976"></td>
+        <td id="LC976" class="blob-code blob-code-inner js-file-line">    num_of_rocks: IntProperty(</td>
+      </tr>
+      <tr>
+        <td id="L977" class="blob-num js-line-number" data-line-number="977"></td>
+        <td id="LC977" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">name</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&quot;</span>Number of rocks<span class="pl-pds">&quot;</span></span>,</td>
+      </tr>
+      <tr>
+        <td id="L978" class="blob-num js-line-number" data-line-number="978"></td>
+        <td id="LC978" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">description</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&quot;</span>Number of rocks to generate. WARNING: Slow at high values!<span class="pl-pds">&quot;</span></span>,</td>
+      </tr>
+      <tr>
+        <td id="L979" class="blob-num js-line-number" data-line-number="979"></td>
+        <td id="LC979" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">min</span><span class="pl-k">=</span><span class="pl-c1">1</span>, <span class="pl-v">max</span><span class="pl-k">=</span><span class="pl-c1">1048576</span>,</td>
+      </tr>
+      <tr>
+        <td id="L980" class="blob-num js-line-number" data-line-number="980"></td>
+        <td id="LC980" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">soft_max</span><span class="pl-k">=</span><span class="pl-c1">20</span>,</td>
+      </tr>
+      <tr>
+        <td id="L981" class="blob-num js-line-number" data-line-number="981"></td>
+        <td id="LC981" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">default</span><span class="pl-k">=</span><span class="pl-c1">1</span>)</td>
+      </tr>
+      <tr>
+        <td id="L982" class="blob-num js-line-number" data-line-number="982"></td>
+        <td id="LC982" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L983" class="blob-num js-line-number" data-line-number="983"></td>
+        <td id="LC983" class="blob-code blob-code-inner js-file-line">    scale_X: FloatVectorProperty(</td>
+      </tr>
+      <tr>
+        <td id="L984" class="blob-num js-line-number" data-line-number="984"></td>
+        <td id="LC984" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">name</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&quot;</span>X scale<span class="pl-pds">&quot;</span></span>,</td>
+      </tr>
+      <tr>
+        <td id="L985" class="blob-num js-line-number" data-line-number="985"></td>
+        <td id="LC985" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">description</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&quot;</span>X axis scaling range<span class="pl-pds">&quot;</span></span>,</td>
+      </tr>
+      <tr>
+        <td id="L986" class="blob-num js-line-number" data-line-number="986"></td>
+        <td id="LC986" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">min</span><span class="pl-k">=</span><span class="pl-c1">0.0</span>, <span class="pl-v">max</span><span class="pl-k">=</span><span class="pl-c1">256.0</span>, <span class="pl-v">step</span><span class="pl-k">=</span><span class="pl-c1">1</span>,</td>
+      </tr>
+      <tr>
+        <td id="L987" class="blob-num js-line-number" data-line-number="987"></td>
+        <td id="LC987" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">default</span><span class="pl-k">=</span>defaults[<span class="pl-c1">1</span>], <span class="pl-v">size</span><span class="pl-k">=</span><span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L988" class="blob-num js-line-number" data-line-number="988"></td>
+        <td id="LC988" class="blob-code blob-code-inner js-file-line">    skew_X: FloatProperty(</td>
+      </tr>
+      <tr>
+        <td id="L989" class="blob-num js-line-number" data-line-number="989"></td>
+        <td id="LC989" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">name</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&quot;</span>X skew<span class="pl-pds">&quot;</span></span>,</td>
+      </tr>
+      <tr>
+        <td id="L990" class="blob-num js-line-number" data-line-number="990"></td>
+        <td id="LC990" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">description</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&quot;</span>X Skew ratio. 0.5 is no skew<span class="pl-pds">&quot;</span></span>,</td>
+      </tr>
+      <tr>
+        <td id="L991" class="blob-num js-line-number" data-line-number="991"></td>
+        <td id="LC991" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">min</span><span class="pl-k">=</span><span class="pl-k">-</span><span class="pl-c1">1.0</span>, <span class="pl-v">max</span><span class="pl-k">=</span><span class="pl-c1">1.0</span>, <span class="pl-v">default</span><span class="pl-k">=</span>defaults[<span class="pl-c1">4</span>])</td>
+      </tr>
+      <tr>
+        <td id="L992" class="blob-num js-line-number" data-line-number="992"></td>
+        <td id="LC992" class="blob-code blob-code-inner js-file-line">    scale_Y: FloatVectorProperty(</td>
+      </tr>
+      <tr>
+        <td id="L993" class="blob-num js-line-number" data-line-number="993"></td>
+        <td id="LC993" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">name</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&quot;</span>Y scale<span class="pl-pds">&quot;</span></span>,</td>
+      </tr>
+      <tr>
+        <td id="L994" class="blob-num js-line-number" data-line-number="994"></td>
+        <td id="LC994" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">description</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&quot;</span>Y axis scaling range<span class="pl-pds">&quot;</span></span>,</td>
+      </tr>
+      <tr>
+        <td id="L995" class="blob-num js-line-number" data-line-number="995"></td>
+        <td id="LC995" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">min</span><span class="pl-k">=</span><span class="pl-c1">.0</span>, <span class="pl-v">max</span><span class="pl-k">=</span><span class="pl-c1">256.0</span>, <span class="pl-v">step</span><span class="pl-k">=</span><span class="pl-c1">1</span>,</td>
+      </tr>
+      <tr>
+        <td id="L996" class="blob-num js-line-number" data-line-number="996"></td>
+        <td id="LC996" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">default</span><span class="pl-k">=</span>defaults[<span class="pl-c1">2</span>], <span class="pl-v">size</span><span class="pl-k">=</span><span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L997" class="blob-num js-line-number" data-line-number="997"></td>
+        <td id="LC997" class="blob-code blob-code-inner js-file-line">    skew_Y: FloatProperty(</td>
+      </tr>
+      <tr>
+        <td id="L998" class="blob-num js-line-number" data-line-number="998"></td>
+        <td id="LC998" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">name</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&quot;</span>Y skew<span class="pl-pds">&quot;</span></span>,</td>
+      </tr>
+      <tr>
+        <td id="L999" class="blob-num js-line-number" data-line-number="999"></td>
+        <td id="LC999" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">description</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&quot;</span>Y Skew ratio. 0.5 is no skew<span class="pl-pds">&quot;</span></span>,</td>
+      </tr>
+      <tr>
+        <td id="L1000" class="blob-num js-line-number" data-line-number="1000"></td>
+        <td id="LC1000" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">min</span><span class="pl-k">=</span><span class="pl-k">-</span><span class="pl-c1">1.0</span>, <span class="pl-v">max</span><span class="pl-k">=</span><span class="pl-c1">1.0</span>, <span class="pl-v">default</span><span class="pl-k">=</span>defaults[<span class="pl-c1">5</span>])</td>
+      </tr>
+      <tr>
+        <td id="L1001" class="blob-num js-line-number" data-line-number="1001"></td>
+        <td id="LC1001" class="blob-code blob-code-inner js-file-line">    scale_Z: FloatVectorProperty(</td>
+      </tr>
+      <tr>
+        <td id="L1002" class="blob-num js-line-number" data-line-number="1002"></td>
+        <td id="LC1002" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">name</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&quot;</span>Z scale<span class="pl-pds">&quot;</span></span>,</td>
+      </tr>
+      <tr>
+        <td id="L1003" class="blob-num js-line-number" data-line-number="1003"></td>
+        <td id="LC1003" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">description</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&quot;</span>Z axis scaling range<span class="pl-pds">&quot;</span></span>,</td>
+      </tr>
+      <tr>
+        <td id="L1004" class="blob-num js-line-number" data-line-number="1004"></td>
+        <td id="LC1004" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">min</span><span class="pl-k">=</span><span class="pl-c1">0.0</span>, <span class="pl-v">max</span><span class="pl-k">=</span><span class="pl-c1">256.0</span>, <span class="pl-v">step</span><span class="pl-k">=</span><span class="pl-c1">1</span>,</td>
+      </tr>
+      <tr>
+        <td id="L1005" class="blob-num js-line-number" data-line-number="1005"></td>
+        <td id="LC1005" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">default</span><span class="pl-k">=</span>defaults[<span class="pl-c1">3</span>], <span class="pl-v">size</span><span class="pl-k">=</span><span class="pl-c1">2</span>)</td>
+      </tr>
+      <tr>
+        <td id="L1006" class="blob-num js-line-number" data-line-number="1006"></td>
+        <td id="LC1006" class="blob-code blob-code-inner js-file-line">    skew_Z: FloatProperty(</td>
+      </tr>
+      <tr>
+        <td id="L1007" class="blob-num js-line-number" data-line-number="1007"></td>
+        <td id="LC1007" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">name</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&quot;</span>Z skew<span class="pl-pds">&quot;</span></span>,</td>
+      </tr>
+      <tr>
+        <td id="L1008" class="blob-num js-line-number" data-line-number="1008"></td>
+        <td id="LC1008" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">description</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&quot;</span>Z Skew ratio. 0.5 is no skew<span class="pl-pds">&quot;</span></span>,</td>
+      </tr>
+      <tr>
+        <td id="L1009" class="blob-num js-line-number" data-line-number="1009"></td>
+        <td id="LC1009" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">min</span><span class="pl-k">=</span><span class="pl-k">-</span><span class="pl-c1">1.0</span>, <span class="pl-v">max</span><span class="pl-k">=</span><span class="pl-c1">1.0</span>, <span class="pl-v">default</span><span class="pl-k">=</span>defaults[<span class="pl-c1">6</span>])</td>
+      </tr>
+      <tr>
+        <td id="L1010" class="blob-num js-line-number" data-line-number="1010"></td>
+        <td id="LC1010" class="blob-code blob-code-inner js-file-line">    use_scale_dis: BoolProperty(</td>
+      </tr>
+      <tr>
+        <td id="L1011" class="blob-num js-line-number" data-line-number="1011"></td>
+        <td id="LC1011" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">name</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&quot;</span>Scale displace textures<span class="pl-pds">&quot;</span></span>,</td>
+      </tr>
+      <tr>
+        <td id="L1012" class="blob-num js-line-number" data-line-number="1012"></td>
+        <td id="LC1012" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">description</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&quot;</span>Scale displacement textures with dimensions.  May cause streched textures<span class="pl-pds">&quot;</span></span>,</td>
+      </tr>
+      <tr>
+        <td id="L1013" class="blob-num js-line-number" data-line-number="1013"></td>
+        <td id="LC1013" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">default</span><span class="pl-k">=</span>defaults[<span class="pl-c1">7</span>])</td>
+      </tr>
+      <tr>
+        <td id="L1014" class="blob-num js-line-number" data-line-number="1014"></td>
+        <td id="LC1014" class="blob-code blob-code-inner js-file-line">    scale_fac: FloatVectorProperty(</td>
+      </tr>
+      <tr>
+        <td id="L1015" class="blob-num js-line-number" data-line-number="1015"></td>
+        <td id="LC1015" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">name</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&quot;</span>Scaling Factor<span class="pl-pds">&quot;</span></span>,</td>
+      </tr>
+      <tr>
+        <td id="L1016" class="blob-num js-line-number" data-line-number="1016"></td>
+        <td id="LC1016" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">description</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&quot;</span>XYZ scaling factor.  1: no scaling<span class="pl-pds">&quot;</span></span>,</td>
+      </tr>
+      <tr>
+        <td id="L1017" class="blob-num js-line-number" data-line-number="1017"></td>
+        <td id="LC1017" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">min</span><span class="pl-k">=</span><span class="pl-c1">0.0001</span>, <span class="pl-v">max</span><span class="pl-k">=</span><span class="pl-c1">256.0</span>, <span class="pl-v">step</span><span class="pl-k">=</span><span class="pl-c1">0.1</span>,</td>
+      </tr>
+      <tr>
+        <td id="L1018" class="blob-num js-line-number" data-line-number="1018"></td>
+        <td id="LC1018" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">default</span><span class="pl-k">=</span>defaults[<span class="pl-c1">8</span>], <span class="pl-v">size</span><span class="pl-k">=</span><span class="pl-c1">3</span>)</td>
+      </tr>
+      <tr>
+        <td id="L1019" class="blob-num js-line-number" data-line-number="1019"></td>
+        <td id="LC1019" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L1020" class="blob-num js-line-number" data-line-number="1020"></td>
+        <td id="LC1020" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> @todo Possible to title this section &quot;Physical Properties:&quot;?</span></td>
+      </tr>
+      <tr>
+        <td id="L1021" class="blob-num js-line-number" data-line-number="1021"></td>
+        <td id="LC1021" class="blob-code blob-code-inner js-file-line">    deform: FloatProperty(</td>
+      </tr>
+      <tr>
+        <td id="L1022" class="blob-num js-line-number" data-line-number="1022"></td>
+        <td id="LC1022" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">name</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&quot;</span>Deformation<span class="pl-pds">&quot;</span></span>,</td>
+      </tr>
+      <tr>
+        <td id="L1023" class="blob-num js-line-number" data-line-number="1023"></td>
+        <td id="LC1023" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">description</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&quot;</span>Rock deformation<span class="pl-pds">&quot;</span></span>,</td>
+      </tr>
+      <tr>
+        <td id="L1024" class="blob-num js-line-number" data-line-number="1024"></td>
+        <td id="LC1024" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">min</span><span class="pl-k">=</span><span class="pl-c1">0.0</span>, <span class="pl-v">max</span><span class="pl-k">=</span><span class="pl-c1">1024.0</span>, <span class="pl-v">default</span><span class="pl-k">=</span>defaults[<span class="pl-c1">9</span>])</td>
+      </tr>
+      <tr>
+        <td id="L1025" class="blob-num js-line-number" data-line-number="1025"></td>
+        <td id="LC1025" class="blob-code blob-code-inner js-file-line">    rough: FloatProperty(</td>
+      </tr>
+      <tr>
+        <td id="L1026" class="blob-num js-line-number" data-line-number="1026"></td>
+        <td id="LC1026" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">name</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&quot;</span>Roughness<span class="pl-pds">&quot;</span></span>,</td>
+      </tr>
+      <tr>
+        <td id="L1027" class="blob-num js-line-number" data-line-number="1027"></td>
+        <td id="LC1027" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">description</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&quot;</span>Rock roughness<span class="pl-pds">&quot;</span></span>,</td>
+      </tr>
+      <tr>
+        <td id="L1028" class="blob-num js-line-number" data-line-number="1028"></td>
+        <td id="LC1028" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">min</span><span class="pl-k">=</span><span class="pl-c1">0.0</span>, <span class="pl-v">max</span><span class="pl-k">=</span><span class="pl-c1">1024.0</span>, <span class="pl-v">default</span><span class="pl-k">=</span>defaults[<span class="pl-c1">10</span>])</td>
+      </tr>
+      <tr>
+        <td id="L1029" class="blob-num js-line-number" data-line-number="1029"></td>
+        <td id="LC1029" class="blob-code blob-code-inner js-file-line">    detail: IntProperty(</td>
+      </tr>
+      <tr>
+        <td id="L1030" class="blob-num js-line-number" data-line-number="1030"></td>
+        <td id="LC1030" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">name</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&quot;</span>Detail level<span class="pl-pds">&quot;</span></span>,</td>
+      </tr>
+      <tr>
+        <td id="L1031" class="blob-num js-line-number" data-line-number="1031"></td>
+        <td id="LC1031" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">description</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&quot;</span>Detail level.  WARNING: Slow at high values!<span class="pl-pds">&quot;</span></span>,</td>
+      </tr>
+      <tr>
+        <td id="L1032" class="blob-num js-line-number" data-line-number="1032"></td>
+        <td id="LC1032" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">min</span><span class="pl-k">=</span><span class="pl-c1">1</span>, <span class="pl-v">max</span><span class="pl-k">=</span><span class="pl-c1">1024</span>, <span class="pl-v">default</span><span class="pl-k">=</span>defaults[<span class="pl-c1">11</span>])</td>
+      </tr>
+      <tr>
+        <td id="L1033" class="blob-num js-line-number" data-line-number="1033"></td>
+        <td id="LC1033" class="blob-code blob-code-inner js-file-line">    display_detail: IntProperty(</td>
+      </tr>
+      <tr>
+        <td id="L1034" class="blob-num js-line-number" data-line-number="1034"></td>
+        <td id="LC1034" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">name</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&quot;</span>Display Detail<span class="pl-pds">&quot;</span></span>,</td>
+      </tr>
+      <tr>
+        <td id="L1035" class="blob-num js-line-number" data-line-number="1035"></td>
+        <td id="LC1035" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">description</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&quot;</span>Display detail.  Use a lower value for high numbers of rocks<span class="pl-pds">&quot;</span></span>,</td>
+      </tr>
+      <tr>
+        <td id="L1036" class="blob-num js-line-number" data-line-number="1036"></td>
+        <td id="LC1036" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">min</span><span class="pl-k">=</span><span class="pl-c1">1</span>, <span class="pl-v">max</span><span class="pl-k">=</span><span class="pl-c1">128</span>, <span class="pl-v">default</span><span class="pl-k">=</span>defaults[<span class="pl-c1">12</span>])</td>
+      </tr>
+      <tr>
+        <td id="L1037" class="blob-num js-line-number" data-line-number="1037"></td>
+        <td id="LC1037" class="blob-code blob-code-inner js-file-line">    smooth_fac: FloatProperty(</td>
+      </tr>
+      <tr>
+        <td id="L1038" class="blob-num js-line-number" data-line-number="1038"></td>
+        <td id="LC1038" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">name</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&quot;</span>Smooth Factor<span class="pl-pds">&quot;</span></span>,</td>
+      </tr>
+      <tr>
+        <td id="L1039" class="blob-num js-line-number" data-line-number="1039"></td>
+        <td id="LC1039" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">description</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&quot;</span>Smoothing factor.  A value of 0 disables<span class="pl-pds">&quot;</span></span>,</td>
+      </tr>
+      <tr>
+        <td id="L1040" class="blob-num js-line-number" data-line-number="1040"></td>
+        <td id="LC1040" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">min</span><span class="pl-k">=</span><span class="pl-c1">0.0</span>, <span class="pl-v">max</span><span class="pl-k">=</span><span class="pl-c1">128.0</span>, <span class="pl-v">default</span><span class="pl-k">=</span>defaults[<span class="pl-c1">13</span>])</td>
+      </tr>
+      <tr>
+        <td id="L1041" class="blob-num js-line-number" data-line-number="1041"></td>
+        <td id="LC1041" class="blob-code blob-code-inner js-file-line">    smooth_it: IntProperty(</td>
+      </tr>
+      <tr>
+        <td id="L1042" class="blob-num js-line-number" data-line-number="1042"></td>
+        <td id="LC1042" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">name</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&quot;</span>Smooth Iterations<span class="pl-pds">&quot;</span></span>,</td>
+      </tr>
+      <tr>
+        <td id="L1043" class="blob-num js-line-number" data-line-number="1043"></td>
+        <td id="LC1043" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">description</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&quot;</span>Smoothing iterations.  A value of 0 disables<span class="pl-pds">&quot;</span></span>,</td>
+      </tr>
+      <tr>
+        <td id="L1044" class="blob-num js-line-number" data-line-number="1044"></td>
+        <td id="LC1044" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">min</span><span class="pl-k">=</span><span class="pl-c1">0</span>, <span class="pl-v">max</span><span class="pl-k">=</span><span class="pl-c1">128</span>, <span class="pl-v">default</span><span class="pl-k">=</span>defaults[<span class="pl-c1">14</span>])</td>
+      </tr>
+      <tr>
+        <td id="L1045" class="blob-num js-line-number" data-line-number="1045"></td>
+        <td id="LC1045" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L1046" class="blob-num js-line-number" data-line-number="1046"></td>
+        <td id="LC1046" class="blob-code blob-code-inner js-file-line">    use_generate: BoolProperty(</td>
+      </tr>
+      <tr>
+        <td id="L1047" class="blob-num js-line-number" data-line-number="1047"></td>
+        <td id="LC1047" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">name</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&quot;</span>Generate Rocks<span class="pl-pds">&quot;</span></span>,</td>
+      </tr>
+      <tr>
+        <td id="L1048" class="blob-num js-line-number" data-line-number="1048"></td>
+        <td id="LC1048" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">description</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&quot;</span>Enable actual generation<span class="pl-pds">&quot;</span></span>,</td>
+      </tr>
+      <tr>
+        <td id="L1049" class="blob-num js-line-number" data-line-number="1049"></td>
+        <td id="LC1049" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">default</span><span class="pl-k">=</span>defaults[<span class="pl-c1">15</span>])</td>
+      </tr>
+      <tr>
+        <td id="L1050" class="blob-num js-line-number" data-line-number="1050"></td>
+        <td id="LC1050" class="blob-code blob-code-inner js-file-line">    use_random_seed: BoolProperty(</td>
+      </tr>
+      <tr>
+        <td id="L1051" class="blob-num js-line-number" data-line-number="1051"></td>
+        <td id="LC1051" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">name</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&quot;</span>Use a random seed<span class="pl-pds">&quot;</span></span>,</td>
+      </tr>
+      <tr>
+        <td id="L1052" class="blob-num js-line-number" data-line-number="1052"></td>
+        <td id="LC1052" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">description</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&quot;</span>Create a seed based on time. Causes user seed to be ignored<span class="pl-pds">&quot;</span></span>,</td>
+      </tr>
+      <tr>
+        <td id="L1053" class="blob-num js-line-number" data-line-number="1053"></td>
+        <td id="LC1053" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">default</span><span class="pl-k">=</span>defaults[<span class="pl-c1">16</span>])</td>
+      </tr>
+      <tr>
+        <td id="L1054" class="blob-num js-line-number" data-line-number="1054"></td>
+        <td id="LC1054" class="blob-code blob-code-inner js-file-line">    user_seed: IntProperty(</td>
+      </tr>
+      <tr>
+        <td id="L1055" class="blob-num js-line-number" data-line-number="1055"></td>
+        <td id="LC1055" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">name</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&quot;</span>User seed<span class="pl-pds">&quot;</span></span>,</td>
+      </tr>
+      <tr>
+        <td id="L1056" class="blob-num js-line-number" data-line-number="1056"></td>
+        <td id="LC1056" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">description</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&quot;</span>Use a specific seed for the generator<span class="pl-pds">&quot;</span></span>,</td>
+      </tr>
+      <tr>
+        <td id="L1057" class="blob-num js-line-number" data-line-number="1057"></td>
+        <td id="LC1057" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">min</span><span class="pl-k">=</span><span class="pl-c1">0</span>, <span class="pl-v">max</span><span class="pl-k">=</span><span class="pl-c1">1048576</span>, <span class="pl-v">default</span><span class="pl-k">=</span>defaults[<span class="pl-c1">17</span>])</td>
+      </tr>
+      <tr>
+        <td id="L1058" class="blob-num js-line-number" data-line-number="1058"></td>
+        <td id="LC1058" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L1059" class="blob-num js-line-number" data-line-number="1059"></td>
+        <td id="LC1059" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">def</span> <span class="pl-en">draw</span>(<span class="pl-smi"><span class="pl-smi">self</span></span>, <span class="pl-smi">context</span>):</td>
+      </tr>
+      <tr>
+        <td id="L1060" class="blob-num js-line-number" data-line-number="1060"></td>
+        <td id="LC1060" class="blob-code blob-code-inner js-file-line">        layout <span class="pl-k">=</span> <span class="pl-c1">self</span>.layout</td>
+      </tr>
+      <tr>
+        <td id="L1061" class="blob-num js-line-number" data-line-number="1061"></td>
+        <td id="LC1061" class="blob-code blob-code-inner js-file-line">        box <span class="pl-k">=</span> layout.box()</td>
+      </tr>
+      <tr>
+        <td id="L1062" class="blob-num js-line-number" data-line-number="1062"></td>
+        <td id="LC1062" class="blob-code blob-code-inner js-file-line">        box.prop(<span class="pl-c1">self</span>, <span class="pl-s"><span class="pl-pds">&#39;</span>num_of_rocks<span class="pl-pds">&#39;</span></span>)</td>
+      </tr>
+      <tr>
+        <td id="L1063" class="blob-num js-line-number" data-line-number="1063"></td>
+        <td id="LC1063" class="blob-code blob-code-inner js-file-line">        box <span class="pl-k">=</span> layout.box()</td>
+      </tr>
+      <tr>
+        <td id="L1064" class="blob-num js-line-number" data-line-number="1064"></td>
+        <td id="LC1064" class="blob-code blob-code-inner js-file-line">        box.prop(<span class="pl-c1">self</span>, <span class="pl-s"><span class="pl-pds">&#39;</span>scale_X<span class="pl-pds">&#39;</span></span>)</td>
+      </tr>
+      <tr>
+        <td id="L1065" class="blob-num js-line-number" data-line-number="1065"></td>
+        <td id="LC1065" class="blob-code blob-code-inner js-file-line">        box.prop(<span class="pl-c1">self</span>, <span class="pl-s"><span class="pl-pds">&#39;</span>skew_X<span class="pl-pds">&#39;</span></span>)</td>
+      </tr>
+      <tr>
+        <td id="L1066" class="blob-num js-line-number" data-line-number="1066"></td>
+        <td id="LC1066" class="blob-code blob-code-inner js-file-line">        box.prop(<span class="pl-c1">self</span>, <span class="pl-s"><span class="pl-pds">&#39;</span>scale_Y<span class="pl-pds">&#39;</span></span>)</td>
+      </tr>
+      <tr>
+        <td id="L1067" class="blob-num js-line-number" data-line-number="1067"></td>
+        <td id="LC1067" class="blob-code blob-code-inner js-file-line">        box.prop(<span class="pl-c1">self</span>, <span class="pl-s"><span class="pl-pds">&#39;</span>skew_Y<span class="pl-pds">&#39;</span></span>)</td>
+      </tr>
+      <tr>
+        <td id="L1068" class="blob-num js-line-number" data-line-number="1068"></td>
+        <td id="LC1068" class="blob-code blob-code-inner js-file-line">        box.prop(<span class="pl-c1">self</span>, <span class="pl-s"><span class="pl-pds">&#39;</span>scale_Z<span class="pl-pds">&#39;</span></span>)</td>
+      </tr>
+      <tr>
+        <td id="L1069" class="blob-num js-line-number" data-line-number="1069"></td>
+        <td id="LC1069" class="blob-code blob-code-inner js-file-line">        box.prop(<span class="pl-c1">self</span>, <span class="pl-s"><span class="pl-pds">&#39;</span>skew_Z<span class="pl-pds">&#39;</span></span>)</td>
+      </tr>
+      <tr>
+        <td id="L1070" class="blob-num js-line-number" data-line-number="1070"></td>
+        <td id="LC1070" class="blob-code blob-code-inner js-file-line">        box.prop(<span class="pl-c1">self</span>, <span class="pl-s"><span class="pl-pds">&#39;</span>use_scale_dis<span class="pl-pds">&#39;</span></span>)</td>
+      </tr>
+      <tr>
+        <td id="L1071" class="blob-num js-line-number" data-line-number="1071"></td>
+        <td id="LC1071" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">if</span> <span class="pl-c1">self</span>.use_scale_dis:</td>
+      </tr>
+      <tr>
+        <td id="L1072" class="blob-num js-line-number" data-line-number="1072"></td>
+        <td id="LC1072" class="blob-code blob-code-inner js-file-line">            box.prop(<span class="pl-c1">self</span>, <span class="pl-s"><span class="pl-pds">&#39;</span>scale_fac<span class="pl-pds">&#39;</span></span>)</td>
+      </tr>
+      <tr>
+        <td id="L1073" class="blob-num js-line-number" data-line-number="1073"></td>
+        <td id="LC1073" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">else</span>:</td>
+      </tr>
+      <tr>
+        <td id="L1074" class="blob-num js-line-number" data-line-number="1074"></td>
+        <td id="LC1074" class="blob-code blob-code-inner js-file-line">            <span class="pl-c1">self</span>.scale_fac <span class="pl-k">=</span> utils.toFloats(<span class="pl-c1">self</span>.defaults[<span class="pl-c1">8</span>])</td>
+      </tr>
+      <tr>
+        <td id="L1075" class="blob-num js-line-number" data-line-number="1075"></td>
+        <td id="LC1075" class="blob-code blob-code-inner js-file-line">        box <span class="pl-k">=</span> layout.box()</td>
+      </tr>
+      <tr>
+        <td id="L1076" class="blob-num js-line-number" data-line-number="1076"></td>
+        <td id="LC1076" class="blob-code blob-code-inner js-file-line">        box.prop(<span class="pl-c1">self</span>, <span class="pl-s"><span class="pl-pds">&#39;</span>deform<span class="pl-pds">&#39;</span></span>)</td>
+      </tr>
+      <tr>
+        <td id="L1077" class="blob-num js-line-number" data-line-number="1077"></td>
+        <td id="LC1077" class="blob-code blob-code-inner js-file-line">        box.prop(<span class="pl-c1">self</span>, <span class="pl-s"><span class="pl-pds">&#39;</span>rough<span class="pl-pds">&#39;</span></span>)</td>
+      </tr>
+      <tr>
+        <td id="L1078" class="blob-num js-line-number" data-line-number="1078"></td>
+        <td id="LC1078" class="blob-code blob-code-inner js-file-line">        box.prop(<span class="pl-c1">self</span>, <span class="pl-s"><span class="pl-pds">&#39;</span>detail<span class="pl-pds">&#39;</span></span>)</td>
+      </tr>
+      <tr>
+        <td id="L1079" class="blob-num js-line-number" data-line-number="1079"></td>
+        <td id="LC1079" class="blob-code blob-code-inner js-file-line">        box.prop(<span class="pl-c1">self</span>, <span class="pl-s"><span class="pl-pds">&#39;</span>display_detail<span class="pl-pds">&#39;</span></span>)</td>
+      </tr>
+      <tr>
+        <td id="L1080" class="blob-num js-line-number" data-line-number="1080"></td>
+        <td id="LC1080" class="blob-code blob-code-inner js-file-line">        box.prop(<span class="pl-c1">self</span>, <span class="pl-s"><span class="pl-pds">&#39;</span>smooth_fac<span class="pl-pds">&#39;</span></span>)</td>
+      </tr>
+      <tr>
+        <td id="L1081" class="blob-num js-line-number" data-line-number="1081"></td>
+        <td id="LC1081" class="blob-code blob-code-inner js-file-line">        box.prop(<span class="pl-c1">self</span>, <span class="pl-s"><span class="pl-pds">&#39;</span>smooth_it<span class="pl-pds">&#39;</span></span>)</td>
+      </tr>
+      <tr>
+        <td id="L1082" class="blob-num js-line-number" data-line-number="1082"></td>
+        <td id="LC1082" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L1083" class="blob-num js-line-number" data-line-number="1083"></td>
+        <td id="LC1083" class="blob-code blob-code-inner js-file-line">        box <span class="pl-k">=</span> layout.box()</td>
+      </tr>
+      <tr>
+        <td id="L1084" class="blob-num js-line-number" data-line-number="1084"></td>
+        <td id="LC1084" class="blob-code blob-code-inner js-file-line">        box.prop(<span class="pl-c1">self</span>, <span class="pl-s"><span class="pl-pds">&#39;</span>use_generate<span class="pl-pds">&#39;</span></span>)</td>
+      </tr>
+      <tr>
+        <td id="L1085" class="blob-num js-line-number" data-line-number="1085"></td>
+        <td id="LC1085" class="blob-code blob-code-inner js-file-line">        box.prop(<span class="pl-c1">self</span>, <span class="pl-s"><span class="pl-pds">&#39;</span>use_random_seed<span class="pl-pds">&#39;</span></span>)</td>
+      </tr>
+      <tr>
+        <td id="L1086" class="blob-num js-line-number" data-line-number="1086"></td>
+        <td id="LC1086" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">if</span> <span class="pl-k">not</span> <span class="pl-c1">self</span>.use_random_seed:</td>
+      </tr>
+      <tr>
+        <td id="L1087" class="blob-num js-line-number" data-line-number="1087"></td>
+        <td id="LC1087" class="blob-code blob-code-inner js-file-line">            box.prop(<span class="pl-c1">self</span>, <span class="pl-s"><span class="pl-pds">&#39;</span>user_seed<span class="pl-pds">&#39;</span></span>)</td>
+      </tr>
+      <tr>
+        <td id="L1088" class="blob-num js-line-number" data-line-number="1088"></td>
+        <td id="LC1088" class="blob-code blob-code-inner js-file-line">        box.prop(<span class="pl-c1">self</span>, <span class="pl-s"><span class="pl-pds">&#39;</span>preset_values<span class="pl-pds">&#39;</span></span>)</td>
+      </tr>
+      <tr>
+        <td id="L1089" class="blob-num js-line-number" data-line-number="1089"></td>
+        <td id="LC1089" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L1090" class="blob-num js-line-number" data-line-number="1090"></td>
+        <td id="LC1090" class="blob-code blob-code-inner js-file-line">    <span class="pl-en">@</span><span class="pl-c1">classmethod</span></td>
+      </tr>
+      <tr>
+        <td id="L1091" class="blob-num js-line-number" data-line-number="1091"></td>
+        <td id="LC1091" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">def</span> <span class="pl-en">poll</span>(<span class="pl-smi"><span class="pl-smi">cls</span></span>, <span class="pl-smi">context</span>):</td>
+      </tr>
+      <tr>
+        <td id="L1092" class="blob-num js-line-number" data-line-number="1092"></td>
+        <td id="LC1092" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">return</span> context.mode <span class="pl-k">==</span> <span class="pl-s"><span class="pl-pds">&#39;</span>OBJECT<span class="pl-pds">&#39;</span></span></td>
+      </tr>
+      <tr>
+        <td id="L1093" class="blob-num js-line-number" data-line-number="1093"></td>
+        <td id="LC1093" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">#</span> return (context.object is not None and context.object.mode == &#39;OBJECT&#39;)</span></td>
+      </tr>
+      <tr>
+        <td id="L1094" class="blob-num js-line-number" data-line-number="1094"></td>
+        <td id="LC1094" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L1095" class="blob-num js-line-number" data-line-number="1095"></td>
+        <td id="LC1095" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">def</span> <span class="pl-en">execute</span>(<span class="pl-smi"><span class="pl-smi">self</span></span>, <span class="pl-smi">context</span>):</td>
+      </tr>
+      <tr>
+        <td id="L1096" class="blob-num js-line-number" data-line-number="1096"></td>
+        <td id="LC1096" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L1097" class="blob-num js-line-number" data-line-number="1097"></td>
+        <td id="LC1097" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">#</span> The following &quot;if&quot; block loads preset values:</span></td>
+      </tr>
+      <tr>
+        <td id="L1098" class="blob-num js-line-number" data-line-number="1098"></td>
+        <td id="LC1098" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">if</span> <span class="pl-c1">self</span>.lastPreset <span class="pl-k">!=</span> <span class="pl-c1">int</span>(<span class="pl-c1">self</span>.preset_values):</td>
+      </tr>
+      <tr>
+        <td id="L1099" class="blob-num js-line-number" data-line-number="1099"></td>
+        <td id="LC1099" class="blob-code blob-code-inner js-file-line">            <span class="pl-c1">self</span>.scale_X <span class="pl-k">=</span> utils.toFloats(<span class="pl-c1">self</span>.presetsList[<span class="pl-c1">int</span>(<span class="pl-c1">self</span>.preset_values)][<span class="pl-c1">1</span>])</td>
+      </tr>
+      <tr>
+        <td id="L1100" class="blob-num js-line-number" data-line-number="1100"></td>
+        <td id="LC1100" class="blob-code blob-code-inner js-file-line">            <span class="pl-c1">self</span>.scale_Y <span class="pl-k">=</span> utils.toFloats(<span class="pl-c1">self</span>.presetsList[<span class="pl-c1">int</span>(<span class="pl-c1">self</span>.preset_values)][<span class="pl-c1">2</span>])</td>
+      </tr>
+      <tr>
+        <td id="L1101" class="blob-num js-line-number" data-line-number="1101"></td>
+        <td id="LC1101" class="blob-code blob-code-inner js-file-line">            <span class="pl-c1">self</span>.scale_Z <span class="pl-k">=</span> utils.toFloats(<span class="pl-c1">self</span>.presetsList[<span class="pl-c1">int</span>(<span class="pl-c1">self</span>.preset_values)][<span class="pl-c1">3</span>])</td>
+      </tr>
+      <tr>
+        <td id="L1102" class="blob-num js-line-number" data-line-number="1102"></td>
+        <td id="LC1102" class="blob-code blob-code-inner js-file-line">            <span class="pl-c1">self</span>.skew_X <span class="pl-k">=</span> <span class="pl-c1">float</span>(<span class="pl-c1">self</span>.presetsList[<span class="pl-c1">int</span>(<span class="pl-c1">self</span>.preset_values)][<span class="pl-c1">4</span>])</td>
+      </tr>
+      <tr>
+        <td id="L1103" class="blob-num js-line-number" data-line-number="1103"></td>
+        <td id="LC1103" class="blob-code blob-code-inner js-file-line">            <span class="pl-c1">self</span>.skew_Y <span class="pl-k">=</span> <span class="pl-c1">float</span>(<span class="pl-c1">self</span>.presetsList[<span class="pl-c1">int</span>(<span class="pl-c1">self</span>.preset_values)][<span class="pl-c1">5</span>])</td>
+      </tr>
+      <tr>
+        <td id="L1104" class="blob-num js-line-number" data-line-number="1104"></td>
+        <td id="LC1104" class="blob-code blob-code-inner js-file-line">            <span class="pl-c1">self</span>.skew_Z <span class="pl-k">=</span> <span class="pl-c1">float</span>(<span class="pl-c1">self</span>.presetsList[<span class="pl-c1">int</span>(<span class="pl-c1">self</span>.preset_values)][<span class="pl-c1">6</span>])</td>
+      </tr>
+      <tr>
+        <td id="L1105" class="blob-num js-line-number" data-line-number="1105"></td>
+        <td id="LC1105" class="blob-code blob-code-inner js-file-line">            <span class="pl-c1">self</span>.use_scale_dis <span class="pl-k">=</span> <span class="pl-c1">bool</span>(<span class="pl-c1">self</span>.presetsList[<span class="pl-c1">int</span>(<span class="pl-c1">self</span>.preset_values)][<span class="pl-c1">7</span>])</td>
+      </tr>
+      <tr>
+        <td id="L1106" class="blob-num js-line-number" data-line-number="1106"></td>
+        <td id="LC1106" class="blob-code blob-code-inner js-file-line">            <span class="pl-c1">self</span>.scale_fac <span class="pl-k">=</span> utils.toFloats(<span class="pl-c1">self</span>.presetsList[<span class="pl-c1">int</span>(<span class="pl-c1">self</span>.preset_values)][<span class="pl-c1">8</span>])</td>
+      </tr>
+      <tr>
+        <td id="L1107" class="blob-num js-line-number" data-line-number="1107"></td>
+        <td id="LC1107" class="blob-code blob-code-inner js-file-line">            <span class="pl-c1">self</span>.deform <span class="pl-k">=</span> <span class="pl-c1">float</span>(<span class="pl-c1">self</span>.presetsList[<span class="pl-c1">int</span>(<span class="pl-c1">self</span>.preset_values)][<span class="pl-c1">9</span>])</td>
+      </tr>
+      <tr>
+        <td id="L1108" class="blob-num js-line-number" data-line-number="1108"></td>
+        <td id="LC1108" class="blob-code blob-code-inner js-file-line">            <span class="pl-c1">self</span>.rough <span class="pl-k">=</span> <span class="pl-c1">float</span>(<span class="pl-c1">self</span>.presetsList[<span class="pl-c1">int</span>(<span class="pl-c1">self</span>.preset_values)][<span class="pl-c1">10</span>])</td>
+      </tr>
+      <tr>
+        <td id="L1109" class="blob-num js-line-number" data-line-number="1109"></td>
+        <td id="LC1109" class="blob-code blob-code-inner js-file-line">            <span class="pl-c1">self</span>.detail <span class="pl-k">=</span> <span class="pl-c1">int</span>(<span class="pl-c1">self</span>.presetsList[<span class="pl-c1">int</span>(<span class="pl-c1">self</span>.preset_values)][<span class="pl-c1">11</span>])</td>
+      </tr>
+      <tr>
+        <td id="L1110" class="blob-num js-line-number" data-line-number="1110"></td>
+        <td id="LC1110" class="blob-code blob-code-inner js-file-line">            <span class="pl-c1">self</span>.display_detail <span class="pl-k">=</span> <span class="pl-c1">int</span>(<span class="pl-c1">self</span>.presetsList[<span class="pl-c1">int</span>(<span class="pl-c1">self</span>.preset_values)][<span class="pl-c1">12</span>])</td>
+      </tr>
+      <tr>
+        <td id="L1111" class="blob-num js-line-number" data-line-number="1111"></td>
+        <td id="LC1111" class="blob-code blob-code-inner js-file-line">            <span class="pl-c1">self</span>.smooth_fac <span class="pl-k">=</span> <span class="pl-c1">float</span>(<span class="pl-c1">self</span>.presetsList[<span class="pl-c1">int</span>(<span class="pl-c1">self</span>.preset_values)][<span class="pl-c1">13</span>])</td>
+      </tr>
+      <tr>
+        <td id="L1112" class="blob-num js-line-number" data-line-number="1112"></td>
+        <td id="LC1112" class="blob-code blob-code-inner js-file-line">            <span class="pl-c1">self</span>.smooth_it <span class="pl-k">=</span> <span class="pl-c1">int</span>(<span class="pl-c1">self</span>.presetsList[<span class="pl-c1">int</span>(<span class="pl-c1">self</span>.preset_values)][<span class="pl-c1">14</span>])</td>
+      </tr>
+      <tr>
+        <td id="L1113" class="blob-num js-line-number" data-line-number="1113"></td>
+        <td id="LC1113" class="blob-code blob-code-inner js-file-line">            <span class="pl-c1">self</span>.use_generate <span class="pl-k">=</span> <span class="pl-c1">bool</span>(<span class="pl-c1">self</span>.presetsList[<span class="pl-c1">int</span>(<span class="pl-c1">self</span>.preset_values)][<span class="pl-c1">15</span>])</td>
+      </tr>
+      <tr>
+        <td id="L1114" class="blob-num js-line-number" data-line-number="1114"></td>
+        <td id="LC1114" class="blob-code blob-code-inner js-file-line">            <span class="pl-c1">self</span>.use_random_seed <span class="pl-k">=</span> <span class="pl-c1">bool</span>(<span class="pl-c1">self</span>.presetsList[<span class="pl-c1">int</span>(<span class="pl-c1">self</span>.preset_values)][<span class="pl-c1">16</span>])</td>
+      </tr>
+      <tr>
+        <td id="L1115" class="blob-num js-line-number" data-line-number="1115"></td>
+        <td id="LC1115" class="blob-code blob-code-inner js-file-line">            <span class="pl-c1">self</span>.user_seed <span class="pl-k">=</span> <span class="pl-c1">int</span>(<span class="pl-c1">self</span>.presetsList[<span class="pl-c1">int</span>(<span class="pl-c1">self</span>.preset_values)][<span class="pl-c1">17</span>])</td>
+      </tr>
+      <tr>
+        <td id="L1116" class="blob-num js-line-number" data-line-number="1116"></td>
+        <td id="LC1116" class="blob-code blob-code-inner js-file-line">            <span class="pl-c1">self</span>.lastPreset <span class="pl-k">=</span> <span class="pl-c1">int</span>(<span class="pl-c1">self</span>.preset_values)</td>
+      </tr>
+      <tr>
+        <td id="L1117" class="blob-num js-line-number" data-line-number="1117"></td>
+        <td id="LC1117" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L1118" class="blob-num js-line-number" data-line-number="1118"></td>
+        <td id="LC1118" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">#</span> todo Add deform, deform_Var, rough, and rough_Var:</span></td>
+      </tr>
+      <tr>
+        <td id="L1119" class="blob-num js-line-number" data-line-number="1119"></td>
+        <td id="LC1119" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">#</span>   *** todo completed 4/23/2011 ***</span></td>
+      </tr>
+      <tr>
+        <td id="L1120" class="blob-num js-line-number" data-line-number="1120"></td>
+        <td id="LC1120" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">#</span>   *** Eliminated &quot;deform_Var&quot; and &quot;rough_Var&quot; so the script is not</span></td>
+      </tr>
+      <tr>
+        <td id="L1121" class="blob-num js-line-number" data-line-number="1121"></td>
+        <td id="LC1121" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">#</span>       as complex to use.  May add in again as advanced features. ***</span></td>
+      </tr>
+      <tr>
+        <td id="L1122" class="blob-num js-line-number" data-line-number="1122"></td>
+        <td id="LC1122" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">if</span> <span class="pl-c1">self</span>.use_generate:</td>
+      </tr>
+      <tr>
+        <td id="L1123" class="blob-num js-line-number" data-line-number="1123"></td>
+        <td id="LC1123" class="blob-code blob-code-inner js-file-line">            generateRocks(context,</td>
+      </tr>
+      <tr>
+        <td id="L1124" class="blob-num js-line-number" data-line-number="1124"></td>
+        <td id="LC1124" class="blob-code blob-code-inner js-file-line">                          <span class="pl-c1">self</span>.scale_X,</td>
+      </tr>
+      <tr>
+        <td id="L1125" class="blob-num js-line-number" data-line-number="1125"></td>
+        <td id="LC1125" class="blob-code blob-code-inner js-file-line">                          <span class="pl-c1">self</span>.skew_X,</td>
+      </tr>
+      <tr>
+        <td id="L1126" class="blob-num js-line-number" data-line-number="1126"></td>
+        <td id="LC1126" class="blob-code blob-code-inner js-file-line">                          <span class="pl-c1">self</span>.scale_Y,</td>
+      </tr>
+      <tr>
+        <td id="L1127" class="blob-num js-line-number" data-line-number="1127"></td>
+        <td id="LC1127" class="blob-code blob-code-inner js-file-line">                          <span class="pl-c1">self</span>.skew_Y,</td>
+      </tr>
+      <tr>
+        <td id="L1128" class="blob-num js-line-number" data-line-number="1128"></td>
+        <td id="LC1128" class="blob-code blob-code-inner js-file-line">                          <span class="pl-c1">self</span>.scale_Z,</td>
+      </tr>
+      <tr>
+        <td id="L1129" class="blob-num js-line-number" data-line-number="1129"></td>
+        <td id="LC1129" class="blob-code blob-code-inner js-file-line">                          <span class="pl-c1">self</span>.skew_Z,</td>
+      </tr>
+      <tr>
+        <td id="L1130" class="blob-num js-line-number" data-line-number="1130"></td>
+        <td id="LC1130" class="blob-code blob-code-inner js-file-line">                          <span class="pl-c1">self</span>.scale_fac,</td>
+      </tr>
+      <tr>
+        <td id="L1131" class="blob-num js-line-number" data-line-number="1131"></td>
+        <td id="LC1131" class="blob-code blob-code-inner js-file-line">                          <span class="pl-c1">self</span>.detail,</td>
+      </tr>
+      <tr>
+        <td id="L1132" class="blob-num js-line-number" data-line-number="1132"></td>
+        <td id="LC1132" class="blob-code blob-code-inner js-file-line">                          <span class="pl-c1">self</span>.display_detail,</td>
+      </tr>
+      <tr>
+        <td id="L1133" class="blob-num js-line-number" data-line-number="1133"></td>
+        <td id="LC1133" class="blob-code blob-code-inner js-file-line">                          <span class="pl-c1">self</span>.deform,</td>
+      </tr>
+      <tr>
+        <td id="L1134" class="blob-num js-line-number" data-line-number="1134"></td>
+        <td id="LC1134" class="blob-code blob-code-inner js-file-line">                          <span class="pl-c1">self</span>.rough,</td>
+      </tr>
+      <tr>
+        <td id="L1135" class="blob-num js-line-number" data-line-number="1135"></td>
+        <td id="LC1135" class="blob-code blob-code-inner js-file-line">                          <span class="pl-c1">self</span>.smooth_fac,</td>
+      </tr>
+      <tr>
+        <td id="L1136" class="blob-num js-line-number" data-line-number="1136"></td>
+        <td id="LC1136" class="blob-code blob-code-inner js-file-line">                          <span class="pl-c1">self</span>.smooth_it,</td>
+      </tr>
+      <tr>
+        <td id="L1137" class="blob-num js-line-number" data-line-number="1137"></td>
+        <td id="LC1137" class="blob-code blob-code-inner js-file-line">                          <span class="pl-c1">self</span>.num_of_rocks,</td>
+      </tr>
+      <tr>
+        <td id="L1138" class="blob-num js-line-number" data-line-number="1138"></td>
+        <td id="LC1138" class="blob-code blob-code-inner js-file-line">                          <span class="pl-c1">self</span>.user_seed,</td>
+      </tr>
+      <tr>
+        <td id="L1139" class="blob-num js-line-number" data-line-number="1139"></td>
+        <td id="LC1139" class="blob-code blob-code-inner js-file-line">                          <span class="pl-c1">self</span>.use_scale_dis,</td>
+      </tr>
+      <tr>
+        <td id="L1140" class="blob-num js-line-number" data-line-number="1140"></td>
+        <td id="LC1140" class="blob-code blob-code-inner js-file-line">                          <span class="pl-c1">self</span>.use_random_seed)</td>
+      </tr>
+      <tr>
+        <td id="L1141" class="blob-num js-line-number" data-line-number="1141"></td>
+        <td id="LC1141" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L1142" class="blob-num js-line-number" data-line-number="1142"></td>
+        <td id="LC1142" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">return</span> {<span class="pl-s"><span class="pl-pds">&#39;</span>FINISHED<span class="pl-pds">&#39;</span></span>}</td>
+      </tr>
+      <tr>
+        <td id="L1143" class="blob-num js-line-number" data-line-number="1143"></td>
+        <td id="LC1143" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L1144" class="blob-num js-line-number" data-line-number="1144"></td>
+        <td id="LC1144" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L1145" class="blob-num js-line-number" data-line-number="1145"></td>
+        <td id="LC1145" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> Register:</span></td>
+      </tr>
+      <tr>
+        <td id="L1146" class="blob-num js-line-number" data-line-number="1146"></td>
+        <td id="LC1146" class="blob-code blob-code-inner js-file-line"><span class="pl-k">def</span> <span class="pl-en">menu_func_rocks</span>(<span class="pl-smi"><span class="pl-smi">self</span></span>, <span class="pl-smi">context</span>):</td>
+      </tr>
+      <tr>
+        <td id="L1147" class="blob-num js-line-number" data-line-number="1147"></td>
+        <td id="LC1147" class="blob-code blob-code-inner js-file-line">    <span class="pl-c1">self</span>.layout.operator(</td>
+      </tr>
+      <tr>
+        <td id="L1148" class="blob-num js-line-number" data-line-number="1148"></td>
+        <td id="LC1148" class="blob-code blob-code-inner js-file-line">        <span class="pl-c1">OBJECT_OT_add_mesh_rock</span>.bl_idname,</td>
+      </tr>
+      <tr>
+        <td id="L1149" class="blob-num js-line-number" data-line-number="1149"></td>
+        <td id="LC1149" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">text</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&quot;</span>Rock Generator<span class="pl-pds">&quot;</span></span>,</td>
+      </tr>
+      <tr>
+        <td id="L1150" class="blob-num js-line-number" data-line-number="1150"></td>
+        <td id="LC1150" class="blob-code blob-code-inner js-file-line">        <span class="pl-v">icon</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">&quot;</span>PLUGIN<span class="pl-pds">&quot;</span></span>)</td>
+      </tr>
+      <tr>
+        <td id="L1151" class="blob-num js-line-number" data-line-number="1151"></td>
+        <td id="LC1151" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L1152" class="blob-num js-line-number" data-line-number="1152"></td>
+        <td id="LC1152" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L1153" class="blob-num js-line-number" data-line-number="1153"></td>
+        <td id="LC1153" class="blob-code blob-code-inner js-file-line">classes <span class="pl-k">=</span> (</td>
+      </tr>
+      <tr>
+        <td id="L1154" class="blob-num js-line-number" data-line-number="1154"></td>
+        <td id="LC1154" class="blob-code blob-code-inner js-file-line">    <span class="pl-c1">OBJECT_OT_add_mesh_rock</span>,</td>
+      </tr>
+      <tr>
+        <td id="L1155" class="blob-num js-line-number" data-line-number="1155"></td>
+        <td id="LC1155" class="blob-code blob-code-inner js-file-line">)</td>
+      </tr>
+      <tr>
+        <td id="L1156" class="blob-num js-line-number" data-line-number="1156"></td>
+        <td id="LC1156" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L1157" class="blob-num js-line-number" data-line-number="1157"></td>
+        <td id="LC1157" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L1158" class="blob-num js-line-number" data-line-number="1158"></td>
+        <td id="LC1158" class="blob-code blob-code-inner js-file-line"><span class="pl-k">def</span> <span class="pl-en">register</span>():</td>
+      </tr>
+      <tr>
+        <td id="L1159" class="blob-num js-line-number" data-line-number="1159"></td>
+        <td id="LC1159" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">from</span> bpy.utils <span class="pl-k">import</span> register_class</td>
+      </tr>
+      <tr>
+        <td id="L1160" class="blob-num js-line-number" data-line-number="1160"></td>
+        <td id="LC1160" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">for</span> <span class="pl-c1">cls</span> <span class="pl-k">in</span> classes:</td>
+      </tr>
+      <tr>
+        <td id="L1161" class="blob-num js-line-number" data-line-number="1161"></td>
+        <td id="LC1161" class="blob-code blob-code-inner js-file-line">        register_class(<span class="pl-c1">cls</span>)</td>
+      </tr>
+      <tr>
+        <td id="L1162" class="blob-num js-line-number" data-line-number="1162"></td>
+        <td id="LC1162" class="blob-code blob-code-inner js-file-line">    bpy.types.<span class="pl-c1">VIEW3D_MT_mesh_add</span>.append(menu_func_rocks)</td>
+      </tr>
+      <tr>
+        <td id="L1163" class="blob-num js-line-number" data-line-number="1163"></td>
+        <td id="LC1163" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L1164" class="blob-num js-line-number" data-line-number="1164"></td>
+        <td id="LC1164" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L1165" class="blob-num js-line-number" data-line-number="1165"></td>
+        <td id="LC1165" class="blob-code blob-code-inner js-file-line"><span class="pl-k">def</span> <span class="pl-en">unregister</span>():</td>
+      </tr>
+      <tr>
+        <td id="L1166" class="blob-num js-line-number" data-line-number="1166"></td>
+        <td id="LC1166" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">from</span> bpy.utils <span class="pl-k">import</span> unregister_class</td>
+      </tr>
+      <tr>
+        <td id="L1167" class="blob-num js-line-number" data-line-number="1167"></td>
+        <td id="LC1167" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">for</span> <span class="pl-c1">cls</span> <span class="pl-k">in</span> <span class="pl-c1">reversed</span>(classes):</td>
+      </tr>
+      <tr>
+        <td id="L1168" class="blob-num js-line-number" data-line-number="1168"></td>
+        <td id="LC1168" class="blob-code blob-code-inner js-file-line">        unregister_class(<span class="pl-c1">cls</span>)</td>
+      </tr>
+      <tr>
+        <td id="L1169" class="blob-num js-line-number" data-line-number="1169"></td>
+        <td id="LC1169" class="blob-code blob-code-inner js-file-line">    bpy.types.<span class="pl-c1">VIEW3D_MT_mesh_add</span>.remove(menu_func_rocks)</td>
+      </tr>
+      <tr>
+        <td id="L1170" class="blob-num js-line-number" data-line-number="1170"></td>
+        <td id="LC1170" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L1171" class="blob-num js-line-number" data-line-number="1171"></td>
+        <td id="LC1171" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L1172" class="blob-num js-line-number" data-line-number="1172"></td>
+        <td id="LC1172" class="blob-code blob-code-inner js-file-line"><span class="pl-k">if</span> <span class="pl-c1">__name__</span> <span class="pl-k">==</span> <span class="pl-s"><span class="pl-pds">&quot;</span>__main__<span class="pl-pds">&quot;</span></span>:</td>
+      </tr>
+      <tr>
+        <td id="L1173" class="blob-num js-line-number" data-line-number="1173"></td>
+        <td id="LC1173" class="blob-code blob-code-inner js-file-line">    register()</td>
+      </tr>
+</table>
+
+  <details class="details-reset details-overlay BlobToolbar position-absolute js-file-line-actions dropdown d-none" aria-hidden="true">
+    <summary class="btn-octicon ml-0 px-2 p-0 bg-white border border-gray-dark rounded-1" aria-label="Inline file action toolbar">
+      <svg class="octicon octicon-kebab-horizontal" viewBox="0 0 13 16" version="1.1" width="13" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M1.5 9a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm5 0a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM13 7.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"/></svg>
+    </summary>
+    <details-menu>
+      <ul class="BlobToolbar-dropdown dropdown-menu dropdown-menu-se mt-2" style="width:185px">
+        <li>
+          <clipboard-copy role="menuitem" class="dropdown-item" id="js-copy-lines" style="cursor:pointer;">
+            Copy lines
+          </clipboard-copy>
+        </li>
+        <li>
+          <clipboard-copy role="menuitem" class="dropdown-item" id="js-copy-permalink" style="cursor:pointer;">
+            Copy permalink
+          </clipboard-copy>
+        </li>
+        <li><a class="dropdown-item js-update-url-with-hash" id="js-view-git-blame" role="menuitem" href="/sobotka/blender-addons-contrib/blame/af1d8170e6fb19851fd547fe228bceede3375bfe/add_mesh_rocks/rockgen.py">View git blame</a></li>
+          <li><a class="dropdown-item" id="js-new-issue" role="menuitem" href="/sobotka/blender-addons-contrib/issues/new">Reference in new issue</a></li>
+      </ul>
+    </details-menu>
+  </details>
+
+  </div>
+
+    </div>
+
+  
+
+  <details class="details-reset details-overlay details-overlay-dark">
+    <summary data-hotkey="l" aria-label="Jump to line"></summary>
+    <details-dialog class="Box Box--overlay d-flex flex-column anim-fade-in fast linejump" aria-label="Jump to line">
+      <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="js-jump-to-line-form Box-body d-flex" action="" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
+        <input class="form-control flex-auto mr-3 linejump-input js-jump-to-line-field" type="text" placeholder="Jump to line&hellip;" aria-label="Jump to line" autofocus>
+        <button type="submit" class="btn" data-close-dialog>Go</button>
+</form>    </details-dialog>
+  </details>
+
+    <div class="Popover anim-scale-in js-tagsearch-popover"
+     hidden
+     data-tagsearch-url="/sobotka/blender-addons-contrib/find-symbols"
+     data-tagsearch-ref="master"
+     data-tagsearch-path="add_mesh_rocks/rockgen.py"
+     data-tagsearch-lang="Python"
+     data-hydro-click="{&quot;event_type&quot;:&quot;code_navigation.click_on_symbol&quot;,&quot;payload&quot;:{&quot;action&quot;:&quot;click_on_symbol&quot;,&quot;repository_id&quot;:112905278,&quot;ref&quot;:&quot;master&quot;,&quot;language&quot;:&quot;Python&quot;,&quot;client_id&quot;:&quot;1640592597.1557936150&quot;,&quot;originating_request_id&quot;:&quot;8759:1B5E:C4931E:167EE83:5DE0780C&quot;,&quot;originating_url&quot;:&quot;https://github.com/sobotka/blender-addons-contrib/blob/master/add_mesh_rocks/rockgen.py&quot;,&quot;referrer&quot;:&quot;https://github.com/sobotka/blender-addons-contrib/tree/master/add_mesh_rocks&quot;,&quot;user_id&quot;:1576533}}"
+     data-hydro-click-hmac="dc7d7d39e76c57f089c9b21372faf633b77cf5e8f421722fe9dc743d60505fc1">
+  <div class="Popover-message Popover-message--large Popover-message--top-left TagsearchPopover mt-1 mb-4 mx-auto Box box-shadow-large">
+    <div class="TagsearchPopover-content js-tagsearch-popover-content overflow-auto" style="will-change:transform;">
+    </div>
+  </div>
+</div>
+
+
+
+  </div>
+</div>
+
+    </main>
+  </div>
+  
+
+  </div>
+
+        
+<div class="footer container-lg width-full p-responsive" role="contentinfo">
+  <div class="position-relative d-flex flex-row-reverse flex-lg-row flex-wrap flex-lg-nowrap flex-justify-center flex-lg-justify-between pt-6 pb-2 mt-6 f6 text-gray border-top border-gray-light ">
+    <ul class="list-style-none d-flex flex-wrap col-12 col-lg-5 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0">
+      <li class="mr-3 mr-lg-0">&copy; 2019 GitHub, Inc.</li>
+        <li class="mr-3 mr-lg-0"><a data-ga-click="Footer, go to terms, text:terms" href="https://github.com/site/terms">Terms</a></li>
+        <li class="mr-3 mr-lg-0"><a data-ga-click="Footer, go to privacy, text:privacy" href="https://github.com/site/privacy">Privacy</a></li>
+        <li class="mr-3 mr-lg-0"><a data-ga-click="Footer, go to security, text:security" href="https://github.com/security">Security</a></li>
+        <li class="mr-3 mr-lg-0"><a href="https://githubstatus.com/" data-ga-click="Footer, go to status, text:status">Status</a></li>
+        <li><a data-ga-click="Footer, go to help, text:help" href="https://help.github.com">Help</a></li>
+    </ul>
+
+    <a aria-label="Homepage" title="GitHub" class="footer-octicon d-none d-lg-block mx-lg-4" href="https://github.com">
+      <svg height="24" class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" width="24" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+</a>
+   <ul class="list-style-none d-flex flex-wrap col-12 col-lg-5 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0">
+        <li class="mr-3 mr-lg-0"><a data-ga-click="Footer, go to contact, text:contact" href="https://github.com/contact">Contact GitHub</a></li>
+        <li class="mr-3 mr-lg-0"><a href="https://github.com/pricing" data-ga-click="Footer, go to Pricing, text:Pricing">Pricing</a></li>
+      <li class="mr-3 mr-lg-0"><a href="https://developer.github.com" data-ga-click="Footer, go to api, text:api">API</a></li>
+      <li class="mr-3 mr-lg-0"><a href="https://training.github.com" data-ga-click="Footer, go to training, text:training">Training</a></li>
+        <li class="mr-3 mr-lg-0"><a href="https://github.blog" data-ga-click="Footer, go to blog, text:blog">Blog</a></li>
+        <li><a data-ga-click="Footer, go to about, text:about" href="https://github.com/about">About</a></li>
+
+    </ul>
+  </div>
+  <div class="d-flex flex-justify-center pb-6">
+    <span class="f6 text-gray-light"></span>
+  </div>
+</div>
+
+
+
+  <div id="ajax-error-message" class="ajax-error-message flash flash-error">
+    <svg class="octicon octicon-alert" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 000 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 00.01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"/></svg>
+    <button type="button" class="flash-close js-ajax-error-dismiss" aria-label="Dismiss error">
+      <svg class="octicon octicon-x" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"/></svg>
+    </button>
+    You can’t perform that action at this time.
+  </div>
+
+
+    
+    <script crossorigin="anonymous" integrity="sha512-5KoX4P/b8KhUNxooQhWIxRhCSnSw7EES28pOUYsNnqBMWDDUp6W7cPBV1MTAudwSwofIkpGapbXCgVTgn563Lg==" type="application/javascript" src="https://github.githubassets.com/assets/frameworks-e4aa17e0.js"></script>
+    
+    <script crossorigin="anonymous" async="async" integrity="sha512-0Igj5XKVaZAYxfH8dn/Vb0uoHCOGYqxJh2pXL3DHrgVOMa1ETDHd6ZMm4C+U4fKv8TiaHP7htak2hJOHwYGDoA==" type="application/javascript" src="https://github.githubassets.com/assets/github-bootstrap-d08823e5.js"></script>
+    
+    
+    
+  <div class="js-stale-session-flash flash flash-warn flash-banner" hidden
+    >
+    <svg class="octicon octicon-alert" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 000 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 00.01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"/></svg>
+    <span class="js-stale-session-flash-signed-in" hidden>You signed in with another tab or window. <a href="">Reload</a> to refresh your session.</span>
+    <span class="js-stale-session-flash-signed-out" hidden>You signed out in another tab or window. <a href="">Reload</a> to refresh your session.</span>
+  </div>
+  <template id="site-details-dialog">
+  <details class="details-reset details-overlay details-overlay-dark lh-default text-gray-dark hx_rsm" open>
+    <summary role="button" aria-label="Close dialog"></summary>
+    <details-dialog class="Box Box--overlay d-flex flex-column anim-fade-in fast hx_rsm-dialog hx_rsm-modal">
+      <button class="Box-btn-octicon m-0 btn-octicon position-absolute right-0 top-0" type="button" aria-label="Close dialog" data-close-dialog>
+        <svg class="octicon octicon-x" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"/></svg>
+      </button>
+      <div class="octocat-spinner my-6 js-details-dialog-spinner"></div>
+    </details-dialog>
+  </details>
+</template>
+
+  <div class="Popover js-hovercard-content position-absolute" style="display: none; outline: none;" tabindex="0">
+  <div class="Popover-message Popover-message--bottom-left Popover-message--large Box box-shadow-large" style="width:360px;">
+  </div>
+</div>
+
+  <div aria-live="polite" class="js-global-screen-reader-notice sr-only"></div>
+
+  </body>
 </html>
+
